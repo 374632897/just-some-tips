@@ -27,7 +27,25 @@
    ````
    (function () {console.log('hello'})();
    (function () {console.log('hello'}()); 
-  `````
+  ````
    这里代表函数执行的括号写在内部和写在外部的区别是什么？
    貌似没有什么区别，这是第二种写法是JSlint推荐的写法，这样能能够提升代码整体性
    //括号加在里面，直接获取返回值，里面计算一次;
+
+5. JS 数据封装
+   ````
+  var myObject = (function () {
+    var _name = 'hello';
+    return {
+      getName: function (){
+        return _name;
+      },
+      setName: function (value){
+        return (_name = value);
+      }
+    };
+   }());
+   ````
+   原理：定义一个变量为一个函数的返回值，在这个函数内部，定义了私有变量，在函数的返回值里，对外提供两个方法来获取值和设置该私有变量，    这样，就形成了私有借口和公共借口。
+6.
+
