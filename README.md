@@ -75,7 +75,7 @@
    obj.getName();//obj
    getName2();//window.name
    `````
-   
+
    由上面代码的运行结果可以看出，当把一个函数赋给另一个函数的时候，他们之间是按值传递的，也就是说，当之前的函数发生改变的时候，并不会影响另外一个函数。关于这里，还是比较模糊的，总之要记清楚，当把一个对象的方法赋给另一个函数时，他们是按值传递的即可。
 
 ###2015-12-17
@@ -95,9 +95,22 @@
      要注意
    * 加载模板需要在constructor里面。
 5. 如果陷入死循环，那么注意函数执行的时候是不是一直在自调用。
+6. 关于Backbone的View总结内容：
+   * 
+7. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+8. 关于函数bind方法的实现：
+
+   ```````
+   Function.prototype._bind = function(context) {
+     var self = this;
+     return function () {
+       return self.apply(context,arguments);
+     }
+   };
+  ```````
 
 #Problems
-======
+=======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
 2. 按值传递和按引用传递的类型分别有哪些？
 3. 
