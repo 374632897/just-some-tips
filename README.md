@@ -157,8 +157,11 @@
      var hello = new Hello();
      ````
      当对一个函数使用new操作符的时候，会生成一个对象。对象里面的属性和方法会与其构造器中有this的相关联。
+     
      Hello.prototype.constructor就等于Hello本身
-     而hello.constructor也等于Hello，但是，Hello.prototype 与hello是不等的
+
+     而hello.constructor也等于Hello，但是，Hello.prototype 与hello是不等的,因为Hello.prototype是Hello的原型对象，而hello是Hello的实例对象。
+     
    * function 的prototype属性指向prototype对象，而prototype对象的constructor属性，又指向function 本身。
      **所以上面提到的那个问题就有解了。Array.prototype指向的是它的原型对象，原型对象里面封装了一系列的方法，而ary则是Array的一个实例，那么，这个实例就从原型链上继承了对应的方法，所以说，Array.prototype.slice === [].slice**
 
