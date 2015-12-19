@@ -161,9 +161,15 @@
      Hello.prototype.constructor就等于Hello本身
 
      而hello.constructor也等于Hello，但是，Hello.prototype 与hello是不等的,因为Hello.prototype是Hello的原型对象，而hello是Hello的实例对象。
-     
+
    * function 的prototype属性指向prototype对象，而prototype对象的constructor属性，又指向function 本身。
      **所以上面提到的那个问题就有解了。Array.prototype指向的是它的原型对象，原型对象里面封装了一系列的方法，而ary则是Array的一个实例，那么，这个实例就从原型链上继承了对应的方法，所以说，Array.prototype.slice === [].slice**
+
+   * 那么再重新理一理 关于````Array.prototype.slice === [].slice````
+     * Array.prototype.slice是原型对象里封装的一个slice方法
+     * []相当于是new 了Array，也就是Array的实例。
+     * 那么当使用到[].slice方法的时候，由于它本身并没有这个方法，所以就会走原型链上查找，于是在其构造器的原型对象中找到了这个方法，所以说，他们是相等的喃。
+     * 现在理清之后感觉好简单，之前却一直没搞懂o(╯□╰)o  果然是人太笨了
 
 #Problems
 =======
