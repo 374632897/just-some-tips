@@ -171,6 +171,27 @@
      * 那么当使用到[].slice方法的时候，由于它本身并没有这个方法，所以就会走原型链上查找，于是在其构造器的原型对象中找到了这个方法，所以说，他们是相等的喃。
      * 现在理清之后感觉好简单，之前却一直没搞懂o(╯□╰)o  果然是人太笨了
 
+   * 注意区分定义对象的属性和定义构造函数
+
+     `````
+     //定义对象
+     var person = {
+       name: 'Jiangguoxi',
+       sayName: function () {
+         console.log(this.name);
+       }
+     };
+
+     //定义构造函数
+     var Person = function (){
+       this.name = 'Jiangguoxi';
+       this.sayName = function () {
+         console.log(this.name);
+       };
+     };
+     `````
+   
+     
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
