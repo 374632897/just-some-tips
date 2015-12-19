@@ -113,6 +113,7 @@
 
 
 ###2015-12-18
+==========
 1. View要实例化以后才行。 
 2. 关于闭包，先看下面一段代码
    
@@ -129,6 +130,37 @@
    ````
 
    在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。 
+
+###2015-12-19
+=======
+1. Array.prototype.push === [].push //true
+   后面跟有方法的时候就为true，没有跟方法，则为false
+2. 突然就扯到关于原型上的东西了，还是做点笔记吧
+   * object.constructor: 表示object的构造器
+
+     ````
+     var ary = [];
+     ary.constructor === Array;// true;
+     ````
+
+     因为ary是Array的实例，所以它的constructor 就指向了它的构造函数Array;
+   * function定义的对象有一个prototype属性，而new生成的对象则没有这个属性
+
+     ````
+     var Hello = function () {
+        this.name = 'Jiangguoxi';
+        this.sayName = function () {
+          console.log(this.name);
+        }
+      };
+
+     var hello = new Hello();
+     ````
+     当对一个函数使用new操作符的时候，会生成一个对象。对象里面的属性和方法会与其构造器中有this的相关联。
+     Hello.prototype.constructor就等于Hello本身
+     而hello.constructor也等于Hello，但是，Hello.prototype 与hello是不等的
+   * function 的prototype属性指向prototype对象，而prototype对象的constructor属性，又指向function 本身。
+     **所以上面提到的那个问题就有解了。Array.prototype指向的是它的原型对象，原型对象里面封装了一系列的方法，而ary则是Array的一个实例，那么，这个实例就从原型链上继承了对应的方法，所以说，Array.prototype.slice === [].slice**
 
 #Problems
 =======
