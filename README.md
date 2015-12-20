@@ -194,6 +194,10 @@
 ###2015-12-20
 ======
 1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。_proto_是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
+2. Backbone ,View里面给template传值，是在把模板插入el中的时候，在模板的参数里面传的。如：this.$el.html(template(variables))
+3. 在Model的校验中，需要给Model绑定校验失败的时候，应该用this.bind('invalid',fn)而不是this.bind('error',fn);同时，设置Model的属性的时候，也要传入第二个参数{validate: true}来强制验证。如：Person.set( {name: 'Jiang Guoxi'},{validate: true} ); Validation默认只在save的时候触发
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
