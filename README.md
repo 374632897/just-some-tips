@@ -236,7 +236,11 @@
    ``````
 
    如上面所示，addOne参数里的model应该是和上面监听的Collection里面所绑定的model是同一个？
-
+10. 关于使用inline-block进行居中
+   * 对父元素设置**text-align:center**;
+   * 对子元素设置**display:inline-block**;
+   * 这样子的话，即使子元素里面有块级元素，那么该块级元素也不会充满整行 o(╯□╰)o  怎么说呢，感觉就像是里面的块级元素也被设置了inline-block一样，但是事实上他们的display依然是block;
+   * 这个方案的缺点就是text-align默认是个继承属性，所以如果其子孙元素的text-align值不符合的话，还要单独写。
 
 #Problems
 =======
