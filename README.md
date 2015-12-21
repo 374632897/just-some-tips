@@ -219,7 +219,8 @@
    * 建立一个整体的Model，在这个Model里面引入Collection
    * 在这个Model的super()里面，定义一个对引入的Collection的引用
    * 在该Collection里面，引入基础Model,在super里面定义Collection的model为引入的Model，最后导出Collection的实例。
-
+4. 在model中调用collection里的方法的时候，所用的collection一定要是collection的实例才行。
+5. 将model与collection关联起来，需要将model的实例添加到collection的实例里面。如todos.add(todo),而关于数据的传递，则是在Model实例化的时候将数据传入的。
 
 
 #Problems
