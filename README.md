@@ -221,6 +221,21 @@
    * 在该Collection里面，引入基础Model,在super里面定义Collection的model为引入的Model，最后导出Collection的实例。
 4. 在model中调用collection里的方法的时候，所用的collection一定要是collection的实例才行。
 5. 将model与collection关联起来，需要将model的实例添加到collection的实例里面。如todos.add(todo),而关于数据的传递，则是在Model实例化的时候将数据传入的。
+6. 将Model 与View关联起来，是通过在给View的模板传参的时候，将实例化的Model转化为JSON数据传入，然后再在View的initialize中添加对model的监听事件，从而将Model和View关联起来
+7. 在render() 中要记住````return this````以便支持链式调用
+8. 尝试在render() 中定义input之类的？？？
+9. 在通过View添加model的时候，先实例化一个ItemView并且传入Model，然后将ItemView的el插入View的html里面。在addOne()里面要传入Model,这个Model应该是和监听事件的Collection所绑定的Model一样？？如：
+
+   ``````
+   this.listenTo(Todos,'add',addOne);
+   ...
+   addOne: function (todo) {
+     var view = new TodoView({model: todo});
+     this.$(el).append(view.render().el);
+   }
+   ``````
+
+   如上面所示，addOne参数里的model应该是和上面监听的Collection里面所绑定的model是同一个？
 
 
 #Problems
