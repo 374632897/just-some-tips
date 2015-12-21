@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试使用tabel居中的范围</title>
+  <style>
+  .test{
+    display: table;
+    margin: 0 auto;
+  }
+  .test>p{
+    text-align: center;
+  }
+  .test>.test{
+    width: 800px;
+    height: 500px;
+    background: #f66;
+  }
+  .test>.test>.left{
+    float: left;
+    width: 30%;
+    height: 100%;
+    background: orange;
+  }
+  .test>.test>.right{
+    overflow: hidden;
+    width: 70%;
+    margin: 0 -1% 0 1%;
+    height: 100%;
+    background: #fcc;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="test">
+      <p>我就是爱音乐，别叫我停下来。。哈哈哈哈哈哈</p>
+      <p>我就看看不说话，你们继续热闹哈</p>
+      <div class="test">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
