@@ -200,7 +200,25 @@
 4. 函数柯里化
    * 基本方法：使用一个闭包返回一个函数，当函数被调用时，返回的函数还需要设置一些传入的参数
 
+###2015-12-21
+======
+1. 在向View传递Model的时候，需要将Model实例化，并且只有实例化的Model才能使用toJSON()方法。
+2. 在Model中，以前的定义默认参数的defaults:{}，不用写了，直接写在super({})里面就行。
 
+   `````
+   class extends Backbone.RelationalModel {
+     constructor () {
+       super({
+         //这里写默认属性值
+       });
+     }
+   }
+  `````
+
+3. 关于Models和Collection的关联。
+   * 建立一个整体的Model，在这个Model里面引入Collection
+   * 在这个Model的super()里面，定义一个对引入的Collection的引用
+   * 在该Collection里面，引入基础Model,在super里面定义Collection的model为引入的Model，最后导出Collection的实例。
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
