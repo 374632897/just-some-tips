@@ -219,6 +219,9 @@
    * 建立一个整体的Model，在这个Model里面引入Collection
    * 在这个Model的super()里面，定义一个对引入的Collection的引用
    * 在该Collection里面，引入基础Model,在super里面定义Collection的model为引入的Model，最后导出Collection的实例。
+
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
