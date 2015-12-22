@@ -242,7 +242,8 @@
    * 这样子的话，即使子元素里面有块级元素，那么该块级元素也不会充满整行 o(╯□╰)o  怎么说呢，感觉就像是里面的块级元素也被设置了inline-block一样，但是事实上他们的display依然是block;
    * 这个方案的缺点就是text-align默认是个继承属性，所以如果其子孙元素的text-align值不符合的话，还要单独写。
 
-11. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。
+
+
 ###2015-12-22
 =======
 1. 在添加监听事件时，回调函数不能加括号，如：
@@ -250,8 +251,15 @@
    `````this.listenTo(this.model, 'change', this.render)`````
 
    加括号是不行的。 
+
 2. if语句结尾不用加分号
+
 3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入````'click   ': 'events'````即可。
+
+4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？
+
+5. 
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
