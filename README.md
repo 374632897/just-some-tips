@@ -278,6 +278,7 @@
 
 4. 只给input设置高度而不设置行高，如果设置了行高的话，Safari下光标会显示异常。
 5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。e.stopPropagation()。
+6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
 
 #Problems
 =======
