@@ -277,6 +277,7 @@
    * 我在collection里面设置的获取order值的时候，之前设置的是如果length=1,则返回1，否则返回最后一个的order加1，但是后来改成Relational之后，默认没有添加model了，所以长度为0,然后获取order的方法没有变，而最后一个Model根本不存在，所以就报错了。
 
 4. 只给input设置高度而不设置行高，如果设置了行高的话，Safari下光标会显示异常。
+5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。e.stopPropagation()。
 
 #Problems
 =======
