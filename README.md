@@ -260,6 +260,21 @@
 
 5. 
 
+
+###2015-12-23
+=======
+1. 今天小静静生日, Happy Birthday O(∩_∩)O哈哈~
+2. 关于collection和Model的关联，使用Relational的话：
+   * 在定义model的时候使用RelationModel来定义。
+   * 在一个管理各个部分的model的总的Model中，定义relations属性，其值应该是一个数组，数组里面存入的是对象
+   * relations内对象有四个属性：
+     * type: 不知道是什么。。。。值为Backbone.HasMany
+     * key:  在外部环境中通过这个key来获取对应的对象
+     * relatedModel: 所关联的Model
+     * collectionType: 所关联的Collection。通过key来获取的就是这个
+   * 比如我在外部环境中引入了这个总的Model为model，Model中的relations的key值为Item，那么通过model.get('Item')即可访问到关联的Collection
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
