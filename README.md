@@ -274,6 +274,7 @@
      * collectionType: 所关联的Collection。通过key来获取的就是这个
    * 比如我在外部环境中引入了这个总的Model为model，Model中的relations的key值为Item，那么通过model.get('Item')即可访问到关联的Collection
 3. 逻辑是否正确是找出问题的关键。出错的时候，需要考虑是不是自己的逻辑设计不合理
+   * 我在collection里面设置的获取order值的时候，之前设置的是如果length=1,则返回1，否则返回最后一个的order加1，但是后来改成Relational之后，默认没有添加model了，所以长度为0,然后获取order的方法没有变，而最后一个Model根本不存在，所以就报错了。
 
 #Problems
 =======
