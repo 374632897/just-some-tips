@@ -279,6 +279,93 @@
 4. 只给input设置高度而不设置行高，如果设置了行高的话，Safari下光标会显示异常。
 5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。e.stopPropagation()。
 6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
+7. 函数节流的实现
+   
+   ````
+   var throttle = function (fn,interval) {
+    var _self = fn,
+        timer,
+        firstTime = true;
+    return function () {
+      var args = arguments, // event
+          _me  = this;      // window
+      // 如果是第一次，就直接执行函数          
+      if (firstTime) {
+        _self.apply(_me,args); // 相当于在me 的环境下执行 _self(args){}函数
+        // _self();
+        return firstTime = false;
+      }
+
+      if (timer) {
+        return false; // return false之后，就是不执行后面的语句了,感觉这里应该直接return就行的
+      }
+
+      timer = setTimeout(function () {
+        clearTimeout(timer);
+        timer = null;
+        _self.apply(_me,args);
+
+      }, interval || 500);
+    };
+  };
+
+  window.onresize = throttle(function () {
+    console.log(1);
+  });
+
+   ````
+  在搞懂这段代码之前，先来弄清几个东西，如下:
+
+   ````
+  function log () {
+    console.log('hello');
+  }
+   ````
+   ````
+  // document.onclick = function () {
+  //   log();
+  // }; // hello
+   ````
+  * 第一种情况下，把log()放在另一个函数里，当发生click事件的时候会在这个函数里面执行log，因为函数加了括号就表示这个函数的执行结果而不是指向函数的引用。而函数的执行结果就是记录下hello。
+  
+  
+   ````
+  // document.onclick = function () {
+    // log;
+  // }; // 无反应
+
+   ````
+  * 第二种情况下，直接把log放在函数里，这样其实没有什么意义，这就相当于把一段代码放进去，但是代码本身并没有触发条件
+
+   
+   ````
+  // document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
+   ````
+  
+  * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为总不可能给一个事件赋值吧。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了
+
+
+   ````
+  // document.onclick = log;  // 单击的时候会log 
+   ````
+
+  * 而最后一个就更别说了，这里就相当于是直接把一个函数绑定到window.onclick 上面。也就是说，这段代码相当于 ````document.onclick = function () {console.log('hello')};````
+
+  这里搞清楚了，再来看上面的代码，
+
+  `````
+  window.onresize = throttle(function () {
+    console.log(1);
+  });
+  `````
+  这里对window绑定了
+  ````
+  throttle(function () {
+    console.log(1);
+  });
+  ````
+  由上面的分析可知，在代码执行到这里的时候，window.onresize就等于这个函数的运行结果，观察上面的代码，我们可以知道，这个函数的运行结果就是返回另外一个函数，所以window.onreize就与该函数返回的另外一个函数绑定了。这里就是利用到了闭包。
+
 
 #Problems
 =======
