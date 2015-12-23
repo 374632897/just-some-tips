@@ -295,7 +295,8 @@
         // _self();
         return firstTime = false;
       }
-
+      
+      // 如果定时器还在，就return false;
       if (timer) {
         return false; // return false之后，就是不执行后面的语句了,感觉这里应该直接return就行的
       }
