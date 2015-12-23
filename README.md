@@ -323,31 +323,31 @@
   }
    ````
    ````
-  // document.onclick = function () {
-  //   log();
-  // }; // hello
+  document.onclick = function () {
+    log();
+  }; // hello
    ````
   * 第一种情况下，把log()放在另一个函数里，当发生click事件的时候会在这个函数里面执行log，因为函数加了括号就表示这个函数的执行结果而不是指向函数的引用。而函数的执行结果就是记录下hello。
   
   
    ````
-  // document.onclick = function () {
-    // log;
-  // }; // 无反应
+   document.onclick = function () {
+     log;
+   }; // 无反应
 
    ````
   * 第二种情况下，直接把log放在函数里，这样其实没有什么意义，这就相当于把一段代码放进去，但是代码本身并没有触发条件
 
    
    ````
-  // document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
+   document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
    ````
   
   * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为总不可能给一个事件赋值吧。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了
 
 
    ````
-  // document.onclick = log;  // 单击的时候会log 
+   document.onclick = log;  // 单击的时候会log 
    ````
 
   * 而最后一个就更别说了，这里就相当于是直接把一个函数绑定到window.onclick 上面。也就是说，这段代码相当于 ````document.onclick = function () {console.log('hello')};````
