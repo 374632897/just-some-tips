@@ -401,6 +401,16 @@
 
 2. underscore的模板
   {{- }}只是用来插入变量的，如果是想要在js中读取变量，直接使用就行了。。。比如在模板中有个判断语句，{{if(oprationType ===1 ){ }},就直接这样写而不要写成{{-}}的形式
+3. 关于在mainView中将过滤后的collection里面需求的model重新渲染的问题
+   * 获取需求的model
+   * 将model传入对应的viewItem
+   * 将viewItem的el插入需求元素
+   * 需要考虑的有几个问题
+     * 一是性能问题，这是不是最优化的解决方案？
+     * 直接清空dom的话，那些view的监听事件是不是没有被移除，是不是会造成资源浪费？其实这个问题还是和性能有关了
+     * 
+   * mainView其实也只是一个View而已，只不过它管理着viewItem,但是viewItem本身是不在mainView里面的。。。也就是说，mainView里childView并不是viewItem
+
 
 #Problems
 =======
