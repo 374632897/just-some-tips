@@ -411,6 +411,8 @@
      * 
    * mainView其实也只是一个View而已，只不过它管理着viewItem,但是viewItem本身是不在mainView里面的。。。也就是说，mainView里childView并不是viewItem
 
+4. 这周还是把php大概的过一遍吧。。。加油
+
 
 #Problems
 =======
