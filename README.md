@@ -413,6 +413,22 @@
 
 4. 这周还是把php大概的过一遍吧。。。加油
 
+###2015-12-26
+=======
+1. 关于Windows下GitHub同步分支失败的解决办法
+   * 解决的办法一是可以选择更新libcurl，或者把默认git的默认连接方式由https改为ssh，只需在Shell执行以下命令即可：
+
+     `````
+     git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+     `````
+
+   * 第二种方式
+
+     ````
+     git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+     ```` 
+   原文地址： http://jingpin.jikexueyuan.com/article/34632.html
+
 
 #Problems
 =======
