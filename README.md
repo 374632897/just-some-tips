@@ -10,10 +10,10 @@
 
 ###2015-12-11
 ======
-1. 如果在浏览器不同标签页里发现同一页面的呈现情况不一致。。。比如说屏幕本身宽度为1600ox，但是审查元素的时
+1. 如果在浏览器不同标签页里发现同一页面的呈现情况不一致。。。比如说屏幕本身宽度为1600px，但是审查元素的时
    候，显示元素宽度和设定的宽度不一致，那么考虑是不是缩放所致 -- 笑cry
 
-2. 运行命令行进行 npm install 的时候，需要以管理员身份运行
+2. 如果 npm install 的时候报错，则可以尝试以管理员身份运行
 3. 话说之前安装node-sass的时候提示没有python执行环境，后来不知怎么的又好了，今天安装webpack的时候也这样，
    我稀里糊涂的安装了一些东西，后来    也成功了，真是不知道怎么回事。
 4. 如果链接在行尾因为宽度不够而导致内容换行显示，那么对链接设置display:inline-block即可。
@@ -428,6 +428,8 @@
      git config --global url.ssh://git@github.com/.insteadOf https://github.com/
      ```` 
    原文地址： http://jingpin.jikexueyuan.com/article/34632.html
+
+2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况
 
 
 #Problems
