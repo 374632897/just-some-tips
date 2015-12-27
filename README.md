@@ -431,6 +431,14 @@
 
 2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况
 
+###2015-12-27
+=======
+1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。另外，关于使用normalize()来代替children的方法行不通，因为normalize()只是把相邻的文本节点给合并了。
+2. replaceChild()，两个参数，第一个是要插入的节点，第二个是要替换的节点
+3. HTMLCollection的几种访问方法，假设aLi为对应的HTMLCollection
+   * 使用方括号语法或者item()直接访问 ````aLi[3]````,````aLi.item(3)````
+   * HTMLCollection的方法：````namedItem()````,可以通过元素的name来获取
+   * 直接使用方括号加名字: ````aLi['hello']````
 
 #Problems
 =======
