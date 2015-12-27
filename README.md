@@ -439,6 +439,13 @@
    * 使用方括号语法或者item()直接访问 ````aLi[3]````,````aLi.item(3)````
    * HTMLCollection的方法：````namedItem()````,可以通过元素的name来获取
    * 直接使用方括号加名字: ````aLi['hello']````
+4. childElementCount: 返回子元素(不包括文本节点和注释)的个数
+   firstElementChild:
+   lastElementChild:
+   nextElementSibling:
+   previousElementSibling: 
+   以上属性都不会返回空白文本节点// IE9以上才支持→＿←
+   
 
 #Problems
 =======
