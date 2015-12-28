@@ -448,10 +448,27 @@
 5. afterpaste是粘贴时触发的事件
 6. 正则里面的或还是需要用好， 比如，/[\D | 0]/g,就是匹配 所有非数字和0
 
-#2015-12-28
+###2015-12-28
 =======
 1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
 2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，刷新频率跟不上，从而会出错。 
+
+###2015-12-29
+=======
+1. npm安装依赖包出错
+   `````
+    If you are behind a proxy, please make sure that the 'proxy' config is set properly. 
+    npm err! Error: connect ECONNREFUSED 127.0.0.1:8087  
+
+   `````
+   具体信息忘记截图了。。。
+   总之意思就是说代理错误，所以需要更改代理设置，
+
+   ````
+   npm config set proxy null
+   ````
+   然后就能正常运行了。。解决了一个困扰这么久的问题。。心里还是很开心的O(∩_∩)O哈哈~ 
+2. 
 
 #Problems
 =======
