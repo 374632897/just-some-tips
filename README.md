@@ -447,7 +447,11 @@
    以上属性都不会返回空白文本节点// IE9以上才支持→＿←
 5. afterpaste是粘贴时触发的事件
 6. 正则里面的或还是需要用好， 比如，/[\D | 0]/g,就是匹配 所有非数字和0
-   
+
+#2015-12-28
+=======
+1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
+2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，刷新频率跟不上，从而会出错。 
 
 #Problems
 =======
