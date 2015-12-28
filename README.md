@@ -445,6 +445,8 @@
    nextElementSibling:
    previousElementSibling: 
    以上属性都不会返回空白文本节点// IE9以上才支持→＿←
+5. afterpaste是粘贴时触发的事件
+6. 正则里面的或还是需要用好， 比如，/[\D | 0]/g,就是匹配 所有非数字和0
    
 
 #Problems
