@@ -480,7 +480,31 @@
      **使用小数值，会先继承，再计算**
    * 使用height会使标签hasLayout, 而使用line-height的话则不会
    * vertical-align的相对值是相对line-height来的
+   * vertical-align对块状元素不生效？
 4. 使用“*”通配符的话会大大增加css的渲染，效率低
+5. 监听多个不同的事件时，使用空格分隔
+6. collection也可以使用toJSON()， ````collection.toJSON()````,返回的是collection里面每个model的属性的数组。每个model为一个对象
+7. 关于水平居中，使用绝对定位的话有三种方法
+   * 定义left: 50%, 然后margin-left为自身宽度的一半的负值
+   * 定义left: 50%, 然后使用transform: translateX(-50%);
+   * 定义left和right，使之相等，这样就能把元素撑开了
+8. 在一个上下文里获取元素
+   ````$(selector,this.el)```` 获取到的是DOM对象
+   ````this.$(selector)````    获取到的是jQuery对象
+9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
+   ````
+   <form action="" id="testForm">
+    <input type="text" name = "testInput" id="hh">
+   </form>
+
+   ````
+   ````
+   var form = document.getElementById('testForm');
+
+   ````
+   然后通过````form.testInput````或者````form.hh````都可以取到input元素
+
+   
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
