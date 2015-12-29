@@ -452,6 +452,7 @@
 =======
 1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
 2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，刷新频率跟不上，从而会出错。 
+3. 如果两个View共用一套collection，然后针对相同的动作有不同的行为的话，那么需要在将Model传入View的时候，传为一个对象，而不只是一个Model，实际上，在将Model传入View的时候一般都要传作对象，不然的话，html里面会多出很多混乱的数据。
 
 ###2015-12-29
 =======
