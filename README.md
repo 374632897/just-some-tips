@@ -507,6 +507,8 @@
    ````
    然后通过````form.testInput````或者````form.hh````都可以取到input元素
 
+###2015-12-30
+1. 使用MarkDownPreview插件，可以在本地预览.md文件，安装后，在md文件中按````ctrl+shift+p````调出命令行，输入mdp,选择````Preview in browser```` 即可
    
 #Problems
 =======
