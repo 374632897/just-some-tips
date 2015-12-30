@@ -27,7 +27,7 @@
    类型的语言，也就是在变量被赋    值之后才能确定其类型。
 3. 多态的思想实质上是把做什么和谁去做分离开来。
 4. 自调用函数的写法的区别：
-   ````
+   ````javascript
    (function () {console.log('hello'})();
    (function () {console.log('hello'}()); 
    ````
@@ -36,7 +36,7 @@
    **括号加在里面，直接获取返回值，里面计算一次;**
 
 5. JS 数据封装
-  ````
+  ````javascript
   var myObject = (function () {
     var _name = 'hello';
     return {
@@ -61,7 +61,7 @@
    **要搞懂基本类型里的Object类型和引用类型里的Object类型的区别**
 3. 
    
-   `````
+   `````javascript
    var obj = {
      name: 'Jiangguoxi',
      getName: function (){
@@ -102,7 +102,7 @@
 7. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
 8. 关于函数bind方法的实现：
 
-   ```````
+   ```````javascript
    Function.prototype._bind = function(context) {
      var self = this;
      return function () {
@@ -117,7 +117,7 @@
 1. View要实例化以后才行。 
 2. 关于闭包，先看下面一段代码
    
-   ````
+   ````javascript
    var func = function () {
      var a=6;
      return function () {
@@ -138,7 +138,7 @@
 2. 突然就扯到关于原型上的东西了，还是做点笔记吧
    * object.constructor: 表示object的构造器
 
-     ````
+     ````javascript
      var ary = [];
      ary.constructor === Array;// true;
      ````
@@ -146,7 +146,7 @@
      因为ary是Array的实例，所以它的constructor 就指向了它的构造函数Array;
    * function定义的对象有一个prototype属性，而new生成的对象则没有这个属性
 
-     ````
+     ````javascript
      var Hello = function () {
         this.name = 'Jiangguoxi';
         this.sayName = function () {
@@ -173,7 +173,7 @@
 
    * 注意区分定义对象的属性和定义构造函数
 
-     `````
+     `````javascript
      //定义对象
      var person = {
        name: 'Jiangguoxi',
@@ -205,7 +205,7 @@
 1. 在向View传递Model的时候，需要将Model实例化，并且只有实例化的Model才能使用toJSON()方法。
 2. 在Model中，以前的定义默认参数的defaults:{}，不用写了，直接写在super({})里面就行。
 
-   `````
+   `````javascript
    class extends Backbone.RelationalModel {
      constructor () {
        super({
@@ -226,7 +226,7 @@
 8. 尝试在render() 中定义input之类的？？？
 9. 在通过View添加model的时候，先实例化一个ItemView并且传入Model，然后将ItemView的el插入View的html里面。在addOne()里面要传入Model,这个Model应该是和监听事件的Collection所绑定的Model一样？？如：
 
-   ``````
+   ``````javascript
    this.listenTo(Todos,'add',addOne);
    ...
    addOne: function (todo) {
@@ -281,7 +281,7 @@
 6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
 7. 函数节流的实现
    
-   ````
+   ````javascript
    var throttle = function (fn,interval) {
     var _self = fn,
         timer,
@@ -317,12 +317,12 @@
    ````
   在搞懂这段代码之前，先来弄清几个东西，如下:
 
-   ````
+   ````javascript
   function log () {
     console.log('hello');
   }
    ````
-   ````
+   ````javascript
   document.onclick = function () {
     log();
   }; // hello
@@ -334,7 +334,7 @@
 
   
   
-   ````
+   ````javascript
    document.onclick = function () {
      log;
    }; // 无反应
@@ -347,7 +347,7 @@
 
 
 
-   ````
+   ````javascript
    document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
    ````
   
@@ -358,7 +358,7 @@
 
 
 
-   ````
+   ````javascript
    document.onclick = log;  // 单击的时候会log 
    ````
 
@@ -371,13 +371,13 @@
 
   这里搞清楚了，再来看上面的代码，
 
-  `````
+  `````javascript
   window.onresize = throttle(function () {
     console.log(1);
   });
   `````
   这里对window绑定了
-  ````
+  ````javascript
   throttle(function () {
     console.log(1);
   });
@@ -492,13 +492,13 @@
    ````$(selector,this.el)```` 获取到的是DOM对象
    ````this.$(selector)````    获取到的是jQuery对象
 9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
-   ````
+   ````html
    <form action="" id="testForm">
     <input type="text" name = "testInput" id="hh">
    </form>
 
    ````
-   ````
+   ````javascript
    var form = document.getElementById('testForm');
 
    ````
