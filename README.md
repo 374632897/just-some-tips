@@ -515,8 +515,54 @@
       * 生成标签时，用data-src来保存图片地址；
       * 记录的图片data-src都保存到数组里；
       * 对滚动条进行事件绑定,假设绑定的函数为function lazyload(){};
-      * 在函数lazyload中，按照下面思路实现：计算图片的Y坐标，并计算可视区域的高度height，当Y小于等于(height+ scrollTop)时，图片的src的值用data-src的来替换，从而来实现图片的按需加载；
+      * 在函数lazyload中，按照下面思路实现：计算图片的Y坐标，并计算可视区域的高度height，当Y小于等于(height+ scrollTop)时，图片的src的值用data-src的来替换，从而来实现图片的按需加载
+
+###2015-12-31
+1. DOM元素的classList属性，表示的是当前元素的类名清单。。。
+2. console.log()，里面的内容如果以逗号形式分隔，那么在输出的时候，就会用空格来分隔开来
+3. console.warn()，里面的消息就会以警告的形式出现在控制台里面（感叹号 + 浅黄色背景 ）。
+4. console.error(), 会抛出错误，与throw new Error()不同的是，后者会有错误类型```Uncaught Error```
+5. console.info()，提示类信息，蓝色的小i
+6. console.group(),用于消息分组，console.groupEnd()用来结束分组
+   **需要注意的是，这里只会折叠group到groupEnd的内容，如果分开来写了，就算group的名称相同，也不会合并在一起**
+7. console.table(),用于将数据以表格形式呈现
+8. console.time(),console.timeEnd(),用于计算这两个之间执行的代码所用的时间，如
+   ```javascript
+   console.time('用了多久');
+   var arr = [];
+   for ( var i = 0;i < 1000;i++) {
+     arr.push(i);
+   }
+   console.timeEnd('用了多久'));
+
+   ```
+   **需要注意的是，time和timeEnd里面的参数必须一致**，这样才能正确输出。这个方法在做性能测试的时候比较方便
+9. 字符串替换
+   * %o    对象替换
+     ```javascript
+     var hello = 123;
+     console.log('The number is %o', hello);
+     ```   
+     这样的话，打印出来的消息里，hello将会替代%o.
+   * %d or %i
+     用于整型替换。如果传入的值是非整数的话，将会强制转换为整数。转换规则和parseInt差不多。使用%o的话则不会转换
+   * %s 
+     输出字符串
+   * %f 
+     输出为浮点值，
+   **注：原文中%d和%f的描述里有个尚未支持格式化，不懂什么意思** 
+   * %c
+     使用%c之后，就会对%c之后的内容使用css样式了
      
+     ````javascript
+     console.log('%chello world','color: red;');
+     ````
+     然后hello world 就会显示为红色
+* 参考内容
+   * [刘哇勇的部落格](https://help.github.com/articles/github-flavored-markdown/)
+   * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console)
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
