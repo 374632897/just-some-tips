@@ -562,6 +562,10 @@
    * [刘哇勇的部落格](http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html)
    * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
+* 关于word-spacing 和letter-space
+  * word-spacing 表示的是单词之间的间距（对中文不生效）
+  * letter-space 表示的是字符间距，每个单词内字符的间距（中文有效）
+
 
 #Problems
 =======
