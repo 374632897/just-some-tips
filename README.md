@@ -263,7 +263,7 @@
 
 ###2015-12-23
 =======
-1. 今天小静静生日, Happy Birthday O(∩_∩)O哈哈~
+1. ...
 2. 关于collection和Model的关联，使用Relational的话：
    * 在定义model的时候使用RelationModel来定义。
    * 在一个管理各个部分的model的总的Model中，定义relations属性，其值应该是一个数组，数组里面存入的是对象
