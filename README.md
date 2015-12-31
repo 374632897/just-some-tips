@@ -559,7 +559,7 @@
      ````
      然后hello world 就会显示为红色
 * 参考内容
-   * [刘哇勇的部落格](https://help.github.com/articles/github-flavored-markdown/)
+   * [刘哇勇的部落格](http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html)
    * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
 
