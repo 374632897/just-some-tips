@@ -566,7 +566,54 @@
   * word-spacing 表示的是单词之间的间距（对中文不生效）
   * letter-space 表示的是字符间距，每个单词内字符的间距（中文有效）
 
+###2016-01-01
+1. JS只有一个主线程，主线程执行完执行栈的任务后去检查异步的任务队列，如果异步事件触发，则将其加到主线程的执行栈。示例如下：
+  ```javascript
+  setTimeout(function(){console.log('timeout')},0);
+  console.log(1);
+  ```
+  结果就是1/timeout.
 
+2. 关于删除节点操作
+```html
+<input type="button" value="删除" id="delByI++">
+  <input type="button" value="删除" id="delByI--">
+  <ul>
+    <li>节点1</li>
+    <li>节点2</li>
+    <li>节点3</li>
+    <li>节点4</li>
+    <li>节点5</li>
+    <li>节点6</li>
+    <li>节点7</li>
+    <li>节点8</li>
+    <li>节点9</li>
+    <li>节点10</li>
+    <li>节点11</li>
+    <li>节点12</li>
+  </ul>
+```
+```javascript
+  var oDel1 = document.getElementById('delByI++');
+  var oDel2 = document.getElementById('delByI--');
+  var aLi   = document.getElementsByTagName('li');
+  oDel1.onclick = function () {
+    for (var i = 0; i < aLi.length; i++ ) {
+      aLi[i].parentNode.removeChild(aLi[i]);
+    }
+  };
+
+  oDel2.onclick = function () {
+    for (i = aLi.length - 1; i >= 0; i-- ) {
+      aLi[i].parentNode.removeChild(aLi[i]);
+    }
+  };
+```
+然后在点击第一个按钮的时候，第一次只会删除6个节点（1/2），第二次再点，删除3个，还是（1/2），第三次删掉俩，等点了第四次的时候才能够删完。
+
+为什么呢，因为for循环只有在刚刚开始的时候，才会去初始化i的值，之后每次循环只会判断当前i的值有没有达到停止循环的要求，也就是说，下次循环只会从第二句开始，但是循环每执行一次就会删掉一个节点，这样一来，Li的长度始终都是在变化的，但是i的值却没有发生相应的 变化，比如说，当循环执行到第二次的时候，此时i=1,但是因为删除了一个节点，aLi[i]却等于节点3，也就是跳过了我们期望删除的节点2. 每次循环都这样，所以最后也自然不能按照我们预期进行咯。
+
+解决办法就是从尾部删除。
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
