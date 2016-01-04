@@ -755,10 +755,13 @@ var aLi = document.getElementsByTagName('li');
 
 6. 正则相关
    * 匹配双字节字符（包括汉字、全角）
+     
      ```javascript
      /[^\x00-\xff]/
      ```
+   
    * 匹配汉字
+     
      ```javascript
      /[\u4e00-\u9fa5]/
      ```
@@ -776,18 +779,21 @@ var aLi = document.getElementsByTagName('li');
 9. 关于滚动条的这个。。要搞清楚
 10. 明天需要把代码里的重复部分给去掉。。有好些语句都是可以省略的来着
 11. 关于正则表达式匹配的贪婪模式，如： 
+   
     ```javascript
     var re = /\<\w*\>.*\<\/\w*\>/g;
     var str = '写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em> 6 80 对照问题熟悉<em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>有建议的话找曹德季其他问题找戴盈盈';
     str.match(re);
     ```
     原本期待的是只返回一个被em包裹的元素，但是在这里匹配到的是这样的
+    
     ```html
     <em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>
     ```
     所以这大概就是贪婪模式在作怪吧，那么应该怎么改呢？ 现在我只是设置了文本溢出不显示，治标不治本的。
 12. replace的时候如果使用或操作符的话，会变成单个字符匹配，所以就多次replace，这种问题应该怎么解决喃？
     如： 
+    
     ```javascript
     const b = this.$('p.top').html().replace(/\&lt;em\&gt;/g, '<i class="type-link"> ').replace(/&lt;\\?\/em(\&gt;)?/g, ' </i>').replace(/\&nbsp;/g, '');
 
