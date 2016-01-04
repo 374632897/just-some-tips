@@ -722,9 +722,36 @@ var aLi = document.getElementsByTagName('li');
   * split  基于指定的分隔符，将字符串分割成多个子字符串并存进一个数组。可以指定第二个参数来表示数组长度
   * localeCompare  比较两个字符串（貌似没多大用啊） 
 
+###2016-01-04
+=======
+1. 关于将mainView和itemView关联起来的方法是，在mainView初始化的时候，为其添加一个属性this.childView（数组）来存放itemView，每次创建了itemView的时候就将其Push到childView里面。
 
+2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？ 
 
+3. this.$(selector)只会在当前根元素下面查找元素，如果查找的元素不在当前根元素下，那么就不要加this，直接用选择器。
 
+4. 在用$.ajax请求的时候，在里面的回调函数里this的指向不会是期望值，解决办法是在$.ajax里面定义一个属性，指向this,如
+   ```javascript
+   $.ajax({
+      type: 'GET',
+      url: '/task/search/searchSolr',
+      _this: this, // 在这里定义_this为this,然后在回调函数里就可以通过this._this来访问了。
+      data: {
+        type: 1,
+        start: 0,
+        keyword: val
+      },
+      success: function (res) {
+        const searchBox = this._this.searchBox;
+        console.log(res);
+        searchBox.getTypeNum(res);
+      },
+      error: function () {
+        console.log('请求失败');
+      }
+    });
+   ```
+5. 
 
 #Problems
 =======
@@ -738,3 +765,14 @@ var aLi = document.getElementsByTagName('li');
 8. 有个bug,当文件夹删除之后，再创建的话不会加载数据(因为事件监听的对象没有了)
 9. 关于滚动条的这个。。要搞清楚
 10. 明天需要把代码里的重复部分给去掉。。有好些语句都是可以省略的来着
+11. 关于正则表达式匹配的贪婪模式，如： 
+    ```javascript
+    var re = /\<\w*\>.*\<\/\w*\>/g;
+    var str = '写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em> 6 80 对照问题熟悉<em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>有建议的话找曹德季其他问题找戴盈盈';
+    str.match(re);
+    ```
+    原本期待的是只返回一个被em包裹的元素，但是在这里匹配到的是这样的
+    ```html
+    <em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>
+    ```
+    所以这大概就是贪婪模式在作怪吧，那么应该怎么改呢？ 现在我只是设置了文本溢出不显示，治标不治本的。
