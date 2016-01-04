@@ -815,6 +815,8 @@ var aLi = document.getElementsByTagName('li');
    ```
 
 9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
