@@ -753,6 +753,16 @@ var aLi = document.getElementsByTagName('li');
    ```
 5. 关于搜索框的初始样式
 
+6. 正则相关
+   * 匹配双字节字符（包括汉字、全角）
+     ```javascript
+     /[^\x00-\xff]/
+     ```
+   * 匹配汉字
+     ```javascript
+     /[\u4e00-\u9fa5]/
+     ```
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
@@ -780,5 +790,10 @@ var aLi = document.getElementsByTagName('li');
     如： 
     ```javascript
     const b = this.$('p.top').html().replace(/\&lt;em\&gt;/g, '<i class="type-link"> ').replace(/&lt;\\?\/em(\&gt;)?/g, ' </i>').replace(/\&nbsp;/g, '');
+
+    var str = '<em>backbone</em>';
+    str.match(/[<em>|<\/em>]/,''); // ["<"]
+    str.match(/<\/em>/g); // ["</em>"]
     ```
+
     如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。 
