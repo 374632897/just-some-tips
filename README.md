@@ -751,7 +751,7 @@ var aLi = document.getElementsByTagName('li');
       }
     });
    ```
-5. 
+5. 关于搜索框的初始样式
 
 #Problems
 =======
@@ -776,3 +776,9 @@ var aLi = document.getElementsByTagName('li');
     <em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>
     ```
     所以这大概就是贪婪模式在作怪吧，那么应该怎么改呢？ 现在我只是设置了文本溢出不显示，治标不治本的。
+12. replace的时候如果使用或操作符的话，会变成单个字符匹配，所以就多次replace，这种问题应该怎么解决喃？
+    如： 
+    ```javascript
+    const b = this.$('p.top').html().replace(/\&lt;em\&gt;/g, '<i class="type-link"> ').replace(/&lt;\\?\/em(\&gt;)?/g, ' </i>').replace(/\&nbsp;/g, '');
+    ```
+    如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。 
