@@ -563,7 +563,7 @@
    * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
 * 关于word-spacing 和letter-space
-  * word-spacing 表示的是单词之间的间距（对中文不生效）
+  * word-spacing 表示的是单词之间的间距（~~对中文不生效~~），是单词间距，对中文也是，词间距
   * letter-space 表示的是字符间距，每个单词内字符的间距（中文有效）
 
 ###2016-01-01
@@ -628,6 +628,29 @@ var aLi = document.getElementsByTagName('li');
     }
   }
 ```
+其实这段代码和下面这段代码是一样的效果
+
+```javascript
+for (var i = 0; i < aLi.length; i++) {
+    aLi[i].onclick = function () {
+      console.log(this.innerHTML);
+    };
+  }
+```
+因为这里访问的```this.innerHTML```其实是固定的值，当循环开始的时候，就已经为对应的每一个DOM元素绑定了事件了，在后来访问的时候并不涉及到i，所以这总写法并没有什么影响。
+
+至于闭包的话，是这样子的
+
+```javascript 
+for (var i = 0; i < aLi.length; i++) {
+    aLi[i].onclick = function (i) {
+      return function () {
+        console.log(i);
+      };
+    }(i);
+  }
+```
+
 这样子的话，当对应元素发生单击事件的时候，打印出来的东西就会是自己期望的值了。 
 
 ###2016-01-03
