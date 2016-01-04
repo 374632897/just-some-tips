@@ -765,7 +765,37 @@ var aLi = document.getElementsByTagName('li');
      ```javascript
      /[\u4e00-\u9fa5]/
      ```
+7. 关于使用文字溢出text-overflow: ellipsis后的文字对齐问题
+   
+   ```html
+   <p class="test">
+     <span class="left">我是一段段小小小文字</span>    
+     <span class="right">恩。。啊。。 哈哈。。 </span>
+   </p>
+   ```
 
+   ```css
+   p{
+     width: 300px;
+     margin: 0 auto;
+   }
+   span{
+     display: inline-block;
+   }
+   .left{
+     width: 40%;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
+   }
+   ```
+   然后走浏览器里面查看的话，就会发现左边的文字和右边的文字并不是对齐的。。
+   
+   这是为嘛呢。。。其实是因为给.left元素加了overflow:hidden，然后触发了元素的BFC。
+
+   知道了原因，解决问题就好办了，可以给.right加上一个右浮动，也可以对它加一个overflow:hidden.
+   
+   然后文字就对齐咯。。。 
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
