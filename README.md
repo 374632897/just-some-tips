@@ -794,8 +794,27 @@ var aLi = document.getElementsByTagName('li');
    这是为嘛呢。。。其实是因为给.left元素加了overflow:hidden，然后触发了元素的BFC。
 
    知道了原因，解决问题就好办了，可以给.right加上一个右浮动，也可以对它加一个overflow:hidden.
-   
+
    然后文字就对齐咯。。。 
+
+   不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
+
+
+8. 关于onunload , 和onbeforeunload事件
+   * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。
+   * onbeforeunload
+   需要传入事件对象，然后事件对象有个returnValue属性，属性指定的字符串在卸载页面之前会出现在弹窗里。如下
+
+   ```javascript
+   window.onbeforeunload = function (event) {
+     var event = event || window.event;
+     var msg   = 'Do you really wanna leave ? '
+     event.returnValue = msg;
+     return msg;
+   };
+   ```
+
+9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别

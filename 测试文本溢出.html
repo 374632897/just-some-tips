@@ -24,10 +24,26 @@
   }
   </style>
 </head>
-<body>
+<body onunload='alert("hello");'>
   <p class="test">
-    <span class="left">我是一段段小蚊子</span>    
+    <span class="left">我是一段段小小小文字</span>    
     <span class="right">恩。。啊。。 哈哈。。 </span>
   </p>
+  <script>
+  // window.onunload = function (event) {
+  //   alert('hello');
+  // };
+  // window.addEventListener('unload',function(event){
+  //   // alert('hello');
+  //   event.returnValue = 'hello';
+  //   return 
+  // },false);
+  // window.onbeforeunload = function (event) {
+  //   var event = event || window.event;
+  //   var msg = 'Are you sure to go away?';
+  //   event.returnValue = msg;
+  //   alert('sure');
+  // }
+  </script>
 </body>
 </html>
