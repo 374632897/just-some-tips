@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  *{
+    margin: 0;padding: 0;
+    transition: all ease-out 0.4s;
+    -webkit-transition: all ease-out 0.4s;
+  }
+  html,body,div{
+    width: 100%;
+  }
+  .rows{
+    height: 300px;
+    overflow: hidden;
+    opacity: 0;
+
+  }
+  .rows>h2{
+    margin-top: 80px;
+    text-align: center;
+  }
+  .rows-1{
+     background: #f66;
+  }
+  .rows-2{
+     background: #fcc;
+  }
+  .rows-3{
+     background: #f44;
+  }
+  .rows-4{
+     background: orange;
+  }
+  .rows-5{
+     background: #b66;
+  }
+  .rows-6{
+     background: gray;
+  }
+  .rows-7{
+     background: #747474;
+  }
+  </style>
+</head>
+<body>
+  <div id="rows">
+    <div class="rows rows-1">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-2">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-3">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-4">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-5">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-6">
+      <h2>我就是一个二级标题</h2>
+    </div>
+    <div class="rows rows-7">
+      <h2>我就是一个二级标题</h2>
+    </div>
+  </div>
+  <script>
+  var rows = document.getElementsByClassName('rows');
+  var aH2 = document.getElementsByTagName('h2');
+  var height = 300;
+  window.onload = function () {
+    rows[0].style.opacity    = '1.0';
+    aH2[0].style.marginTop   = '60px';
+    rows[1].style.opacity    = '1.0';
+    aH2[1].style.marginTop   = '60px';
+  };
+  document.onscroll = function (e) {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = 300;
+    var index  = parseInt(scrollTop/height) + 2;
+    console.log(index,scrollTop);
+    rows[index].style.opacity    = '1.0';
+    aH2[index].style.marginTop   = '60px';
+    if (index === 6) {
+      document.onscroll = null;
+    }
+  };
+  </script>
+</body>
+</html>
