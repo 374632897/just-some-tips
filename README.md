@@ -563,8 +563,281 @@
    * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
 * 关于word-spacing 和letter-space
-  * word-spacing 表示的是单词之间的间距（对中文不生效）
+  * word-spacing 表示的是单词之间的间距（~~对中文不生效~~），是单词间距，对中文也是，词间距
   * letter-space 表示的是字符间距，每个单词内字符的间距（中文有效）
+
+###2016-01-01
+1. JS只有一个主线程，主线程执行完执行栈的任务后去检查异步的任务队列，如果异步事件触发，则将其加到主线程的执行栈。示例如下：
+  ```javascript
+  setTimeout(function(){console.log('timeout')},0);
+  console.log(1);
+  ```
+  结果就是1/timeout.
+
+2. 关于删除节点操作
+```html
+<input type="button" value="删除" id="delByI++">
+  <input type="button" value="删除" id="delByI--">
+  <ul>
+    <li>节点1</li>
+    <li>节点2</li>
+    <li>节点3</li>
+    <li>节点4</li>
+    <li>节点5</li>
+    <li>节点6</li>
+    <li>节点7</li>
+    <li>节点8</li>
+    <li>节点9</li>
+    <li>节点10</li>
+    <li>节点11</li>
+    <li>节点12</li>
+  </ul>
+```
+```javascript
+  var oDel1 = document.getElementById('delByI++');
+  var oDel2 = document.getElementById('delByI--');
+  var aLi   = document.getElementsByTagName('li');
+  oDel1.onclick = function () {
+    for (var i = 0; i < aLi.length; i++ ) {
+      aLi[i].parentNode.removeChild(aLi[i]);
+    }
+  };
+
+  oDel2.onclick = function () {
+    for (i = aLi.length - 1; i >= 0; i-- ) {
+      aLi[i].parentNode.removeChild(aLi[i]);
+    }
+  };
+```
+然后在点击第一个按钮的时候，第一次只会删除6个节点（1/2），第二次再点，删除3个，还是（1/2），第三次删掉俩，等点了第四次的时候才能够删完。
+
+为什么呢，因为for循环只有在刚刚开始的时候，才会去初始化i的值，之后每次循环只会判断当前i的值有没有达到停止循环的要求，也就是说，下次循环只会从第二句开始，但是循环每执行一次就会删掉一个节点，这样一来，Li的长度始终都是在变化的，但是i的值却没有发生相应的 变化，比如说，当循环执行到第二次的时候，此时i=1,但是因为删除了一个节点，aLi[i]却等于节点3，也就是跳过了我们期望删除的节点2. 每次循环都这样，所以最后也自然不能按照我们预期进行咯。
+
+解决办法就是从尾部删除。
+
+###2016-01-02
+=======
+这个不知道该怎么起名。。。 
+
+```javascript
+var aLi = document.getElementsByTagName('li');
+  
+  for (var i = 0, b; b = aLi[i++]; ) {
+    b.onclick = function () {
+      console.log(this.innerHTML);
+    }
+  }
+```
+其实这段代码和下面这段代码是一样的效果
+
+```javascript
+for (var i = 0; i < aLi.length; i++) {
+    aLi[i].onclick = function () {
+      console.log(this.innerHTML);
+    };
+  }
+```
+因为这里访问的```this.innerHTML```其实是固定的值，当循环开始的时候，就已经为对应的每一个DOM元素绑定了事件了，在后来访问的时候并不涉及到i，所以这总写法并没有什么影响。
+
+至于闭包的话，是这样子的
+
+```javascript 
+for (var i = 0; i < aLi.length; i++) {
+    aLi[i].onclick = function (i) {
+      return function () {
+        console.log(i);
+      };
+    }(i);
+  }
+```
+
+这样子的话，当对应元素发生单击事件的时候，打印出来的东西就会是自己期望的值了。 
+
+###2016-01-03
+1. 将数组转换为字符串
+   ```javascript
+   var colors = ['red','blue','yellow'];
+
+   colors.toString();
+   colors.join(',');// 给join传递参数的话，那么就会以传递的参数来分隔字符串，默认为','
+   // 把多维数组转化为一维数组
+   colors.toString().split(',');
+
+   ```
+2. 栈
+  * 是一种可以限制插入和删除项的数据结构。LIFO(last-in-first-out)，后进先出，也就是最新添加的项最先被移除   
+  * 方法： push(),pop();
+  * push():可以接收任意数量参数并添加到数组末尾，返回修改后数组的长度
+  * pop()：从数组末尾移除最后一项，返回移除项
+3. 队列
+  * 队列数据结构的访问规则是FIFO(first-in-first-out)，先进先出。
+  * 方法： shift(),push();
+  * shift():   移除数组中的第一个项并返回该项。
+4. 数组的方法
+  * concat
+    用于数组合并。不会在原数组上操作
+  * slice
+    基于当前数组中的一个或多个项创建一个新数组。如果有两个参数，则返回的是起始位置到结束位置（但不包括结束位置）的数组。不会在原数组上操作。如果slice的参数中有复数，则用数组长度加上复数来确定相应的位置。
+  * splice
+    * 删除： 可以删除任意项。只需指定两个参数：要删除的第一项的位置和要删除的项数。
+    * 插入： 插入任意项。    三个参数：  起始位置，0（要删除的项数），要插入的项
+    * 替换： 三个参数： 起始位置，要删除的项数和要插入的项数
+  * indexOf和lastIndexOf
+    * 接受两个参数： 要查找的项，和查找的起始位置的索引
+    array.indexOf(item);
+
+  * 迭代方法
+    * 传入的函数接受三个参数：数组项的值，在数组中的位置和数组对象本身
+    * every  对数组中的每一项运行对应函数，如果每一项为true，即返回true
+    * filter 对数组中的每一项运行对应函数，返回由返回值为true的项组成的数组
+    * forEach 对数组中的每一项运行对应函数，无返回值
+    * map    返回每次函数调用的结果组成的数组
+    * some   如果该函数对任一项返回true，则返回true
+  * 归并方法
+    * 接受两个参数： 一个在每一项上调用的函数和作为归并基础的初始值
+    * 调用的函数接受4个参数：前一个值，当前值，项的索引和数组对象
+      * 前一个值：通过上一次调用回调函数获得的值。如果向 reduce 方法提供 initialValue，则在首次调用函数时，previousValue 为 initialValue。
+    * reduce  从数组的第一项开始
+    * reduceRight 从数组的最后一项开始
+    * 这个函数返回的任何值都将作为第一个参数自动传给下一项
+    * **关于归并函数还是有点不大懂**
+
+5. 日期对象
+  * 月份的表示是基于0的，所以
+    ```javascript
+    new Date(2012,12,12);
+    ```
+    所得到的值并不会是2012-12-12而是2013-01-12
+  * 实例化日期对象的时候，如果要设置日期，那么传入的日期用逗号分隔，如
+    ```javascript
+    new Date(2012,11,12,12,12,12);
+    ```
+    另外，传入的日期至少要包含两个参数，年和月。如果缺少了1个，那么返回的日期对象将会是从1970开始。未提供天数，则假设天数为1，其他参数默认为0。
+
+  * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）
+
+
+6. 关于函数对象
+7. 字符串方法
+  * charAt;charCodeAt
+  * ** 都不会修改字符串本身，而是返回一个修改后的副本 **
+  * concat  拼接字符串，然而一般都用+号拼接
+  * slice     第一个参数表示字符串开始的位置，第二个参数表示字符串到哪里结束（不包括该字符）
+  * substr    第一个参数表示字符串开始的位置，第二个参数表示的是要返回的字符个数
+  * substring 第一个参数表示字符串开始的位置，第二个参数表示字符串到哪里结束（不包括该字符）
+  * 在给这些方法传递负的参数的情况下
+    * slice       将负值加上字符串的长度
+    * substr      将第一个负值参数加上字符串长度，第二个负参数转化为0
+    * substring   把所有负值都转化为0，然后将较小的值作为开始位置，将较大值作为结束位置
+  * indexOf,lastIndexOf
+  * trim()  去除空格
+  * toLowerCase;toUpperCase;   大小写转换
+  * match   str.match(pattern); 找到则返回匹配字符串，未找到则返回null
+  * search  如果未找到则返回-1
+  * replace
+  * 关于正则表达式的模式匹配
+    * $&  匹配整个模式的子字符串
+    * $`  匹配的子字符串之前的子字符串
+    * $'  匹配的子字符串之后的子字符串  引号前需要加转义字符
+    * $n  匹配的第n个子字符串
+    * $nn 匹配的第nn个子字符串，如果没有定义捕获组，则为空字符串
+    * 上面指的捕获组，是正则表达式中的括号括起来的部分。如： /(hello)/g，第一个括号就是第一个捕获组，匹配的部分可以用$1表示。
+  * split  基于指定的分隔符，将字符串分割成多个子字符串并存进一个数组。可以指定第二个参数来表示数组长度
+  * localeCompare  比较两个字符串（貌似没多大用啊） 
+
+###2016-01-04
+=======
+1. 关于将mainView和itemView关联起来的方法是，在mainView初始化的时候，为其添加一个属性this.childView（数组）来存放itemView，每次创建了itemView的时候就将其Push到childView里面。
+
+2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？ 
+
+3. this.$(selector)只会在当前根元素下面查找元素，如果查找的元素不在当前根元素下，那么就不要加this，直接用选择器。
+
+4. 在用$.ajax请求的时候，在里面的回调函数里this的指向不会是期望值，解决办法是在$.ajax里面定义一个属性，指向this,如
+   ```javascript
+   $.ajax({
+      type: 'GET',
+      url: '/task/search/searchSolr',
+      _this: this, // 在这里定义_this为this,然后在回调函数里就可以通过this._this来访问了。
+      data: {
+        type: 1,
+        start: 0,
+        keyword: val
+      },
+      success: function (res) {
+        const searchBox = this._this.searchBox;
+        console.log(res);
+        searchBox.getTypeNum(res);
+      },
+      error: function () {
+        console.log('请求失败');
+      }
+    });
+   ```
+5. 关于搜索框的初始样式
+
+6. 正则相关
+   * 匹配双字节字符（包括汉字、全角）
+     
+     ```javascript
+     /[^\x00-\xff]/
+     ```
+   
+   * 匹配汉字
+     
+     ```javascript
+     /[\u4e00-\u9fa5]/
+     ```
+7. 关于使用文字溢出text-overflow: ellipsis后的文字对齐问题
+   
+   ```html
+   <p class="test">
+     <span class="left">我是一段段小小小文字</span>    
+     <span class="right">恩。。啊。。 哈哈。。 </span>
+   </p>
+   ```
+
+   ```css
+   p{
+     width: 300px;
+     margin: 0 auto;
+   }
+   span{
+     display: inline-block;
+   }
+   .left{
+     width: 40%;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
+   }
+   ```
+   然后走浏览器里面查看的话，就会发现左边的文字和右边的文字并不是对齐的。。
+   
+   这是为嘛呢。。。其实是因为给.left元素加了overflow:hidden，然后触发了元素的BFC。
+
+   知道了原因，解决问题就好办了，可以给.right加上一个右浮动，也可以对它加一个overflow:hidden.
+
+   然后文字就对齐咯。。。 
+
+   不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
+
+
+8. 关于onunload , 和onbeforeunload事件
+   * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。
+   * onbeforeunload
+   需要传入事件对象，然后事件对象有个returnValue属性，属性指定的字符串在卸载页面之前会出现在弹窗里。如下
+
+   ```javascript
+   window.onbeforeunload = function (event) {
+     var event = event || window.event;
+     var msg   = 'Do you really wanna leave ? '
+     event.returnValue = msg;
+     return msg;
+   };
+   ```
+
+9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 
 
 
 #Problems
@@ -579,3 +852,28 @@
 8. 有个bug,当文件夹删除之后，再创建的话不会加载数据(因为事件监听的对象没有了)
 9. 关于滚动条的这个。。要搞清楚
 10. 明天需要把代码里的重复部分给去掉。。有好些语句都是可以省略的来着
+11. 关于正则表达式匹配的贪婪模式，如： 
+   
+    ```javascript
+    var re = /\<\w*\>.*\<\/\w*\>/g;
+    var str = '写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em> 6 80 对照问题熟悉<em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>有建议的话找曹德季其他问题找戴盈盈';
+    str.match(re);
+    ```
+    原本期待的是只返回一个被em包裹的元素，但是在这里匹配到的是这样的
+    
+    ```html
+    <em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>
+    ```
+    所以这大概就是贪婪模式在作怪吧，那么应该怎么改呢？ 现在我只是设置了文本溢出不显示，治标不治本的。
+12. replace的时候如果使用或操作符的话，会变成单个字符匹配，所以就多次replace，这种问题应该怎么解决喃？
+    如： 
+    
+    ```javascript
+    const b = this.$('p.top').html().replace(/\&lt;em\&gt;/g, '<i class="type-link"> ').replace(/&lt;\\?\/em(\&gt;)?/g, ' </i>').replace(/\&nbsp;/g, '');
+
+    var str = '<em>backbone</em>';
+    str.match(/[<em>|<\/em>]/,''); // ["<"]
+    str.match(/<\/em>/g); // ["</em>"]
+    ```
+
+    如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。 
