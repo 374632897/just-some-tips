@@ -823,6 +823,14 @@ for (var i = 0; i < aLi.length; i++) {
 
    不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
 
+   **stackoverflow上的回答： ** 直接对span 元素设置```vertical-align: top```然后就可以对齐了。
+
+   所以这里又牵扯到```vertical-align```了，
+   * ```vertical-align```指定了行内元素(```inline```)或表格单元格(```table-cell```)的垂直对齐方式.
+   * 其参考元素为父元素
+   * 对于```inline```元素来说，其高度为可见的文字高度，但是对其设置了inline-block之后，其默认高度就会变为文字的行高。
+   * [inline-block元素垂直居中问题](http://stackoverflow.com/questions/12950479/why-does-inline-block-element-having-content-not-vertically-aligned);
+
 
 8. 关于onunload , 和onbeforeunload事件
    * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。

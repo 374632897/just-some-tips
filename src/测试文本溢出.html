@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>测试文本溢出</title>
   <style>
+  h2{
+    text-align: center;
+  }
   p{
     width: 300px;
     margin: 0 auto;
@@ -18,16 +21,34 @@
     overflow: hidden;
   }
   .right{
-    float: right;
+    /*float: right;*/
     /*vertical-align: super;*/
     /*overflow: hidden;*/
+  }
+  strong{
+    font-size: 12px;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: #f66;
+  }
+  .hello{
+    width: 30px;
+    height: 30px;
   }
   </style>
 </head>
 <body onunload='alert("hello");'>
   <p class="test">
-    <span class="left">我是一段段小小小文字</span>    
-    <span class="right">恩。。啊。。 哈哈。。 </span>
+    <span class="left">TestTestTestTest</span>    
+    <span class="right">Test</span>
+
+  </p>
+  <h2>关于vertical-align</h2>
+  <p>
+    <!-- <strong></strong> -->
+    <img src="" alt="123" class="hello">
+    <strong>一段文字</strong>
   </p>
   <script>
   // window.onunload = function (event) {
