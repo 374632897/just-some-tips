@@ -576,8 +576,8 @@
 
 2. 关于删除节点操作
 ```html
-<input type="button" value="删除" id="delByI++">
-<input type="button" value="删除" id="delByI--">
+  <input type="button" value="删除" id="delByI++">
+  <input type="button" value="删除" id="delByI--">
   <ul>
     <li>节点1</li>
     <li>节点2</li>
