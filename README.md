@@ -604,6 +604,7 @@
   };
 
   oDel2.onclick = function () {
+    // 注意这里是aLi.length - 1
     for (i = aLi.length - 1; i >= 0; i-- ) {
       aLi[i].parentNode.removeChild(aLi[i]);
     }
@@ -858,8 +859,11 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2015-01-06
 =======
+1. 使用GitBash时，修改进入之后的默认路径可以右击其图标，然后在起始位置里面输入期望位置。如果重启后操作无效，则看是不是目标位置的最后，有
+   ```cd to home```字段，如果有的话，就去掉。然后就可以了。 
 
-1. 不要直接操作主分支！！！！平时提交代码提交到自建分支上，需要更新的时候pull request就行
+
+2. 不要直接操作主分支！！！！平时提交代码提交到自建分支上，需要更新的时候pull request就行
 
 #Problems
 =======

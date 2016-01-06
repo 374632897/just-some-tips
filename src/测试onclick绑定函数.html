@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <input type="button" value = "click" id = "btn">
+  <script>
+  var oBtn = document.getElementById('btn');
+  // 如果onclick指向的是一个自调用函数的话，那么解析到那里的时候就会直接执行，如果只是一个普通的函数，那么就会在事件触发的时候执行
+  oBtn.onclick = (function () {
+    // 解析到这里的时候就会直接执行这句
+    console.log('hello');
+
+    return function () {
+      // 单击按钮的时候执行这句
+      console.log('hello 2');
+
+    };
+  })();
+  </script>
+</body> 
+</html>
