@@ -873,6 +873,15 @@ for (var i = 0; i < aLi.length; i++) {
 
 2. 不要直接操作主分支！！！！平时提交代码提交到自建分支上，需要更新的时候pull request就行
 
+3. 如果一个字符串为'2014年法律硕士考试提醒', 然后需要匹配2014年之后的内容的话，可以用下面这种方法： 
+   
+   ```javascript
+    var str = '2014年法律硕士考试提醒';
+    str.match(/2014年(.*)/g);
+    var matchResult = RegExp.$1;
+   ```
+   也就是获取捕获组
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
