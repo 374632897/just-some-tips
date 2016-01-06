@@ -882,7 +882,7 @@ for (var i = 0; i < aLi.length; i++) {
    ```
    也就是获取捕获组
 
-4. 注意分清轻重缓急！！！！路要一步一步走，饭要一口一口吃！！！！！！现阶段主要任务是把JS学好，读完jQuery源码！！！做好笔记！！！灵活运用！！！！webpack,grunt之类的，可以之后再学！！！
+4. 注意分清轻重缓急！！！！路要一步一步走，饭要一口一口吃！！！！！！现阶段主要任务是把JS学好，读完jQuery源码！！！做好笔记！！！灵活运用！！！！webpack,grunt之类的，可以之后再学！！！nodejs,webpack,react,php,mysql需要在读完jQuery和Backbone的源码之后再去学。。。
 
 
 #Problems
