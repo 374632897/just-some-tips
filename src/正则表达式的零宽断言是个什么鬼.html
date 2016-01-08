@@ -3,13 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>test</title>
+  <style>
+  input[type='text']{
+    height: 50px;
+    /*line-height: 30px;*/
+  }
+  </style>
 </head>
 <body>
+  <span id="span" title="hello1">hello1</span>
+  <span id="span2" title="hello2">hello2</span>
+  <input type="text" placeholder = "输入文字">
   <script>
   var str = '2014年法律硕士考试提醒';
   str.match(/2014年(.*)/g);
   var matchResult = RegExp.$1;
   console.log(matchResult);
+  var oS  = document.getElementById('span');
+  var oS2 = document.getElementById('span2');
+
+  toggleTitle(oS);
+  toggleTitle(oS2);
+  
+  function toggleTitle (obj) {
+    obj.onmouseover = function () {
+      var title = this.title;
+      console.log(title);
+      this.title = '';
+      this.onmouseout = function (){
+        this.title = title;
+      }
+    }
+  }
   </script>
 </body>
 </html>

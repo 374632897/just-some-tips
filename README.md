@@ -254,9 +254,9 @@
 
 2. if语句结尾不用加分号
 
-3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入````'click   ': 'events'````即可。
+3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入````'click   ': 'events'````即可。也就是说，如果触发事件的元素是根元素，那么就只需添加事件类型。
 
-4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？
+4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？**01/08注：这里是因为实例化一个view的时候传入的是一个对象，而model只是这个对象里的一个属性，所以在后面访问的时候，要获取所需model就需要通过对象来获取**
 
 5. 
 
@@ -276,7 +276,7 @@
 3. 逻辑是否正确是找出问题的关键。出错的时候，需要考虑是不是自己的逻辑设计不合理
    * 我在collection里面设置的获取order值的时候，之前设置的是如果length=1,则返回1，否则返回最后一个的order加1，但是后来改成Relational之后，默认没有添加model了，所以长度为0,然后获取order的方法没有变，而最后一个Model根本不存在，所以就报错了。
 
-4. 只给input设置高度而不设置行高，如果设置了行高的话，Safari下光标会显示异常。
+4. 只给input设置高度而**不设置行高**，如果设置了行高的话，Safari下光标会显示异常。
 5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。e.stopPropagation()。
 6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
 7. 函数节流的实现
@@ -389,10 +389,10 @@
 
 ###2015-12-24
 =======
-1. 使用Backbone.Relational的时候，关联的collectionType需要时collection的原型而不是他的实例，所以在导出collection的时候不要加new操作符。
+1. 使用Backbone.Relational的时候，关联的collectionType需要是collection的原型而不是他的实例，Model 也是，所以在导出collection的时候不要加new操作符。但是在导出RelationalModel的时候，需要导出其实例，也就是加上new操作符
 2. **出现滚动条的时候由于滚动条占位，元素被挤开了，怎么解决？**
 3. 写font的缩写的时候，font-size和family是必须的
-4. where方法返回的是一个数组，所以通过where来过滤某一个元素的时候，需要在最后加个[0];
+4. where方法返回的是一个数组，所以通过where来获取自己需要的某一个元素的时候，需要在最后加个[0];
 5. 
 
 
@@ -432,7 +432,8 @@
      ```` 
    原文地址： http://jingpin.jikexueyuan.com/article/34632.html
 
-2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况
+2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况。 
+   * **01/08注： 只需要给文本框设置高度即可，无需设置行高，因为设置行高后Safari下的placeholder和line-height会出现异常。**
 
 ###2015-12-27
 =======
@@ -454,7 +455,7 @@
 ###2015-12-28
 =======
 1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
-2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，刷新频率跟不上，从而会出错。 
+2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，~~刷新频率跟不上~~（**01/08注： 不是刷新频率跟不上，而是因为期望删除元素和当前删除元素不同步，在后面有提到这个问题**），从而会出错 。 
 3. 如果两个View共用一套collection，然后针对相同的动作有不同的行为的话，那么需要在将Model传入View的时候，传为一个对象，而不只是一个Model，实际上，在将Model传入View的时候一般都要传作对象，不然的话，html里面会多出很多混乱的数据。
 
 ###2015-12-29
@@ -492,7 +493,7 @@
    * 定义left: 50%, 然后使用transform: translateX(-50%);
    * 定义left和right，使之相等，这样就能把元素撑开了
 8. 在一个上下文里获取元素
-   ````$(selector,this.el)```` 获取到的是DOM对象
+   ~~~ ````$(selector,this.el)```` 获取到的是DOM对象 ~~~ 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。 
    ````this.$(selector)````    获取到的是jQuery对象
 9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
    ````html
@@ -890,6 +891,9 @@ for (var i = 0; i < aLi.length; i++) {
 1. 正则表达式的元字符： ( { [ \ ^ $ | ? * + . ]})，在需要表达他们本身时，需要转义
 2. 直接使用//来定义正则的方式叫做字面量，而使用```new RegExp()```的方式来定义的话，第一个参数为需要匹配的字符串模式，另一个是标志字符串。字符串中的元字符需要进行双重转义。（1 -> 2, 2 -> 4）
 
+###2015-01-08
+=======
+1. 用npm从远程仓库上安装插件失败的话，考虑是不是ssh key的问题，
 
 
 #Problems
