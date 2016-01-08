@@ -493,7 +493,7 @@
    * 定义left: 50%, 然后使用transform: translateX(-50%);
    * 定义left和right，使之相等，这样就能把元素撑开了
 8. 在一个上下文里获取元素
-   ~~ ````$(selector,this.el)```` 获取到的是DOM对象 ~~ 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。 
+   ~~````$(selector,this.el)```` 获取到的是DOM对象~~， 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。 
    ````this.$(selector)````    获取到的是jQuery对象
 9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
    ````html
