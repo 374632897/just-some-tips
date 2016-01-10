@@ -931,11 +931,30 @@ for (var i = 0; i < aLi.length; i++) {
 =======
 1. 用npm从远程仓库上安装插件失败的话，考虑是不是ssh key的问题，
 
+
+
 ###2015-01-09
 =======
 1. 黑体也是可以设置宽度的，设置font-weight:normal，然后就会变成正常宽度了。
 2. 注意啊。。。判断相等是三个或者两个等号！！！！！一个等号是赋值！！！
 
+###2016-01-10
+=======
+
+1. ```javascript
+   null ==  undefined // true
+   null === undeifned //false
+   ```
+   也就是说null并不严格等于undefined
+2. ArrayLike对象的本质特征是具有length属性
+3. 合并数组
+
+   ```javascript
+   var arr1 = [1, 2, 3, 4];
+   var arr2 = [5, 6];
+   var arr3 = [7, 8, 9];
+   var arrC = [].concat(arr1, arr2, arr3);
+   ```
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
