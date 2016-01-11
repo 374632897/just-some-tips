@@ -955,6 +955,11 @@ for (var i = 0; i < aLi.length; i++) {
    var arr3 = [7, 8, 9];
    var arrC = [].concat(arr1, arr2, arr3);
    ```
+
+###2016-01-11
+=======
+1. 别把高度设为auto，不然的话，在有些手机上可能会出现手机输入法撑开高度的情况，好吧，虽然他的initial value 本身就是auto,但是在我把显性地设置height为auto的语句去掉之后，在小米的UC浏览器上显示确实正常了。
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
