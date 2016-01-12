@@ -960,6 +960,44 @@ for (var i = 0; i < aLi.length; i++) {
 =======
 1. 别把高度设为auto，不然的话，在有些手机上可能会出现手机输入法撑开高度的情况，好吧，虽然他的initial value 本身就是auto,但是在我把显性地设置height为auto的语句去掉之后，在小米的UC浏览器上显示确实正常了。
 
+
+###2016-01-12
+1. 微信的内核是webkit，所以用到CSS3的属性的时候需要加-webkit-前缀。
+2. input[type=hidden]，隐藏文本域的一个作用是， 可以将通过php获取到的数据暂时存放在它的value里面，方便下次取用。
+3. 下面的php语句
+
+   ```php
+   <?php
+    session_start();
+    $reg = empty($_SESSION['reg'])?"":$_SESSION['reg'];
+    $uid = empty($_SESSION['uid'])?"":$_SESSION['uid'];
+    $inviteCode = empty($_SESSION['inviteCode'])?"":$_SESSION['inviteCode'];
+    $urlSearch = '';
+    header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0"); // HTTP/1.1
+    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+    header("Pragma: no-cache"); // Date in the past
+    if(!empty($reg) && !empty($uid)  && !empty($inviteCode)){
+        $urlSearch = '?reg='.$reg."&uid=".$uid."&inviteCode=".$inviteCode;
+        exit;
+    }else if(!empty($reg) && !empty($uid)){
+        $urlSearch = '?reg='.$reg."&uid=".$uid;
+        exit;
+    }else if(!empty($inviteCode)){
+        $urlSearch = '?inviteCode='.$inviteCode;
+        exit; //当添加了这句话的时候，语句执行到这里就停止了，然后页面不会再继续渲染，所以看起来就是空的
+        // 那么这是为什么呢？？ 
+    }
+   ?>
+   ```
+4. $_GET[KEY],用于获取URL里面的对应的值
+5. $_SESSION[]使用之前，需要先sesstion_start()
+6. 使用require引入文件 <?php require 'file' ?>
+7. 关于在html中插入php变量
+   ```html
+   <a href="<?=empty($urlSearch)? 'login.php': 'login.php'.$urlSearch?>">立即登录</a>
+   ```
+8. 
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
