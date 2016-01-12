@@ -996,7 +996,7 @@ for (var i = 0; i < aLi.length; i++) {
    ```html
    <a href="<?=empty($urlSearch)? 'login.php': 'login.php'.$urlSearch?>">立即登录</a>
    ```
-8. 
+8. 跨源资源共享(Cross-Origin Resource Share)
 
 #Problems
 =======
