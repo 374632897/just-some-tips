@@ -1040,6 +1040,28 @@ for (var i = 0; i < aLi.length; i++) {
     }
   };
    ```
+9. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如： 
+
+  ```javascript
+  var obj = {
+    team: {
+      name: 'hello'
+    },
+    id: 2,
+    member: {
+      name: 'Jiangxi'
+    }
+  };
+  obj.name  // undefined
+  
+  obj.name.name // Uncaught TypeError: Cannot read property 'name' of undefined
+  ```
+  那么解决办法就是判断 
+
+  ```javascript
+  obj.name && obj.name.name; // undefined
+  ```
+  也就是说，如果要访问一个对象的属性的属性的时候，需要先判断该属性是否存在，如果存在，再进行访问，这样才不会报错
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
