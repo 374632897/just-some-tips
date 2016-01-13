@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testDefine</title>
+</head>
+<body>
+  <script>
+  var Person = function (config) {
+    this.name = config.name;
+    this.job = config.job;
+
+  };
+  Person.prototype.work = function () {
+    return this.name + " is working";
+  }
+  // 模拟backbone的model的实现
+  var Model = function (obj) {
+    // var this.attributes = {};
+    this.attributes = {};
+    if (obj.defaults) {
+      for ( var key in obj.defaults) {
+        this.attributes[key] = obj.defaults[key];
+      }
+    }
+    this.get = function (str) {
+      if (str) {
+        return this.attributes[str];
+      }
+    };
+    this.set = function (str,value) {
+      return this.attributes[str] = value;
+    }
+  };
+  </script>
+</body>
+</html>

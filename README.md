@@ -998,6 +998,48 @@ for (var i = 0; i < aLi.length; i++) {
    ```
 8. 跨源资源共享(Cross-Origin Resource Share)
 
+###2016-01-13
+======
+
+1. 如果要是在chrome下调试的时候，发现控制台在source等页面下掉不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点右上角的三个点，然后选择show console.即可。
+
+2. 绝对定位的时候bottom参照的元素是浏览器的第一屏，当其参照元素在滚动的时候，也会跟着滚动。
+3. textarea禁止缩放：在css里为其添加rule,resize: none | horizontal | vertical;
+4. 下面的代码： 
+
+   ```javascript
+   var root = (typeof self == 'object' && self.self == self && self) ||
+            (typeof global == 'object' && global.global == global && global);
+   ``` 
+   在默认情况下，self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局
+
+5. 定义一个构造器
+
+  ```javascript
+  var Person = function (config) {
+    this.name = config.name;
+    this.job = config.job;
+
+  };
+  Person.prototype.work = function () {
+    return this.name + " is working";
+  };
+  ```
+6. 英文的比较好看圆滑的一个字体是'Open Sans';
+7. 来学学英文吧。。。 **point out** 指出
+
+8. ```javascript
+   var Model = function (obj) {
+    // var this.attributes = {};
+    // 注意的是，这里应该用this而不是使用var ，因为最后这个实例的时候是要变为对象的一个属性的。
+    this.attributes = {}; // 如果这里不声明这一句的话，在遍历添加的时候，就会报错,也就是说对象的属性需要先声明再使用
+    if (obj.defaults) {
+      for ( var key in obj.defaults) {
+        this.attributes[key] = obj.defaults[key];
+      }
+    }
+  };
+   ```
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
