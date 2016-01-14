@@ -1062,6 +1062,28 @@ for (var i = 0; i < aLi.length; i++) {
   obj.name && obj.name.name; // undefined
   ```
   也就是说，如果要访问一个对象的属性的属性的时候，需要先判断该属性是否存在，如果存在，再进行访问，这样才不会报错
+
+###2016-01-14
+=======
+1. @keyframe加前缀是@-webkit-keyframe 而不是-webkit-@keyframe o(╯□╰)o 
+2. background-clip: content-box,padding-box,border-box;规定背景的绘制区域，默认为padding-box
+3. rotate(1turn)表示转一个圈
+4. text-transform: 控制文字的大小写capitalize，uppercase，lowercase
+5. Uncaught SyntaxError: Unexpected end of input 通常是因为缺少括号或大括号来结束语句了o(╯□╰)o，怎么就给忘了，不知道错误的原因就注释掉语句看是哪里出了问题，再不行就在其他浏览器下查看报错
+6. 用CSS绘制三角形： 
+
+   ```css
+   .arrow{
+      width: 0;
+      height: 0;  // 要将高度设为0，不然会显示为梯形
+      border: 50px solid transparent; // 三角形侧边
+      border-top: 0;
+      margin: 50px auto;
+      border-bottom: 100px solid #f66; // 设置三角形底边的的长度和三角形的颜色
+   }
+   ```
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别

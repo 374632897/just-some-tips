@@ -17,10 +17,10 @@
   // 模拟backbone的model的实现
   var Model = function (obj) {
     // var this.attributes = {};
-    this.attributes = {};
+    // this.attributes = {};
     if (obj.defaults) {
       for ( var key in obj.defaults) {
-        this.attributes[key] = obj.defaults[key];
+        this.attributes = a(obj.defaults);
       }
     }
     this.get = function (str) {
@@ -30,8 +30,31 @@
     };
     this.set = function (str,value) {
       return this.attributes[str] = value;
-    }
+    };
+    this.toStr = function () {
+      // 不对，这个是转换为字符串
+      return JSON.stringify(this.attributes);
+    };
+    // 返回属性对象
+    this.toJSON = function () {
+      return a(this.attributes);
+    };
   };
+  var person = new Model({
+    defaults: {
+      name: 'Jiangxi',
+      age: '22',
+      job: 'front-end developer'
+    }
+  });
+  // 把一个对象的属性复制到另一个对象里面
+  function a (oldObj) {
+    var b = {};
+    for (var key in oldObj) {
+      b[key] = oldObj[key];
+    }
+    return b;
+  }
   </script>
 </body>
 </html>
