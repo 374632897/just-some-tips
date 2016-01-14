@@ -1104,6 +1104,10 @@ for (var i = 0; i < aLi.length; i++) {
   * inspect(object/function) 选中并跳到该元素（或函数）
   * getEventListeners(object), 用于获取注册到object上的事件，对象的键为事件类型，值为注册到该对象上的事件绑定的函数组成的数组。该数组描述了每个事件类型的监听器（也就是该事件绑定的函数）,例如可以通过```getEventListeners(document).click[0].listener```来访问绑定函数
   * keys(object) 返回一个由对象的属性名字组成的数组，对应的有values(object)
+
+
+9. P标签内部只能包含inline标签，如果包含了block标签的话，该block标签将会被提到p的同一个层级。注意，这里指的是默认的block标签，而不是具有display: block的标签 .IE下innerHTML会对错误嵌套报非法错误（未测试）[原文地址](http://www.thinksaas.cn/group/topic/268153/);
+10. html元素错位，除了考虑嵌套之外，还需要考虑是不是没有补全标签（也该算是嵌套吧）
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
