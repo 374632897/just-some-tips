@@ -18,7 +18,7 @@
   var Model = function (obj) {
     // var this.attributes = {};
     // this.attributes = {};
-    if (obj.defaults) {
+    if (obj && obj.defaults) {
       for ( var key in obj.defaults) {
         this.attributes = a(obj.defaults);
       }
@@ -55,6 +55,11 @@
     }
     return b;
   }
+  // document.onclick = function () {
+  //   console.log('hello');
+  // }
+  document.addEventListener('click', function () {console.log('first')}, false);
+  document.addEventListener('click', function () {console.log('second')}, false);
   </script>
 </body>
 </html>

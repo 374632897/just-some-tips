@@ -495,6 +495,11 @@
 8. 在一个上下文里获取元素
    ~~````$(selector,this.el)```` 获取到的是DOM对象~~， 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。 
    ````this.$(selector)````    获取到的是jQuery对象
+   * chrome 默认使用$来引用querySelector
+   * Firefox 只有在控制台中才能使用$，也是通过querySelector
+   * Safari 只有在控制台中通过$来根据id获取元素
+   * IE11的调试器和FF差不多，不过同样也只能在控制台中使用
+
 9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
    ````html
    <form action="" id="testForm">
@@ -511,7 +516,7 @@
 ###2015-12-30
 1. 使用MarkDownPreview插件，可以在本地预览.md文件，安装后，在md文件中按````ctrl+shift+p````调出命令行，输入mdp,选择````Preview in browser```` 即可
 2. 关于按需加载
-   * 可以将需要按需加载的内容放在script标签里，然后在需要的时候，将需要展示的盒子的html()设为该标签里的内容，这样子在刚刚页面刚刚加载，没有达到触发条件的时候，并不会触发请求 
+   * 可以将需要按需加载的内容放在script标签里，然后在需要的时候，将需要展示的盒子的html()设为该标签里的内容，这样子在页面刚刚加载，没有达到触发条件的时候，并不会触发请求 
    * 懒加载的实现原理： 
       * 生成标签时，用data-src来保存图片地址；
       * 记录的图片data-src都保存到数组里；
@@ -818,13 +823,13 @@ for (var i = 0; i < aLi.length; i++) {
    * 匹配双字节字符（包括汉字、全角）
      
      ```javascript
-     /[^\x00-\xff]/
+     /[^\x00-\xff]/     // 注意 ^ 这个符号
      ```
    
    * 匹配汉字
      
      ```javascript
-     /[\u4e00-\u9fa5]/
+     /[\u4e00-\u9fa5]/  //这里没有 ^
      ```
 7. 关于使用文字溢出text-overflow: ellipsis后的文字对齐问题
    
@@ -860,7 +865,7 @@ for (var i = 0; i < aLi.length; i++) {
 
    不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
 
-   **stackoverflow上的回答： ** 直接对span 元素设置```vertical-align: top```然后就可以对齐了。
+    **stackoverflow上的回答： ** 直接对span 元素设置```vertical-align: top```然后就可以对齐了。
 
    所以这里又牵扯到```vertical-align```了，
    * ```vertical-align```指定了行内元素(```inline```)或表格单元格(```table-cell```)的垂直对齐方式.
@@ -1082,8 +1087,23 @@ for (var i = 0; i < aLi.length; i++) {
       border-bottom: 100px solid #f66; // 设置三角形底边的的长度和三角形的颜色
    }
    ```
+7. 关于条件判断语句：
+   ```javascript 
+   // 如果里面有需要执行的代码，且不止一条，那么应该调用自调用函数
+   true ? (function(){console.log('hello');console.log(' nihao')}()) : console.log('haha');
+   // 如果满足或不满足条件时不需要执行操作，那么应该将对应的条件设为null(迷糊了)，总之不能为空或省略
+   false ? console.log('hello') : null;
 
-
+   ```
+8. Chrome Cl APIs
+  * $ 返回匹配CSS选择器的第一个元素 querySelector
+  * $$ 用数组形式返回匹配CSS选择器的元素 querySelectorAll
+  * $x(path)  $x('//p')返回所有的p元素
+  * debug(function) 传递一个函数，当函数调用的时候，会在函数内的第一个可执行语句处断点。取消断点可以用undebug(function)
+  * dir(), 同console.dir(), 显示一个DOM元素的可操作列表(可以通过点号访问到的)
+  * inspect(object/function) 选中并跳到该元素（或函数）
+  * getEventListeners(object), 用于获取注册到object上的事件，对象的键为事件类型，值为注册到该对象上的事件绑定的函数组成的数组。该数组描述了每个事件类型的监听器（也就是该事件绑定的函数）,例如可以通过```getEventListeners(document).click[0].listener```来访问绑定函数
+  * keys(object) 返回一个由对象的属性名字组成的数组，对应的有values(object)
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
@@ -1123,3 +1143,4 @@ for (var i = 0; i < aLi.length; i++) {
     如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。 
 13. 关于行高的一些问题
 14. jQuery在初始化的时候slideUp()不会执行的问题
+15. 关于exec方法当时看了没有练，结果现在忘了，有空了一定要好好练习下。
