@@ -1110,6 +1110,7 @@ for (var i = 0; i < aLi.length; i++) {
   * **inspect(object/function)** 选中并跳到该元素（或函数）
   * **getEventListeners(object)**, 用于获取注册到object上的事件，对象的键为事件类型，值为注册到该对象上的事件绑定的函数组成的数组。该数组描述了每个事件类型的监听器（也就是该事件绑定的函数）,例如可以通过```getEventListeners(document).click[0].listener```来访问document上click事件绑定的第一个函数
   * **keys(object)** 返回一个由对象的属性名字组成的数组，对应的有还有 **values(object)**
+  * **monitor(function)** 当指定的函数调用的时候，将会显示出传入函数的参数
 
 
 9. P标签内部只能包含inline标签，如果包含了block标签的话，该block标签将会被提到p的同一个层级。注意，这里指的是默认的block标签，而不是具有display: block的标签 .IE下innerHTML会对错误嵌套报非法错误（未测试）[原文地址](http://www.thinksaas.cn/group/topic/268153/);
@@ -1117,7 +1118,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-15
 =======
-1.  display: none会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
+1.  ```display: none```会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
 2. 伪元素添加内容的时候一定要添加content属性啊！！！！！ 没有content就没有内容就不会显示啊
 3. 当一个元素hover的时候，要改变该元素的伪元素的状态的话，那么:hover 和伪元素之间不能有空格，否则不会生效，如
    
@@ -1149,6 +1150,9 @@ for (var i = 0; i < aLi.length; i++) {
 5. elem.offsetParent获取的是其父元素？ 
 6. 注意文件名大小写，虽然在本地测试的时候，大小写不正确也能正常显示，但是放到服务器上之后，大小写不对的话，也不能正常访问到。
 7. GitHub里不要在序号后面直接写代码。。不然会显示异常的
+8. php没有undefined。。。。
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
