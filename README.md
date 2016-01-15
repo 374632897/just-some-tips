@@ -1036,7 +1036,9 @@ for (var i = 0; i < aLi.length; i++) {
 6. 英文的比较好看圆滑的一个字体是'Open Sans';
 7. 来学学英文吧。。。 **point out** 指出
 
-8. ```javascript
+8. 一段代码： 
+
+  ```javascript
    var Model = function (obj) {
     // var this.attributes = {};
     // 注意的是，这里应该用this而不是使用var ，因为最后这个实例的时候是要变为对象的一个属性的。
@@ -1047,7 +1049,7 @@ for (var i = 0; i < aLi.length; i++) {
       }
     }
   };
-   ```
+  ```
 9. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如： 
 
   ```javascript
