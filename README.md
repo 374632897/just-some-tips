@@ -1070,7 +1070,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-14
 =======
-1. @keyframe加前缀是@-webkit-keyframe 而不是-webkit-@keyframe o(╯□╰)o 
+1. ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o 
 2. background-clip: content-box,padding-box,border-box;规定背景的绘制区域，默认为padding-box
 3. rotate(1turn)表示转一个圈
 4. text-transform: 控制文字的大小写capitalize，uppercase，lowercase
@@ -1108,6 +1108,41 @@ for (var i = 0; i < aLi.length; i++) {
 
 9. P标签内部只能包含inline标签，如果包含了block标签的话，该block标签将会被提到p的同一个层级。注意，这里指的是默认的block标签，而不是具有display: block的标签 .IE下innerHTML会对错误嵌套报非法错误（未测试）[原文地址](http://www.thinksaas.cn/group/topic/268153/);
 10. html元素错位，除了考虑嵌套之外，还需要考虑是不是没有补全标签（也该算是嵌套吧）
+
+###2016-01-15
+=======
+1.  display: none会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
+2. 伪元素添加内容的时候一定要添加content属性啊！！！！！ 没有content就没有内容就不会显示啊
+3. 当一个元素hover的时候，要改变该元素的伪元素的状态的话，那么:hover 和伪元素之间不能有空格，否则不会生效，如
+   
+   ```css
+   div:hover:before{} /* 就是div hover的时候他的伪元素发生对应的变化，注意不能有空格不能有空格！！！*/
+   ```
+4. 通过transform的scale来控制元素的隐藏和显示，配合transition即可实现动画效果。如下例： 
+   
+   ```css
+    div{
+      display: inline-block;
+      position: relative;
+    }
+    div:before{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: #f65;
+      transform: scaleX(0);
+      transition: all ease-out .2s;
+    }
+    div:hover:before{
+      transform: scaleX(1);
+    }
+   ```
+5. elem.offsetParent获取的是其父元素？ 
+6. 注意文件名大小写
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别

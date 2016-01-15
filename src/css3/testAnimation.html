@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testAnimation</title>
+  <style>
+  /*实现弧线运动，给需要运动的元素包裹一个元素，再对他们设置不同的时间函数，并且每个元素只沿一个方向 运动，最后再组合起来*/
+  span{
+    /*display: inline-block;*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*border-radius: 50%;*/
+    /*background: #f66;*/
+    animation: straightX 2.5s infinite ease-in;
+  }
+  /*a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    outline: orange solid 1px;
+    animation: straightY 2.5s infinite ease-out;
+
+  }*/
+  span:before{
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    /*outline: orange solid 1px;*/
+    background: #f66;
+    border-radius: 50%;
+    animation: straightY 2.5s infinite ease-out;
+  }
+  @keyframes straight {
+    50% {
+      transform: translate3D(100px, 100px, 0);
+    }
+  }
+  @keyframes straightX {
+    50% {
+      transform: translate3D(100px, 0, 0);
+    }
+  }
+  @keyframes straightY {
+    50% {
+      transform: translate3D(0, 100px, 0);
+    }
+  }
+  </style>
+</head>
+<body>
+  <a href="">
+    <span></span>
+  </a>
+</body>
+</html>
