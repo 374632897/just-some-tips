@@ -997,9 +997,10 @@ for (var i = 0; i < aLi.length; i++) {
    ?>
    ```
 4. $_GET[KEY],用于获取URL里面的对应的值
-5. $_SESSION[]使用之前，需要先sesstion_start()
+5. $_SESSION[KEY]使用之前，需要先sesstion_start() // 在定义该SESSTION的时候可以不用，但是在其他页面调用的时候必须先start
 6. 使用require引入文件 <?php require 'file' ?>
 7. 关于在html中插入php变量
+
    ```html
    <a href="<?=empty($urlSearch)? 'login.php': 'login.php'.$urlSearch?>">立即登录</a>
    ```
@@ -1008,7 +1009,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-13
 ======
 
-1. 如果要是在chrome下调试的时候，发现控制台在source等页面下掉不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点右上角的三个点，然后选择show console.即可。
+1. 如果要是在chrome下调试的时候，发现控制台在source等频道下调不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点控制台右上角的三个点，然后选择show console.即可。
 
 2. 绝对定位的时候bottom参照的元素是浏览器的第一屏，当其参照元素在滚动的时候，也会跟着滚动。
 3. textarea禁止缩放：在css里为其添加rule,resize: none | horizontal | vertical;
@@ -1016,9 +1017,9 @@ for (var i = 0; i < aLi.length; i++) {
 
    ```javascript
    var root = (typeof self == 'object' && self.self == self && self) ||
-            (typeof global == 'object' && global.global == global && global);
+              (typeof global == 'object' && global.global == global && global);
    ``` 
-   在默认情况下，self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局
+   在默认情况下（没有重写self的引用时），self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局
 
 5. 定义一个构造器
 
@@ -1063,7 +1064,7 @@ for (var i = 0; i < aLi.length; i++) {
   
   obj.name.name // Uncaught TypeError: Cannot read property 'name' of undefined
   ```
-  那么解决办法就是判断 
+  解决办法就是在使用之前先进行判断 
 
   ```javascript
   obj.name && obj.name.name; // undefined
@@ -1072,28 +1073,29 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-14
 =======
-1. ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o 
+1.  ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o 
+
 2. background-clip: content-box,padding-box,border-box;规定背景的绘制区域，默认为padding-box
 3. rotate(1turn)表示转一个圈
 4. text-transform: 控制文字的大小写capitalize，uppercase，lowercase
-5. Uncaught SyntaxError: Unexpected end of input 通常是因为缺少括号或大括号来结束语句了o(╯□╰)o，怎么就给忘了，不知道错误的原因就注释掉语句看是哪里出了问题，再不行就在其他浏览器下查看报错
+5. 　```Uncaught SyntaxError: Unexpected end of input``` 通常是因为缺少括号或大括号来结束语句了o(╯□╰)o，怎么就给忘了，不知道错误的原因就注释掉语句看是哪里出了问题，再不行就在其他浏览器下查看报错
 6. 用CSS绘制三角形： 
 
    ```css
    .arrow{
       width: 0;
-      height: 0;  // 要将高度设为0，不然会显示为梯形
-      border: 50px solid transparent; // 三角形侧边
+      height: 0;  /* 要将高度设为0，不然会显示为梯形 */
+      border: 50px solid transparent; /*  三角形侧边 */
       border-top: 0;
       margin: 50px auto;
-      border-bottom: 100px solid #f66; // 设置三角形底边的的长度和三角形的颜色
+      border-bottom: 100px solid #f66; /* 设置三角形底边的的长度和三角形的颜色 */
    }
    ```
 7. 关于条件判断语句：
    ```javascript 
    // 如果里面有需要执行的代码，且不止一条，那么应该调用自调用函数
    true ? (function(){console.log('hello');console.log(' nihao')}()) : console.log('haha');
-   // 如果满足或不满足条件时不需要执行操作，那么应该将对应的条件设为null(迷糊了)，总之不能为空或省略
+   // 如果满足或不满足条件时不需要执行操作，那么应该将对应的条件设为null(迷糊了)，总之不能省略
    false ? console.log('hello') : null;
 
    ```
