@@ -1153,6 +1153,12 @@ for (var i = 0; i < aLi.length; i++) {
 8. php没有undefined。。。。
 
 
+###2016-01-17
+=======
+1. JS不能选中before,after伪元素怎么办？？？？废话。。用其他标签来代替伪元素不得了么。。。。
+
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
