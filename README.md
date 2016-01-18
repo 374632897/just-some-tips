@@ -1187,7 +1187,19 @@ for (var i = 0; i < aLi.length; i++) {
      {{ } }}
    </ul>
    ```
+5. return可以直接返回一个对象： 
 
+  ```javascript
+  function getName() {
+    return {
+      name: 'Jiangxi',
+      age: '22'
+    };
+  }
+  var person = getName();
+  person // Object {name: "Jiangxi", age: "22"}
+  ```
+6. 三元运算符里可以进行函数运算。但是不能直接return
 
 #Problems
 =======
@@ -1230,3 +1242,4 @@ for (var i = 0; i < aLi.length; i++) {
 14. jQuery在初始化的时候slideUp()不会执行的问题
 15. 关于exec方法当时看了没有练，结果现在忘了，有空了一定要好好练习下。
 16. jQuery匹配unicode编码 ```characterEncoding = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+"```表示看不懂啊
+17. Backbone绑定scroll无效？
