@@ -750,8 +750,17 @@ for (var i = 0; i < aLi.length; i++) {
     
     ```javascript
     new Date(2012,12,12);
+
     ```
     所得到的值并不会是2012-12-12而是2013-01-12
+
+     **01/20 2016更新**  
+     ```javascript
+     new Date(2015,12,0)
+     // Thu Dec 31 2015 00:00:00 GMT+0800 (中国标准时间)
+     ```
+     也就是说，当天数设为0的时候，获取到的月份与对应的月份是相等的。然后刚好可以通过这个方式来获取一个月份的天数。
+
   * 实例化日期对象的时候，如果要设置日期，那么传入的日期用逗号分隔，如
     ```javascript
     new Date(2012,11,12,12,12,12);
@@ -1229,6 +1238,46 @@ for (var i = 0; i < aLi.length; i++) {
 
 5. Backbone里View初始化的时候访问DOM元素会失败。
 6. 如果在一个View初始化的时候需要访问上层元素，那么可以在上一层View初始化的时候进行访问，而不是在这个View里通过全局访问，这样真的访问不到。
+
+###2016-01-20
+=======
+1. WebPack 在添加loader的时候，对应的loader需要加引号才行，不然会报错。
+2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 
+3. JSON里的键值应该使用双引号而不是单引号。
+4. webPack的插件是在其配置文件中的plugin中指定， BannerPlugin给输出的文件头添加注释信息
+5. 在插入插件比如 new webpack.BannerPlugin()的时候，需要现在配置文件头部```var webpack = require('webpack')```;
+6. ```webpack --display-error-details```可以打印详细错误信息
+7. 当引入通过 npm 安装的 node.js 模块时，可能出现找不到依赖的错误。Node.js 模块的依赖解析算法很简单，是通过查看模块的每一层父目录中的 node_modules 文件夹来查询依赖的。当出现 Node.js 模块依赖查找失败的时候，可以尝试设置 resolve.fallback 和 resolveLoader.fallback 来解决问题。
+8. dropdown的dropdown-toggle和dropdown-menu应该在同一层目录下。 
+9. JS获取当前月的天数： 
+   
+   ```javascript
+   new Date(2016,2,0).getDate(); // 使用时把年份换成当前年份，月份换成当前月份（需要注意的是，该是几月就是几月，如2月就是写2）
+   ```
+10. dropdown的JS方法和添加data-toggle='dropdown'方法只能用一个
+11. CSS用important加权重的方法
+    
+    ```css
+    line-height: 20px!important;
+    ```
+    注意important的位置和书写方式。
+12. dropdown的水平对齐方式有两种，left和right，因为是相对父元素定位的，所以如果想要实现居中对齐的话，可以通过给父元素添加padding来实现
+
+13. 获取选中的单选框的索引  
+
+    ```javascript
+    var index;
+    [].slice.call(document.forms[0]['h']).map(function (a, b) {
+      a.checked === true ? index = b : null;
+    });
+    ```
+
+14. 获取年份的时候要使用new Date().getFullYear()才能得到当前的年份，如果使用的是new Date().getYear()的话，将会返回1900到今年的年份数
+15. 表示小于等于的时候，是不能分开的，必须连在一起。。。 i <= 123;
+16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。
+17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
+18. 利用好background-clip的话，可以实现不同的需求。
+
 
 #Problems
 =======
