@@ -6,6 +6,7 @@
 2. 关于多列布局的一个比较好的方法是：a. 获取列宽度的百分值，然后用1-百分值*列数就会得到剩余的空间，再把这个空间除以列数-1，这样就能得到每
    一列之间的间隙，在设置的时候，使用相邻选择器，设置margin-left为得到的间隙值即可。
 
+
 ----------
 
 ###2015-12-11
@@ -1277,7 +1278,21 @@ for (var i = 0; i < aLi.length; i++) {
 16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。
 17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
 18. 利用好background-clip的话，可以实现不同的需求。
+###2016-01-21
+======
+1. 关于取反：
 
+   ```javascript
+   isMulti = !this.select.start === this.select.end;
+   ```
+   这样写是不对的因为会先计算!this.select.start，然后再判断相等，所以需要先加个括号  
+
+   ```javascript
+   isMulti = !(this.select.start === this.select.end);
+   ```
+   这样才能得到自己想要的结果
+2. jQuery里的nextAll(), prevAll(), nextUtil(), prevUntil()方法
+3. 关于css的hover不一定需要父元素在空间上包裹子元素，只要结构上包裹，就会触发。
 
 #Problems
 =======
