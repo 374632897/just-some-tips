@@ -1300,6 +1300,13 @@ for (var i = 0; i < aLi.length; i++) {
 
 2. 使用setTimeout的异步执行方式可以巧妙地在某些语句之后执行相应语句，尤其是在清类名的时候
 
+
+###2016-01-23
+=======
+1. webpack里不要require('babel-core')
+2. sass-loader默认是把样式放到网页内的？？ 
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
@@ -1342,3 +1349,5 @@ for (var i = 0; i < aLi.length; i++) {
 15. 关于exec方法当时看了没有练，结果现在忘了，有空了一定要好好练习下。
 16. jQuery匹配unicode编码 ```characterEncoding = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+"```表示看不懂啊
 17. Backbone绑定scroll无效？
+18. 安装sass-loader出错的话。。。使用cnpm来安装
+19. --save-dev，之间是没有空格的
