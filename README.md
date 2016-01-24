@@ -1306,6 +1306,13 @@ for (var i = 0; i < aLi.length; i++) {
 1. webpack里不要require('babel-core')
 2. sass-loader默认是把样式放到网页内的？？ 
 
+###2016-01-24
+======
+1. 富文本编辑的两种方式
+  * iframe
+  * contentEditable
+2. document.defaultView.getComputedStyle()，标准推荐的获取样式的方法
+3. 原生JS可以直接通过DOM元素的text属性来访问其文本，不过更好的方法还是通过innerText
 
 #Problems
 =======

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="test" cols="50" rows="30">ceshiceshiceshiceshi</textarea>
+  <script>
+  var oT  = document.getElementById('test');
+  window.onload = function () {
+    oT.focus();
+    oT.select();
+    oT.onselect = function () {
+      console.log(oT.value.length);
+      console.log(oT.selectionStart, oT.selectionEnd);
+
+      console.log(oT.value.substring(oT.selectionStart, oT.selectionEnd));
+
+
+    };
+  };
+  </script>
+</body>
+</html>
