@@ -1306,6 +1306,39 @@ for (var i = 0; i < aLi.length; i++) {
 1. webpack里不要require('babel-core')
 2. sass-loader默认是把样式放到网页内的？？ 
 
+###2016-01-26
+======
+1. 获取日期，new Date(year, month, date)的时候，如果date为零，那么获取到的将会是上一个月的最后一天，可以通过这个方法来获取一个月的天数。也就是说可以通过  
+
+```javascript
+new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+```
+来获取到当月的天数
+2. 如下代码： 
+  
+  ```javascript
+  Math.random() * 16 | 0; // 0 - 16的随机数 整数
+  ```
+  不知道是什么原理。。。总之这里用了这句话之后，就不用再使用Math.floor()来取整了。 
+  卧槽。。好像发现了一个神奇的东西。。。 
+
+
+  ```javascript
+  var random = Math.random() * 16; // 2.7166785709559917
+  random | 0; // 2
+  random | 1; // 3
+  ```
+  那么是不是就代表 | 后面接0代表向下取整， 后面接1代表向上取整  
+  不对啊。。。 好像是向下取整后，再加上后面的值的来着
+
+  ```javascript
+  random | 3; // 11
+  random | 5; // 13
+  random | 199; // 207
+  random | 200; // 200  // 然而奇怪的是，到了200之后就会变成后面的数值了 // 200 - 207之间
+  ```
+  总觉得好神奇的样子。。。
+
 
 #Problems
 =======
