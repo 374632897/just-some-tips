@@ -1361,7 +1361,56 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   ```
   所以还是老老实实的用Math对象的方法来进行取整吧。 。 
 
+###2016-01-27
+=======
+1. 数字toString的时候需要使用括号括起来
+   
+   ```javascript
+   1231231231.toString(16); // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
+   (1231231231).toString(16); // "496318ff"
 
+   
+   ```
+2. 获取样式
+     
+   ```javascript
+  
+  info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+  ```
+
+###2016-01-28
+1. nodeName.cloneNode(boolean)用于拷贝节点
+   ```javascript
+   var oUl = document.getElementsByTagName('ul')[0], cloneUl = oUl.cloneNode(true),
+        list = ['10', '11', '12'], temp, i = 0, len = list.length;
+    for (; i< len; i++) {
+      temp = document.createElement('li');
+      temp.innerHTML = list[i];
+      cloneUl.appendChild(temp);
+    }
+    oUl.parentNode.replaceChild(cloneUl, oUl);
+   ```
+   虽然直接拼接字符串， 然后一次性的用innerHTML插入会比较好，但是replaceChild还是需要好好理解应用的。
+2. 查看页面中DOM元素数量
+   
+   ```javascript
+   document.getElementsByTagName('*').length
+   ```
+3. matchesSelector用来匹配dom元素是否匹配某css selector。它为一些高级方法的实现提供了基础支持，比如事件代理，parent, closest等。
+   
+   ```javascript
+   var docElem = window.document.documentElement,
+      selector_hasDuplicate,
+      matches = docElem.webkitMatchesSelector || docElem.mozMatchesSelector || docElem.oMatchesSelector ||docElem.msMatchesSelector,
+      selector_sortOrder = function ( a, b ) {
+          // Flag for duplicate removal
+          if ( a === b ) {
+               selector_hasDuplicate = true ;
+               return 0;
+          }
+      }
+   ```
+4. JS里不能直接判断两个数组是否相等，用全等或不全等都不行，都会返回false， 可以把数组利用toString转换为字符串再进行比较。
 
 
 #Problems
