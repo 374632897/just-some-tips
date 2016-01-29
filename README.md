@@ -1412,6 +1412,41 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 4. JS里不能直接判断两个数组是否相等，用全等或不全等都不行，都会返回false， 可以把数组利用toString转换为字符串再进行比较。
 
+###2016-01-29
+1. 关于if语句  
+  
+   ```javascript
+   if (!10 % 2) { console.log('123') }  // 不会执行
+   if (!(10 % 2)) { console.log(123) }  // 123
+   // 因为!运算符的优先级要高于%，所以就会先对10进行取反，得到false, 然后false % 2， 得到的是0，自然就不会执行了。 所以要注意括号的使用
+   ```
+
+3. 关于位运算符
+   * 判断奇偶  
+   ```javascript
+   if (n & 1) { console.log('n是奇数'); } // 如果是奇数，那么值为0
+
+   // 原理： 奇数的二进制码的最后一位数肯定是1，而1只有最后一个为1，因此按位&1之后，得到的结果里面肯定只有最后一个数为1了，所以对奇数按位&1之后，得到的结果就肯定是1
+   ```
+   * 按位异或(^)  
+   按位异或是两个数中只有一个1时返回1，其他情况返回0。
+
+4. jQuery的on方法在绑定的事件之后有个可选的[selector]参数，用于指定特定的后代元素才会触发这个事件
+   
+   ```javascript
+    // 以下代码运行时，只有.container的.left元素才会触发click事件
+    $('.container').on('click', '.left', function () {
+       console.log('click');
+    });
+
+    // [selector]后面还有个可选的[data]参数，当使用此参数时，需要给绑定的函数传递事件对象，然后访问[data]时，通过事件对象的data属性来进行访问
+    $('.container').on('click', '.left',{name: 'Jiangxi'},  function (e) {
+       console.log('click' + e.data.name);
+    });
+   ```
+5. jQuery自定义事件
+   * 首先给元素绑定一个事件，设置一个函数
+   * 然后触发
 
 #Problems
 =======
