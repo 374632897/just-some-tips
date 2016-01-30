@@ -1473,6 +1473,25 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * webpack -p  对打包后的文件进行压缩
    * webpack -d  提供sourcemap, 方便调试
 
+3. 【CSS-MDN学习】
+   * text-decoration-color: 用于更改文字修饰线条的颜色，默认值为currentColor目前只有FF和safari支持这个属性
+   * text-overflow: 可以取字符串，也可以取两个值。。。当然，只有FF支持这个属性
+
+4. 来点英语吧
+   * era 时代，纪元
+   * dynamic 动态的
+   * 
+
+5. 注意！！！！webpack.config.js里面，loader是module之下的一个对象。。。别落下了。。
+
+6. 关于数组的reduce方法
+
+7. 箭头函数内部的this为函数定义处的上下文的this, 箭头函数对上下文的绑定是强制性的，无法通过apply或者call来改变相应的值。 因此不要随意在顶层作用域使用箭头函数以防出错
+
+8. 因为调用babel转码ES6时，用的是严格模式，在严格模式下，顶层作用域中的this不是指向window的，而是undefined
+
+9. 关于class的static静态方法。
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
@@ -1517,3 +1536,5 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 17. Backbone绑定scroll无效？
 18. 安装sass-loader出错的话。。。使用cnpm来安装
 19. --save-dev，之间是没有空格的
+20. 在公司电脑里sourcemap用了不生效。。。怎么回事。。 
+21.
