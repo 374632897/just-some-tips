@@ -1447,6 +1447,31 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 5. jQuery自定义事件
    * 首先给元素绑定一个事件，设置一个函数
    * 然后触发
+6. npm uninstall module --save-dev的时候，如果dependencies里面也有这个包的话，那么卸载的时候也会把里面的都给卸载掉
+
+
+###2016-01-30
+1. 关于webpack加载babel-loader的一些注意事项
+   * 需要安装的依赖包： babel && babel-core && babel-preset-es2015 && babel-loader && babel-plugin-add-module-exports
+   * 需要注意的是，需要在当前项目根目录下建立一个.babelrc文件，然后里面内容如下：
+
+     ```json
+      {
+        "presets": [
+          "es2015"
+        ],
+        "plugins": [
+          "add-module-exports"
+        ]
+      }
+     ```
+   * babel-plugin-add-module-exports是为了添加ES6的import 和 export功能
+
+2. webpack命令
+   * webpack 最基本的启动webpack的方法
+   * webpack -w  监听文件变更，并实时更新
+   * webpack -p  对打包后的文件进行压缩
+   * webpack -d  提供sourcemap, 方便调试
 
 #Problems
 =======
