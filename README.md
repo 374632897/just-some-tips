@@ -1492,6 +1492,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 9. 关于class的static静态方法。
 
+
+###2016-02-01
+=======
+1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。 
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
