@@ -1496,6 +1496,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-02-01
 =======
 1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。 
+2. 关于backgound-clip在IE下表现不对的问题。。 可以通过border来搞定。[DEMO](https://github.com/374632897/just-some-tips/src/testBorderRadiusUnderIE9.html), padding配合background-clip和border可以做出不少有意思的东西
+
+3. 对于input text元素尽量使用padding来实现居中啊。。。 
+
+
+
 
 #Problems
 =======

@@ -10,14 +10,22 @@
     border-radius: 50%;
     background-color: #f66;
     box-sizing: border-box;
-    padding: 100px 100px;
+    padding: 100px;
     background-clip: content-box;
     outline: 1px solid orange;
+  }
+  /* 为IE添加的hack */
+  .iehack{
+    padding: 99px;
+    border: 1px solid transparent;
   }
   </style>
 </head>
 <body>
   <div class="test">
+    
+  </div>
+  <div class="test iehack">
     
   </div>
   <p>background-clip属性在chrome-FF下表现一致，出现的是我们期望的结果，绘制背景也只是在内容区内绘制。但是在IE和Safari下，却是将padding内的内容作为背景绘制区域，只不过会将content-box外的内容裁剪掉。</p>
