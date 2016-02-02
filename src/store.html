@@ -13,6 +13,19 @@
     var store = localStorage.getItem(name);
     return (store && JSON.parse(store)) || [];
   };
+  // 合并参数， 后面的会覆盖前面的。 用于对象
+  var extend = function () {
+    var newObject = {};
+    for (var i = 0, len = arguments.length; i < len; i++) {
+      var obj = arguments[i]
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          newObject[key] = obj[key];
+        }
+      }
+    }
+    return newObject;
+  }
   </script>
 </body>
 </html>
