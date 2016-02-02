@@ -1491,6 +1491,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 8. 因为调用babel转码ES6时，用的是严格模式，在严格模式下，顶层作用域中的this不是指向window的，而是undefined
 
 9. 关于class的static静态方法。
+10. import { } from '', 表示局部引入
+
+11. 覆盖整个模块儿的暴露对象，需要在export后面加上default ```export defalut ... 
+
+12. promise
+    * 要为一个函数赋予 Promise 的能力，先要创建一个 Promise 对象，并将其作为函数值返回
+    * 要求创建一个函数并且带有resolve和reject参数
+    * 如果函数内部需要用到this，那么就需要使用this的别名，或者使用箭头函数
 
 
 ###2016-02-01
