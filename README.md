@@ -1500,6 +1500,54 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. 对于input text元素尽量使用padding来实现居中啊。。。 
 
+###2016-02-02
+======
+1. ellipse----椭圆    individual ---- 个人的  denote --- 指示, 指出
+2. 关于border-radius
+   * 当为一个值的时候， 表示四个角一样
+   * 为两个值的时候， 第一个值表示左上角和对角， 第二个值表示右上角和对角
+   * 为三个值的时候，第二个值表示右上和左下
+   * 使用'/'来分隔的时候， 可以定义不同方向的值。 '/'之前表示水平方向，之后表示垂直方向  
+   * 当border-collapse为collapse的时候， border-radius不能作用于表格元素
+
+3. 查找一个元素在数组中的索引： 
+  
+   ```javascript
+   var arr = ['test1', 'test2', 'test3', 'test4'];
+   arr.indexOf('test1'); // 0
+   ```
+   要注意的是， 是arr.indexOf()....
+
+4. ```position: relative```对表格元素无效。
+
+5. 清除IE下INPUT元素的叉叉， ```::-ms-clear{display:none}``` 清除密码查看： ```-ms-reveal{display:none}```.
+
+6. #233看起来好像也确实不错哈。
+7. 关于bind:
+   
+   ```js
+   var name = 'Jason';
+   var obj = {
+     name: 'Daisy',
+     sayName: function (name) {
+       console.log(name);
+     },
+     sayHello: function () {
+       console.log('hello ' + this.name);
+     }
+   };
+   
+   obj.sayHello(); // hello Daisy
+   obj.sayHello.bind(this)(); // hello Jason
+   obj.sayName(obj.name); // Daisy
+   obj.sayName.bind(this, 'Jason'); // Jason
+   ```
+   以上有两个需要注意的地方， 
+   * 一个是对函数使用bind的时候，需要对函数本身而不是函数的执行结果进行绑定，也就是说，绑定的时候应该是```obj.sayHello.bind(this)()```而不是```obj.sayHello().bind(this)()```. 当然了，有了ES6的箭头函数之后， 就没必要这么麻烦了。 需要注意的是，对函数使用了bind()之后只是绑定了函数执行环境的this，还要加上括号才表示执行函数。
+   * 另外一个就是，传递参数的时候，可以在bind()的第二个参数之后传递, 多个参数之间直接用逗号分隔
+   * 当然，也可以只给bind()传递this,然后在执行函数的括号里面传递具体参数
+
+
 
 
 
