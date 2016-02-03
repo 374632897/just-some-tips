@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IE下FIXED定位异常</title>
+  <style>
+  body{
+    /*position: relative;*/
+  }
+  .absolute{
+    width: 500px;
+    position: absolute;
+    /*height: */
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    margin-left: -250px;
+    background: rgba(0, 0, 0, .7);
+
+  }
+  .fixed{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #f66;
+  }
+  .fixed>div{
+    width: 80%;
+    background: #f00;
+    height: 70px;
+    margin: 0 auto;
+  }
+  img{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    height: 400px;
+    width: 1600px;
+    margin-left: -800px;
+    /*margin: 0 auto;*/
+  }
+  .wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  </style>
+</head>
+<body>
+  <!-- <div class="wrap"> -->
+     <!-- <img src="./meinv.png" alt="美少女"> -->
+  <!-- </div> -->
+  <div class="absolute">
+    <div class="fixed">
+      <div></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1548,6 +1548,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * 当然，也可以只给bind()传递this,然后在执行函数的括号里面传递具体参数
 
 
+###2016-02-03
+=======
+1. 元素的位置通过指定与其最近的position属性非static的元素来确定。
+2. 对```position: fixed```的元素的宽度使用百分比的话， 其宽度是相对窗口来的而不是相对其父元素来
+3. 对于使用transform来进行变换的元素， 可以利用left，top(如果可以用的话)来进行微调。
+4. 通过jQuery获取元素，得到的是一个类数组对象
+5. ```::selection```永远只能用两个冒号开始
+6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。 
+7. font的简写中， styel | variant | weight在font-size的前面
+
+
 
 
 
