@@ -1566,6 +1566,59 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。 
 7. font的简写中， styel | variant | weight在font-size的前面
 
+###2016-02-16
+=======
+1. 闭包相关：  
+   ```js
+    var hello = (function () {
+      var hello;
+      console.log(hello);
+      return function () {
+        if (hello) {
+          console.log('preHello is ' + hello);
+        } else {
+          hello = 'hello';
+          console.log(hello)
+        }
+      }
+    })();
+    hello(); // hello
+    hello(); // preHello is hello
+   ```
+
+2. 多个变量同时声明：   
+   ```js
+  (function () {
+     var a = b = c =1;
+     console.log(a, b, c); // 1 1 1
+  })();
+  a // Uncaught ReferenceError: a is not defined(…)
+  b // 1
+  c // 1
+
+   ```
+   也就是说，通过以上的方式来声明变量的话， b和c成了全局变量，但是a依然是局部变量
+
+3. 关于```unload```事件，应该加在window上，这样在每次刷新或者卸载页面的时候就会触发该事件。
+4. 关于```Generator```  
+   ```js
+    function* testGenerator() {
+      yield 's1';
+      yield 's2';
+      return 'end';
+    }
+    var test = testGenerator();
+    test.next(); // Object {value: "s1", done: false}
+   ```
+   * 在调用generator函数之后，该函数并不执行， 返回的只是一个指向内部状态的指针对象
+   * 通过调用遍历器对象的next()方法，来使得指针移向下一个状态
+   * value 为 当前值， done表示遍历未完成
+   * ES6没有规定*号需要写在哪个位置。。。
+   * yield语句如果用在表达式中， 则需要加括号，在用作函数参数或者赋值表达式右边时则不用
+   * yield语句默认是没有返回值的， 如果需要有返回值，那么需要在调用next方法的时候传递参数```true```， 得到的返回值为上一个yield值
+
+
+5. 当需要获取当前毫秒的时候，可以使用```new Date().getTime()```, 但是直接使用```+ new Date()```却更为简便
 
 
 
