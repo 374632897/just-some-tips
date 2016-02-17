@@ -1744,7 +1744,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
    ```
  
- 4. 箭头函数
+4. 箭头函数
     * 下面的f表示函数名, (a,b)表示函数参数， ```=> a```，a表示函数返回值。   
     ```js
     var f = (a, b) => a;
@@ -1761,14 +1761,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     * **箭头函数不能使用new操作符， 不可以使用arguments, 不可以使用yield命令，所以不能用于Generator函数**
     * 函数中的```this```指向定义时所在对象而不是使用时的对象
 
-  对象相关
-  =========
-
-  5. ```Object.prototype.hasOwnProperty()```参数是个字符串啊字符串o(╯□╰)o 
   
-  6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。 
 
-  7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。   
+5. ```Object.prototype.hasOwnProperty()```参数是个字符串啊字符串o(╯□╰)o [MDN-Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/)
+  
+6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。 
+
+7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。   
+
     ```js
     function A() {}
     function B() {}
@@ -1784,8 +1784,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     ```
     与```instanceof```不同， ```isPrototypeOf```用于两个对象之间， 而```instanceof```用于一个对象和一个构造函数之间
 
-  8. ```obj.propertyIsEnumerable()``` 
+8. ```obj.propertyIsEnumerable()``` 
     * 返回一个布尔值， 表示指定的属性名是否是当前对象的可枚举属性  
+
     ```js
     class Person {
       constructor (name) {
@@ -1797,7 +1798,31 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     person.propertyIsEnumerable('name');    // true
     person.propertyIsEnumerable('sayName'); // false
     ```
+    
     * 可枚举属性是可以通过```for...in..```遍历到的
+9. 代码：  
+   ```js
+   var obj = {
+      foo: 1,
+      get bar() {
+          return 2;
+      }
+   };
+   obj.bar; // 2
+
+   var to = Object(param); // 这里param是什么类型， 那么to便是什么类型  
+   // 如， var to = Object({ id: 123 }); 那么to为 { id: 123 }
+
+   Object.keys(obj); // 得到的是由obj的键名组成的一个数组
+   ```
+
+10. ```Object.getOwnPropertyDescriptor(obj, prop)``` 
+   * 获取对象obj的prop属性的属性描述符， 如果obj不具有prop属性， 那么返回值为undefined 
+   
+   ```js
+    var obj = { id: 12 };
+    Object.getOwnPropertyDescriptor(obj, 'id'); // Object { value: 12, writable: true, enumerable: true, configurable: true }
+   ```
 
 
 
