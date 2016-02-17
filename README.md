@@ -1620,6 +1620,147 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 5. 当需要获取当前毫秒的时候，可以使用```new Date().getTime()```, 但是直接使用```+ new Date()```却更为简便
 
+###2016-02-17
+======
+1. 关于```Promise```  
+   ```js
+    let promise2 = new Promise(function(resolve, reject) {
+      console.log('Promise');
+      resolve(); // 将promise的状态由pending转化为resolve
+      reject();
+    });
+
+    promise2.then(function() {
+      console.log('Resolved.');
+    }, function() {
+      console.log('Rejected');
+    });
+
+    console.log('Hi!');
+    // Promise
+    // Hi!
+    // Resolved.
+
+    // 异步加载图片
+    function loadImageAsync(url) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => {
+          resolve(image);
+        };
+        image.onerror = () => {
+          reject(new Error(`Could not read image at ${url}`));
+        };
+        image.src = url;
+      })
+    }
+
+    const t = loadImageAsync('https://www.baidu.com/img/bd_logo1.png');
+   ```
+   * Promise的then方法返回的是另外一个新的实例  
+   ```js
+   var t1 = t.then((value, t1, t2) => { return 'Daisy' })
+    .then((value) => {
+      console.log(`the prev value is ${value}`);
+      return 'Jason';
+    }).then((value) => {
+      throw new Error('nonono');
+      return 'error';
+    }).catch((error) => {
+      console.log(error);
+      return 'Catch';
+    });
+
+    var t3 = new Promise((resolve, reject) => {
+      resolve('JASON');
+    }).then((e) => {
+      console.log(`The prev value is ${e}`);
+      return 'Daisy';
+    }).then((e) => {
+      console.log(`The prev value is ${e}`);
+      const err = new Error('invalid value');
+      throw err;
+    }).catch((e) => {
+      console.info(e);
+    });
+    // The prev value is JASON
+    // The prev value is Daisy
+    // Error: invalid value(…)
+
+    // 通过这种方法可以直接生成实例
+    var i = Promise.resolve('Jason');
+    var j = Promise.reject('Jason');  // 会抛出错误
+
+   ```
+
+2. ```Object.assign```用于一次性的向对象添加多个属性或方法  
+   ```js
+    var obj = {}
+    Object.assign(obj, {
+      name: 'Jason',
+      sayName () {
+        console.log(this.name);
+      }
+    });
+    console.log(obj); // Object {name: "Jason"}
+   ```
+
+3. ```class```
+   * ```constructor```方法： 在使用new操作符生成实例的时候，会自动调用此方法
+   * 在```class```内部定义的方法默认保存到其原型对象上
+   * ```class```不存在变量声明提升
+   * 类之间的继承是通过```extends```来实现的。  
+
+   ```js
+    class Person {
+      constructor (name) {
+        this.name = name;
+      }
+      sayName () {
+        return this.name
+      }
+    }
+    class PersonDetail extends Person {
+      constructor (name, age) {
+        // super指代父类的实例， 必须要调用super()之后才能够使用this，不然会报错
+        super(name); // 调用父类的constructor方法。 这里必须要这句话。并且需要传入父类的constructor调用时所需的参数
+        this.age = age;
+      }
+    }
+
+   ```
+   * 所有在类中定义的方法都会被实例继承， 如果在方法前加上```static```, 则该方法不会被实例继承 ， 而是直接通过类来调用，也就是‘静态方法’, 父类的静态方法可以被子类继承
+   * ```new.target```用于确定调用函数时有没有使用new操作符，如果没使用，那么值为```undefined```。class内部调用```new.target```， 则指向该class,如果在继承的时候使用，将会指向子类  
+   ```js
+    function Person2(name) {
+      if (new.target !== undefined) {
+        this.name = name;
+      } else {
+        throw new Error('必须使用new生成实例');
+      }
+    }
+    var p2 = Person2('Jason');
+    // Uncaught Error: 必须使用new生成实例(…)
+
+   ```
+ 
+ 4. 箭头函数
+    * 下面的f表示函数名, (a,b)表示函数参数， ```=> a```，a表示函数返回值。   
+    ```js
+    var f = (a, b) => a;
+    ``` 
+    * 如果函数有多个语句的话, 用花括号包围  
+    ```js
+    var f = (a, b) => { console.log(a);console.log(b) }
+    ```
+    * 如果函数的返回值为一个对象， 那么需要用圆括号将该对象包围  
+
+    ```js
+     var f = (a, b) => ({ id: a, name: b });
+    ```
+    * **箭头函数不能使用new操作符， 不可以使用arguments, 不可以使用yield命令，所以不能用于Generator函数**
+    * 函数中的```this```指向定义时所在对象而不是使用时的对象
+
 
 
 
