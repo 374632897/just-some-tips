@@ -1761,6 +1761,44 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     * **箭头函数不能使用new操作符， 不可以使用arguments, 不可以使用yield命令，所以不能用于Generator函数**
     * 函数中的```this```指向定义时所在对象而不是使用时的对象
 
+  对象相关
+  =========
+
+  5. ```Object.prototype.hasOwnProperty()```参数是个字符串啊字符串o(╯□╰)o 
+  
+  6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。 
+
+  7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。   
+    ```js
+    function A() {}
+    function B() {}
+
+    A.prototype.isPrototypeOf(B); // false 这里应该为一个对象， 也就是B的原型对象
+    B.prototype = new A(); // B的原型对象指向A的实例， 也就是B继承了A。 那么A的原型对象就在B的原型对象的原型链上。 
+    A.prototype.isPrototypeOf(B.prototype); // true // A的原型对象在B的原型链上
+
+    var a = new A();
+    a instanceof A; // instanceof 的左边是一个对象，右边是一个（构造）函数。
+
+
+    ```
+    与```instanceof```不同， ```isPrototypeOf```用于两个对象之间， 而```instanceof```用于一个对象和一个构造函数之间
+
+  8. ```obj.propertyIsEnumerable()``` 
+    * 返回一个布尔值， 表示指定的属性名是否是当前对象的可枚举属性  
+    ```js
+    class Person {
+      constructor (name) {
+        this.name = name;
+      }
+      sayName () {}
+    }
+    var person = new Person('Jason');       // undefined
+    person.propertyIsEnumerable('name');    // true
+    person.propertyIsEnumerable('sayName'); // false
+    ```
+    * 可枚举属性是可以通过```for...in..```遍历到的
+
 
 
 
