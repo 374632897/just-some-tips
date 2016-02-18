@@ -1854,12 +1854,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     // 简单的对象赋值
     var obj = { name: 'Jason' }, obj2 = obj;
     obj2.age = 22;
-    obj
-    // Object {name: "Jason", age: 22}
-    obj2
-    // Object {name: "Jason", age: 22}
-    
-    // 原型对象
+    obj // Object {name: "Jason", age: 22}
+    obj2 // Object {name: "Jason", age: 22}
+    // 也就是说，当obj2发生变化的时候，obj也发生了变化， 这与对象按引用传递的概念是相吻合的
+
+    // 原型对象  o(╯□╰)o  当时出现的问题怎么复现不了了。 。 
 
    ```
 
