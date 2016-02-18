@@ -1824,6 +1824,23 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     Object.getOwnPropertyDescriptor(obj, 'id'); // Object { value: 12, writable: true, enumerable: true, configurable: true }
    ```
 
+###2016-02-18
+=======
+1. 关于```Object.defineProperty()```   
+   
+   ```js
+   var obj = { name: 'one' }, obj2 = {};
+    Object.defineProperty(obj, 'name', {
+      value: 'One'
+    });
+    Object.defineProperty(obj2, 'name',{
+      value: 'Two'
+    });
+    Object.getOwnPropertyDescriptor(obj, 'name'); // Object {value: "One", writable: true, enumerable: true, configurable: true}
+    Object.getOwnPropertyDescriptor(obj2, 'name'); // Object {value: "Two", writable: false, enumerable: false, configurable: false}
+   ```
+   也就是说通过``Object.defineProperty```来定义一个尚未存在于对象中的属性的时候， 该属性的未定义特性将会为false, 如果该属性已存在与对象之中， 那么其未定义特性将为true;
+
 
 
 
