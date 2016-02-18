@@ -1841,6 +1841,95 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    也就是说通过``Object.defineProperty```来定义一个尚未存在于对象中的属性的时候， 该属性的未定义特性将会为false, 如果该属性已存在与对象之中， 那么其未定义特性将为true;
 
+2. chrome快捷键
+  * ```F12 || ctrl + shift + I```  --- 打开开发者工具
+  * ```ctrl + shift + c```         --- 检查元素
+  * ```ctrl + shift + j```         --- 打开开发者工具并使控制台获取焦点
+3. ```document.documentMode```IE的特性，通过这个可以判断是否是IE。 
+  * documentMode的值表示当前IE浏览器在哪个文档模式下工作---IE11 -> 11， IE8 -> 8...
+
+4. 关于把一个对象赋给另一个对象  
+   
+   ```js
+    // 简单的对象赋值
+    var obj = { name: 'Jason' }, obj2 = obj;
+    obj2.age = 22;
+    obj
+    // Object {name: "Jason", age: 22}
+    obj2
+    // Object {name: "Jason", age: 22}
+    
+    // 原型对象
+
+   ```
+
+
+5. backbone里的View实例化的时候传参， 参数需要是一个对象， 如```const view = new View({obj: obj})```,如果直接传递obj的话，那么obj的属性会直接写在对应模板的html的根元素上
+
+6. ```Object.is(arg1, arg2)```, 用于比较arg1和arg2是否相等。 与```===```不同的是， ```===```在判断```+0 === -0```的时候会返回```true```, 在判断```NaN === NaN```的时候会返回```false```, 而通过```Object.is()```来判断的时候就刚好相反。 
+
+7. 关于set  
+  
+  ```js
+  var o = Object.create({}, {
+    foo: {
+      writable: true,
+      configurable: true,
+      value: 'hello'
+    },
+    bar: {
+      configurable: false,
+      get: function (){ return 10; },
+      set: function(value){console.log(value)} // 通过o.bar = val来访问
+    }
+  });
+  ``` 
+  也就是说，访问器属性里面， 直接通过o.bar来访问的话， 会调用get函数， 如果对o.bar赋值的话， 会调用set函数， 需要注意的是， 用```o.bar(val)```来设置的话会报错啊/(ㄒoㄒ)/~~
+
+8. 关于```Object.create()```
+  
+  ```js
+  var o = Object.create({}, {
+    p: {
+      value: 43
+    }
+  });
+  Object.getOwnPropertyDescriptor(o, 'p');
+  // Object {value: 43, writable: false, enumerable: false, configurable: false}
+  ```
+  也就是说， 通过```Object.create(proto, [ propertiesObject ])```来创建对象时， 其省略的属性特性默认值为false. propertiesObject是一个对象， 属性名为新创建对象的属性名称， 值为属性特性描述符。 
+  
+  ```js
+  var o = {
+    name: 'Daisy',
+    age: 22
+  };
+  var o2 = Object.create(o, {
+    husband: {
+      value: 'Jason'
+    }
+  });
+
+  o2; // Object {husband: "Jason"};
+  o2.__proto__; // Object {name: "Daisy", age: 22};
+  
+  // 通过Object生成的对象， 具有一个原始值PrimitiveValue， 可以直接操作， 如a + 5之类
+  var a = Object(123);
+  a; // Number {[[PrimitiveValue]]: 123} Primitive: 原始的
+  var b = 123;
+  b; // 123;
+
+  ```
+  也就是说， 通过```Object.create(proto)```创建得到的新对象的```__proto__```属性即为proto对象
+
+  [Polyfill待看](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill)
+
+9. 关于```Object.preventExtensitions```, ```Object.freeze```, ```Object.seal```
+  * ```Object.preventExtensitions```:  阻止对对象添加属性， 但是可以操作现有属性
+  * ```Object.freeze```： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
+  * ```Object.seal``` ： 不能添加属性和删除属性， 但是可以修改现有属性。 
+
+
 
 
 
