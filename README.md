@@ -1928,6 +1928,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ```Object.freeze```： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
   * ```Object.seal``` ： 不能添加属性和删除属性， 但是可以修改现有属性。 
 
+###2016-02-19
+=======
+1. ```setTimeout```和```setInterval```未指定时间的时候， 则时间为0.
+2. 清除定时器是使用```clearInterval(timerId)```或者```clearTimeout(timerId)```， 而不是直接将```timerId = null```, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
+3. 
+
 
 
 
