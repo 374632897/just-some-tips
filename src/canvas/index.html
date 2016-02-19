@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  canvas{
+    display: block;
+    margin: 30px auto;
+    border: 1px solid rgba(0, 0, 0, .07);
+  }
+  </style>
+</head>
+<body>
+  <canvas id = 'cvs' width = '800' height = '600'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
+  <script>
+  // canvas元素默认为inline元素
+  var oC = document.getElementById('cvs');
+  var ctx = oC.getContext('2d');
+  </script>
+
+  <!--  <script src = './js/drawALine.js'></script> -->
+  <!--  <script src = './js/drawARect.js'></script> -->
+  <script src = './js/drawAPath.js'></script>
+</body>
+</html>
