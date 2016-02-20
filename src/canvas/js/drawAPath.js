@@ -127,3 +127,35 @@ function draw() {
  * quadraticCurveTo(c1x, c1y, x, y)  绘制二次贝塞尔曲线， c1x, c1y为控制点， x, y为结束点
  * bezierCurveTo(c1x, c1y, c2x, c2y, x, y)  绘制三次贝塞尔曲线，x,y为结束点，c1x,c1y为控制点一，c2x,c2y为控制点二。
  */
+
+
+/**
+ *
+ * 
+ */
+
+function drawAGrid () {
+  var R = 20, COLNUM = oC.width / 20, ROWSNUM = oC.height / 20;
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#747474';
+  for (var i = 0; i < COLNUM; i++ ) {
+    for(var j = 0; j < ROWSNUM; j++) {
+      ctx.strokeRect(i * R, j * R, R, R);
+      ctx.stroke();
+    }
+  }
+
+  // ctx.beginPath();
+  drawACompareLine();
+  
+}
+
+drawAGrid();
+
+function drawACompareLine () {
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 10;
+  ctx.moveTo(40, 40);
+  ctx.lineTo(40, 300);
+  ctx.stroke();
+}
