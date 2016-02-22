@@ -12,9 +12,10 @@
  * 2. 再指定图片的src
  *
  * drawImage三种方法： 
- * 1. drawImage(img, x, y)                   ---- 绘制图片
- * 2. drawImage(img, x, y, width, height)    ---- 控制缩放
- * 3. drawImage(img, x, y, )                 ---- 切片
+ * 1. drawImage(img, x, y)                               ---- 绘制图片
+ * 2. drawImage(img, x, y, width, height)                ---- 控制缩放
+ * 3. drawImage(img, sx, sy, sw, sh, dx, dy, dw,dh )     ---- 切片
+ *    表示在图像sx, sy的地方裁剪掉sw, sh这一块儿， 然后在dx, dy这个点上， 按照dw, dh显示出来
  */
 
 function drawImageWithInputFile () {

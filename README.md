@@ -1822,7 +1822,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```js
     var obj = { id: 12 };
     Object.getOwnPropertyDescriptor(obj, 'id'); // Object { value: 12, writable: true, enumerable: true, configurable: true }
-   ```
+   ``` 
+
+###2016-02-23
+=======
+1. 关于拖拽
+   * mousedown事件加在拖拽元素上
+   * mouseover, mouseup事件在mousedown事件内部绑定
+   * mouseover, mouseup事件需要绑定在document对象上
+   * 真的。。 肺腑之言
 
 ###2016-02-18
 =======

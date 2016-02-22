@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  canvas{
+    /*display: block;*/
+    margin: 30px auto;
+    border: 1px solid rgba(0, 0, 0, .07);
+  }
+  /*#cloneCanvas{
+    display: none;
+  }*/
+  .canvasBox{
+    position: relative;
+    width: 700px;
+    height: 700px;
+    margin: 50px auto;
+    outline: 1px solid red;
+  }
+  .canvasBox canvas, .canvasBox div{
+    position: absolute;
+    
+  }
+  #cvs{
+    left: 50px;
+    top: 50px;
+  }
+  #cloneCanvas{
+    left: 100px;
+    top: 100px;
+    cursor: move;
+  }
+  #point{
+    left: 595px;
+    top: 624px;
+    height: 10px;
+    width: 10px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, .5);
+    outline: 1px solid orange;
+    cursor: se-resize;
+  }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <input type="file"><input type="button" value = 'clear reference' id='clear'>
+    <div class="canvasBox">
+      <canvas id = 'cvs' width = '600' height = '600'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
+      <canvas id="cloneCanvas" width = '500' height = '500'></canvas>
+      <div id="point" width = '10' height = '10'></div>
+    </div>
+  </div>
+  <script>
+  // canvas元素默认为inline元素
+  var oC = document.getElementById('cvs'), ctx = oC.getContext('2d');
+  var cloneCanvas = document.getElementById('cloneCanvas'), ctx2 = cloneCanvas.getContext('2d');
+
+  var oPoint = document.getElementById('point');
+  </script>
+
+  <script src = './js/drawACanvasWithInputFile.js'></script>
+
+</body>
+</html>

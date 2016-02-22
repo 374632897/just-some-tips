@@ -67,7 +67,7 @@ function drawSpirograph(ctx,R,r,O){
   } while (x2 != R-O && y2 != 0 );
   ctx.stroke();
 }
-// draw();
+draw();
 })();
 
 (function () {
