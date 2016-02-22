@@ -32,13 +32,41 @@
     // 绘制图片
     drawImage: function () {
       var img = new Image(), _this = this;
+      var point = {
+        x : 100,
+        y : 100,
+        height: 400,
+        width: 300 
+      };
       obj.reference.push(img);
       img.onload = function () {
         // 每次绘制之前先清空画布
+        var ratio = img.offsetWidth / img.offsetHeight;
+        console.log(ratio);
+
         ctx.clearRect(0, 0, oC.width, oC.height);
         ctx.drawImage(this, 0, 0);
+
+        // 绘制另一幅图片
+        ctx2.clearRect(0, 0, oC.width, oC.height);
+        ctx2.drawImage(this, 0, 0);
+
+        _this.drawAMask();
+        // ctx.drawImage(cloneCanvas, 0, 0, 500, 400, 0, 0, 500, 400);
+        ctx.drawImage(cloneCanvas, 0, 0, oC.width, oC.height, 0, 0, 500, 400);
+        ctx.stroke
+
+
       };
       this.readInputFile(img);
+    },
+    drawAMask: function () {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.fillRect(0, 0, oC.width, oC.height);
+      ctx.fill();
+    },
+    drawASelectArea: function () {
+
     },
     // 清除引用
     clearReference: function () {
@@ -58,5 +86,7 @@
 
 
   obj.drawImage();
+
+
   obj.clearReference();
 })();

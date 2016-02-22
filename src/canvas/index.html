@@ -9,15 +9,22 @@
     margin: 30px auto;
     border: 1px solid rgba(0, 0, 0, .07);
   }
+  #cloneCanvas{
+    display: none;
+  }
   </style>
 </head>
 <body>
   <input type="file"><input type="button" value = 'clear reference' id='clear'>
   <canvas id = 'cvs' width = '800' height = '600'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
+  <canvas id="cloneCanvas" width = '800' height = '600'></canvas>
   <script>
   // canvas元素默认为inline元素
   var oC = document.getElementById('cvs');
   var ctx = oC.getContext('2d');
+
+  var cloneCanvas = document.getElementById('cloneCanvas');
+  var ctx2 = cloneCanvas.getContext('2d');
   </script>
 
   <!--  <script src = './js/drawALine.js'></script> -->
