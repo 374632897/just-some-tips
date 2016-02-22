@@ -138,7 +138,7 @@
       this.getPosition();
       this.drawImage();
       this.bindPointEvent();
-      // this.bindCloneCanvasEvent();
+      this.bindCloneCanvasEvent();
       this.clearReference();
     },
     bindPointEvent: function () {
