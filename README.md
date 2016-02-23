@@ -1940,7 +1940,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. ```setTimeout```和```setInterval```未指定时间的时候， 则时间为0.
 2. 清除定时器是使用```clearInterval(timerId)```或者```clearTimeout(timerId)```， 而不是直接将```timerId = null```, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
-3. 
+3. 在view里只能给view里的元素绑定事件？？？？
+4. 将多维数组转化为一维数组：  
+   
+   ```js
+   const arr = [1, 2, 3, 4, [5, 6, 7, 8, 9]];
+   let   arr2 = arr.toString().split(',').map(item => item - 0);
+   arr2; // Array [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+   // 也可以像下面这样
+   [].concat.apply([], arr);
+   ```
 
 
 
