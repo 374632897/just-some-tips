@@ -10,22 +10,34 @@
     border: 1px solid rgba(0, 0, 0, .07);
   }
   #cloneCanvas{
-    display: none;
+    /*display: none;*/
+  }
+  input[type='text']{
+    width: 100px;
   }
   </style>
 </head>
 <body>
   <div class="box">
     <input type="file"><input type="button" value = 'clear reference' id='clear'>
+    <input type="text" placeholder = 'x' id = 'x'> 
+    <input type="text" placeholder = 'y' id = 'y'>
+    <input type="text" placeholder = 'r' id = 'r'>
+    <button id='btn'>绘制</button>
     <div class="canvasBox">
-      <canvas id = 'cvs' width = '600' height = '600'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
-      <canvas id="cloneCanvas" width = '600' height = '600'></canvas>
+      <canvas id = 'cvs' width = '400' height = '400'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
+      <canvas id="cloneCanvas" width = '300' height = '300'></canvas>
     </div>
+
   </div>
   <script>
   // canvas元素默认为inline元素
   var oC = document.getElementById('cvs');
-  var ctx = oC.getContext('2d');
+  var ctx = oC.getContext('2d'), oX = document.getElementById('x'), 
+    oY = document.getElementById('y'), oR = document.getElementById('r'),
+    oBtn = document.getElementById('btn');
+
+
 
   var cloneCanvas = document.getElementById('cloneCanvas');
   var ctx2 = cloneCanvas.getContext('2d');
@@ -38,11 +50,12 @@
   <!-- // <script src = './js/gradients.js'></script> -->
   <!-- // <script src = './js/drawText.js'></script> -->
   <!-- // <script src = './js/usingImage.js'></script> -->
-  <script src = './js/drawACanvasWithInputFile.js'></script>
+  <!-- // <script src = './js/drawACanvasWithInputFile.js'></script> -->
   <!-- // <script src = './js/transformation.js'></script> -->
   <!-- // <script src = './js/transformation.js'></script> -->
   <!-- // <script src = './js/Compositing.js'></script> -->
   <!-- // <script src = './js/colorPicker.js'></script> -->
+  <script src='./js/aboutSlicing.js'></script>
 
 </body>
 </html>
