@@ -46,7 +46,8 @@
 </head>
 <body>
   <div class="box">
-    <input type="file"><input type="button" value = 'clear reference' id='clear'>
+    <!-- accesskey的触发条件为（alt | shift + alt） + accesskeyvalue-->
+    <input type="file"><input type="button" value = 'clear reference' id='clear' accesskey = 'c'>
     <div class="canvasBox">
       <canvas id = 'cvs' width = '600' height = '600'>你的浏览器不支持canvas， 请使用高版本浏览器</canvas>
       <canvas id="cloneCanvas" width = '500' height = '500'></canvas>

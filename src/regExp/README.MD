@@ -86,3 +86,9 @@
 * ```x{n,}```
 * ```x{n,y}```
    **Note:** 这里n和y之间不能有空格  
+
+  ```js
+  // 从url中提取子域名
+  var url = "http://xxx.domain.com";
+  url.replace(/https?:\/\/([^.]*)\..*/, '$1'); // "xxx"
+  ```
