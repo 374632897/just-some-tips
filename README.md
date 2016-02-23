@@ -1952,6 +1952,32 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    [].concat.apply([], arr); // 这里不能使用call
    ```
 
+###2016-02-24
+1. 变量声明提升和函数声明提升
+   
+   ```js
+   console.log(x); // function
+   var x = '123';
+   function x () {}
+   
+   console.log(y); // function
+
+   function y () {}
+   var y = '123';
+   ```
+   也就是说， 变量声明提升优先于函数声明提升。这样来看吧。 。 
+
+
+   ```js
+   // 首先进行变量声明提升，此时 var y = undefined, 声明了y但是没有赋值
+   // 然后进行函数声明提升，把函数赋给了y
+   console.log(y);
+   function y () {}
+   var y = '123';
+   ```
+
+
+
 
 
 
