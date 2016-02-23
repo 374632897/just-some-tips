@@ -1949,7 +1949,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    arr2; // Array [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
    // 也可以像下面这样
-   [].concat.apply([], arr);
+   [].concat.apply([], arr); // 这里不能使用call
    ```
 
 
