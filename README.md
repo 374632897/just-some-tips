@@ -1979,10 +1979,65 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 使用```:empty```选择器来实现```contentEditabel```元素的placeholder效果： 
 
    ```html
-
+    <div contenteditable = 'true'></div>
    ```
+
+   ```css
+   div[contenteditable = 'true']{
+     width: 400px;
+     padding: 10px;
+     line-height: 28px;
+     min-height: 400px;
+     border: 1px solid rgba(0, 0, 0, .3);
+   }
+   div[contenteditable = 'true']:empty:before{
+     content: '请输入内容';
+   }
+   ```
+   [实现contentEditable元素的placeholder效果DEMO](http://374632897.github.io/just-some-tips/DEMO/placeholderForContent.html)
+
 3. 使用模板引擎的时候， 如果给标签属性插入变量， 记得加引号如```value = '{{- hello}}'```
 4. CSS也要注意目录分层
+5. 隐藏滚动条效果： 
+     
+   ```html
+   <div class='list'>
+    <div class="wrap">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+   ```
+
+   ```css
+   .list{
+     width: 140px;
+     overflow: hidden;
+     height: 600px;
+     outline: 1px solid #f66;
+   }
+   .wrap{
+     width: 157px; /* 包裹元素要比外层元素多17个像素， 17为滚动条的宽度 */
+     height: 600px;
+     overflow-x: hidden;
+     overflow-y: scroll; /* 让滚动条一直显示出来， 并将其挤出内容区即可达到隐藏滚动条效果*/
+   }
+   ul{
+     width: 157px;
+   }
+   ```
+6. 使用CSS计数器
+   * ```counter-reset: countername, startValue``` 后面跟一个计数器的名字和起始值， 如```counter-reset: list 2```表示初始化list计数器的值为2， 默认为0.
+   * ```counter-increment: countername[,step]``` 指定增加的计数器和步进， 如：   
+     ```counter-increment: list 5```, 则表示计数器list将会从5开始并以5为步进计数5， 10， 15.。。
+   * ```content: ' ' counter(list)``` 调用计数器
+   * 计数器需要配合```:before```, ```:after```伪元素的```content```属性来使用
+   [计数器&&隐藏滚动条DEMO](http://374632897.github.io/just-some-tips/DEMO/hideScrollBar.html)
+   [多个计数器目录结构](http://374632897.github.io/just-some-tips/DEMO/counter.html)
+
+7. * ```Math.trunc()``` 用于去除一个数的小数部分， 参数可以为字符串或者数字，或者布尔值
+   * ```Math.cbrt()```  用于计算一个数的立方根
 
 
 

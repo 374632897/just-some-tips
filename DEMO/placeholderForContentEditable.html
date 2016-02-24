@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  div[contenteditable = 'true']{
+    width: 400px;
+    padding: 10px;
+    /* 加上行高之后光标会错位 */
+    line-height: 28px;
+    min-height: 400px;
+    border: 1px solid rgba(0, 0, 0, .3);
+  }
+  div[contenteditable = 'true']:empty:before{
+    content: '请输入内容';
+  }
+  </style>
+</head>
+<body>
+  <div contenteditable = 'true'></div>
+</body>
+</html>
