@@ -1976,7 +1976,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    var y = '123';
    ```
 
+2. 使用```:empty```选择器来实现```contentEditabel```元素的placeholder效果： 
 
+   ```html
+
+   ```
+3. 使用模板引擎的时候， 如果给标签属性插入变量， 记得加引号如```value = '{{- hello}}'```
+4. CSS也要注意目录分层
 
 
 
