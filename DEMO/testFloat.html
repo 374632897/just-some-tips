@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  ul{
+    counter-reset: list;
+  }
+  li:before{
+    counter-increment: list;
+    content: '测试' counter(list);
+  }
+  li{
+    float: left;
+    list-style: none;
+  }
+  </style>
+</head>
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+</html>

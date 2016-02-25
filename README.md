@@ -2039,8 +2039,78 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 7. * ```Math.trunc()``` 用于去除一个数的小数部分， 参数可以为字符串或者数字，或者布尔值
    * ```Math.cbrt()```  用于计算一个数的立方根
 
+8. ```Array.from()```可以把一个类数组对象转化为数组。可以接受第二个参数， 用来处理传入的数据并返回。  
+   ```js
+   Array.from(arrLike, (item, index, ary) => {
+     console.log(item, index, ary);
+     return item + 5;
+   });
+   // 1 0 undefined
+   // 2 1 undefined
+   // 3 2 undefined
+   // Array [ 6, 7, 8 ]
+   ```
+9. 箭头函数不能用作构造函数。 
+10. 如下代码： 关于Object的简写：   
+   ```js
+   var name = 'Jason', age = 22, obj = { name, age };
+   obj; // Object { name: "Jason", age: 22 }
+   ```
+
+11. 关于属性赋值器  
+   
+   ```js
+    var person = {
+      _name: 'Jason',// 注意这里要加下划线， 不然会出现无限递归调用从而报错
+      get name () {
+        return this._name;
+      },
+      set name (value) {
+        this._name = value;
+      }
+
+    }
+    person._name
+    // "Jason"
+    person.name
+    // "Jason"
+   ```
+12. 属性名的简洁写法的情况下， 属性名始终是字符串：  
+   ```js
+   var obj = {
+     class () {
+      
+     }
+   };
+   ```
+
+   定义属性名的时候可以用```[]```, 里面可以用变量或者表达式或者字符串  
+   ```js
+   var relation = 'husban', name = 'Jason', obj = {
+     [relation]: name
+   };
+   obj
+   // Object { husban: "Jason" }
+   ```
+    **属性名与简洁写法不能同时用， 会报错**
 
 
+13. Proxy
+   
+  ```js
+  var obj = new Proxy({}, {
+    get (target, key, receiver) {
+      console.log(target, key , receiver);
+    },
+    set (target, key, value, receiver) {
+      console.log(target, key , value, receiver)
+     }
+
+  });
+  obj.name = 'Jason'
+  // Object {  } name Jason Object {  }
+  // "Jason"
+  ```
 
 
 #Problems
