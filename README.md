@@ -2112,6 +2112,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   // "Jason"
   ```
 
+###2016-02-27
+=======
+1. return后不能直接跟throw new Error();
+
 
 #Problems
 =======
