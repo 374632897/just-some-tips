@@ -26,10 +26,29 @@
       <query>,
       <update>,
       {
-        upsert: <boolean>,
-        multi: <boolean>,
-        writeConcern: <boolean>
+        upsert: <boolean>,      # 如果不存在记录是否更新 默认为false
+        multi: <boolean>,       # 是否更新查出来的多条记录， 默认为false
+        writeConcern: <boolean> # 抛出异常的级别
       }
-
     )
+
     ```
+5. 删除文档
+   
+   * ``db.collection.remove(<query>, <justOne>)``
+
+6. 查询文档
+   * ``db.collection.find()``           --- 用非结构化的方式来显示文档
+   * ``db.collection.find().pretty()``  --- 用更易读的方式来显示文档。 
+   * ``db.collection.findOne()``        --- 只返回一个文档  
+   * ``db.col.find({"likes":50}).pretty()``         -- 等于
+   * ``db.col.find({"likes":{$lt:50}}).pretty()``   -- 小于
+   * ``db.col.find({"likes":{$lte:50}}).pretty()``  -- 小于等于
+   * ``db.col.find({"likes":{$gt:50}}).pretty()``   -- 大于
+   * ``db.col.find({"likes":{$gte:50}}).pretty()``  -- 大于等于
+   * ``db.col.find({"likes":{$ne:50}}).pretty()``   -- 不等于
+   * ``or``语句使用``$or``
+
+     ```mongodb
+      db.Jason.find({$or: [{age: 22}, {name: "Jason"}]}); # 注意$or的值为一个数组，数组项为对象
+     ```
