@@ -2117,6 +2117,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. return后不能直接跟throw new Error();
 
 
+###2016-02-29
+======
+1. 使用`inline-block`元素的时候一定要注意其对齐方式啊！！！！！！
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
