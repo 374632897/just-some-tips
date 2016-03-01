@@ -2112,6 +2112,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   // "Jason"
   ```
 
+###2016-03-01
+=======
+1. forEach和map在遍历一个数组时， 将会自动忽略数组的undefined项, 并且不执行该次遍历
+
+=======
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
