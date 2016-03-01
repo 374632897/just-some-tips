@@ -2114,7 +2114,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-01
 =======
-1. forEach和map在遍历一个数组时， 将会自动忽略数组的undefined项, 并且不执行该次遍历
+1. 注意`inline-block`元素默认对齐方式为基线对齐
+2. `return`后面不能直接跟`throw new Error()`
+
+3. `forEach`和`map`在遍历一个数组时， 将会自动忽略数组的undefined项, 并且不执行该次遍历
 
 =======
 #Problems
