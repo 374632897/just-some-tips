@@ -21,7 +21,7 @@
 3. 更新文档
   * ```db.collection.update({"age": 22}, {$set: {"age": 23}});```
   *   
-    ```mongdodb
+    ```mongodb
     db.collection.update(
       <query>,
       <update>,
@@ -52,3 +52,45 @@
      ```mongodb
       db.Jason.find({$or: [{age: 22}, {name: "Jason"}]}); # 注意$or的值为一个数组，数组项为对象
      ```
+
+7. ```use [databasename]```表示使用该数据库
+   
+   ```db.person.insert()```在使用该数据库后执行上述命令则表示在该数据库的person集合下插入数据
+8. ``$type``用于查找时过滤指定的数据类型
+9. ```db.COLLECTION_NAME.find().limit(NUMBER)```指定从集合中读取指定的条数
+10. `````
+10. ``db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)``skip方法用来跳过指定数量的数据。默认参数为0
+11. ``db.COLLECTION_NAME.find().sort({KEY:1})``按照指定键进行排序用1和-1指定排序方式， 1为升序， -1为降序。 默认按照文档的升序排列
+
+12. ``db.COLLECTION_NAME.ensureIndex({KEY:1})``使用ensureIndex(）来方法来创建索引，1表示升序。也可以使用多个字段来创建索引
+13.   
+   ``mongodb
+   db.COLLECTION_NAME.aggregate([{
+     $group: {
+       _id: '$age', #$age表示按照age字段来聚合
+       num_tutorial: {$sum: 1} #$sum表示求和
+     }
+   }]);
+  ``
+14. ```$project```
+  
+
+   ```mongodb
+   db.books.aggregate({
+     $project: {
+       _id: 0, # 在没有显示地将id设为0的情况下返回的字段中是包含id的。
+       name: 1 # 设1的表示返回该字段
+     }
+   });
+  ```
+
+15. ```$match```  
+    ```mongodb
+     db.books.aggregate({
+       $match: {
+         name: "JavaScript高级程序设计"
+       }
+    }); # 返回name字段为指定值的文档
+    ```
+
+16. ```mongod --port "PORT" --dbpath "YOUR_DB_DATA_PATH" --replSet "REPLICA_SET_INSTANCE_NAME"```mongoDB副本集设置
