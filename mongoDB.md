@@ -93,4 +93,7 @@
     }); # 返回name字段为指定值的文档
     ```
 
-16. ```mongod --port "PORT" --dbpath "YOUR_DB_DATA_PATH" --replSet "REPLICA_SET_INSTANCE_NAME"```mongoDB副本集设置
+16. ```mongod --port "PORT" --dbpath "YOUR_DB_DATA_PATH" --replSet "REPLICA_SET_INSTANCE_NAME"```  
+  
+    mongoDB副本集设置
+
