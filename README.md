@@ -2119,6 +2119,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. `forEach`和`map`在遍历一个数组时， 将会自动忽略数组的undefined项, 并且不执行该次遍历
 
+
+
+###2016-03-03
+====
+1. 好像绝对定位的元素可以不受滚动条影响？ 这个可以好好研究下。 
+
+
 =======
 #Problems
 =======
