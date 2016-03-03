@@ -2125,6 +2125,29 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ====
 1. 好像绝对定位的元素可以不受滚动条影响？ 这个可以好好研究下。 
 
+###2016-03-04
+1. 单例模式
+   
+   `js
+   var Time = (function () {
+     var time;
+     return function () {
+       if (!time) time = + new Date();
+       return time;
+     };
+   })();
+   Time(); // 1457024261571
+   Time(); // 1457024261571
+   Time(); // 1457024261571
+   Time(); // 1457024261571
+   Time
+   // function () {
+   //   if (!time) time = + new Date();
+   //   return time;
+   // }
+   `
+   也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。 
+
 
 =======
 #Problems
