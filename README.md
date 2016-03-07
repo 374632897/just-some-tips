@@ -2206,6 +2206,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``HEAD``表示当前版本， 上一个版本是``HEAD^``, 上上个版本是``HEAD^^``， 当有100个版本的时候则写成``HEAD~100``
   * ``git reset --hard HEAD``表示回退到上一个版本
 
+
+6. 
+
 =======
 #Problems
 =======

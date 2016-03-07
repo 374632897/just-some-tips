@@ -97,3 +97,5 @@
   
     mongoDB副本集设置
 
+17. ``show tables``即可查看当前集合
+
