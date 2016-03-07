@@ -2153,6 +2153,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-07
 =======
 1. `concat`不是在原数组上操作不是在原数组上操作！！！
+2. JS里的数字是用浮点数来保存的。 所以。。 
+  
+  ``js
+  5.52.toFixed(2); // '5.52'
+  5.toFixed(2);   // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
+  5..toFixed(2);  // "5.00"
+  (5).toFixed(2); // "5.00" 
+  ``
+  因为数字后面默认会有个小数点。。 所以使用``5.toFixed()``的时候， 那个点号表示的是小数点而不是操作符
 
 
 =======
