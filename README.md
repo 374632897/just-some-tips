@@ -2162,7 +2162,44 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   (5).toFixed(2); // "5.00" 
   ``
   因为数字后面默认会有个小数点。。 所以使用``5.toFixed()``的时候， 那个点号表示的是小数点而不是操作符
+3. 关于函数
+   
+  `js
+  var test = function te () {
+    console.log(test === te); // true 表示在这里两者都可以访问到。 并且是等价的。 
+  };
+  test; // function te...
+  te; // te未定义
+  `
+4. 关于`return`, `continue`, `break`
+  `js
+   var obj = {
+     name : 'Jason',
+     age: 22,
+     gender: 'male'
+   };
+   for (const key in obj) {
+     console.log('start');
+     if (key === 'name') continue; // 跳出本次循环， 继续下次循环
+     console.log('end')
+   }
+   for (const key in obj) {
+     console.log('start');
+     if (key === 'name') break; // 跳出所有循环， 执行循环外的语句
+     console.log('end')
+   }
+  `
+  `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。 
 
+5. `GIT`命令
+  * ``ls -ah``可以用于查看隐藏文件（夹）
+  * ``git add filename`` 把文件添加到仓库
+  * ``git commit -m 'msg' `` 把文件提交到仓库
+  * ``git status ``可以查看当前仓库的状态
+  * ``git diff``查看改变的地方 (difference)
+  * ``git log``可以查看提交记录， ``git log --pretty=online``美化提交记录
+  * ``HEAD``表示当前版本， 上一个版本是``HEAD^``, 上上个版本是``HEAD^^``， 当有100个版本的时候则写成``HEAD~100``
+  * ``git reset --hard HEAD``表示回退到上一个版本
 
 =======
 #Problems
