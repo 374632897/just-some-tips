@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>严格模式下的this指向问题</title>
+</head>
+<body>
+  <script>
+  (function () {
+    'use strict';
+    console.log(this);
+  })();
+  console.log(this);
+  </script>
+</body>
+</html>

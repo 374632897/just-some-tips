@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  .arrow{
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-top: 0;
+    margin: 50px auto;
+    border-bottom: 100px solid #f66;
+    /*border-left: */
+    transition: all ease-out 5s;
+  }
+  .arrow:hover{
+    /*transform: rotate(1600deg);*/
+  }
+  </style>
+</head>
+<body>
+  <div class="arrow"></div>
+  <script>
+  var a = document.getElementsByClassName('arrow')[0];
+  var turn = 6;
+  var deg = 0;
+  var notTurning = true;
+  a.onclick = function () {
+    if (notTurning) {
+      deg += Math.floor(Math.random()*360 + 1) + 6*360;
+      this.style.transform = 'rotate(' + deg+ 'deg)';
+      notTurning = false;
+      setTimeout(function () {
+        notTurning = true;
+        console.log(deg);
+      }, 5000);
+    }
+  };
+  a.onwebkitTransitionEnd = function () {
+    alert(deg + '度');
+  }
+  </script>
+</body>
+</html>

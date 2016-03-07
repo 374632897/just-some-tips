@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取单选框</title>
+</head>
+<body>
+  <form action="">
+    <input type="radio" name="h" value = '1'>
+    <input type="radio" name="h" value = '2'>
+    <input type="radio" name="h" value = '3'>
+    <input type="radio" name="h" value = '4'>
+    <input type="radio" name="h" value = '5'>
+    <input type="radio" name="h" value = '6'>
+    <input type="radio" name="h" value = '7'>
+    <input type="button" value="click" id="click">
+  </form>
+  <script>
+
+  document.getElementById('click').onclick = function () {
+    var index;
+    [].slice.call(document.forms[0]['h']).map(function (a, b) {
+      a.checked === true ? index = b : null;
+    });
+    console.log(index);
+  };
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+   var oBox = document.getElementById('container');
+
+   function counter() {
+    var num = 10, timer = null, msg;
+    var timer = setInterval(function () {
+      msg = num > 0 ? num-- : '倒计时完毕';
+      // if (num > 0) {
+      //   num--;
+      //   oBox.innerHTML = num;
+      // } else {
+      //   oBox.innerHTML = '倒计时完毕';
+
+      //   // timer = null; // 清除定时器是使用clearInterval()或者clearTimeout()...
+      //   clearTimeout(timer);
+      // }
+      // console.log(timer);
+      oBox.innerHTML = msg;
+      if (isNaN(msg)) clearTimeout(timer);
+    }, 1000);
+    return timer;
+   }
+   var timer = counter();
+  </script>
+</body>
+</html>

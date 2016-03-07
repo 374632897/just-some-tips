@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testChecked</title>
+  <style>
+  label{
+    padding: 5px 10px;
+    background: #f66;
+    color: #fff;
+  }
+  input[type="checkbox"]{
+    position: absolute;
+    left: -9999px;
+  }
+  input:checked + label {
+    background: orange;
+  }
+  div{
+    display: inline-block;
+    position: relative;
+  }
+  div:before{
+    content: '';
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    line-height: 30px;
+    background: #f65;
+    /*visibility: hidden;*/
+    transform: scaleX(0);
+    transition: all ease-out .2s;
+  }
+  div:hover:before{
+    /*visibility: visible;*/
+    transform: scaleX(1);
+  }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="check">
+  <label for="check" id="label">点我</label>
+
+  <div>我就是爱音乐</div>
+  <script>
+  (function () {
+    // var check = document.getElementById('check');
+
+  })();
+  </script>
+</body>
+</html>

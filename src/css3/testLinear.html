@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    div{
+      width: 200px;
+      height: 100px;
+      background: -webkit-linear-gradient(left top, blue 50%, white 50%);
+      outline: 1px solid #f66;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+
+  window.onunload = function () {
+    console.log('beforeunload');
+    var arr = JSON.parse(localStorage.getItem('test')) || [];
+    arr = arr.concat({ 'name': 'Jiangxi' });
+    localStorage.setItem('test', JSON.stringify(arr));
+  };
+  window.onbeforeunload = function (event) {
+    var e = event || window.event, msg = 'Do you really wanna leave ?';
+    e.returnValue = msg;
+    return msg;
+  };
+  </script>
+</body> 
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>隐藏滚动条</title>
+  <style>
+  body{
+    /*不加这句话的话则会显示为1*/
+    counter-reset: list;
+  }
+  .list{
+    width: 140px;
+    overflow: hidden;
+    height: 600px;
+    outline: 1px solid #f66;
+  }
+  .wrap{
+    width: 157px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: scroll; /* 让滚动条一直显示出来， 并将其挤出内容区即可达到隐藏滚动条效果*/
+  }
+  ul{
+    width: 157px;
+    /*counter-increment: list; */ /* 如果这里加一句的话， 也会统计次数 */
+  }
+  li:before{
+    counter-increment: list;
+    content: '测试  ' counter(list);/* 直接用空格分隔 */
+  }
+  
+  </style>
+</head>
+<body>
+  <div class='list'>
+    <div class="wrap">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

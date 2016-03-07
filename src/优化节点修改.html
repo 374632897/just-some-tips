@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>优化节点修改</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <div class="test" contenteditable='true'></div>
+  </ul>
+  <script>
+    var oUl = document.getElementsByTagName('ul')[0], cloneUl = oUl.cloneNode(true),
+        list = ['10', '11', '12'], temp, i = 0, len = list.length;
+    for (; i< len; i++) {
+      temp = document.createElement('li');
+      temp.innerHTML = list[i];
+      cloneUl.appendChild(temp);
+    }
+    oUl.parentNode.replaceChild(cloneUl, oUl);
+
+    var list2 = ['123', '12312', '12313', '123123'],
+        lest3 = [];
+
+    while (list2.length) {
+      console.log(list2.pop());
+    }
+
+    do {
+      console.log('test');
+    } while (list2.length);
+    
+  </script>
+</body>
+</html>
