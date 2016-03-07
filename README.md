@@ -2149,6 +2149,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    `
    也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一 直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。 
 
+###2016-03-05
+=======
+1. ``module.exports = moduleName``和```exports.moduleName = moduleName```的区别在于通过前者导出的是可以直接访问到的，而后者导出去的require得到的是一个对象， 需要再访问这个对象的对应属性才能拿到对应的模块儿
+2. 
+
 
 ###2016-03-07
 =======
