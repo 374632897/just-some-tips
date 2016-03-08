@@ -2198,14 +2198,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 5. `GIT`命令
   * ``ls -ah``可以用于查看隐藏文件（夹）
-  * ``git add filename`` 把文件添加到仓库
-  * ``git commit -m 'msg' `` 把文件提交到仓库
+  * ``git add filename`` 把文件添加到仓库  -- 暂存区
+  * ``git add . ``即可一次添加所有更改文件
+  * ``git commit -m 'msg' `` 把文件提交到仓库 -- 将暂存区的所有内容提交到当前分支
   * ``git status ``可以查看当前仓库的状态
   * ``git diff``查看改变的地方 (difference)
+  * `` git diff [<options>] [<commit> [<commit>]] [--] [<path>...]``, 如``git diff HEAD -- readme.md``
+
   * ``git log``可以查看提交记录， ``git log --pretty=online``美化提交记录
   * ``HEAD``表示当前版本， 上一个版本是``HEAD^``, 上上个版本是``HEAD^^``， 当有100个版本的时候则写成``HEAD~100``
   * ``git reset --hard HEAD``表示回退到上一个版本
-
+  * ``git reset --hard``后面不跟版本号的话会回退到最近提交的版本上。 如果只add了但是没有commit，那么add的内容就会丢失
+  * ``git reflog``用于查看命令历史
+  * ``cat filename```即可查看文件
+  * ``git checkout -- readme.md ```可以放弃工作区内对指定文件的修改。。 注意→＿←： **中间的两根中划线前后都有空格**
+  * 
 
 6. 
 
