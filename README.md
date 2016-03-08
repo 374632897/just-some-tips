@@ -2176,7 +2176,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   test; // function te...
   te; // te未定义
   `
-4. 关于`return`, `continue`, `break`
+4. 关于`return`, `continue`, `break`  
+
   `js
    var obj = {
      name : 'Jason',
@@ -2245,6 +2246,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git config --global color.ui true``让git显示颜色
 
 6. 
+
+###2016-03-09
+=======
+1.   
+  ```js
+  var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
+  ```js
+ 第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。 
 
 =======
 #Problems
