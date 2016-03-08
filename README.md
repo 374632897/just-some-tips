@@ -1942,7 +1942,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 清除定时器是使用```clearInterval(timerId)```或者```clearTimeout(timerId)```， 而不是直接将```timerId = null```, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
 3. 在view里只能给view里的元素绑定事件？？？？
 4. 将多维数组转化为一维数组：  
-   
+      
+
    ```js
    const arr = [1, 2, 3, 4, [5, 6, 7, 8, 9]];
    let   arr2 = arr.toString().split(',').map(item => item - 0);
@@ -1954,7 +1955,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-02-24
 1. 变量声明提升和函数声明提升
-   
+     
+
    ```js
    console.log(x); // function
    var x = '123';
@@ -1977,6 +1979,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 
 2. 使用```:empty```选择器来实现```contentEditabel```元素的placeholder效果： 
+    
 
    ```html
     <div contenteditable = 'true'></div>
@@ -1999,7 +2002,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 3. 使用模板引擎的时候， 如果给标签属性插入变量， 记得加引号如```value = '{{- hello}}'```
 4. CSS也要注意目录分层
 5. 隐藏滚动条效果： 
-     
+      
+  
+ 
    ```html
    <div class='list'>
     <div class="wrap">
@@ -2039,7 +2044,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 7. * ```Math.trunc()``` 用于去除一个数的小数部分， 参数可以为字符串或者数字，或者布尔值
    * ```Math.cbrt()```  用于计算一个数的立方根
 
-8. ```Array.from()```可以把一个类数组对象转化为数组。可以接受第二个参数， 用来处理传入的数据并返回。  
+8. ```Array.from()```可以把一个类数组对象转化为数组。可以接受第二个参数， 用来处理传入的数据并返回。    
+
    ```js
    Array.from(arrLike, (item, index, ary) => {
      console.log(item, index, ary);
@@ -2051,14 +2057,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    // Array [ 6, 7, 8 ]
    ```
 9. 箭头函数不能用作构造函数。 
-10. 如下代码： 关于Object的简写：   
+10. 如下代码： 关于Object的简写：  
+
    ```js
    var name = 'Jason', age = 22, obj = { name, age };
    obj; // Object { name: "Jason", age: 22 }
    ```
 
-11. 关于属性赋值器  
-   
+11. 关于属性赋值器    
+
    ```js
     var person = {
       _name: 'Jason',// 注意这里要加下划线， 不然会出现无限递归调用从而报错
@@ -2076,6 +2083,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     // "Jason"
    ```
 12. 属性名的简洁写法的情况下， 属性名始终是字符串：  
+     
+
    ```js
    var obj = {
      class () {
@@ -2095,8 +2104,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     **属性名与简洁写法不能同时用， 会报错**
 
 
-13. Proxy
-   
+13. Proxy  
+
   ```js
   var obj = new Proxy({}, {
     get (target, key, receiver) {
@@ -2128,8 +2137,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-04
 1. 单例模式
-   
-   `js
+     
+
+   ```js
    var Time = (function () {
      var time;
      return function () {
@@ -2146,7 +2156,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    //   if (!time) time = + new Date();
    //   return time;
    // }
-   `
+   ```
    也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一 直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。 
 
 ###2016-03-05
@@ -2158,27 +2168,27 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-07
 =======
 1. `concat`不是在原数组上操作不是在原数组上操作！！！
-2. JS里的数字是用浮点数来保存的。 所以。。 
-  
-  ``js
+2. JS里的数字是用浮点数来保存的。 所以。。   
+
+  ```js
   5.52.toFixed(2); // '5.52'
   5.toFixed(2);   // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
   5..toFixed(2);  // "5.00"
   (5).toFixed(2); // "5.00" 
-  ``
+  ```
   因为数字后面默认会有个小数点。。 所以使用``5.toFixed()``的时候， 那个点号表示的是小数点而不是操作符
-3. 关于函数
-   
-  `js
+3. 关于函数  
+
+  ```js
   var test = function te () {
     console.log(test === te); // true 表示在这里两者都可以访问到。 并且是等价的。 
   };
   test; // function te...
   te; // te未定义
-  `
+  ```
 4. 关于`return`, `continue`, `break`  
 
-  `js
+  ```js
    var obj = {
      name : 'Jason',
      age: 22,
@@ -2194,7 +2204,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      if (key === 'name') break; // 跳出所有循环， 执行循环外的语句
      console.log('end')
    }
-  `
+  ```
   `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。 
 
 5. `GIT`命令
@@ -2229,12 +2239,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git branch -D branchname``用来强行删除一个分支， 用于分支有更改但是尚未合并的情况
   * ``git remote``用于查看远程分支的信息
   * ``git remote -v``查看更多的远程分支信息 如果没有推送权限则看不到push的信息
-
-    ``sh
+  
+    ```sh
     origin  ssh://git@github.com/374632897/git.git (fetch)
     origin  ssh://git@github.com/374632897/git.git (push)
 
-    ``
+    ```
   * ``git pull``可以把远程的更新抓取下来
   * ``git tag <name> ``用于新建一个标签
   * ``git tag -a <tagname> -m 'some msgs'``用于指定标签信息
@@ -2249,10 +2259,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-09
 =======
-1.   
+1.
   ```js
   var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
-  ```js
+  ```
  第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。 
 
 =======
