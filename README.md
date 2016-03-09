@@ -2266,7 +2266,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
  第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。 
 
 2. 要删除数组中的指定值得项， 其实直接使用``filter``就挺好的了→＿←  
-3. 
+3. 关于``Notification``
+   * `Notification.permission`可以获取桌面通知显示权限， ``default``为拒绝， ``denied``表示用户不想要通知，``granted``表示用户同意接受通知。
+   * ``Notification.requestPermission()``执行此方法即可向用户请求权限
+   * 要生成一个桌面通知即可通过`new Notification(some msgs)`来实现.
+
+4. 关于``calc()``函数
+   * ``calc(100% - 90px)``表示宽度为当前元素的父元素的100%减去90像素得到的宽度。这个应用场景还是比较宽泛的。
+
+5. 箭头函数的this在函数语句里能够正确访问， 但是在打断点的时候访问会出现意外。 →＿←  原来并不是。。 因为执行场景中那只是一个回调而已。 
 
 =======
 #Problems
