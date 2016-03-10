@@ -100,3 +100,13 @@
 17. ``show tables``即可查看当前集合
 18. 向一个不存在的集合中插入文档的时候， 对应的数据库会创建一个集合，判断模型名是否可数，如果不可数，则使用该模型名作为集合名， 如果可数，则使用该模型名的复数形式作为集合名。
 
+19. we can use ``this.model([modelName])`` when we define methods of Schema to get the model now used. 
+
+
+
+
+##Problems
+====
+1. I can't get the value of the Object[key] in jade when I try to traversal an array with ``each item in persons``.
+2. If you try to save the entity with the data undefined in Schema, it will be failed, it means the undefined data will not save into the database sucessfully.
+3. When I update the version of git, I can't run the command ``mongod --dbpath [path]`` under the right directory. I don't know what cuz this.  
