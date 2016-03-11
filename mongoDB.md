@@ -110,3 +110,11 @@
 1. I can't get the value of the Object[key] in jade when I try to traversal an array with ``each item in persons``.
 2. If you try to save the entity with the data undefined in Schema, it will be failed, it means the undefined data will not save into the database sucessfully.
 3. When I update the version of git, I can't run the command ``mongod --dbpath [path]`` under the right directory. I don't know what cuz this.  
+
+options.isReceiveNotification = true;
+    options.viewAuth = 'private';
+    options.editAuth = 'member';
+    
+    options.isReceiveNotification = true;
+    options.viewAuth = 'private'; // public
+    options.editAuth = 'creator'; // all member
