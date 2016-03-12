@@ -2299,6 +2299,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-12
 
 
+2. 关于对象的键→＿←
+  
+  ```js
+  this.model.set(attr, value); // 这里是对变量attr设置值为value , 其key为attr指向的变量
+  this.model.set({ attr: value }); // 这里设置之后其键名就为'attr'  →_→  所以还是得留意一下子啊。。 
+  ```
+
+
 =======
 #Problems
 =======
