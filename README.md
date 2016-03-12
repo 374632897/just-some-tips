@@ -2297,15 +2297,40 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. void运算符表示表达式放弃返回值。
 
 ###2016-03-12
+======
+1. 一个模块中的JS代码仅在模块第一次被使用时执行一次，并在执行过程中初始化模块的导出对象。之后，缓存起来的导出对象被重复利用。
+   
+  ```js
+  // counter.js
+  'use strict'
+  let i = 0;
+  module.exports = () => {
+    return ++i;
+  }
 
+  // test.js
+  const count1 = require('./counter.js');
+  const count2 = require('./counter.js');
 
-2. 关于对象的键→＿←
+  console.log(count1 === count2); // true  也就是说实际上通过count2访问到的就是count1这个函数而不是另外又加载的函数
+  console.log(count1()); // 1
+  console.log(count2()); // 2
+  console.log(count2()); // 3
+  console.log(count1()); // 4
+
+  ```
+
+2. 关于``NODE_PATH`` --- 原来这个是在环境变量里定义的→_→  不是在程序里
+3. 如果要引入目录下的`index.js`那么可以直接使用该目录的名字..
+4. ``node /path``中的path其实是针对该磁盘目录的绝对路径.
+
+5. 关于对象的键→＿←
   
   ```js
   this.model.set(attr, value); // 这里是对变量attr设置值为value , 其key为attr指向的变量
   this.model.set({ attr: value }); // 这里设置之后其键名就为'attr'  →_→  所以还是得留意一下子啊。。 
   ```
-
+6. ``process.argv[0]``表示nodejs执行程序的路径
 
 =======
 #Problems
