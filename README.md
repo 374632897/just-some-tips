@@ -2331,6 +2331,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   this.model.set({ attr: value }); // 这里设置之后其键名就为'attr'  →_→  所以还是得留意一下子啊。。 
   ```
 6. ``process.argv[0]``表示nodejs执行程序的路径
+7. 
 
 =======
 #Problems
