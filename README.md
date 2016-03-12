@@ -2297,28 +2297,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. void运算符表示表达式放弃返回值。
 
 ###2016-03-12
-======
-1. 一个模块中的JS代码仅在模块第一次被使用时执行一次，并在执行过程中初始化模块的导出对象。之后，缓存起来的导出对象被重复利用。
-   
-  ```js
-  // counter.js
-  'use strict'
-  let i = 0;
-  module.exports = () => {
-    return ++i;
-  }
 
-  // test.js
-  const count1 = require('./counter.js');
-  const count2 = require('./counter.js');
-
-  console.log(count1 === count2); // true  也就是说实际上通过count2访问到的就是count1这个函数而不是另外又加载的函数
-  console.log(count1()); // 1
-  console.log(count2()); // 2
-  console.log(count2()); // 3
-  console.log(count1()); // 4
-
-  ```
 
 =======
 #Problems
