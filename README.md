@@ -2298,7 +2298,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git status ``可以查看当前仓库的状态
   * ``git diff``查看改变的地方 (difference)  用于在add之前查看？ 
   * `` git diff [<options>] [<commit> [<commit>]] [--] [<path>...]``, 如``git diff HEAD -- readme.md``
-
+  * `` git diff <srcBranch> <targetBranch>``
   * ``git log``可以查看提交记录， ``git log --pretty=online``美化提交记录
   * ``HEAD``表示当前版本， 上一个版本是``HEAD^``, 上上个版本是``HEAD^^``， 当有100个版本的时候则写成``HEAD~100``
   * ``git reset --hard HEAD``表示回退到上一个版本
