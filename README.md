@@ -2320,7 +2320,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git stash pop``可以恢复当前stash, 并将该stash删除
   * ``git stash list``可以用来查看当前stash列表
   * ``git branch -D branchname``用来强行删除一个分支， 用于分支有更改但是尚未合并的情况
-  * ``git remote``用于查看远程分支的信息
+  * ``git remote``用于查看远程分支的信 息
   * ``git remote -v``查看更多的远程分支信息 如果没有推送权限则看不到push的信息
   
     ```sh
