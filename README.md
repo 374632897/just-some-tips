@@ -1350,6 +1350,8 @@ for (var i = 0; i < aLi.length; i++) {
 16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。:笑cry
 17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
 18. 利用好background-clip的话，可以实现不同的需求。
+
+
 ###2016-01-21
 ======
 1. 关于取反：
@@ -1380,7 +1382,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-24
 ======
-1. 富文本编辑的两种方式
+1. 富文本编辑的两种方式 [据说这是一个大坑， 等以后有能力了真想好好踩踩]
   * iframe
   * contentEditable
 2. document.defaultView.getComputedStyle()，标准推荐的获取样式的方法
@@ -1392,6 +1394,8 @@ for (var i = 0; i < aLi.length; i++) {
 
 ```javascript
 new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+// const date = new Date();
+// new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 ```
 来获取到当月的天数
 2. 如下代码： 
@@ -1431,7 +1435,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   1.566 | 1; // 1
   4565.4564 | 1 // 4565
   ```
-  所以还是老老实实的用Math对象的方法来进行取整吧。 。 
+  所以还是老老实实的用Math对象的方法来进行取整吧。 。不过这种用来取随机数的话还是可行的。  
 
 ###2016-01-27
 =======
@@ -1440,14 +1444,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```javascript
    1231231231.toString(16); // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
    (1231231231).toString(16); // "496318ff"
-
-   
    ```
+   后面有提到， 因为数值的存储是用的浮点， 所以上面第一句里面的第一个小数点会被认为是小数点而不是点号操作符
 2. 获取样式
      
    ```javascript
   
-  info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+  info = ('getComputedStyle' in window) && window.getComputedStyle(ele, null) || ele.currentStyle;
   ```
 
 ###2016-01-28
@@ -1519,6 +1522,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 5. jQuery自定义事件
    * 首先给元素绑定一个事件，设置一个函数
    * 然后触发
+   * 原生： 
+
+     ```js
+     var event = document.createEvent('CustomEvent');
+     event.initCustomEvent('sayHello', true, false, 'hello world');
+     ...
+     ele.dispatchEvent(event);
+     ```
 6. npm uninstall module --save-dev的时候，如果dependencies里面也有这个包的话，那么卸载的时候也会把里面的都给卸载掉
 
 
