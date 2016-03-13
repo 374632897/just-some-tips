@@ -1576,7 +1576,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 9. 关于class的static静态方法。
 10. import { } from '', 表示局部引入
 
-11. 覆盖整个模块儿的暴露对象，需要在export后面加上default ```export defalut ... 
+11. 覆盖整个模块儿的暴露对象，需要在export后面加上default `export defalut` 
 
 12. promise
     * 要为一个函数赋予 Promise 的能力，先要创建一个 Promise 对象，并将其作为函数值返回
@@ -1587,7 +1587,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-02-01
 =======
 1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。 
-2. 关于backgound-clip在IE下表现不对的问题。。 可以通过border来搞定。[DEMO](https://github.com/374632897/just-some-tips/src/testBorderRadiusUnderIE9.html), padding配合background-clip和border可以做出不少有意思的东西
+2. 关于backgound-clip在IE下表现不对的问题。。 可以通过border来搞定。[DEMO](https://github.com/374632897/just-some-tips/src/testBorderRadiusUnderIE9.html), padding配合background-clip和border可以做出不少有意思的东西[好吧， 其实那些只需要border就行了]
 
 3. 对于input text元素尽量使用padding来实现居中啊。。。 
 
@@ -1645,9 +1645,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 对```position: fixed```的元素的宽度使用百分比的话， 其宽度是相对窗口来的而不是相对其父元素来
 3. 对于使用transform来进行变换的元素， 可以利用left，top(如果可以用的话)来进行微调。
 4. 通过jQuery获取元素，得到的是一个类数组对象
-5. ```::selection```永远只能用两个冒号开始
+5. ```::selection```永远只能用两个冒号开始， 毕竟伪元素
 6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。 
-7. font的简写中， styel | variant | weight在font-size的前面
+7. font的简写中， style | variant | weight在font-size的前面
 
 ###2016-02-16
 =======
@@ -1672,7 +1672,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 多个变量同时声明：   
    ```js
   (function () {
-     var a = b = c =1;
+     var a = b = c =1; // 只声明了变量a
      console.log(a, b, c); // 1 1 1
   })();
   a // Uncaught ReferenceError: a is not defined(…)
