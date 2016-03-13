@@ -472,7 +472,7 @@
 
 ###2015-12-27
 =======
-1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。另外，关于使用normalize()来代替children的方法行不通，因为normalize()只是把相邻的文本节点给合并了。
+1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。另外，关于使用normalize()来代替children的方法行不通，因为normalize()只是把相邻的空文本节点给合并了。
 2. replaceChild()，两个参数，第一个是要插入的节点，第二个是要替换的节点
 3. HTMLCollection的几种访问方法，假设aLi为对应的HTMLCollection
    * 使用方括号语法或者item()直接访问 ````aLi[3]````,````aLi.item(3)````
@@ -485,7 +485,11 @@
    previousElementSibling: 
    以上属性都不会返回空白文本节点// IE9以上才支持→＿←
 5. afterpaste是粘贴时触发的事件
-6. 正则里面的或还是需要用好， 比如，/[\D | 0]/g,就是匹配 所有非数字和0
+6. 正则里面的或还是需要用好， 比如，~~/[\D | 0]/g,就是匹配 所有非数字和0~~ 【3/9注】： 然而并不是→＿←. 少了`|`也是或的关系， 而在中括号里面加上`|`之后就会匹配`|`这个字符了。 
+  
+  ```js
+  '|'.match(/[ts|]/); // ["|"];
+  ```
 
 ###2015-12-28
 =======
@@ -519,7 +523,7 @@
      **使用小数值，会先继承，再计算**
    * 使用height会使标签hasLayout, 而使用line-height的话则不会
    * vertical-align的相对值是相对line-height来的
-   * vertical-align对块状元素不生效？
+   * vertical-align对块级元素不生效？
 4. 使用“*”通配符的话会大大增加css的渲染，效率低
 5. 监听多个不同的事件时，使用空格分隔
 6. collection也可以使用toJSON()， ````collection.toJSON()````,返回的是collection里面每个model的属性的数组。每个model为一个对象
@@ -606,16 +610,19 @@
 * 关于word-spacing 和letter-space
   * word-spacing 表示的是单词之间的间距（~~对中文不生效~~），是单词间距，对中文也是，词间距
   * letter-space 表示的是字符间距，每个单词内字符的间距（中文有效）
+  [DEMO](http://374632897.github.io/just-some-tips/DEMO/spacing.html)
 
 ###2016-01-01
 1. JS只有一个主线程，主线程执行完执行栈的任务后去检查异步的任务队列，如果异步事件触发，则将其加到主线程的执行栈。示例如下：
   ```javascript
   setTimeout(function(){console.log('timeout')},0);
   console.log(1);
+  // 1
+  // timeout
   ```
   结果就是1/timeout.
 
-2. 关于删除节点操作
+2. 关于删除节点操作, 不仅仅是删除， 在涉及到集合子项的删除中都是这样
 ```html
   <input type="button" value="删除" id="delByI++">
   <input type="button" value="删除" id="delByI--">
@@ -703,8 +710,7 @@ for (var i = 0; i < aLi.length; i++) {
    colors.toString();
    colors.join(',');// 给join传递参数的话，那么就会以传递的参数来分隔字符串，没有传参的话，默认为','
    // 把多维数组转化为一维数组
-   colors.toString().split(','); // 注意： split 是通过指定标识符把字符串切割为数组 // 但是这样子的话，数组项会变为字符串
-
+   colors.toString().split(','); // 注意： split 是通过指定标识符把**字符串**切割为数组 // 但是这样子的话，数组项会变为字符串
    ```
 2. 栈
   * 是一种可以限制插入和删除项的数据结构。LIFO(last-in-first-out)，后进先出，也就是最新添加的项最先被移除   
