@@ -74,12 +74,12 @@
    
    `````javascript
    var obj = {
-     name: 'Jiangguoxi',
+     name: 'Jason',
      getName: function (){
        console.log(this.name);
      }
    };
-   obj.getName();//'Jiangguoxi'
+   obj.getName();//'Jason'
    var getName2 = obj.getName;
    getName2();//所得值为window.name
    obj.getName = function () {console.log (this)};
@@ -116,9 +116,9 @@
 
 ###2015-12-17
 =======
-1. 给元素append一个View的内容的时候，需要改View的模板的内容为(new View).el;
+1. 给元素append一个View的内容的时候，需要改View的模板的内容为(new View).el;实际上， 实例化后的view，其el即为html内饿哦让
 2. 在View里插入模板而不是在路由里。
-3. {{ }}用来执行JS，{{-}}用来插入普通变量，{{=}}用来插入需要解析成Html的变量~~**注意：等号或者减号后面没有空格**~~ 并不是这样
+3. {{ }}用来执行JS，{{-}}用来插入普通变量，{{=}}用来插入需要解析成Html的变量~~**注意：等号或者减号后面没有空格**~~ 并不是这样  是等号或者减号前面不能有空格
 4. 今日总结：
    * 每次提交代码前要npm run dev:lint
    * 逗号后面要跟空格
@@ -133,10 +133,9 @@
      要注意
    * 加载模板需要在constructor里面。
 5. 如果陷入死循环，那么注意函数执行的时候是不是一直在自调用。
-6. 关于Backbone的View总结内容：
-   * 
-7. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
-8. 关于函数bind方法的实现：
+
+6. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+7. 关于函数bind方法的实现：
 
    ```````javascript
    Function.prototype._bind = function(context) {
@@ -162,7 +161,7 @@
    };
 
    var f = func();
-   f();//6
+   f(); // 6
    ````
 
    在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。 
@@ -170,7 +169,8 @@
 ###2015-12-19
 =======
 1. Array.prototype.push === [].push //true
-   后面跟有方法的时候就为true，没有跟方法，则为false
+   后面跟有方法的时候就为true，没有跟方法，则为false。   
+   因为这里在访问`[]`的`push`方法的时候， 实际上是走Array的原型里查找的， 所以这个时候`[].push`就等于`Array.prototype.push`了。 
 2. 突然就扯到关于原型上的东西了，还是做点笔记吧
    * object.constructor: 表示object的构造器
 
@@ -184,11 +184,11 @@
 
      ````javascript
      var Hello = function () {
-        this.name = 'Jiangguoxi';
-        this.sayName = function () {
-          console.log(this.name);
-        }
-      };
+       this.name = 'Jason';
+       this.sayName = function () {
+         console.log(this.name);
+       }
+     };
 
      var hello = new Hello();
      ````
@@ -203,7 +203,7 @@
 
    * 那么再重新理一理 关于````Array.prototype.slice === [].slice````
      * Array.prototype.slice是原型对象里封装的一个slice方法
-     * []相当于是new 了Array，也就是Array的实例。
+     * []相当于是new 了一个Array，也就是生成了一个Array的实例。
      * 那么当使用到[].slice方法的时候，由于它本身并没有这个方法，所以就会走原型链上查找，于是在其构造器的原型对象中找到了这个方法，所以说，他们是相等的喃。
      * 现在理清之后感觉好简单，之前却一直没搞懂o(╯□╰)o  果然是人太笨了
 
@@ -212,7 +212,7 @@
      `````javascript
      //定义对象
      var person = {
-       name: 'Jiangguoxi',
+       name: 'Jason',
        sayName: function () {
          console.log(this.name);
        }
@@ -220,7 +220,7 @@
 
      //定义构造函数
      var Person = function (){
-       this.name = 'Jiangguoxi';
+       this.name = 'Jason';
        this.sayName = function () {
          console.log(this.name);
        };
@@ -242,7 +242,7 @@
 2. 在Model中，以前的定义默认参数的defaults:{}，不用写了，直接写在super({})里面就行。
 
    `````javascript
-   class extends Backbone.RelationalModel {
+   class Model extends Backbone.RelationalModel {
      constructor () {
        super({
          //这里写默认属性值
@@ -259,7 +259,6 @@
 5. 将model与collection关联起来，需要将model的实例添加到collection的实例里面。如todos.add(todo),而关于数据的传递，则是在Model实例化的时候将数据传入的。
 6. 将Model 与View关联起来，是通过在给View的模板传参的时候，将实例化的Model转化为JSON数据传入，然后再在View的initialize中添加对model的监听事件，从而将Model和View关联起来
 7. 在render() 中要记住````return this````以便支持链式调用
-8. 尝试在render() 中定义input之类的？？？
 9. 在通过View添加model的时候，先实例化一个ItemView并且传入Model，然后将ItemView的el插入View的html里面。在addOne()里面要传入Model,这个Model应该是和监听事件的Collection所绑定的Model一样？？如：
 
    ``````javascript
@@ -273,8 +272,8 @@
 
    如上面所示，addOne参数里的model应该是和上面监听的Collection里面所绑定的model是同一个？
 10. 关于使用inline-block进行居中
-   * 对父元素设置**text-align:center**;
-   * 对子元素设置**display:inline-block**;
+   * 对父元素设置``text-align:center``;
+   * 对子元素设置``display:inline-block``;
    * 这样子的话，即使子元素里面有块级元素，那么该块级元素也不会充满整行 o(╯□╰)o  怎么说呢，感觉就像是里面的块级元素也被设置了inline-block一样，但是事实上他们的display依然是block;
    * 这个方案的缺点就是text-align默认是个继承属性，所以如果其子孙元素的text-align值不符合的话，还要单独写。
 
@@ -290,7 +289,7 @@
 
 2. if语句结尾不用加分号
 
-3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入````'click   ': 'events'````即可。也就是说，如果触发事件的元素是根元素，那么就只需添加事件类型。
+3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入``'click   ': 'events'``即可。也就是说，如果触发事件的元素是根元素，那么就只需添加事件类型。
 
 4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？**01/08注：这里是因为实例化一个view的时候传入的是一个对象，而model只是这个对象里的一个属性，所以在后面访问的时候，要获取所需model就需要通过对象来获取**
 
@@ -304,7 +303,7 @@
    * 在定义model的时候使用RelationModel来定义。
    * 在一个管理各个部分的model的总的Model中，定义relations属性，其值应该是一个数组，数组里面存入的是对象
    * relations内对象有四个属性：
-     * type: 不知道是什么。。。。值为Backbone.HasMany
+     * type: 不知道是什么。。。。值为Backbone.HasMany **3/16: collection => HasMany, Model =>  hasOne**
      * key:  在外部环境中通过这个key来获取对应的对象
      * relatedModel: 所关联的Model
      * collectionType: 所关联的Collection。通过key来获取的就是这个
@@ -312,8 +311,8 @@
 3. 逻辑是否正确是找出问题的关键。出错的时候，需要考虑是不是自己的逻辑设计不合理
    * 我在collection里面设置的获取order值的时候，之前设置的是如果length=1,则返回1，否则返回最后一个的order加1，但是后来改成Relational之后，默认没有添加model了，所以长度为0,然后获取order的方法没有变，而最后一个Model根本不存在，所以就报错了。
 
-4. 只给input设置高度而**不设置行高**，如果设置了行高的话，Safari下光标会显示异常。
-5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。e.stopPropagation()。
+4. 只给input设置高度而**不设置行高**，如果设置了行高的话，Safari下光标会显示异常。**其实是safari版本问题**
+5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。`e.stopPropagation()`。
 6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
 7. 函数节流的实现
    
@@ -390,7 +389,7 @@
    document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
    ````
   
-  * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为这里的执行结果是一个单独的语句而不是函数。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了
+  * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为这里的执行结果是一个单独的语句而不是函数。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了. 当然，如果log的返回值是一个函数的话， 那么document上的绑定事件则会加在这个函数上。 
 
 ---------------
 
@@ -466,7 +465,7 @@
      ````
      git config --global url.ssh://git@github.com/.insteadOf https://github.com/
      ```` 
-   原文地址： http://jingpin.jikexueyuan.com/article/34632.html
+   [原文地址](http://jingpin.jikexueyuan.com/article/34632.html)
 
 2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况。 
    * **01/08注： 只需要给文本框设置高度即可，无需设置行高，因为设置行高后Safari下的placeholder和line-height会出现异常。**
