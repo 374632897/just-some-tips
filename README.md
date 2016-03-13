@@ -787,7 +787,7 @@ for (var i = 0; i < aLi.length; i++) {
     * every  对数组中的每一项运行对应函数，如果每一项为true，即返回true
     * filter 对数组中的每一项运行对应函数，返回由返回值为true的项组成的数组
     * forEach 对数组中的每一项运行对应函数，无返回值
-    * map    返回每次函数调用的结果组成的数组
+    * map    返回每次函数调用的结果组成的数组  需要显式地调用return 来返回
     * some   如果该函数对任一项返回true，则返回true
   * 归并方法
     * 接受两个参数： 一个在每一项上调用的函数和作为归并基础的初始值
@@ -809,13 +809,16 @@ for (var i = 0; i < aLi.length; i++) {
     如果要逆序的话，将```a - b```改为```b - a```即可。这个方法是在原数组上进行操作的。
   * **注意：数组不是基本类型而是引用类型！！！！！！重要的事情说三遍，另外两遍自己脑补**
   * for(var i in ary)来遍历数组的话，i是索引索引索引！！！！或者说是数组对象的key值(不会遍历数组的length)
+  * 当然。。 用`for in`来遍历对象的话， 也是key值
 
 5. 日期对象
   * 月份的表示是基于0的，所以
     
     ```javascript
-    new Date(2012,12,12);
-
+    var date = new Date(2012,12,12);
+    // 转换为时间字符串
+    date.toTimeString(); // 得到时间的字符串表示
+    date.toDateString(); // 得到时间的日期表示（周几，年， 月， 日）
     ```
     所得到的值并不会是2012-12-12而是2013-01-12
 
@@ -832,7 +835,7 @@ for (var i = 0; i < aLi.length; i++) {
     ```
     另外，传入的日期至少要包含两个参数，年和月。如果缺少了1个，那么返回的日期对象将会是从1970开始。未提供天数，则假设天数为1，其他参数默认为0。
 
-  * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）
+  * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）ES5提出来的。 
 
 
 6. 关于函数对象
@@ -869,9 +872,9 @@ for (var i = 0; i < aLi.length; i++) {
 
 2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？ 
 
-3. this.$(selector)只会在当前根元素下面查找元素，如果查找的元素不在当前根元素下，那么就不要加this，直接用选择器。
+3. this.$(selector)只会在当前元素下面查找元素，如果查找的元素不在当前元素下，那么就不要加this，直接用选择器。
 
-4. 在用$.ajax请求的时候，在里面的回调函数里this的指向不会是期望值，解决办法是在$.ajax里面定义一个属性，指向this,如
+4. ~~在用$.ajax请求的时候，在里面的回调函数里this的指向不会是期望值，解决办法是在$.ajax里面定义一个属性，指向this,如~~
    ```javascript
    $.ajax({
       type: 'GET',
@@ -892,6 +895,7 @@ for (var i = 0; i < aLi.length; i++) {
       }
     });
    ```
+   【3/13注：】: 直接在函数外把this赋给另一个变量不得了→＿←
 5. 关于搜索框的初始样式
 
 6. 正则相关
@@ -904,7 +908,7 @@ for (var i = 0; i < aLi.length; i++) {
    * 匹配汉字
      
      ```javascript
-     /[\u4e00-\u9fa5]/  //这里没有 ^
+     /[\u4e00-\u9fa5]/  //这里没有 ^  这个不会匹配汉字标点符号（其实那个应该算在双字节内）
      ```
 7.  ~~关于使用文字溢出text-overflow: ellipsis后的文字对齐问题~~ **以下描述错误**
    
@@ -951,6 +955,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 8. 关于onunload , 和onbeforeunload事件
    * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。
+   * 【3/13注：】其实是有用的， 只不过每次卸载页面要么是关闭窗口， 要么是跳转页面， 控制台就会更新，如果使用断点的话就会看到事件处理函数里面的语句是执行了的。 
    * onbeforeunload
    需要传入事件对象，然后事件对象有个returnValue属性，属性指定的字符串在卸载页面之前会出现在弹窗里。如下
 
@@ -963,7 +968,7 @@ for (var i = 0; i < aLi.length; i++) {
    };
    ```
 
-9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 
+9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 【3/13注：】好久没去博客园了。 
 
 
 ###2016-01-05
@@ -1043,8 +1048,8 @@ for (var i = 0; i < aLi.length; i++) {
 
 
 ###2016-01-12
-1. 微信的内核是webkit，所以用到CSS3的属性的时候需要加-webkit-前缀。
-2. input[type=hidden]，隐藏文本域的一个作用是， 可以将通过php获取到的数据暂时存放在它的value里面，方便在JS里取用。
+1. 微信的内核是webkit，所以用到CSS3的属性的时候需要加-webkit-前缀。→＿←微信自带浏览器必须要加前缀
+2. ``input[type=hidden]``，隐藏文本域的一个作用是， 可以将通过php获取到的数据暂时存放在它的value里面，方便在JS里取用。
 3. 下面的php语句
 
    ```php
@@ -1083,7 +1088,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-13
 ======
 
-1. 如果要是在chrome下调试的时候，发现控制台在source等频道下调不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点控制台右上角的三个点，然后选择show console.即可。
+1. 如果要是在chrome下调试的时候，发现控制台在source等频道下调不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点控制台右上角的三个点，然后选择show console.即可。Of course, you can also press the shortcut ``esc`` to show it again.
 
 2. 绝对定位的时候bottom参照的元素是浏览器的第一屏，当其参照元素在滚动的时候，也会跟着滚动。
 3. textarea禁止缩放：在css里为其添加rule,resize: none | horizontal | vertical;
@@ -1250,7 +1255,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-18
 =======
 1. Math.cos() Math.sin()等等涉及到三角函数的方法接受的参数是弧度而不是角度啊啊啊啊啊啊啊！！！！！
-2. const定义一个对象的时候， 可以在之后改变对象的属性，但是不能改变该常量为其他对象。也就是说，可以用const 定义一个对象，然后可以继续修改这个对象的属性方法等
+2. const定义一个对象的时候， 可以在之后改变对象的属性，但是不能改变该常量为其他对象。也就是说，可以用const 定义一个对象，然后可以继续修改这个对象的属性方法等. It's also available for Arrays.
 3. 不要为函数参数重新分配值
 4. 涉及到执行语句的话用{{}}, 需要解析为html的，则用{{= }}, 如下
 
@@ -1273,11 +1278,11 @@ for (var i = 0; i < aLi.length; i++) {
   var person = getName();
   person // Object {name: "Jiangxi", age: "22"}
   ```
-6. 三元运算符里可以进行函数运算。但是不能直接return
+6. 三元运算符里可以进行函数运算。但是不能直接return 【eslint检测过不了 :笑cry】—— 额。。 不对。。 是根本就不能`return` , 会报语法错误， ``Uncaught SyntaxError: Unexpected token return``
 
 ###2016-01-19
 =======
-1. $.extend({}, s1, s2, s3..)就是将s1,s2,s3..等合并到第一个参数（一个空对象里），然后再返回这个对象
+1. `$.extend({}, s1, s2, s3..)`就是将s1,s2,s3..等合并到第一个参数（一个空对象里），然后再返回这个对象, ES6里的``Object.assign()``和这个差不多。 然而可恶的IE10!!!!
 2. 在View实例化的时候传入的参数可以在view的构造器里的initialize的函数里作为参数传进去。
 3. 微软雅黑加粗之后看起来简直不像雅黑了！！！！所以如果设置了字体但是感觉不是自己想要的的时候，看看是不是多加了个font-weight吧。 
 4. 利用好三元操作符的话可以节省很多代码，真的。如： 
@@ -1307,7 +1312,10 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-20
 =======
 1. WebPack 在添加loader的时候，对应的loader需要加引号才行，不然会报错。
-2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 
+2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 当然， 可以同时安装多个包。 
+   ``sh
+   npm install express mongoose jade --save
+   ``
 3. JSON里的键值应该使用双引号而不是单引号。
 4. webPack的插件是在其配置文件中的plugin中指定， BannerPlugin给输出的文件头添加注释信息
 5. 在插入插件比如 new webpack.BannerPlugin()的时候，需要现在配置文件头部```var webpack = require('webpack')```;
@@ -1319,11 +1327,11 @@ for (var i = 0; i < aLi.length; i++) {
    ```javascript
    new Date(2016,2,0).getDate(); // 使用时把年份换成当前年份，月份换成当前月份（需要注意的是，该是几月就是几月，如2月就是写2）
    ```
-10. dropdown的JS方法和添加data-toggle='dropdown'方法只能用一个
+10. dropdown的JS方法和添加data-toggle='dropdown'方法只能用一个. 不然的话以两个作为触发条件的话， 最后结果就是打开了又关了。
 11. CSS用important加权重的方法
     
     ```css
-    line-height: 20px!important;
+    line-height: 20px!important; // 这种还是少用吧。。 
     ```
     注意important的位置和书写方式。
 12. dropdown的水平对齐方式有两种，left和right，因为是相对父元素定位的，所以如果想要实现居中对齐的话，可以通过给父元素添加padding来实现
@@ -1337,9 +1345,9 @@ for (var i = 0; i < aLi.length; i++) {
     });
     ```
 
-14. 获取年份的时候要使用new Date().getFullYear()才能得到当前的年份，如果使用的是new Date().getYear()的话，将会返回1900到今年的年份数
+14. 获取年份的时候要使用`new Date().getFullYear()`才能得到当前的年份，如果使用的是`new Date().getYear()`的话，将会返回1900到今年的年份数 【3/19注：】居然忘了还有这个API。 
 15. 表示小于等于的时候，是不能分开的，必须连在一起。。。 i <= 123;
-16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。
+16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。:笑cry
 17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
 18. 利用好background-clip的话，可以实现不同的需求。
 ###2016-01-21
