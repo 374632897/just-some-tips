@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数组转换效率</title>
+</head>
+<body>
+  <script>
+  var arr = [1, 2, 3, 4, 5, [6, 7, 8, 9, [10, 11, 12]]];
+  function convertByStr (arr) {
+    return arr.toString().split(',').map(item => {
+      return item - 0;
+    });
+  }
+  function convertByConcat (arr) {
+    return Array.prototype.concat.apply([], arr);
+  }
+  function compare (arr) {
+    console.time('使用字符串装换');
+    console.log('转换结果是: %o', convertByStr(arr));
+    console.timeEnd('使用字符串装换');
+
+    console.time('使用concat装换');
+    console.log('转换结果是: %o', convertByConcat(arr));
+    console.timeEnd('使用concat装换');
+  }
+  compare(arr);
+  </script>
+</body>
+</html>

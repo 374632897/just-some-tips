@@ -733,13 +733,37 @@ for (var i = 0; i < aLi.length; i++) {
     var num3 = num.concat([8,9]); // [1,2,3,4,5,6,7,8,9]
     var num3 = num.concat([8,[9]]); // [1,2,3,4,5,6,7,8,[9]]
     ```
+    ``concat``的一个应用是用来将多维数组转换为一维数组
+
+
+    ```js
+    var arr = [1, 2, 3, 4, 5, [6, 7, 8, 9, [10, 11, 12]]];
+    Array.prototype.apply([], arr); // 然而这个的弊端在于只能转换二维数组， 如果是更高维的话得不到期望值
+    // 所以可以用下面这个方法： 
+    arr.toString().split(',').map((item) => {
+      return item - 0;
+    });
+    ```
+    [两种方法转换数组的性能比较](http://374632897.github.io/just-some-tips/DEMO/array-convert.html)
+    可以看到， 实际上使用concat的话性能会好很多。只是不一定会转换为一维数组。  
+    事实上， 性能还是相差不大的， 相差比较大的时候， 可能是数据比较大， 也可能是因为数组是多维的， 而``concat``只能转换二维， 但是String却能全部转换。
+
+    另外一个应用就是可以创建指定长度数组并推入某个值。
+
+    ```js
+    const ary = new Array(31).concat(32); // 得到一个长度为32的数组， 并且数组的最后一项是32
+    ```
+    需要注意的是， 上面不能使用``push``方法, 因为`push`返回的是`push`进去之后的数组长度。当然， 如果是在已有数组上操作的话就另当别论了。 
+
+
   * slice
     基于当前数组中的一个或多个项创建一个新数组。如果有两个参数，则返回的是起始位置到结束位置（但不包括结束位置）的数组。不会在原数组上操作。如果slice的参数中有负数，则用数组长度加上负数来确定相应的位置。
 
     ```javascript
     var ary = function() {
       console.log(typeof arguments.sort);
-      var arg = [].slice.call(arguments,0);
+      var arg = [].slice.call(arguments,0); // 将类数组转化为数组。 
+      // var arg = Array.from(arguments); // 将类数组转化为数组。 
       console.log(typeof arg.sort);
     }(1,2,3,4,5,6,7);
     // undefined
@@ -757,9 +781,9 @@ for (var i = 0; i < aLi.length; i++) {
     ```javascript
     '1,2,3,4,5,6'.indexOf(3);
     ```
-    那么结果是多少呢？？答案是4，因为','也是一个字符啊，笑cry;
+    那么结果是多少呢？？答案是4，因为','也是一个字符啊，:笑cry;
   * 迭代方法
-    * 传入的函数接受三个参数：数组项的值，在数组中的位置和数组对象本身
+    * 传入的函数接受三个参数：数组项的值，在数组中的位置和数组对象本身（jQuery的each第一个是index）
     * every  对数组中的每一项运行对应函数，如果每一项为true，即返回true
     * filter 对数组中的每一项运行对应函数，返回由返回值为true的项组成的数组
     * forEach 对数组中的每一项运行对应函数，无返回值
