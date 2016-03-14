@@ -2342,7 +2342,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-09
 =======
-1.
+1. `mongoose`model
   ```js
   var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
   ```
