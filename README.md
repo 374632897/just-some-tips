@@ -2416,6 +2416,19 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 6. ``process.argv[0]``表示nodejs执行程序的路径
 7. 
 
+###2016-03-14
+=======
+1. 对于含有标签的内容，想获取纯文本的哈，  如果要是觉得用正则来替换会比较麻烦的话， 可以使用jQuery的text()方法。
+  
+   ```js
+   $(`<p>${title}</p>`).text() // 这样就能够获取该字符串内的纯文本了。 
+
+   ```
+2. 直接用赋值方式将一个数组赋给另一个数组的话， 这两个数组实际上还是相互影响的， 也就是说他们是指向的同一个引用。 要想实现复制行为，可以用``([]).concat(arr)``
+
+3. `Parsing error: Duplicate data property in object literal not allowed in strict mode`指的是在一个对象下面定义了重复的键值 →＿←  
+
+
 =======
 #Problems
 =======
