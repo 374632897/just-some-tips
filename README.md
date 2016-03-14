@@ -2434,7 +2434,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ``window.hha === undefined`` ``true``  
    ``window.hha === 'undefined'`` ``false``
 
-5. ``li:nth-child(2)``表示选中li父元素的第二个子元素，
+5. ``li:nth-child(2)``表示选中li父元素的第二个且为li的子元素，
 6. `p`标签内不能有默认为`block`的标签
 
 =======
