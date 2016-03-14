@@ -2346,7 +2346,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   ```js
   var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
   ```
- 第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。 
+ 第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。   
+
 
 2. 要删除数组中的指定值得项， 其实直接使用``filter``就挺好的了→＿←  
 3. 关于``Notification``
@@ -2428,6 +2429,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. `Parsing error: Duplicate data property in object literal not allowed in strict mode`指的是在一个对象下面定义了重复的键值 →＿←  
 
+
+4. ``window.hha`` ``undefined``  
+   ``window.hha === undefined`` ``true``  
+   ``window.hha === 'undefined'`` ``false``
 
 =======
 #Problems
