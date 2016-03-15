@@ -2444,6 +2444,32 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * `ENTER` 编辑DOM元素属性
   * `H`隐藏DOM元素
 
+2. 关于``webworker``: 
+   
+  ```js
+   // worker.js
+  var getData = function () {
+  
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function (res) { // 注意这里的onreadystatechange是全部小写的啊
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      try{
+        self.postMessage(xhr.responseText);
+      } catch (e) {}
+    }
+  };
+  xhr.open('get', 'http://localhost:99/task/kanbanArchive/list');
+  xhr.send();
+  getData();
+
+  // index.js
+  const worker = new Worker('./worker.js');
+  worker.onmessage = (res) => {
+   console.info('worker has get sth, ', res);
+  }
+  ```
+
+
 =======
 #Problems
 =======
