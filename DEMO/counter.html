@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
   body{
+    background: #f66;
     /*counter-reset: h1 h2 h3;*/
   }
   h1{
     counter-reset: h2 0;
     counter-increment: h1;
+    color: red;
   }
   h1:before{
     content: counter(h1);

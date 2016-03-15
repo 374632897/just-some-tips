@@ -2439,7 +2439,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-15
 =======
-1. 
+1. ``chrome``快捷键
+  * `↑`  `↓ `  用于选择DOM元素， `←` `→`  折叠、展开元素
+  * `ENTER` 编辑DOM元素属性
+  * `H`隐藏DOM元素
 
 =======
 #Problems
