@@ -2444,19 +2444,19 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * `ENTER` 编辑DOM元素属性
   * `H`隐藏DOM元素
 
-2. 关于``webworker``: 
+2. 关于``web worker``: 
    
   ```js
    // worker.js
   var getData = function () {
-  
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function (res) { // 注意这里的onreadystatechange是全部小写的啊
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      try{
-        self.postMessage(xhr.responseText);
-      } catch (e) {}
-    }
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (res) { // 注意这里的onreadystatechange是全部小写的啊
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        try{
+          self.postMessage(xhr.responseText); // 注意： 获取响应是通过xhr.responseText来获取。 
+        } catch (e) {}
+      }
+    };
   };
   xhr.open('get', 'http://localhost:99/task/kanbanArchive/list');
   xhr.send();
@@ -2465,10 +2465,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   // index.js
   const worker = new Worker('./worker.js');
   worker.onmessage = (res) => {
-   console.info('worker has get sth, ', res);
-  }
+    console.info('worker has get sth, ', res);
+  };
   ```
+  * `web worker`不能访问主进程中的全局变量
+  * `web worker`需要遵守同源策略
+  * `new Worker()`的时候传递的参数为一个指向需要执行的文件的url
+3. `timeStamp`时间戳
 
+4. 关于`Backbone.Relational`， 如果要对关联的`collection`进行`reset`需要在绑定`collection`的`relationmodel`里进行操作。如果在c`ollection`里面操作的话， 最后会在`relation`里面再度重置， 从而无法达到期望效果。 
 
 =======
 #Problems
