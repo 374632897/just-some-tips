@@ -2475,6 +2475,22 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 4. 关于`Backbone.Relational`， 如果要对关联的`collection`进行`reset`需要在绑定`collection`的`relationmodel`里进行操作。如果在c`ollection`里面操作的话， 最后会在`relation`里面再度重置， 从而无法达到期望效果。 
 
+
+
+###2016-03-16
+=======
+1. `webpack`的一个问题， 直接复制粘贴文件或者文件夹的方式来更改文件的话， 那么webpack编译后的文件依然是原来的文件。 不知道是配置的问题还是他本身的问题。 
+
+2. 通过检测滚动条的距离来实现按需加载
+   * 通过`getBoundingClientRect()`
+   * 获取容器元素的`getBoundingClientRect()`的`bottom`的值。
+   * 获取容器最后一个元素的`getBoundingClientRect()`的`bottom`的值。
+   * 前者减后者， 当所得值大于某个负值的时候发送请求加载内容。 
+   * 这只是针对自己所需业务场景做的总结→＿←
+
+3. 
+
+
 =======
 #Problems
 =======
