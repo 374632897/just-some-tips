@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  style{
+    display: block;
+    color: red;
+    margin: 20px;
+  }
+  </style>
+</head>
+<body>
+  <style contenteditable>
+.show{
+    position: relative;
+    width: 80px;
+  }
+  .showBox{
+    position: absolute;
+    left: 80px;
+    top: 0;
+    display: none;
+  }
+  .show:hover .showBox{
+    display: block;
+  }
+  </style>
+    <div class='show'>
+      <span>hover试试？</span>
+      <div class="showBox">
+        <a href="http://www.baidu.com">百度</a>
+        <a href="http://www.google.com">Google</a>
+      </div>
+    </div>
+
+</body>
+</html>
