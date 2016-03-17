@@ -2496,6 +2496,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. 连续按两次`shift`即可查找工程内的文件或函数， `ctrl + shift + n`
 2. `F3`查找下一个， `shift + f3`查找上一个
 3. `ctrl + r`文件内代码替换, `ctrl + shift + r`指定目录内代码批量替换
+4. `import {} from 'path'`` 可以将路径里的对象一次性地获取到
+5. `export default {}``可以将当前模块儿的变量以对象属性的方式导出
+6. 
+
 
 =======
 #Problems
