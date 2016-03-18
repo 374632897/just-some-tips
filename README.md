@@ -2492,13 +2492,26 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-17
 =======
-####webstorm快捷键
 1. 连续按两次`shift`即可查找工程内的文件或函数， `ctrl + shift + n`
 2. `F3`查找下一个， `shift + f3`查找上一个
 3. `ctrl + r`文件内代码替换, `ctrl + shift + r`指定目录内代码批量替换
+
+
+  
+  
 4. `import {} from 'path'`` 可以将路径里的对象一次性地获取到
 5. `export default {}``可以将当前模块儿的变量以对象属性的方式导出
 6. 
+
+###2016-03-18
+=======
+1. 调用表单的`reset`方法， 可以重置表单
+2. 直接调用`localStorage.attr = value`即可添加属性值到本地存储→＿←
+3. 页面可见性API
+   * `document.hidden` `{boolean}` 表示当前页面是可见还是不可见
+   * `document.visibilityState` 返回当前页面的可见状态
+   * `prerender`
+   * `preview`
 
 
 =======
