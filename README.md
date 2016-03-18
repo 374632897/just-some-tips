@@ -2512,7 +2512,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * `document.visibilityState` 返回当前页面的可见状态
    * `prerender`
    * `preview`
+4. `chrome`
+   * 在`source`面板下， 如果代码区左下角有`{}`的话， 点击就可以格式化代码， 在针对压缩后的代码的时候尤其适用
+   * 在断点调试的时候， 如果一个函数里面包着另一个函数， 那么可以按F11进入该函数中
 
+5. GIF截取工具： `LICECap`
+6. `dropdown-menu`元素如果要是通过其他方式来控制其隐藏的话，那么之后再点击的话就不会再响应了。 →＿←
+7. 一个奇怪的问题， 在chrome调试工具里选中了元素之后再去页面里面点击的话没反应。
 
 =======
 #Problems
