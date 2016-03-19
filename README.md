@@ -2562,7 +2562,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 2. ``GitHub Pages``绑定域名需要将`CNAME`文件同步到`master`分支上。
 
-
+3. 注意啊。。。``return ``是跳出当前函数执行环境，跳出循环使用``continue``或者``break``
 
 =======
 #Problems
