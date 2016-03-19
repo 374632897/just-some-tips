@@ -2520,6 +2520,45 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 6. `dropdown-menu`元素如果要是通过其他方式来控制其隐藏的话，那么之后再点击的话就不会再响应了。 →＿←
 7. 一个奇怪的问题， 在chrome调试工具里选中了元素之后再去页面里面点击的话没反应。
 
+###2016-03-18
+=======
+1. 知乎上看到的如何不使用循环创建一个长度为100的数组， 并且数组项的值要等于其索引， [原文地址](https://www.zhihu.com/question/41493194/answer/91196402)
+   
+   ```js
+   '​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​'.split('').map(function (v, i) { return i; }); // 关于这里的第一个''其实并不是一个简单的引号o(╯□╰)o ， 零宽空格是个什么鬼
+   
+   Array(100).fill('naive').map(function (v, i) { return i; }); // Array.fill是ES6的语法
+   
+   // 通过生成器
+   function* ary(i) {
+     yield i;
+     if (i < 99) {
+       yield* ary(i + 1)
+     }
+   }
+   Array.from(ary(0));
+  
+   // 使用递归
+   (function f(i) {
+     return i < 0 ? []: f(i - 1).concat(i);
+   })(99);
+
+   ```
+   直接使用``new Array(100)``生成的是稀疏数组（此时控制台打印出来的是`[undefined * 100]），通过``Array.from(Array(100))``即可将稀疏数组转换成密集数组(此时控制台打印出来的是`[undefined,undefined...])，然后就可以调用`map`并能返回期望值了。   
+
+
+   创建一个空的密集数组： ``Array.from({length: 100});`` 使用`Array.apply(null, {length: 100})也是可行的。
+
+   也可以用拓展运算符。。。`[...Array(100)]`  
+   ```js
+   Object.keys(Array.apply(null, {length: 100}));
+
+   Array.from(Array(100).keys())
+
+   [...Array(100).keys()]
+   ```
+    **`apply`方法的参数可以是一个类数组对象，只要改对象带有length属性即可**
+2. ``GitHub Pages``绑定域名需要将`CNAME`文件同步到`master`分支上。
 =======
 #Problems
 =======
