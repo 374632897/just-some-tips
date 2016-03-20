@@ -2568,7 +2568,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-20
 =======
-
+1. `document.body.onpagehide`事件相当于是在卸载的时候触发， 而不是切换标签页的时候触发。。。。
 
 =======
 #Problems
