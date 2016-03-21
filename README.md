@@ -740,7 +740,7 @@ for (var i = 0; i < aLi.length; i++) {
     var arr = [1, 2, 3, 4, 5, [6, 7, 8, 9, [10, 11, 12]]];
     Array.prototype.apply([], arr); // 然而这个的弊端在于只能转换二维数组， 如果是更高维的话得不到期望值
     // 所以可以用下面这个方法： 
-    arr.toString().split(',').map((item) => {
+    arr.toString().split(',').map((item) => { // 然而如果要是数组里面含有对象的话， 就挂了→＿←
       return item - 0;
     });
     ```
@@ -2566,9 +2566,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 
 
-###2016-03-20
-=======
-1. `document.body.onpagehide`事件相当于是在卸载的时候触发， 而不是切换标签页的时候触发。。。。
+
+
 
 
 ###2016-03-21

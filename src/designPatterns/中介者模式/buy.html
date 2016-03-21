@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  选择颜色： <select name="" id="colorSelect">
+    <option value="">请选择</option>
+    <option value="red">红色</option>
+    <option value="blu">蓝色</option>
+  </select>
+  输入购买数量： <input type="text" id='numberInput' /><br />
+  您选择了颜色： <div id="colorInfo"></div><br>
+  您输入了数量： <div id="numberInfo"></div><br>
+
+  <button id='nextBtn' disabled = 'true'>请选择手机颜色和购买数量</button>
+  <script>
+  (function () {
+    var $ = function (id) {
+      return document.getElementById(id);
+    };
+
+    var colorSelect = $('colorSelect'),
+      numberInput = $('numberInput'),
+      colorInfo = $('colorInfo'),
+      numberInfo = $('numberInfo'),
+      nextBtn = $('nextBtn');
+
+    var goods = {
+      'red': 3, 
+      'blue': 6
+    };
+    var MSG_ARRAY = {
+      'SelectColor': '请选择手机颜色',
+      'InputNum': '请输入正确的购买数量',
+      'noEnoughStore': '库存不足',
+      'canBuy': '放入购物车'
+    }
+
+    colorSelect.onchange = function () {
+      var color = this.value, 
+        number = numberInput.value - 0,
+        stock = goods[color];
+
+      colorInfo.innerHTML = color;
+
+      function disableBtn (msg) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = msg;
+        return;
+      }
+      if (!color) {
+        disableBtn(MSG_ARRAY.SelectColor);
+        return;
+      }
+      if (!number || ((number | 0) !== number)) {
+        disableBtn(MSG_ARRAY.InputNum);
+        return;
+      }
+      if (number > stock) {
+        disableBtn(MSG_ARRAY.noEnoughStore);
+        return;
+      }
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = MSG_ARRAY.canBuy;
+
+    };
+  })();
+  </script>
+</body>
+</html>
