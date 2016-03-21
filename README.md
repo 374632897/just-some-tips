@@ -2564,7 +2564,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. 注意啊。。。``return ``是跳出当前函数执行环境，跳出循环使用``continue``或者``break``
 
-
+###2016-03-20
+=======
+1. `document.body.onpagehide`事件相当于是在卸载的时候触发， 而不是切换标签页的时候触发。。。。
+2. 数组去重： 
+   
+   ```js
+   var ary = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9], ary2 = [], ary3 = [];
+   for (var i = 0, len = ary.length; i < len; i++) {
+     if(ary3.indexOf(ary[i]) === -1) ary3.push(ary[i])
+   }
+   ```
 
 
 
