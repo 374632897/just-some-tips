@@ -25,3 +25,34 @@ var plugin = (function () {
   document.body.appendChild(plugin);
   return plugin;
 })();
+
+var Upload = function (fileName) {
+  this.plugin = plugin;
+  this.fileName = fileName;
+  this.button1  = null;
+  this.button2  = null;
+  this.signState = new SignState(this);
+  this.uploadingState = new UploadingState(this);
+  this.pauseState = new PauseState(this);
+  this.doneState  = new DoneState(this);
+  this.errorState = new ErrorState(this);
+  this.currState  = new CurrState(this);
+};
+Upload.prototype.init = function () {
+  // var _this = this;
+  this.dom = document.createElement('div');
+  this.dom.html = 
+    '<span>文件名称:' + this.fileName + '</span>\
+    <button data-action = "button1">扫描中</button>\
+    <button data-action = "button2">删除</button>';
+  document.body.append(this.dom);
+
+  this.button1 = this.dom.querySelector('[data-action = "button1"]');
+  this.button2 = this.dom.querySelector('[data-action = "button2"]');
+
+  this.bindEvent();
+};
+
+Upload.prototype.bindEvent = function () {
+  var _this = this;
+}

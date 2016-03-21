@@ -2576,10 +2576,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    }
    ```
 
-
-
-
-
 ###2016-03-21
 =======
 1. 一般来说， JS中的数组是稀疏数组， 也就是说数组元素之间可以由空隙. 创建一个稀疏数组可以通过指定数组长度来创建。 稀疏数组的空隙项在使用`map`或者`forEach`遍历的时候并不会遍历到。
@@ -2594,6 +2590,29 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 3. 好神奇， ``console.log*(123)``居然不会报错
 4. 其实表格布局在比较复杂的情况下还是很适用的。。。 
 5. 今天在做更改文档结构的时候， 出现了模板加载错误（实际上并没有报错， 只是期望内容没有加载进去。 ）， 找了半天， 原来是把开始标签`<tr>`写进了判断内→＿←
+
+
+###2016-03-22
+=======
+1. 下面这段代码：
+    
+    ```js
+    var name = (function () {                          // 这里直接使用name的话， 最后打印name得到的结果是'object Object', 换成name之外的变量名的时候就会正常反应。 
+      var _name = 'Jason';
+      return {
+        setName: function (value) {
+          _name = value;
+        },
+        getName: function () {
+           return _name;
+        }
+      }
+    })();
+    name; // 'object Object' 
+    typeof name; // 'string'
+    ```
+    这里的问题是为什么把name作为全局变量的话就会出问题？ 如果把name 换为Name或者其他名字的话就没有问题。 
+
 
 =======
 #Problems
