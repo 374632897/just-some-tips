@@ -2570,6 +2570,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. `document.body.onpagehide`事件相当于是在卸载的时候触发， 而不是切换标签页的时候触发。。。。
 
+
+###2016-03-21
+=======
+1. 一般来说， JS中的数组是稀疏数组， 也就是说数组元素之间可以由空隙. 创建一个稀疏数组可以通过指定数组长度来创建。 稀疏数组的空隙项在使用`map`或者`forEach`遍历的时候并不会遍历到。
+2. 创建密集数组： 
+   
+   ```js
+   var ary = Array.apply(null, Array(3));
+   // [undefined, undefined, undefined];
+   ```
+   这个时候就可以使用`map`或者`forEach`遍历了。 
+
+3. 好神奇， ``console.log*(123)``居然不会报错
+4. 其实表格布局在比较复杂的情况下还是很适用的。。。 
+
 =======
 #Problems
 =======
