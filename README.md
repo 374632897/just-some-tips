@@ -2622,6 +2622,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     当然， 在一个函数里面的话则不会存在这种情况
 
+2. 用JS来做导航的时候怎样使元素鼠标进入子菜单的时候子菜单依然在显示。 
 
 =======
 #Problems
