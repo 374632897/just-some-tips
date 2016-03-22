@@ -2614,6 +2614,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     这里的问题是为什么把name作为全局变量的话就会出问题？ 如果把name 换为Name或者其他名字的话就没有问题。 
 
 
+    ```js
+    window.name = 5; // "5"
+    window.name = false; // "false"
+    ```
+    这表明``window.name``的值总是会被强制性地转化为字符串， 所以， 不要使用name作为全局变量。 
+
+    当然， 在一个函数里面的话则不会存在这种情况
+
+
 =======
 #Problems
 =======
