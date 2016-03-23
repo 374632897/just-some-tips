@@ -2623,6 +2623,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     当然， 在一个函数里面的话则不会存在这种情况
 
 
+###2016-03-24
+=======
+1. ```cloneNode()```可以接收参数（布尔值）， 表示是否执行深拷贝， 如果执行深拷贝的话， 就会复制节点及其整个文档树。  
+   
+   ```js
+   var someNode = document.createElement('p');
+   someNode.innerHTML = 'test';
+
+   var node2 = someNode.cloneNode();
+   node2; // <p></p>
+
+   var node3 = someNode.cloneNode(true);
+   node3; // <p>test</p>
+   ```
+
 =======
 #Problems
 =======
