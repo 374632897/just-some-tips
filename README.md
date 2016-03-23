@@ -2624,6 +2624,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 2. 用JS来做导航的时候怎样使元素鼠标进入子菜单的时候子菜单依然在显示。 
 
+
+###2016-03-23
+=======
+1. `DELETE`请求没有请求体， 具体请求数据是加在query里面的来着。
+
+
 =======
 #Problems
 =======
