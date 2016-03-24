@@ -2631,6 +2631,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 数字加数字得到的会是数字啊→＿←  在用变量拼接字符串的时候尤其要注意， 如果变量是数字的话。。 可能一不小心就踩了个大坑。 
 
 
+###2016-03-24
+=======
+1. ```cloneNode()```可以接收参数（布尔值）， 表示是否执行深拷贝， 如果执行深拷贝的话， 就会复制节点及其整个文档树。  
+   
+   ```js
+   var someNode = document.createElement('p');
+   someNode.innerHTML = 'test';
+
+   var node2 = someNode.cloneNode();
+   node2; // <p></p>
+
+   var node3 = someNode.cloneNode(true);
+   node3; // <p>test</p>
+   ```
+
 =======
 #Problems
 =======
