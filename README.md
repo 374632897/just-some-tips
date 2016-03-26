@@ -2652,6 +2652,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 1. 使用`relationModel`的时候， 内部会先对`model`进行初始化， 然后再使用relation来进行包装？ 总之这破玩意儿坑太大了。。。 
 
+###2016-03-26
+=======
+1. 今天浪费了一天的时间→＿←
+
 =======
 #Problems
 =======
