@@ -2656,6 +2656,23 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 今天浪费了一天的时间→＿←
 
+####2016-03-27
+=======
+1. 关于基本包装类型
+    
+    ```js
+    // 返回的是一个字符串， 相当于直接定义var s = 'Jason', 对该变量定义属性是无效的
+    var s = String('Jason'); // 转型函数
+    typeof s; // 'string'
+
+    // 返回的是一个对象， 可以对其设置属性
+    var t = new String('Jason'); // 构造函数 
+    tyoeof t; // 'object'
+
+    ```
+
+2. 正则表达式`w`表示匹配一个单字字符， 可以是字母， 数字和下划线， 所以如果只是匹配字母的话可以使用``str.match(/[a-zA-Z]/g)``
+
 =======
 #Problems
 =======
