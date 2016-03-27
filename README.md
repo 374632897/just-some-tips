@@ -2673,6 +2673,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 2. 正则表达式`w`表示匹配一个单字字符， 可以是字母， 数字和下划线， 所以如果只是匹配字母的话可以使用``str.match(/[a-zA-Z]/g)``
 
+3. JS去掉首尾空格： 
+   ```js
+   var myTrim = function (str) {
+     return str.replace(/^\s+|\s+$/g, '');   // 这里要执行全局匹配才能保证能够将所有的前置后置空格都替换掉
+   }
+   ```
+
 =======
 #Problems
 =======
