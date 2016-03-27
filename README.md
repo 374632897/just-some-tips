@@ -2679,6 +2679,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      return str.replace(/^\s+|\s+$/g, '');   // 这里要执行全局匹配才能保证能够将所有的前置后置空格都替换掉
    }
    ```
+4. `个人博客主页`默认就是使用的`master`分支， 无需切换到`gh-pages`
 
 =======
 #Problems
