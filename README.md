@@ -2681,6 +2681,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 4. `个人博客主页`默认就是使用的`master`分支， 无需切换到`gh-pages`
 
+###2016-03-28
+=======
+1. 调试程序的时候应该从错误入手
+2. `github客户端`切换分支的时候如果要是突然多出很多文件， 可能只是因为它一时没有反应过来而已， 只需要`discard changes`然后过一会儿再切换分支即可。 
+
 =======
 #Problems
 =======
