@@ -2688,8 +2688,25 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-29
 =======
+1. `Backbone.Collection` `create`的时候，第一个参数为模型的数据， 第二个参数为相应的条件。 
+   
+   ```js
+   this.collection.create(this.model.toJSON(), {
+      wait: true // 表示等待服务器端响应 。。。 
+      /* silent: true,
+      success (model) {
+        console.log(model);
+      }*/
+    });
+   ```
+2. 使用`!`操作符的时候要注意优先级的问题啊。。。 
+   
+   ```js
 
-
+   if (!res instanceof Array)   return res; // 这里的!只会对res生效→＿←
+   if (!(res instanceof Array)) return res; // 使用括号提升优先级
+   ```
+3. FUCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 =======
 #Problems
