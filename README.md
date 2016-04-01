@@ -2708,6 +2708,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 3. FUCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+###2016-04-01
+=======
+1. 通过`[data-]`属性来设置值的时候是通过`ele.dataset`来设置的， 而`jQuery`的`data`方法的设置值和取值也是通过`dataset`来进行的， 所以如果通过直接修改DOM元素特性来修改`data-`属性的话， 表面上看起来变了， 但是`dataset`里面的值并没有变。
+2. `data`可以用来在元素上面携带任何属性的数据。 
+3. 关于`jQuery`的data 和attr源码应该好好看一下。 
+
+
 =======
 #Problems
 =======
