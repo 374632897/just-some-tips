@@ -2714,6 +2714,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. `data`可以用来在元素上面携带任何属性的数据。 
 3. 关于`jQuery`的data 和attr源码应该好好看一下。 
 
+###2016-04-01
+=======
+1. `moment`的`format`方法在显示``17:55``的话应该使用`format('HH:mm')`
 
 =======
 #Problems
