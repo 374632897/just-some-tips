@@ -2729,6 +2729,40 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 在提交代码的时候如果要是出现了`index.lock`已存在的信息导致新的版本不能提交的话， 那么到`.git`文件夹下手动将`index.lock`删除掉， 很多时候如果要是使用客户端不能够获取到完整的错误信息的话， 那么可以使用命令还来完成相应的操作， 毕竟命令行里面的话信息会比较全面。
 
+###2016-04-13
+=======
+1. 碰到的一个问题。 
+   
+   ```js
+   // 数据结构如下， 如果res中一个数组项的messageType是'29', 那么将整个数组中的hrefC与该数组项的hrefC值相同的数组项连带其本身都删除掉， 并且打印出删除项id。如下， 数组第二项的type为29， hrefC为71750， 那么就需要将整个数组中hrefC为71750的项删除掉， 并且打印出他们的id. 
+    const res = [{
+      messageType:"4",
+      hrefC: "71750",
+      id: '1'
+    }, {
+      messageType:"29",
+      hrefC: "71750",
+      id: '2'
+    }, {
+      messageType:"4",
+      hrefC: "71749",
+      id: '3'
+    }, {
+      messageType:"29",
+      hrefC: "71749",
+      id: '4'
+    }, {
+      messageType:"4",
+      hrefC: "71751",
+      id: '5'
+    }, {
+      messageType:"29",
+      hrefC: "71751",
+      id: '6'
+    }];
+   ```
+   [demo](http://374632897.github.io/just-some-tips/src/arrDelete.html)
+
 
 #Problems
 =======

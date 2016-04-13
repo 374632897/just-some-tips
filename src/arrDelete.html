@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   const res = [{
+      messageType:"4",
+      hrefC: "71750",
+      id: '1'
+    }, {
+      messageType:"29",
+      hrefC: "71750",
+      id: '2'
+    }, {
+      messageType:"4",
+      hrefC: "71749",
+      id: '3'
+    }, {
+      messageType:"29",
+      hrefC: "71749",
+      id: '4'
+    }, {
+      messageType:"4",
+      hrefC: "71751",
+      id: '5'
+    }, {
+      messageType:"29",
+      hrefC: "71751",
+      id: '6'
+    }];
+  (function () {
+    let sameIds = res.map(item => {
+      if (item.messageType === '29') {
+        return item.hrefC;
+      }
+    }).filter(item => item !== undefined);
+    let ids = [];
+    // let delAry = res.filter(item => {
+    //   item.
+    // })
+    sameIds = [...new Set(sameIds)];
+    let len = sameIds.length;
+    res.map(item => {
+      for (let i = 0, len = sameIds.length; i < len; i++) {
+      // sameIds.forEach(id => {
+        if (item.hrefC === sameIds[i]) {
+          item.isDelete = true;
+          ids.push(item.id);
+          break;
+        }
+      // });
+      }
+    });
+    const _res = res.filter(item => item.isDelete !== true);
+    console.log(_res, ids);
+    // sameIds.forEach(id =>  {
+    //   for (let i = 0, len = res.length; i < len; i++) {
+
+    //   }
+    //   // res.forEach((item, index) => {
+    //   //   let subtract = 0;
+    //   //   if (item.hrefC === id) {
+    //   //     res.splice(index, 1);
+    //   //     subtract++;
+    //   //   }
+    //   // })
+    // });
+    // if (len) {
+    //   let subtract = 0;
+    //   res.forEach((item, index) => {
+    //     for (let i = 0; i < len;i++) {
+    //       if (item.hrefC === sameIds[i]) {
+    //         res.splice(index - subtract, 1);
+    //         subtract++;
+    //         break;
+    //       }
+    //     }
+    //     // sameIds.forEach(inner => {
+    //     //   if (item.hrefC === inner) {
+    //     //     res.splice(index - subtract, 1);
+    //     //     subtract++;
+    //     //   }
+    //     // });
+    //   });
+    // }
+    // console.log(res);
+  })();
+  </script>
+</body>
+</html>
