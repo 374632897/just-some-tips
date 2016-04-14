@@ -2728,7 +2728,433 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-04-01
 =======
 1. 在提交代码的时候如果要是出现了`index.lock`已存在的信息导致新的版本不能提交的话， 那么到`.git`文件夹下手动将`index.lock`删除掉， 很多时候如果要是使用客户端不能够获取到完整的错误信息的话， 那么可以使用命令还来完成相应的操作， 毕竟命令行里面的话信息会比较全面。
+###2016-04-02
+======
+1. `setTimeout和setInterval`可以有多个参数， 其中第一个参数是需要异步执行的函数，第二个参数是时间， 可以为数字也可以为字符串， 如果是字符串会内部转化为数字再尝试执行， 如果不能转化为数字， 将会转化为0。 从第三个参数开始， 其余的参数可以作为参数被传入需要异步执行的函数内部。 
 
+
+2. 关于函数表达式  
+   ```js
+   var name = function () { 
+     console.log('jiangxi')
+   }; 
+   // undefined
+   
+   var name = function () { 
+     console.log('jiangxi')
+   }(); 
+   // jiangxi
+   // undefined
+   
+   var name = (function () { 
+     console.log('jiangxi')
+   })();
+   // jiangxi
+   // undefined
+   ```
+   也就是说这里表达式右边定义函数的时候， 函数体用不用括号包裹效果都是一样的。 因为括号只是起到了一个提升优先级的作用。 而在函数声明的时候， 
+
+3. `Array.apply(null, Array(100))`相当于是Array(undefined, undefined, undefined, ...);所以， 最后得到的就是密集数组。 
+
+4. `Promise()`
+   
+   ```js
+    function test (time) {
+      return new Promise((resolve, reject) => {
+        setTimeout((time) => {
+          console.log(time);
+          resolve(); // 一定要加这句话， 不然无法触发状态改变事件
+        }, time, time);
+      });
+    }
+    test(100).then(() => {
+      return test(200);
+    }).then(() => {
+      return test(300);
+    }).then(() => {
+      return test(400);
+    }).then(() => {
+      return test(500);
+    }).then(() => {
+      return test(600);
+    }).then(() => {
+      return test(700);
+    }).then(() => {
+      return test(800);
+    });
+   ```
+
+
+
+
+###2016-04-04
+=======
+1. `const`和`let`在全局声明的变量不会挂载到全局对象`window`上面。 
+2. `const`和`let`没有变量声明提升
+3. `for in`和`for of`每次都会绑定新的执行环境。 所以可以使用`for (const key in obj)`
+4. 关于`new`操作符。 
+   
+    ```js
+    var doSomeThing = function doSomeThingElse () {};
+    doSomeThing.name; // doSomeThingElse;
+    function Person (name) {
+      this.name = name;
+    }
+    var person = new Person('Jiangxi'); // 返回一个新的对象
+    var person2 = Person('Jiangxi'); // 无返回值， 函数里的name属性挂载到了window上面。 
+    ```
+    `JS`中的函数具有两个不同的方法， `[[call]]`和`[[Construct]]`, 当调用函数的时候没有使用`new`操作符， 那么`[[call]]`方法将会被执行， 当使用`new`操作符来调用的时候，`[[Consturct]]`方法将会负责创建一个新的对象，并将函数中的`this`指向当前对象。  
+
+    需要注意的是， 不是所有的函数都具有`[[Construct]]`方法， 箭头函数就不能作为构造函数使用。 
+5. 箭头函数：
+   * 箭头函数的`this, super, arguments, and new.target`的值， 由距离他最近的非箭头函数的函数所决定。 
+   * 不能使用箭头函数。 
+   * 没有原型。箭头函数不存在原型对象， 所以不能使用new 操作符。  
+   * 不能改变`this`
+   * 没有`arguments`对象。
+   * 如果要让函数体返回一个对象的话， 应该用括号来将花括号包围起来。 如： 
+
+     ```js
+     // 因为花括号通常表示一个语句块儿， 所以如果没有用括号来包裹的话， 会认为需要执行里面的语句， 但是里面实际上是一个对象， 不能执行所以就会报错。 
+     // 所以， 在返回值是一个对象的时候， 需要用小括号将花括号包裹起来。 
+     var getTempItem = id => {id, name: 'temp'} // Uncaught SyntaxError: Unexpected token :
+
+     var getTempItem = id => ({id, name: 'temp'}); // 正确。 
+     ```
+   * 箭头函数的IIFEs写法： 
+
+     ```js
+     let person = ((name) => {
+       return {
+         getName: function () {
+           return name;
+         }
+       }
+     })('Jiangxi'); 
+     // 注意， 这里包裹函数的小括号必须要在参数前面而不能包含参数， 这是与常规函数不同的地方
+     ```
+
+   * 箭头函数里的`this`是不能够通过`call`, `apply`或者`bind`来改变的， 但是依然可以使用这三个方法来传递参数，只是不能对`this`产生影响而已。 使用`bind`会创建一个新的函数。 
+
+     ```js
+      window.age = 12;
+      var obj = {
+        age: 22,
+        sayAge : () => {
+          return this.age
+        }
+      };
+      obj.sayAge(); // 12 因为箭头函数的this指向的是其向上追溯的第一个非箭头函数内的this, 所以这里就是指向window而非obj对象。 
+     ```
+
+    * 箭头函数不具有`arguments`对象， 如果尝试访问`arguments`对象的话， 一般会返回其包含函数的`arguments`对象
+
+    * 要触发ES6的尾调用优化的话： 
+      * 必须要有`return`语句
+      * `return`语句里不能包含其他操作， 只能是函数的执行结果。 
+      * 如果将要返回的结果用变量存储起来， 再返回这个变量的话， 也不会触发尾调用优化。 
+      * 总的来说， 只有当函数结果能够被立即返回的时候才会触发尾调用优化。 
+      * 不能是闭包
+      * 尾调用的值是以函数值的形式返回的。 
+        
+
+      ```js
+      // 以下函数不会触发尾调用优化。 因为在最后返回的时候进行了多个操作 
+      function factorial (n) {
+        if (n <= 1) return 1;
+        return n * factorial(n - 1)
+      }
+      // 改写后的函数就能够触发尾调用优化。 
+      function factorial (n, p = 1) {
+        if (n <= 1) return 1 * p;
+        let result = n * p;
+        return factorial(n - 1, result);
+      }
+      ```
+6. 对象。 
+   * 对象方法简写：
+
+     ```js
+     var obj = {
+       sayName () {}, // 此时sayName的name属性即为sayName
+       sayName2: function () {} // sayName2的name属性为''
+     };
+     ```
+
+###2016-04-05
+=======
+1. `Object.getOwnPropertyNames()`会返回对象的可枚举属性的键名组成的数组， 该数组始进行排序后的， 数字在前， 字母在后。
+
+2. 对象结构。。。。 翻译不过来了→＿←
+  
+  ```js
+  let node = {
+    name: 'Node',
+    id: 12
+  };
+  var {name, id} = node; // 同时声明name, id变量
+  ({name, id} = node)； // 返回值是node对象，并且同时生命了name, id变量。 
+  // 当使用这种表达式的时候，如果等号右边是`undefined`或者`null`的时候就会报错。 因为任何尝试访问`null`或者`undefined`的属性的语句都会报错。 
+
+  let node  = {
+    name: 'Node',
+    version: '0.12.0',
+    loc: {
+      start: {
+        line: 0,
+        column: 0
+      },
+      end: {
+        line: 1,
+        column: 1
+      }
+    }
+  }；
+  let {loc : {start}} = node；
+  loc; // ReferenceError: loc is not defined
+  start; // Object { line: 0, column: 0 }
+  ```
+3. 使用ES6的REST来克隆数组。 
+ 
+  ```js
+  let colors = ['blue', 'red'];
+  var cloneColors = [...colors];
+  cloneColors; // Array [ "blue", "red" ]
+  cloneColors === colors // false;
+  ```
+
+  ```js
+  // 解构赋值
+  function setCookie(name, value, {secure = false, path = '/', domain = 'example.com', expires = +new Date() } = {}) {
+    console.log(`you wanna set cookie ${name} = ${value}, and the secure is ${secure}, path is ${path}, domain is ${domain},expires is ${expires}`);
+  }
+  ```
+
+4. `Symbol`是一种基础的数据类型。 
+   
+   ```js
+   var sym = Symbol('str');
+   typeof sym; // "symbol"
+   ```
+   因为`Symbol`是基本数据类型，所以如果对`Symbol`使用`new`操作符的话将会抛出异常。   
+
+   要创建`Symbol`的实例可以通过`new Object(your Symbol)`来创建。但是这并没有多大的用处→＿←。 
+  
+   `Symbol`接收一个可选的参数来对其进行描述， 但是这个描述符并没有访问属性的权利， 它只是为了方便调试而已。 
+
+
+   `Symbol.for()`接收一个参数，该参数同时也会作为描述符。 在使用这个方法的时候， 会首先去查找全局注册的Symbol, 如果存在， 则返回， 如果不存在， 则新建并返回。 
+
+   `Set`实例化的时候传递参数需要是一个数组。 如: `new Set([1,2,3,4,5])`
+
+  
+
+   `Set`的`forEach`方法。 
+   `forEach`的回调函数的参数里面第一个参数和第二个参数是相等的， 都表示set在那个位置的值，第三个参数是set本身。 
+     
+    ```js
+    var processor2 = {
+      output (value) {
+         console.log(value);
+      },
+      process (dataSet) {
+        dataSet.forEach(function (item) {
+          this.output(item)
+        }, this); // 如果这里不传递this的话，this指向的是window, 如果使用箭头函数的话， 则无需传递this，this指向的是当前对象。 
+      }
+    }
+    ```  
+
+    使用`new Set(arr)`可以将数组转化为`Set`， 使用[...Set]可以将`set`转化为数组。 
+
+    数组去重： 
+
+    ```js
+    var arr = [1, 2, 3, 4, 5, 6, 7, 1, 23, 3, 4, 5, 6];
+    arr = [...new Set(arr)];
+    ```
+
+    `WeakSet`只能保存对象类型， 如果保存类型不是对象而是基础类型的话， 就会报错。   
+    ```js
+    var weakSet = new WeakSet(), key = {};
+    weakSet.add(key);
+    weakSet.has(key); // true
+    key = null;
+    weakSet.has(key); // false
+    ```
+
+    只有在考虑到要使用对象作为键值的时候才使用weakMap或者map. 而使用weakMap则是更好的选择。
+
+
+###2016-04-07
+======
+1. `iterator`
+   
+   ```js
+   function createIterators(items) {
+     var i = 0;
+     return {
+       next: function () {
+         var done = i >= items.length ? true : false;
+         var value = done ? undefined : items[i++];
+         return {
+           done: done,
+           value: value
+         }
+       }
+     }
+   }
+   ```
+###2016-04-08
+======
+1. 判断一个对象是否可迭代可以使用以下方法：  
+   
+   ```js
+   function isIterable (obj) {
+     return typeof obj[Symbol.iterable] === 'function';
+   }
+   ```
+   以上函数通过检测默认的迭代器是否存在来判断对象是否可迭代。 
+
+
+###2016-04-08
+======
+1. 关于`class`
+   * `class`声明不同于函数声明，他们没有声明提升。 同时`class`声明也是存在暂时性死区的。 
+
+     ```js
+     // 通常如果不使用var来声明变量而直接为变量赋值的话变量会变成全局变量
+     // 但是这里因为存在TDZ， 所以在语句没执行到class之前，class声明的Person都是不可用的。
+     Person = 123;
+     class Person {
+       constructor (name) {
+         this.name = name;
+       }
+       sayName () {
+         console.log(this.name)
+       }
+     }
+     ```
+
+   * `class`声明的代码都是自动在严格模式下执行的， 并且没有办法使得他们脱离严格模式而执行。 
+   * 所有的方法都是不可枚举的。 
+   * 所有的方法都是不具有`[[construct]]`内部方法的。 所以不能使用`new`操作符， 如果尝试使用将会抛出错误。 
+   * 不使用`new`操作符来调用`class`的话， 将会抛出错误 
+   * 定义静态成员。 
+
+     ```js
+      class PersonClass {
+        constructor (name) {
+            this.name = name;
+        }
+        static create (name) {
+            return new PersonClass(name);
+        }
+        sayName () {
+            console.log('My name is ' + this.name);
+        }
+      }
+      var person = new PersonClass.create('Jason'); // 静态方法是直接通过class定义的来访问的， 不能通过实例来访问。 
+     ```
+
+     ```js
+      function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;
+      }
+      Rectangle.prototype.getArea = function() {
+        return this.length * this.width;
+      };
+      function Square(length) {
+        Rectangle.call(this, length, length);
+      }
+      Square.prototype = Object.create(Rectangle.prototype,
+        constructor: {
+          value:Square,
+          enumerable: true,
+          writable: true,
+          configurable: true
+        }
+      });
+      var square = new Square(3);
+
+     ```
+   * 关于 `extends`
+
+     ```js
+      class Square extends Rectangle {
+        constructor(length) { // constructor里面的参数是实例化的时候传入的参数(对应这里的new Square()的时候传入的参数)。 
+        // same as Rectangle.call(this, length, length)
+        super(length, length); // 这里的super的参数将会传入父类e的construtor的参数里。 
+        }
+      }
+
+     ```
+
+###2016-04-11
+======
+1. `Array.from`. 
+   * 可以用于将类数组对象转换为数组对象。 
+   * 在转换的时候第二个参数可以对数组进行map操作。 
+
+     ```js
+     Array.from([1,2,3,4], item => item * 2); // [2,4,6,8]
+     ```
+   * 如果第二个参数是一个对象的方法的话， 可以用第三个参数来指定函数执行的上下文。 
+
+     ```js
+      var helper = {
+        diff: 1,
+        add (value) {
+          return value + this.diff;
+        }
+      };
+      var diff = 2;
+      Array.from([1,2,3,4,5], helper.add); // [3, 4, 5, 6, 7]
+      Array.from([1,2,3,4,5], helper.add, helper); // [2, 3, 4, 5, 6]
+     ```
+   * `Array.from`可用于类数组对象和具有迭代器接口的对象。 
+
+     ```js
+      let numbers = {
+        *[Symbol.iterator]() {
+          yield 1;
+          yield 2;
+          yield 3;
+        }
+      };
+      let numbers2 = Array.from(numbers, (value) => value + 1); // [2, 3, 4]
+
+     ```
+
+###2016-04-12
+======
+1. 关于`ArrayBuffer`
+   * 创建`ArrayBuffer`
+
+      ```js
+      var buffer = new ArrayBuffer(10);
+      ```
+   * 创建`view`
+
+     ```js
+     // 第二个参数表示offset, 第三个参数表示的是截取长度。 
+     var view = new DataView(buffer, 5, 5); // 第二三可参数是可选的， 当提供第三个参数的时候， 那么二三个参数加起来的和不能大于`buffer`的`byteLength`, 不然就会报错。
+     ```
+
+2. `Promise`的执行器（定义时的函数参数）是立即执行的。  
+   
+   ```js
+    var promise = new Promise((resolve, reject) => {
+      console.log('Promise')
+      resolve();
+    });
+    console.log('hi');
+    // Promise
+    // hi
+   ``` 
+
+=======
 ###2016-04-13
 =======
 1. 碰到的一个问题。 
