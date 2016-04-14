@@ -3154,7 +3154,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     // hi
    ``` 
 
-=======
 ###2016-04-13
 =======
 1. 碰到的一个问题。 
@@ -3189,6 +3188,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    [demo](http://374632897.github.io/just-some-tips/src/arrDelete.html)
 
+###2016-04-13
+=======
+1. 如果碰到界面不清晰的问题， 考虑是不是浏览器缩放所致。 
 
 #Problems
 =======
