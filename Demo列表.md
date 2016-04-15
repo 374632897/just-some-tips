@@ -11,3 +11,4 @@
 - [实现慕课网官网楼层动态效果](http://374632897.github.io/just-some-tips/DEMO/testGradint.html)
 - [对指定文字设置样式](http://374632897.github.io/just-some-tips/DEMO/index123.html)
 - [画个鸡蛋吧](http://374632897.github.io/just-some-tips/DEMO/drawAEgg.html)
+- [颜色块儿](http://374632897.github.io/just-some-tips/src/color.html)

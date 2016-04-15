@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  select{
+    position: relative;
+  }
+  /* select不支持伪类 */
+  /* select里面也不能有其他元素 */
+  select span{
+    position: absolute;
+    content: '';
+    right: 0;
+    background: #fff;
+    width: 10px;
+    top: 0;
+    bottom: 0;
+  }
+  body:after{
+    content: '123';
+  }
+  </style>
+</head>
+<body>
+  <select name="" id="">
+    <option value="123">123</option>
+    <option value="123">124</option>
+    <option value="123">125</option>
+    <option value="123">126</option>
+    <option value="123">127</option>
+    <option value="123">128</option>
+    <option value="123">129</option>
+    <span></span>
+  </select>
+</body>
+</html>

@@ -3192,6 +3192,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 如果碰到界面不清晰的问题， 考虑是不是浏览器缩放所致。 
 
+###2016-04-14
+=======
+1. select不支持伪类， select里面也不能有`option`之外的其他元素 
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
