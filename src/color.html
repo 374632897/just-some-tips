@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>点颜色块儿</title>
+  <style>
+  #box{
+    width: 450px;
+    height: 450px;
+    margin: 50px auto;
+    /*background: #f00;*/
+  }
+  #box>div{
+    width: 50px;
+    height: 50px;
+    float: left;
+    outline: 1px solid #233;
+  }
+   #box>div.lighter{
+    /*用到透明度的话那么每次都会凸出去一点→＿←这是为什么→＿←*/
+    /*opacity: 0.9;*/
+    /*这里为什么会凸出去一点→＿←*/
+    /*width: 49px;*/
+    /*height: 49px;*/
+    /*filter: alpha(opacity=90);*/
+  } 
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+  (function () {
+    var DIV_NUM = 81, oBox = document.querySelector('#box');
+    function rgb () {
+      return Math.floor(Math.random() * 255) + 1;
+    }
+    function getHtml() {
+      var html = '', random = Math.floor(Math.random() * DIV_NUM) + 1;
+      var r = rgb(), g = rgb(), b = rgb();
+      for (var i = 0, len = DIV_NUM; i < len; i++) {
+        if (i !== random) {
+          html += '<div style="background: rgb(' + r + ',' + g + ',' + b  +')"></div>';
+        } else {
+          // html += '<div class="lighter" style="background: rgb(' + r + ',' + g + ',' + b +')"></div>';
+          // 为什么这里
+          html += '<div class="lighter" style="background: rgba(' + r + ',' + g + ',' + b +',0.9)"></div>';
+        }
+      }
+      return html;
+    }
+    function setHtml (html) {
+      oBox.innerHTML = html;
+    }
+    document.onclick = function (e) {
+      if (e.target.classList.contains('lighter')) {
+        console.time('时间');
+        setHtml(getHtml());
+        console.timeEnd('时间');
+      }
+    }
+    setHtml(getHtml());
+  })();
+  </script>
+</body>
+</html>
