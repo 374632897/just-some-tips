@@ -5,29 +5,55 @@
   <title>根据传入的日期字符串组成的数组获取得到一个对象</title>
 </head>
 <body>
+  <textarea name="" id="" cols="30" rows="10" onclick = 'this.select();'>
+    啦啦啦， 啦啦啦， 我是卖报的小行家
+  </textarea>
   <script>
-    var dateAry = ['20150606', '20160606', '20150506', '20150507', '20150508', '20150808', '20140606', '20180606', '20120606'];
-    var dateObj = {};
-    dateAry.forEach(item => {
-      if (dateObj[item.slice(0,4)]) {
-        dateObj[item.slice(0,4)].push(item.slice(4));
-      } else {
-        dateObj[item.slice(0,4)] =  [item.slice(4)];
-      }
-    })
-    for (var key in dateObj) {
-      var year = dateObj[key];
-      var obj = {};
-      year.forEach(item => {
-        if (obj[item.slice(0, 2)]) {
-          obj[item.slice(0, 2)].push(item.slice(2));
+    const dateAry = ['20150606', '20160606', '20150506', '20150507', '20150508', '20150808', '20140606', '20180606', '20120606'];
+    function getSerializeDateObj (dateAry) {
+      const dateObj = {};
+      dateAry.forEach(item => {
+        const year = item.slice(0,4), month = item.slice(4);
+        if (dateObj[year]) {
+          dateObj[year].push(month);
         } else {
-          obj[item.slice(0, 2)] = [item.slice(2)];
+          dateObj[year] =  [month];
         }
-      });
-      dateObj[key] = obj;
+      })
+      for (const key in dateObj) {
+        const year = dateObj[key], obj = {};
+        year.forEach(item => {
+          const month = item.slice(0, 2), day = item.slice(2);
+          if (obj[month]) {
+            obj[month].push(day);
+          } else {
+            obj[month] = [day];
+          }
+        });
+        dateObj[key] = obj;
+      }
+      return dateObj;
     }
-    console.log(dateObj);
+    // dateAry.forEach(item => {
+    //   if (dateObj[item.slice(0,4)]) {
+    //     dateObj[item.slice(0,4)].push(item.slice(4));
+    //   } else {
+    //     dateObj[item.slice(0,4)] =  [item.slice(4)];
+    //   }
+    // })
+    // for (var key in dateObj) {
+    //   var year = dateObj[key];
+    //   var obj = {};
+    //   year.forEach(item => {
+    //     if (obj[item.slice(0, 2)]) {
+    //       obj[item.slice(0, 2)].push(item.slice(2));
+    //     } else {
+    //       obj[item.slice(0, 2)] = [item.slice(2)];
+    //     }
+    //   });
+    //   dateObj[key] = obj;
+    // }
+    // console.log(dateObj);
   </script>
 </body>
 </html>

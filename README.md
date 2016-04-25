@@ -3196,6 +3196,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. select不支持伪类， select里面也不能有`option`之外的其他元素 
 
+###2016-04-14
+=======
+1. 如果要是https下的网页内容里面包含了混合内容(mixed-content:displayed), 那么网站前面的https将不会是绿色的， 这个可以通过chrome的security工具来查看（Mixed Content）。
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
