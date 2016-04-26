@@ -3200,6 +3200,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 如果要是https下的网页内容里面包含了混合内容(mixed-content:displayed), 那么网站前面的https将不会是绿色的， 这个可以通过chrome的security工具来查看（Mixed Content）。
 
+###2016-04-14
+=======
+1. `ctrl`是`e.ctrlkey`, `command`是`<e class="metakey"></e>`
+
 
 #Problems
 =======

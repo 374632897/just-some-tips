@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html{
+    width: 100%;height: 100%;
+  }
+  body{
+    width: 100%; height: 500%;
+  }
+  </style>
+</head>
+<body>
+  <script>
+  (function () {
+    function throttle (fn, timeout) {
+      var timer = null;
+      return function () {
+        if (!timer) {
+          fn();
+        }
+        clearInterval(timer);
+        timer = setTimeout(function () {
+          fn();
+        }, timeout || 250);
+      }
+    }
+    window.onscroll = throttle(function () {
+      console.log('scroll');
+    });
+    // window.onscroll = function () {
+    //   console.log('scroll');
+    // };
+  })();
+  </script>
+</body>
+</html>
