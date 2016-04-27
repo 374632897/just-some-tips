@@ -3204,6 +3204,18 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. `ctrl`是`e.ctrlkey`, `command`是`<e class="metakey"></e>`
 
+###2016-04-27
+=======
+1. 关于`dropdown`
+   
+  ````html
+  .dropdown
+    .dropdown-toggle [data-toggle='dropdown']
+    .dropdown-menu
+      .dropdown-item
+      .dropdown-item
+  ````
+
 
 #Problems
 =======
