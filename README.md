@@ -3215,6 +3215,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       .dropdown-item
       .dropdown-item
   ````
+###2016-04-29
+=======
+1. 创建100个'x'组成的字符串。 `new Array(100).join('x')`
+
 
 
 #Problems
