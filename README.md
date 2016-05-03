@@ -3252,7 +3252,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    这样就能正确的发送表单数据了。 
 
-3. 数据库连接的时候如果显示`mysql_connect() is not a function`的时候， 那么可能是php.ini中的扩展(`extension: mysql.dll; extension: mysqli.dll`)没有启用， 或者说是扩展的路径名（`extension_dir: `）错误。 
+3. 数据库连接的时候如果显示`mysql_connect() is not a function`的时候， 那么可能是php.ini中的扩展(`extension: mysql.dll; extension: <mysqli class="dll"></mysqli>`)没有启用， 或者说是扩展的路径名（`extension_dir: `）错误。 
+
+4. PHP要相应JSON数据的话， 需要对数据进行`json_encode()`然后`echo`处理。 
    
 
 
