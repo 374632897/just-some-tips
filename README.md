@@ -3219,6 +3219,44 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 创建100个'x'组成的字符串。 `new Array(100).join('x')`
 
+###2016-05-03
+=======
+1. 在通过`AJAX`post数据的时候， 需要设置请求头：
+   
+   ```js
+   xhr.setRequestHeader('Content-type', 'application/x-www-urlencoded; charset=utf-8');
+   ```
+2. 关于表单数据的`ajax`提交： 
+   
+   如提交内容为以下对象： 
+   
+   ```js
+   var data = {
+     username: 'Jason',
+     password: 123456
+   }
+   ```
+   那么要实现表单式提交首先需要设置请求头， 如上面所示
+
+   然后格式化数据： 
+
+   ```js
+    function formatFormData (obj) {
+      var ary = [];
+      for (var key in obj) {
+        ary.push(key + '=' + obj[key]);
+      }
+      return ary.join('&');
+    }
+    formatFormData(data); // 'username=Jason&password=123456';
+   ```
+   这样就能正确的发送表单数据了。 
+
+3. 数据库连接的时候如果显示`mysql_connect() is not a function`的时候， 那么可能是php.ini中的扩展(`extension: mysql.dll; extension: mysqli.dll`)没有启用， 或者说是扩展的路径名（`extension_dir: `）错误。 
+   
+
+
+
 
 
 #Problems
