@@ -13,4 +13,4 @@ Object.myIs = function(a, b) {
     // NaN
     return a !== a && b !== b;
   }
-}
+};
