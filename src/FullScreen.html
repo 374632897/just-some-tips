@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全屏API</title>
+  <style>
+  html, body{
+    margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #f66;
+  }
+  .ad {
+    width: 50px;
+    height: 50px;
+    background: #233;
+    margin-bottom: 100px;
+  }
+  </style>
+</head>
+<body>
+  <div class="ad">
+    
+  </div>
+  <button id = 'ele'>元素全屏</button>
+  <button id = 'body'>整个部分全屏</button>
+  <script>
+  (function (){
+    var oAd = document.querySelector('.ad'),
+        oEle = document.getElementById('ele'),
+        oBod = document.getElementById('body');
+
+    function launchFullScreen (ele) {
+      if (ele.requestFullScreen) {
+        ele.requestFullScreen();
+      } else if (ele.webkitRequestFullScreen) {
+        ele.webkitRequestFullScreen();
+      } else if (ele.mozRequestFullScreen) {
+        ele.mozRequestFullScreen();
+      }
+    }
+    oEle.onclick = function () {
+      launchFullScreen(oAd);
+      // if (document.cancelFullScreen) {
+      //   document.cancelFullScreen();
+      // } else {
+      //   oAd.requestFullScreen();
+      // }
+    }
+    oBod.onclick = function () {
+      launchFullScreen(document.body);
+    }
+  })();
+  </script>
+</body>
+</html>
