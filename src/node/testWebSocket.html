@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .msgBox {
+    outline: 1px solid #233;
+    width: 235px;
+    margin: 5px;
+  }
+  </style>
+</head>
+<body>
+  <textarea name="" class="text" cols="30" rows="10"></textarea>
+  <br>
+  <button class = 'send'>发送</button>
+  <div class="msgBox">
+    
+  </div>
+  <script>
+  (function () {
+    var oTxt = document.querySelector('.text');
+    var oBox = document.querySelector('.msgBox');
+    var oBtn = document.querySelector('.send');
+    oBtn.onclick = function () {
+      var value = oTxt.value;
+      if (value) {
+        socket.send(value);
+        oTxt.value = '';
+      }
+    };
+    var socket = new WebSocket('ws://localhost:1234');
+    socket.onopen = function () {
+      console.log('Connected');
+      socket.send('hello world');
+
+    };
+    socket.onmessage = function (msg) {
+      console.info(msg);
+      console.log('onmessage');
+      oBox.innerHTML += msg.data + '<br />';
+    };
+    socket.onclose = function () {
+      console.log('onclose');
+    };
+    socket.onerror = function () {
+      console.log('onerror');
+    };
+  })();
+  </script>
+</body>
+</html>
