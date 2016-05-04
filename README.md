@@ -3256,8 +3256,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 4. PHP要相应JSON数据的话， 需要对数据进行`json_encode()`然后`echo`处理。 
    
-
-
+###2016-05-04
+=======
+1. `CYGWIN`是一个可以在windows上使用Linux命令的环境， 通过它来安装`fish`的时候需要在安装过程包选择中选择`fish`才行， 然后通过他的命令行输入`fish`进入fish
 
 
 
