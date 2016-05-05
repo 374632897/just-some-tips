@@ -3264,7 +3264,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-05-05
 =======
 1. `cygwin` 默认是挂载了磁盘的， 通过访问`/cyqdrive/your device`就可访问到对应的磁盘分区
-
+2. `df`用来查看挂载点
 
 #Problems
 =======
