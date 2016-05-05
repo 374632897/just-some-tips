@@ -3261,6 +3261,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. `CYGWIN`是一个可以在windows上使用Linux命令的环境， 通过它来安装`fish`的时候需要在安装过程包选择中选择`fish`才行， 然后通过他的命令行输入`fish`进入fish
 
 
+###2016-05-05
+=======
+1. `cygwin` 默认是挂载了磁盘的， 通过访问`/cyqdrive/your device`就可访问到对应的磁盘分区
+
 
 #Problems
 =======
