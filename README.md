@@ -3266,6 +3266,22 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. `cygwin` 默认是挂载了磁盘的， 通过访问`/cyqdrive/your device`就可访问到对应的磁盘分区
 2. `df`用来查看挂载点
 
+###2016-05-09
+=======
+1. 在访问nginx服务器上的.php出现no input file specified的时候， 在location里面添加root, 并且将scriptfile后面的设为$document_root
+
+   ```nginx
+    location ~ \.php$ {
+      root           D:\\nginx-1.6.0\html;
+      fastcgi_pass   127.0.0.1:9000;
+      fastcgi_index  index.php;
+      fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+      include        fastcgi_params;
+    }
+   ```
+2. `document.documentMode`判断是IE几
+3. 如果`.chm`的文件打开后没有内容， 那么右击文件， 点解除锁定就行了。 
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别

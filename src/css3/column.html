@@ -4,10 +4,31 @@
   <meta charset="UTF-8">
   <title>多列布局</title>
   <style>
+  html{
+    width: 100%;
+    height: 100%;
+  }
+  body{
+    height: 500%;
+  }
   .container {
     column-count: 4;
+    background: #f00;
+  }
+  .right{
+    position: fixed;
+    right: 0;
+    background: #233;
+    width: 200px;
+    height: 400px;
   }
   </style>
+  <!-- [if IE]>
+  <style>
+  background: #233;
+  </style>
+  <![endif] -->
+  
 </head>
 <body>
   <div class="container">
@@ -16,5 +37,12 @@
     <div>11111111</div>
     <div>333333333333</div>
   </div>
+  <div class="right">
+    123131
+
+  </div>
+  <!-- [if IE]>
+  1231231
+  <![endif] -->
 </body>
 </html>
