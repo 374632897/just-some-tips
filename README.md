@@ -3282,6 +3282,20 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. `document.documentMode`判断是IE几
 3. 如果`.chm`的文件打开后没有内容， 那么右击文件， 点解除锁定就行了。 
 
+
+###2016-05-10
+=======
+1. 关于字符串的`replace`方法： 
+   
+   ```js
+    var str = '今天是个好天气';
+    // 也就是replace方法的第二个参数可以是一个函数， 函数传入参数是前面匹配到的字符串
+    str.replace(/[今天]/g, (a) => {
+      return a.repeat(5);
+    });
+    // "今今今今今天天天天天是个好天天天天天气"
+   ```
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
