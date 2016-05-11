@@ -3299,6 +3299,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. IE10和IE11抛弃了条件注释。。 
 2. 在一个执行环境内， 对于使用`const`或者`let`声明的变量，在语句没执行到的时候， 不能进行任何访问行为。 包括调用`typeof`操作符
+   
+   > When a JavaScript engine looks through an upcoming block andfinds a variable declaration, it either hoists thedeclaration to the top of the function or global scope (for var) or places the declaration in the TDZ (for let and const).Any attempt to access a variable in the TDZ results in aruntime error. That variable is only removed from the TDZ,and therefore safe to use, once execution flows to the variable declaration.
+
 
 
 #Problems
