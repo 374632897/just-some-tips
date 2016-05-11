@@ -3298,7 +3298,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-05-11
 =======
 1. IE10和IE11抛弃了条件注释。。 
-
+2. 在一个执行环境内， 对于使用`const`或者`let`声明的变量，在语句没执行到的时候， 不能进行任何访问行为。 包括调用`typeof`操作符
 
 
 #Problems

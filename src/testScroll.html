@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动监听</title>
+  <style>
+  html, body{
+    width: 100%; height: 100%; margin: 0; padding: 0; 
+  }
+  .header {
+    position: fixed;
+  }
+  .header-nav {
+    overflow: hidden;
+    /*background: #f66;*/
+  }
+  .header-nav li{
+     list-style: none;
+     float: left;
+     padding: 12px;
+  }
+  .floor {
+    /*height*/
+  }
+  .floor > div {
+    height: 600px;
+    outline:  1px solid #233;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <ul class = 'header-nav'>
+        <li>一楼</li>
+        <li>二楼</li>
+        <li>三楼</li>
+        <li>四楼</li>
+        <li>五楼</li>
+        <li>六楼</li>
+      </ul>
+    </div>
+    <div class="floor">
+      <div class="floor-1"></div>
+      <div class="floor-2"></div>
+      <div class="floor-3"></div>
+      <div class="floor-4"></div>
+      <div class="floor-5"></div>
+      <div class="floor-6"></div>
+    </div>
+  </div>
+  <script>
+  window.onscroll = function (e) {
+    console.log(e);
+  }
+  </script>
+</body>
+</html>
