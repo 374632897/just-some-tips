@@ -3295,6 +3295,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     });
     // "今今今今今天天天天天是个好天天天天天气"
    ```
+###2016-05-11
+=======
+1. IE10和IE11抛弃了条件注释。。 
+
+
 
 #Problems
 =======
