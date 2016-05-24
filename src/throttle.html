@@ -3,37 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <style>
-  html{
-    width: 100%;height: 100%;
-  }
-  body{
-    width: 100%; height: 500%;
-  }
-  </style>
 </head>
 <body>
+  <button class = 'clear'>单击我清除状态</button>
   <script>
-  (function () {
-    function throttle (fn, timeout) {
-      var timer = null;
-      return function () {
-        if (!timer) {
-          fn();
-        }
-        clearInterval(timer);
-        timer = setTimeout(function () {
-          fn();
-        }, timeout || 250);
+  var throttle = (fn, wait = 500) => {
+    var timer;
+    return function (...args) {
+      if (!timer) {
+        timer = setTimeout(() => timer = null, wait);
+        return fn.apply(this, args);
       }
     }
-    window.onscroll = throttle(function () {
-      console.log('scroll');
-    });
-    // window.onscroll = function () {
-    //   console.log('scroll');
-    // };
-  })();
-  </script>
+  }
+  var resize = throttle(function (e) {
+    console.log(e);
+  });
+  
+  window.onresize = function (e) {
+    resize(e);
+  }
+  var timer = setInterval(function () {
+    console.log(12313);
+  }, 10000);
+  document.querySelector('.clear').onclick = function () {
+    clearInterval(timer);
+  }
+  </script>  
+
+
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id = 'test'>
+  <script>
+  var oTxt = document.getElementById('test');
+  // window.onkeydown = function () {
+  //   console.log('window');
+  // };
+  window.addEventListener('keydown', function (e) {
+    console.log('window');
+    e.stopPropagation();
+  }, true)
+  document.onkeydown = function () {
+    console.log('document');
+  };
+
+  oTxt.onkeydown = function () {
+    console.log('test');
+  };
+
+  </script>
+</body>
+</html>

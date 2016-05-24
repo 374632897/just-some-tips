@@ -68,8 +68,8 @@
 =======
 1. 使用new操作符调用函数时，返回的是一个对象，构造器里的this就指向这个对象-。
 2. 对象可以使用new操作符后跟要创建的对象类型的名称来创建，如果不给构造函数传递参数，那么可以省略后面的圆
-    括号，虽然有效，但是并不推荐。    此外，new Date和new Date()是有区别的，~~后者可以使用相关方法，而前者不行。这里上面已经提到过了。~~
-   **要搞懂基本类型里的Object类型和引用类型里的Object类型的区别**
+    括号，虽然有效，但是并不推荐。    此外，new Date和new Date()是有区别的，~~后者可以使用相关方法，而前者不行。这里上面已经提到过了。
+   要搞懂基本类型里的Object类型和引用类型里的Object类型的区别~~
 3. 
    
    `````javascript
@@ -3301,6 +3301,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 2. 在一个执行环境内， 对于使用`const`或者`let`声明的变量，在语句没执行到的时候， 不能进行任何访问行为。 包括调用`typeof`操作符
    
    > When a JavaScript engine looks through an upcoming block andfinds a variable declaration, it either hoists thedeclaration to the top of the function or global scope (for var) or places the declaration in the TDZ (for let and const).Any attempt to access a variable in the TDZ results in aruntime error. That variable is only removed from the TDZ,and therefore safe to use, once execution flows to the variable declaration.
+
+###2016-05-12
+=======
+1. 通过给`a`标签添加`download`属性，即可实现在点击的时候直接下载`href`属性指向的资源。
+
+###2016-05-13
+=======
+1. `removeEventListener`和`addEventListener`的三个参数必须相同，才能保证能够正确的移除对应事件。
 
 
 
