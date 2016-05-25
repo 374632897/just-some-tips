@@ -3310,6 +3310,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. `removeEventListener`和`addEventListener`的三个参数必须相同，才能保证能够正确的移除对应事件。
 
+###2016-05-25
+=======
+1. `obj.selectionStart`只针对`input`, `textarea`等元素， 不适用于`contenteditable`元素
+
 
 
 #Problems
