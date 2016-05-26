@@ -13,22 +13,22 @@
 </head>
 <body>
   在键盘上按下一个键， 系统将提示对应键码
-  <div class="test" contenteditable></div>
+  <!-- <div class="test" contenteditable></div> -->
   <script>
   document.onkeyup = function (e) {
-    // alert('键码为' + e.keyCode);
+    alert('键码为' + e.keyCode);
     e.preventDefault();
   }
-  document.querySelector('.test').onkeydown = function (e) {
-    if (e.keyCode === 13) {
-      this.style.background = '#f66';
-    }
-  }
-  document.querySelector('.test').onkeyup = function (e) {
-    if (e.keyCode === 13) {
-      this.style.background = '#fff';
-    }
-  }
+  // document.querySelector('.test').onkeydown = function (e) {
+  //   if (e.keyCode === 13) {
+  //     this.style.background = '#f66';
+  //   }
+  // }
+  // document.querySelector('.test').onkeyup = function (e) {
+  //   if (e.keyCode === 13) {
+  //     this.style.background = '#fff';
+  //   }
+  // }
   </script>
 </body>
 </html>
