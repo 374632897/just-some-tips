@@ -3314,7 +3314,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. `obj.selectionStart`只针对`input`, `textarea`等元素， 不适用于`contenteditable`元素
 
-
+###2016-05-26
+=======
+1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true 
 
 #Problems
 =======
