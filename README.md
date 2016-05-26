@@ -3317,6 +3317,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-05-26
 =======
 1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true 
+2. 回车的断行事件是在`keydown`结束后和`keyup`结束前触发的， 所以如果要在按回车的时候阻止默认事件， 应该在`keydown`里面进行。 
 
 #Problems
 =======
