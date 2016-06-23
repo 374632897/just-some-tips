@@ -1,0 +1,25 @@
+/*
+* @Author: Jiang Guoxi
+* @Date:   2016-06-13 12:14:34
+* @Last Modified by:   Jiang Guoxi
+* @Last Modified time: 2016-06-13 12:23:43
+*/
+html, body, div {
+  margin: 0; padding: 0;
+}
+.loading {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #233;
+}
+.loading .item {
+  margin: 4px;
+  background: #f66;
+  width: 15px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 10px 10px 10px 10px/22px 22px 12px 10px;
+}

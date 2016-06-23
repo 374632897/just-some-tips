@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test">123123</div>
+  <div id="test">1231231</div>
+  <div id="test">12312323</div>
+  <div id="test">123123345</div>
+  <div id="test">1231235678</div>
+  <div id="test">12312367890</div>
+  <script>
+    $(document).on('click.comments', '.comments', function (e) {
+      $(e.currentTarget).parent().parent().next().toggle();
+    });
+  </script>
+</body>
+</html>

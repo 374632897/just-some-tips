@@ -3319,6 +3319,24 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true 
 2. 回车的断行事件是在`keydown`结束后和`keyup`结束前触发的， 所以如果要在按回车的时候阻止默认事件， 应该在`keydown`里面进行。 
 
+
+###2016-06-23
+=======
+1. 关于`this`
+  
+  ```js
+  // with (global)
+  var a = {
+    a: this, // window
+    data: {
+      a: this // window
+    },
+    sayName () {
+      console.log(this); // a Object {}
+    }
+  }
+  ```
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
