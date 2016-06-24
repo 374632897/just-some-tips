@@ -2,11 +2,11 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-06-24 15:27:08
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-06-24 15:38:56
+* @Last Modified time: 2016-06-24 18:08:20
 */
 
 [class^="emoji-icon-"], [class*=" emoji-icon-"] {
-  background-image: url('../images/emoji-sa2c188aeaf.png');
+  background-image: url('../images/emoji-icon-sprite.png');
   background-repeat: no-repeat;
   background-size: 29.30px 22033.6px;
   display: inline-block;
