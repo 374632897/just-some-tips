@@ -1,0 +1,9 @@
+/*
+* @Author: Jiang Guoxi
+* @Date:   2016-06-23 12:37:37
+* @Last Modified by:   Jiang Guoxi
+* @Last Modified time: 2016-06-23 12:38:43
+*/
+@import "compass/utilities/sprites";    // 加载compass sprites模块
+@import "emoji/*.png";                    // 导入share目录下所有png图片
+@include all-share-sprites; 
