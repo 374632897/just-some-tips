@@ -3337,6 +3337,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   }
   ```
 
+###2016-06-30
+=======
+1. `/\w/.test(123)`得到的结果是`true`， 因为`\w`匹配的是字母数字和下划线之中的任意一个
+
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
