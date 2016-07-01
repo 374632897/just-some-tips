@@ -3341,6 +3341,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. `/\w/.test(123)`得到的结果是`true`， 因为`\w`匹配的是字母数字和下划线之中的任意一个
 
+###2016-07-01
+=======
+1. `forEach`里面不能使用`continue`, `break`语句， 虽然能够使用`return`并且不会报错， 但是实际上即使满足条件的话也不会跳出循环， 而是会继续执行下去。 
 
 
 #Problems
