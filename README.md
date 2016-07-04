@@ -18,21 +18,21 @@
 3. 话说之前安装node-sass的时候提示没有python执行环境，后来不知怎么的又好了，今天安装webpack的时候也这样，
    我稀里糊涂的安装了一些东西，后来    也成功了，真是不知道怎么回事。
 4. 如果链接在行尾因为宽度不够而导致内容换行显示，那么对链接设置display:inline-block即可。
-5. 
+5.
 
 ###2015-12-15
 =====
 1. new Date和new Date()的执行结果相同，但是new Date不具有Date对象的相关方法，而new Date()则可以。直接使用Date()得到的会是一个日期的字符串表示。 ~~这里其实
-   可以直接理解为，带括号之后，指向的是该函数的返回值，而不带的时候，指向的是对这个函数的引用而已.~~   
+   可以直接理解为，带括号之后，指向的是该函数的返回值，而不带的时候，指向的是对这个函数的引用而已.~~
     **2016/3/13注： 这里其实涉及到的是运算符优先级的问题**
-     
+
   ```js
   new Date.getFullYear(); // Uncaught TypeError: Date.getFullYear is not a constructor(…)
   new Date().getFullYear(); // 2016
   (new Date).getFullYear(); // 2016
   (new Date()).getFullYear(); // 2016
   ```
-  也就是说，其实这里因为``new Date``的时候没有带参数， 所以``new`` 的优先级要低于`.``的优先级， 因此会先尝试访问``Date.getFullYear``, 但是这样得到的结果是`undefined`，然后再执行new，由于``undefined``不是构造函数， 所以就会报错了。 因此当给``new Date``加上括号之后， 提升了语句的优先级， 就不会报错了。 圆括号的优先级是最大的。而至于这里带不带括号的问题， 其实无关紧要， 在需要传递参数的时候自然需要带括号， 如果不传递参数， 可以不带。   
+  也就是说，其实这里因为``new Date``的时候没有带参数， 所以``new`` 的优先级要低于`.``的优先级， 因此会先尝试访问``Date.getFullYear``, 但是这样得到的结果是`undefined`，然后再执行new，由于``undefined``不是构造函数， 所以就会报错了。 因此当给``new Date``加上括号之后， 提升了语句的优先级， 就不会报错了。 圆括号的优先级是最大的。而至于这里带不带括号的问题， 其实无关紧要， 在需要传递参数的时候自然需要带括号， 如果不传递参数， 可以不带。
   附： [运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 2. 静态类型语言指的是在编译的时候就已经能够确定变量的值的类型的语言，动态类型语言是指在执行的时候才能确定
    类型的语言，也就是在变量被赋值之后才能确定其类型。
@@ -40,7 +40,7 @@
 4. 自调用函数的写法的区别：
    ````javascript
    (function () {console.log('hello'})();
-   (function () {console.log('hello'}()); 
+   (function () {console.log('hello'}());
    ````
    这里代表函数执行的括号写在内部和写在外部的区别是什么？
    貌似没有什么区别，这里第二种写法是JSlint推荐的写法，这样能能够提升代码整体性
@@ -59,7 +59,7 @@
       }
     };
    }());
-   
+
    ````
   原理：定义一个变量为一个函数的返回值，在这个函数内部，定义了私有变量，在函数的返回值里，对外提供两个方
         法来获取值和设置该私有变量,这样，就形成了私有接口和公共接口。
@@ -70,8 +70,8 @@
 2. 对象可以使用new操作符后跟要创建的对象类型的名称来创建，如果不给构造函数传递参数，那么可以省略后面的圆
     括号，虽然有效，但是并不推荐。    此外，new Date和new Date()是有区别的，~~后者可以使用相关方法，而前者不行。这里上面已经提到过了。
    要搞懂基本类型里的Object类型和引用类型里的Object类型的区别~~
-3. 
-   
+3.
+
    `````javascript
    var obj = {
      name: 'Jason',
@@ -86,7 +86,7 @@
    obj.getName();//obj
    getName2();//window.name
    `````
-   
+
   ```js
   const obj = {
     name : 'JGX',
@@ -107,12 +107,12 @@
     console.log('outer')
   };
   func(); // outer
-  obj.detail.saySth(); // inner // 上面重写了func之后并没有反应在源对象上。 
+  obj.detail.saySth(); // inner // 上面重写了func之后并没有反应在源对象上。
   ```
 
-    
-     **2016/3/13注** 
-   ~~由上面代码的运行结果可以看出，当把一个函数赋给另一个函数的时候，他们之间是按值传递的，也就是说，当之前的函数发生改变的时候，并不会影响另外一个函数。关于这里，还是比较模糊的，总之要记清楚，当把一个对象的方法赋给另一个函数时，他们是按值传递的即可。~~ 关键在于访问方式。 
+
+     **2016/3/13注**
+   ~~由上面代码的运行结果可以看出，当把一个函数赋给另一个函数的时候，他们之间是按值传递的，也就是说，当之前的函数发生改变的时候，并不会影响另外一个函数。关于这里，还是比较模糊的，总之要记清楚，当把一个对象的方法赋给另一个函数时，他们是按值传递的即可。~~ 关键在于访问方式。
 
 ###2015-12-17
 =======
@@ -125,11 +125,11 @@
    * 不引入未使用的变量
    * 函数参数前后不要有空格
    * super后面不跟空格 也就是super();
-   * 在一个作用域内，如果变量不会改变，那么就使用const来代替let或者var 
+   * 在一个作用域内，如果变量不会改变，那么就使用const来代替let或者var
    * class 块后面不接分号。
    * 在一个块级内部的头部和尾部要接1个空格，如{ name: 'helloworld' }
    * if 语句中，if后面要留一个空格
-   * import的内容，如果并不会在后面的代码中使用，那么就直接import而不需要命名。这点在导入CSS的时候尤其需 
+   * import的内容，如果并不会在后面的代码中使用，那么就直接import而不需要命名。这点在导入CSS的时候尤其需
      要注意
    * 加载模板需要在constructor里面。
 5. 如果陷入死循环，那么注意函数执行的时候是不是一直在自调用。
@@ -149,9 +149,9 @@
 
 ###2015-12-18
 ==========
-1. View要实例化以后才行。 
+1. View要实例化以后才行。
 2. 关于闭包，先看下面一段代码
-   
+
    ````javascript
    var func = function () {
      var a=6;
@@ -164,13 +164,13 @@
    f(); // 6
    ````
 
-   在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。 
+   在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。
 
 ###2015-12-19
 =======
 1. Array.prototype.push === [].push //true
-   后面跟有方法的时候就为true，没有跟方法，则为false。   
-   因为这里在访问`[]`的`push`方法的时候， 实际上是走Array的原型里查找的， 所以这个时候`[].push`就等于`Array.prototype.push`了。 
+   后面跟有方法的时候就为true，没有跟方法，则为false。
+   因为这里在访问`[]`的`push`方法的时候， 实际上是走Array的原型里查找的， 所以这个时候`[].push`就等于`Array.prototype.push`了。
 2. 突然就扯到关于原型上的东西了，还是做点笔记吧
    * object.constructor: 表示object的构造器
 
@@ -193,7 +193,7 @@
      var hello = new Hello();
      ````
      当对一个函数使用new操作符的时候，会生成一个对象。对象里面的属性和方法会与其构造器中有this的相关联。
-     
+
      Hello.prototype.constructor就等于Hello本身
 
      而hello.constructor也等于Hello，但是，Hello.prototype 与hello是不等的,因为Hello.prototype是Hello的原型对象，而hello是Hello的实例对象。
@@ -226,7 +226,7 @@
        };
      };
      `````
-   
+
 ###2015-12-20
 ======
 1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。__proto__(**注意是__而不是_也就是说，是两条下划线而不是一条**)是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
@@ -282,10 +282,10 @@
 ###2015-12-22
 =======
 1. 在添加监听事件时，回调函数不能加括号，如：
-   
+
    `````this.listenTo(this.model, 'change', this.render)`````
 
-   加括号是不行的。 
+   加括号是不行的。
 
 2. if语句结尾不用加分号
 
@@ -293,7 +293,7 @@
 
 4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？**01/08注：这里是因为实例化一个view的时候传入的是一个对象，而model只是这个对象里的一个属性，所以在后面访问的时候，要获取所需model就需要通过对象来获取**
 
-5. 
+5.
 
 
 ###2015-12-23
@@ -315,7 +315,7 @@
 5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。`e.stopPropagation()`。
 6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
 7. 函数节流的实现
-   
+
    ````javascript
    var throttle = function (fn,interval) {
     var _self = fn,
@@ -324,13 +324,13 @@
     return function () {
       var args = arguments, // event
           _me  = this;      // window
-      // 如果是第一次，就直接执行函数          
+      // 如果是第一次，就直接执行函数
       if (firstTime) {
         _self.apply(_me,args); // 相当于在me 的环境下执行 _self(args){}函数
         // _self();
         return firstTime = false;
       }
-      
+
       // 如果定时器还在，就return false;
       if (timer) {
         return false; // return false之后，就是不执行后面的语句了,感觉这里应该直接return就行的
@@ -370,8 +370,8 @@
 -------------------
 
 
-  
-  
+
+
    ````javascript
    document.onclick = function () {
      log;
@@ -381,15 +381,15 @@
   * 第二种情况下，直接把log放在函数里，这样其实没有什么意义，这就相当于把一段代码放进去，但是代码本身并没有触发条件
 
 ---------------
-   
+
 
 
 
    ````javascript
    document.onclick = log(); // 语句执行到这里的时候直接log；之后点击无反应
    ````
-  
-  * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为这里的执行结果是一个单独的语句而不是函数。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了. 当然，如果log的返回值是一个函数的话， 那么document上的绑定事件则会加在这个函数上。 
+
+  * 第三种情况下，直接把log()的执行结果绑定到onclick上，但是这本身是没有意义的，因为这里的执行结果是一个单独的语句而不是函数。所以当语句执行到这里的时候，就直接执行了log()，而因为这个绑定是无效的，所以document.onclick = null;之后再点击也没有反应了. 当然，如果log的返回值是一个函数的话， 那么document上的绑定事件则会加在这个函数上。
 
 ---------------
 
@@ -397,7 +397,7 @@
 
 
    ````javascript
-   document.onclick = log;  // 单击的时候会log 
+   document.onclick = log;  // 单击的时候会log
    ````
 
   * 而最后一个就更别说了，这里就相当于是直接把一个函数绑定到window.onclick 上面。也就是说，这段代码相当于 ````document.onclick = function () {console.log('hello')};````
@@ -428,7 +428,7 @@
 2. **出现滚动条的时候由于滚动条占位，元素被挤开了，怎么解决？**
 3. 写font的缩写的时候，font-size和family是必须的
 4. where方法返回的是一个数组，所以通过where来获取自己需要的某一个元素的时候，需要在最后加个[0];
-5. 
+5.
 
 
 ###2015-12-25
@@ -446,7 +446,7 @@
    * 需要考虑的有几个问题
      * 一是性能问题，这是不是最优化的解决方案？
      * 直接清空dom的话，那些view的监听事件是不是没有被移除，是不是会造成资源浪费？其实这个问题还是和性能有关了
-     * 
+     *
    * mainView其实也只是一个View而已，只不过它管理着viewItem,但是viewItem本身是不在mainView里面的。。。也就是说，mainView里childView并不是viewItem
 
 4. 这周还是把php大概的过一遍吧。。。加油
@@ -464,10 +464,10 @@
 
      ````
      git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-     ```` 
+     ````
    [原文地址](http://jingpin.jikexueyuan.com/article/34632.html)
 
-2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况。 
+2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况。
    * **01/08注： 只需要给文本框设置高度即可，无需设置行高，因为设置行高后Safari下的placeholder和line-height会出现异常。**
 
 ###2015-12-27
@@ -482,11 +482,11 @@
    firstElementChild:
    lastElementChild:
    nextElementSibling:
-   previousElementSibling: 
+   previousElementSibling:
    以上属性都不会返回空白文本节点// IE9以上才支持→＿←
 5. afterpaste是粘贴时触发的事件
-6. 正则里面的或还是需要用好， 比如，~~/[\D | 0]/g,就是匹配 所有非数字和0~~ 【3/9注】： 然而并不是→＿←. 少了`|`也是或的关系， 而在中括号里面加上`|`之后就会匹配`|`这个字符了。 
-  
+6. 正则里面的或还是需要用好， 比如，~~/[\D | 0]/g,就是匹配 所有非数字和0~~ 【3/9注】： 然而并不是→＿←. 少了`|`也是或的关系， 而在中括号里面加上`|`之后就会匹配`|`这个字符了。
+
   ```js
   '|'.match(/[ts|]/); // ["|"];
   ```
@@ -494,15 +494,15 @@
 ###2015-12-28
 =======
 1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
-2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，~~刷新频率跟不上~~（**01/08注： 不是刷新频率跟不上，而是因为期望删除元素和当前删除元素不同步，在后面有提到这个问题**），从而会出错 。 
+2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，~~刷新频率跟不上~~（**01/08注： 不是刷新频率跟不上，而是因为期望删除元素和当前删除元素不同步，在后面有提到这个问题**），从而会出错 。
 3. 如果两个View共用一套collection，然后针对相同的动作有不同的行为的话，那么需要在将Model传入View的时候，传为一个对象，而不只是一个Model，实际上，在将Model传入View的时候一般都要传作对象，不然的话，html里面会多出很多混乱的数据。
 
 ###2015-12-29
 =======
 1. npm安装依赖包出错
    `````
-    If you are behind a proxy, please make sure that the 'proxy' config is set properly. 
-    npm err! Error: connect ECONNREFUSED 127.0.0.1:8087  
+    If you are behind a proxy, please make sure that the 'proxy' config is set properly.
+    npm err! Error: connect ECONNREFUSED 127.0.0.1:8087
 
    `````
    具体信息忘记截图了。。。
@@ -511,8 +511,8 @@
    ````
    npm config set proxy null
    ````
-   然后就能正常运行了。。解决了一个困扰这么久的问题。。心里还是很开心的O(∩_∩)O哈哈~ 
-2. 关于Switch语句分组的问题，需要在case的后面加：而不是逗号（毕竟不是css）,o(╯□╰)o 
+   然后就能正常运行了。。解决了一个困扰这么久的问题。。心里还是很开心的O(∩_∩)O哈哈~
+2. 关于Switch语句分组的问题，需要在case的后面加：而不是逗号（毕竟不是css）,o(╯□╰)o
 3. 关于line-height
    * 没有设置高度的情况下，撑开元素的高度，靠的是行高而不是font-size
    * line boxes的高度取决于它的子元素的最高高度（因此可以给其本身设置一个行高，再在里面添加一个空元素来继承其行高以便撑开）
@@ -532,7 +532,7 @@
    * 定义left: 50%, 然后使用transform: translateX(-50%);
    * 定义left和right，使之相等，这样就能把元素撑开了
 8. 在一个上下文里获取元素
-   ~~````$(selector,this.el)```` 获取到的是DOM对象~~， 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。 
+   ~~````$(selector,this.el)```` 获取到的是DOM对象~~， 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。
    ````this.$(selector)````    获取到的是jQuery对象
    * chrome 默认使用$来引用querySelector
    * Firefox 只有在控制台中才能使用$，也是通过querySelector
@@ -555,8 +555,8 @@
 ###2015-12-30
 1. 使用MarkDownPreview插件，可以在本地预览.md文件，安装后，在md文件中按````ctrl+shift+p````调出命令行，输入mdp,选择````Preview in browser```` 即可
 2. 关于按需加载
-   * 可以将需要按需加载的内容放在script标签里，然后在需要的时候，将需要展示的盒子的html()设为该标签里的内容，这样子在页面刚刚加载，没有达到触发条件的时候，并不会触发请求 
-   * 懒加载的实现原理： 
+   * 可以将需要按需加载的内容放在script标签里，然后在需要的时候，将需要展示的盒子的html()设为该标签里的内容，这样子在页面刚刚加载，没有达到触发条件的时候，并不会触发请求
+   * 懒加载的实现原理：
       * 生成标签时，用data-src来保存图片地址；
       * 记录的图片data-src都保存到数组里；
       * 对滚动条进行事件绑定,假设绑定的函数为function lazyload(){};
@@ -591,14 +591,14 @@
      这样的话，打印出来的消息里，hello将会替代%o.
    * %d or %i
      用于整型替换。如果传入的值是非整数的话，将会强制转换为整数。转换规则和parseInt差不多。使用%o的话则不会转换
-   * %s 
+   * %s
      输出字符串
-   * %f 
+   * %f
      输出为浮点值，
-   **注：原文中%d和%f的描述里有个尚未支持格式化，不懂什么意思** 
+   **注：原文中%d和%f的描述里有个尚未支持格式化，不懂什么意思**
    * %c
      使用%c之后，就会对%c之后的内容使用css样式了
-     
+
      ````javascript
      console.log('%chello world','color: red;');
      ````
@@ -666,11 +666,11 @@
 
 ###2016-01-02
 =======
-这个不知道该怎么起名。。。 
+这个不知道该怎么起名。。。
 
 ```javascript
 var aLi = document.getElementsByTagName('li');
-  
+
   for (var i = 0, b; b = aLi[i++]; ) {
     b.onclick = function () {
       console.log(this.innerHTML);
@@ -690,7 +690,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 至于闭包的话，是这样子的
 
-```javascript 
+```javascript
 for (var i = 0; i < aLi.length; i++) {
     aLi[i].onclick = function (i) { //也就是说，这里的i需要在同一个层上，并将其作为参数传入函数内部这样才不会出错
       return function () {
@@ -700,7 +700,7 @@ for (var i = 0; i < aLi.length; i++) {
   }
 ```
 
-这样子的话，当对应元素发生单击事件的时候，打印出来的东西就会是自己期望的值了。 
+这样子的话，当对应元素发生单击事件的时候，打印出来的东西就会是自己期望的值了。
 
 ###2016-01-03
 1. 将数组转换为字符串
@@ -713,7 +713,7 @@ for (var i = 0; i < aLi.length; i++) {
    colors.toString().split(','); // 注意： split 是通过指定标识符把**字符串**切割为数组 // 但是这样子的话，数组项会变为字符串
    ```
 2. 栈
-  * 是一种可以限制插入和删除项的数据结构。LIFO(last-in-first-out)，后进先出，也就是最新添加的项最先被移除   
+  * 是一种可以限制插入和删除项的数据结构。LIFO(last-in-first-out)，后进先出，也就是最新添加的项最先被移除
   * 方法： push(),pop();
   * push():可以接收任意数量参数并添加到数组末尾，返回**修改后数组的长度**
   * pop()：从数组末尾移除最后一项，返回**移除项**
@@ -739,13 +739,13 @@ for (var i = 0; i < aLi.length; i++) {
     ```js
     var arr = [1, 2, 3, 4, 5, [6, 7, 8, 9, [10, 11, 12]]];
     Array.prototype.apply([], arr); // 然而这个的弊端在于只能转换二维数组， 如果是更高维的话得不到期望值
-    // 所以可以用下面这个方法： 
+    // 所以可以用下面这个方法：
     arr.toString().split(',').map((item) => { // 然而如果要是数组里面含有对象的话， 就挂了→＿←
       return item - 0;
     });
     ```
     [两种方法转换数组的性能比较](http://374632897.github.io/just-some-tips/DEMO/array-convert.html)
-    可以看到， 实际上使用concat的话性能会好很多。只是不一定会转换为一维数组。  
+    可以看到， 实际上使用concat的话性能会好很多。只是不一定会转换为一维数组。
     事实上， 性能还是相差不大的， 相差比较大的时候， 可能是数据比较大， 也可能是因为数组是多维的， 而``concat``只能转换二维， 但是String却能全部转换。
 
     另外一个应用就是可以创建指定长度数组并推入某个值。
@@ -753,7 +753,7 @@ for (var i = 0; i < aLi.length; i++) {
     ```js
     const ary = new Array(31).concat(32); // 得到一个长度为32的数组， 并且数组的最后一项是32
     ```
-    需要注意的是， 上面不能使用``push``方法, 因为`push`返回的是`push`进去之后的数组长度。当然， 如果是在已有数组上操作的话就另当别论了。 
+    需要注意的是， 上面不能使用``push``方法, 因为`push`返回的是`push`进去之后的数组长度。当然， 如果是在已有数组上操作的话就另当别论了。
 
 
   * slice
@@ -762,8 +762,8 @@ for (var i = 0; i < aLi.length; i++) {
     ```javascript
     var ary = function() {
       console.log(typeof arguments.sort);
-      var arg = [].slice.call(arguments,0); // 将类数组转化为数组。 
-      // var arg = Array.from(arguments); // 将类数组转化为数组。 
+      var arg = [].slice.call(arguments,0); // 将类数组转化为数组。
+      // var arg = Array.from(arguments); // 将类数组转化为数组。
       console.log(typeof arg.sort);
     }(1,2,3,4,5,6,7);
     // undefined
@@ -798,7 +798,7 @@ for (var i = 0; i < aLi.length; i++) {
     * 这个函数返回的任何值都将作为第一个参数自动传给下一项
     * **关于归并函数还是有点不大懂**
   * 排序方法
-    * sort(),可以传递一个函数作为排序依据，如按照数组项从小到大进行排序： 
+    * sort(),可以传递一个函数作为排序依据，如按照数组项从小到大进行排序：
 
     ```javascript
     var num = [7, 6, 2, 1];
@@ -813,7 +813,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 5. 日期对象
   * 月份的表示是基于0的，所以
-    
+
     ```javascript
     var date = new Date(2012,12,12);
     // 转换为时间字符串
@@ -822,7 +822,7 @@ for (var i = 0; i < aLi.length; i++) {
     ```
     所得到的值并不会是2012-12-12而是2013-01-12
 
-     **01/20 2016更新**  
+     **01/20 2016更新**
      ```javascript
      new Date(2015,12,0)
      // Thu Dec 31 2015 00:00:00 GMT+0800 (中国标准时间)
@@ -835,7 +835,7 @@ for (var i = 0; i < aLi.length; i++) {
     ```
     另外，传入的日期至少要包含两个参数，年和月。如果缺少了1个，那么返回的日期对象将会是从1970开始。未提供天数，则假设天数为1，其他参数默认为0。
 
-  * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）ES5提出来的。 
+  * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）ES5提出来的。
 
 
 6. 关于函数对象
@@ -864,13 +864,13 @@ for (var i = 0; i < aLi.length; i++) {
     * $nn 匹配的第nn个子字符串，如果没有定义捕获组，则为空字符串
     * 上面指的捕获组，是正则表达式中的括号括起来的部分。如： /(hello)/g，第一个括号就是第一个捕获组，匹配的部分可以用$1表示。
   * split  基于指定的分隔符，将字符串分割成多个子字符串并存进一个数组。可以指定第二个参数来表示数组长度
-  * localeCompare  比较两个字符串（貌似没多大用啊） 
+  * localeCompare  比较两个字符串（貌似没多大用啊）
 
 ###2016-01-04
 =======
 1. 关于将mainView和itemView关联起来的方法是，在mainView初始化的时候，为其添加一个属性this.childView（数组）来存放itemView，每次创建了itemView的时候就将其Push到childView里面。
 
-2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？ 
+2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？
 
 3. this.$(selector)只会在当前元素下面查找元素，如果查找的元素不在当前元素下，那么就不要加this，直接用选择器。
 
@@ -900,21 +900,21 @@ for (var i = 0; i < aLi.length; i++) {
 
 6. 正则相关
    * 匹配双字节字符（包括汉字、全角）
-     
+
      ```javascript
      /[^\x00-\xff]/     // 注意 ^ 这个符号
      ```
-   
+
    * 匹配汉字
-     
+
      ```javascript
      /[\u4e00-\u9fa5]/  //这里没有 ^  这个不会匹配汉字标点符号（其实那个应该算在双字节内）
      ```
 7.  ~~关于使用文字溢出text-overflow: ellipsis后的文字对齐问题~~ **以下描述错误**
-   
+
    ```html
    <p class="test">
-     <span class="left">我是一段段小小小文字</span>    
+     <span class="left">我是一段段小小小文字</span>
      <span class="right">恩。。啊。。 哈哈。。 </span>
    </p>
    ```
@@ -935,12 +935,12 @@ for (var i = 0; i < aLi.length; i++) {
    }
    ```
    然后走浏览器里面查看的话，就会发现左边的文字和右边的文字并不是对齐的。。
-   
+
    这是为嘛呢。。。其实是因为给.left元素加了overflow:hidden，然后触发了元素的BFC。
 
    知道了原因，解决问题就好办了，可以给.right加上一个右浮动，也可以对它加一个overflow:hidden.
 
-   然后文字就对齐咯。。。 
+   然后文字就对齐咯。。。
 
    不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
 
@@ -955,7 +955,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 8. 关于onunload , 和onbeforeunload事件
    * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。
-   * 【3/13注：】其实是有用的， 只不过每次卸载页面要么是关闭窗口， 要么是跳转页面， 控制台就会更新，如果使用断点的话就会看到事件处理函数里面的语句是执行了的。 
+   * 【3/13注：】其实是有用的， 只不过每次卸载页面要么是关闭窗口， 要么是跳转页面， 控制台就会更新，如果使用断点的话就会看到事件处理函数里面的语句是执行了的。
    * onbeforeunload
    需要传入事件对象，然后事件对象有个returnValue属性，属性指定的字符串在卸载页面之前会出现在弹窗里。如下
 
@@ -968,7 +968,7 @@ for (var i = 0; i < aLi.length; i++) {
    };
    ```
 
-9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 【3/13注：】好久没去博客园了。 
+9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 【3/13注：】好久没去博客园了。
 
 
 ###2016-01-05
@@ -978,7 +978,7 @@ for (var i = 0; i < aLi.length; i++) {
    ```javascript
    value = Math.floor(Math.random()*可能值的总数 + 第一个可能的值);
    ```
-   例如： 想要选择一个1-10之间的数，那么可以这样来选择： 
+   例如： 想要选择一个1-10之间的数，那么可以这样来选择：
 
    ```javascript
    var num = Math.floor(Math.random()*9 + 2);
@@ -989,13 +989,13 @@ for (var i = 0; i < aLi.length; i++) {
 ###2015-01-06
 =======
 1. 使用GitBash时，修改进入之后的默认路径可以右击其图标，然后在起始位置里面输入期望位置。如果重启后操作无效，则看是不是目标位置的最后，有
-   ```cd to home```字段，如果有的话，就去掉。然后就可以了。 
+   ```cd to home```字段，如果有的话，就去掉。然后就可以了。
 
 
 2. 不要直接操作主分支！！！！平时提交代码提交到自建分支上，需要更新的时候pull request就行
 
-3. 如果一个字符串为'2014年法律硕士考试提醒', 然后需要匹配2014年之后的内容的话，可以用下面这种方法： 
-   
+3. 如果一个字符串为'2014年法律硕士考试提醒', 然后需要匹配2014年之后的内容的话，可以用下面这种方法：
+
    ```javascript
     var str = '2014年法律硕士考试提醒';
     str.match(/2014年(.*)/g);
@@ -1025,7 +1025,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-10
 =======
 
-1. 以下代码： 
+1. 以下代码：
 
    ```javascript
    null ==  undefined // true
@@ -1071,7 +1071,7 @@ for (var i = 0; i < aLi.length; i++) {
     }else if(!empty($inviteCode)){
         $urlSearch = '?inviteCode='.$inviteCode;
         exit; //当添加了这句话的时候，语句执行到这里就停止了，然后页面不会再继续渲染，所以看起来就是空的
-        // 那么这是为什么呢？？ 
+        // 那么这是为什么呢？？
     }
    ?>
    ```
@@ -1092,12 +1092,12 @@ for (var i = 0; i < aLi.length; i++) {
 
 2. 绝对定位的时候bottom参照的元素是浏览器的第一屏，当其参照元素在滚动的时候，也会跟着滚动。
 3. textarea禁止缩放：在css里为其添加rule,resize: none | horizontal | vertical;
-4. 下面的代码： 
+4. 下面的代码：
 
    ```javascript
    var root = (typeof self == 'object' && self.self == self && self) ||
               (typeof global == 'object' && global.global == global && global);
-   ``` 
+   ```
    在默认情况下（没有重写self的引用时），self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局
 
 5. 定义一个构造器
@@ -1115,7 +1115,7 @@ for (var i = 0; i < aLi.length; i++) {
 6. 英文的比较好看圆滑的一个字体是'Open Sans';
 7. 来学学英文吧。。。 **point out** 指出
 
-8. 一段代码： 
+8. 一段代码：
 
   ```javascript
    var Model = function (obj) {
@@ -1129,7 +1129,7 @@ for (var i = 0; i < aLi.length; i++) {
     }
   };
   ```
-9. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如： 
+9. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如：
 
   ```javascript
   var obj = {
@@ -1142,10 +1142,10 @@ for (var i = 0; i < aLi.length; i++) {
     }
   };
   obj.name  // undefined
-  
+
   obj.name.name // Uncaught TypeError: Cannot read property 'name' of undefined
   ```
-  解决办法就是在使用之前先进行判断 
+  解决办法就是在使用之前先进行判断
 
   ```javascript
   obj.name && obj.name.name; // undefined
@@ -1154,13 +1154,13 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-14
 =======
-1.  ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o 
+1.  ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o
 
 2. background-clip: content-box,padding-box,border-box;规定背景的绘制区域，默认为padding-box
 3. rotate(1turn)表示转一个圈
 4. text-transform: 控制文字的大小写capitalize，uppercase，lowercase
 5. 　```Uncaught SyntaxError: Unexpected end of input``` 通常是因为缺少括号或大括号来结束语句了o(╯□╰)o，怎么就给忘了，不知道错误的原因就注释掉语句看是哪里出了问题，再不行就在其他浏览器下查看报错
-6. 用CSS绘制三角形： 
+6. 用CSS绘制三角形：
 
    ```css
    .arrow{
@@ -1173,7 +1173,7 @@ for (var i = 0; i < aLi.length; i++) {
    }
    ```
 7. 关于条件判断语句：
-   ```javascript 
+   ```javascript
    // 如果里面有需要执行的代码，且不止一条，那么应该调用自调用函数
    true ? (function(){console.log('hello');console.log(' nihao')}()) : console.log('haha');
    // 如果满足或不满足条件时不需要执行操作，那么应该将对应的条件设为null(迷糊了)，总之不能省略
@@ -1200,12 +1200,12 @@ for (var i = 0; i < aLi.length; i++) {
 1.  ```display: none```会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
 2. 伪元素添加内容的时候一定要添加content属性啊！！！！！ 没有content就没有内容就不会显示啊
 3. 当一个元素hover的时候，要改变该元素的伪元素的状态的话，那么:hover 和伪元素之间不能有空格，否则不会生效，如
-   
+
    ```css
    div:hover:before{} /* 就是div hover的时候他的伪元素发生对应的变化，注意不能有空格不能有空格！！！*/
    ```
-4. 通过transform的scale来控制元素的隐藏和显示，配合transition即可实现动画效果。如下例： 
-   
+4. 通过transform的scale来控制元素的隐藏和显示，配合transition即可实现动画效果。如下例：
+
    ```css
     div{
       display: inline-block;
@@ -1226,7 +1226,7 @@ for (var i = 0; i < aLi.length; i++) {
       transform: scaleX(1);
     }
    ```
-5. elem.offsetParent获取的是其父元素？ 
+5. elem.offsetParent获取的是其父元素？
 6. 注意文件名大小写，虽然在本地测试的时候，大小写不正确也能正常显示，但是放到服务器上之后，大小写不对的话，也不能正常访问到。
 7. GitHub里不要在序号后面直接写代码。。不然会显示异常的
 8. php没有undefined。。。。
@@ -1244,7 +1244,7 @@ for (var i = 0; i < aLi.length; i++) {
      * 任意可能会更改的值
    * 性能
      * 避免全局查找 将一个语句中多次用到的全局变量存为局部变量
-     * 避免with语句 
+     * 避免with语句
 
 3. \x20表示空格 \f换页符 \t制表符  \r回车符  \n换行符
    去除空格的正则表达式 : ```whitespace = "[\\x20\\t\\r\\n\\f]"```
@@ -1266,7 +1266,7 @@ for (var i = 0; i < aLi.length; i++) {
      {{ } }}
    </ul>
    ```
-5. return可以直接返回一个对象： 
+5. return可以直接返回一个对象：
 
   ```javascript
   function getName() {
@@ -1284,8 +1284,8 @@ for (var i = 0; i < aLi.length; i++) {
 =======
 1. `$.extend({}, s1, s2, s3..)`就是将s1,s2,s3..等合并到第一个参数（一个空对象里），然后再返回这个对象, ES6里的``Object.assign()``和这个差不多。 然而可恶的IE10!!!!
 2. 在View实例化的时候传入的参数可以在view的构造器里的initialize的函数里作为参数传进去。
-3. 微软雅黑加粗之后看起来简直不像雅黑了！！！！所以如果设置了字体但是感觉不是自己想要的的时候，看看是不是多加了个font-weight吧。 
-4. 利用好三元操作符的话可以节省很多代码，真的。如： 
+3. 微软雅黑加粗之后看起来简直不像雅黑了！！！！所以如果设置了字体但是感觉不是自己想要的的时候，看看是不是多加了个font-weight吧。
+4. 利用好三元操作符的话可以节省很多代码，真的。如：
 
    ```javascript
     let msg = obj.toString().replace(/,/g,' ').trim().replace(/(\d+)\s*/g, '$1 ').trim().split(' ').join('、');
@@ -1293,13 +1293,13 @@ for (var i = 0; i < aLi.length; i++) {
     this.$header.text(msg);
     this.$header.prop({ 'title': msg });
    ```
-   其实这里不仅仅是利用好三元操作符，还有一个就是，如果重复代码比较多的话，可以在前面先进行判断，根据不同的结果，把对应的数据存放到变量里，然后在下面需要的时候就直接使用变量来代替了。 
+   其实这里不仅仅是利用好三元操作符，还有一个就是，如果重复代码比较多的话，可以在前面先进行判断，根据不同的结果，把对应的数据存放到变量里，然后在下面需要的时候就直接使用变量来代替了。
 
-   如果不用三元操作符的话，这里的判断可能会像下面这样： 
+   如果不用三元操作符的话，这里的判断可能会像下面这样：
    ```javascript
    if (msg) {
      // 需要注意的是，如果是msg += '每月'的话，那么每月每显示在后面，所以这里没那样写
-     msg = '每月' + msg; 
+     msg = '每月' + msg;
    } else {
      msg = '';
    }
@@ -1312,7 +1312,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-20
 =======
 1. WebPack 在添加loader的时候，对应的loader需要加引号才行，不然会报错。
-2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 当然， 可以同时安装多个包。 
+2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 当然， 可以同时安装多个包。
    ``sh
    npm install express mongoose jade --save
    ``
@@ -1321,22 +1321,22 @@ for (var i = 0; i < aLi.length; i++) {
 5. 在插入插件比如 new webpack.BannerPlugin()的时候，需要现在配置文件头部```var webpack = require('webpack')```;
 6. ```webpack --display-error-details```可以打印详细错误信息
 7. 当引入通过 npm 安装的 node.js 模块时，可能出现找不到依赖的错误。Node.js 模块的依赖解析算法很简单，是通过查看模块的每一层父目录中的 node_modules 文件夹来查询依赖的。当出现 Node.js 模块依赖查找失败的时候，可以尝试设置 resolve.fallback 和 resolveLoader.fallback 来解决问题。
-8. dropdown的dropdown-toggle和dropdown-menu应该在同一层目录下。 
-9. JS获取当前月的天数： 
-   
+8. dropdown的dropdown-toggle和dropdown-menu应该在同一层目录下。
+9. JS获取当前月的天数：
+
    ```javascript
    new Date(2016,2,0).getDate(); // 使用时把年份换成当前年份，月份换成当前月份（需要注意的是，该是几月就是几月，如2月就是写2）
    ```
 10. dropdown的JS方法和添加data-toggle='dropdown'方法只能用一个. 不然的话以两个作为触发条件的话， 最后结果就是打开了又关了。
 11. CSS用important加权重的方法
-    
+
     ```css
-    line-height: 20px!important; // 这种还是少用吧。。 
+    line-height: 20px!important; // 这种还是少用吧。。
     ```
     注意important的位置和书写方式。
 12. dropdown的水平对齐方式有两种，left和right，因为是相对父元素定位的，所以如果想要实现居中对齐的话，可以通过给父元素添加padding来实现
 
-13. 获取选中的单选框的索引  
+13. 获取选中的单选框的索引
 
     ```javascript
     var index;
@@ -1345,7 +1345,7 @@ for (var i = 0; i < aLi.length; i++) {
     });
     ```
 
-14. 获取年份的时候要使用`new Date().getFullYear()`才能得到当前的年份，如果使用的是`new Date().getYear()`的话，将会返回1900到今年的年份数 【3/19注：】居然忘了还有这个API。 
+14. 获取年份的时候要使用`new Date().getFullYear()`才能得到当前的年份，如果使用的是`new Date().getYear()`的话，将会返回1900到今年的年份数 【3/19注：】居然忘了还有这个API。
 15. 表示小于等于的时候，是不能分开的，必须连在一起。。。 i <= 123;
 16. o(╯□╰)o   JS中直接使用%号是求模求模求模， 不是百分比啊。。。。:笑cry
 17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
@@ -1359,7 +1359,7 @@ for (var i = 0; i < aLi.length; i++) {
    ```javascript
    isMulti = !this.select.start === this.select.end;
    ```
-   这样写是不对的因为会先计算!this.select.start，然后再判断相等，所以需要先加个括号  
+   这样写是不对的因为会先计算!this.select.start，然后再判断相等，所以需要先加个括号
 
    ```javascript
    isMulti = !(this.select.start === this.select.end);
@@ -1370,7 +1370,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-22
 =======
-1. 关于内容撑开滚动条的显示隐藏问题。。。可以给可能会撑开的元素设置overflow-y:auto，让元素的滚动条一直显示，然后利用元素的margin或者padding 把元素的滚动条撑到父元素外面去，再给父元素设置overflow: hidden，然后就能利用障眼法来去掉滚动条了。 
+1. 关于内容撑开滚动条的显示隐藏问题。。。可以给可能会撑开的元素设置overflow-y:auto，让元素的滚动条一直显示，然后利用元素的margin或者padding 把元素的滚动条撑到父元素外面去，再给父元素设置overflow: hidden，然后就能利用障眼法来去掉滚动条了。
 
 2. 使用setTimeout的异步执行方式可以巧妙地在某些语句之后执行相应语句，尤其是在清类名的时候
 
@@ -1378,7 +1378,7 @@ for (var i = 0; i < aLi.length; i++) {
 ###2016-01-23
 =======
 1. webpack里不要require('babel-core')
-2. sass-loader默认是把样式放到网页内的？？ 
+2. sass-loader默认是把样式放到网页内的？？
 
 ###2016-01-24
 ======
@@ -1390,7 +1390,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 ###2016-01-26
 ======
-1. 获取日期，new Date(year, month, date)的时候，如果date为零，那么获取到的将会是上一个月的最后一天，可以通过这个方法来获取一个月的天数。也就是说可以通过  
+1. 获取日期，new Date(year, month, date)的时候，如果date为零，那么获取到的将会是上一个月的最后一天，可以通过这个方法来获取一个月的天数。也就是说可以通过
 
 ```javascript
 new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
@@ -1398,13 +1398,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 // new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 ```
 来获取到当月的天数
-2. 如下代码： 
-  
+2. 如下代码：
+
   ```javascript
   Math.random() * 16 | 0; // 0 - 16的随机数 整数
   ```
-  不知道是什么原理。。。总之这里用了这句话之后，就不用再使用Math.floor()来取整了。 
-  卧槽。。好像发现了一个神奇的东西。。。 
+  不知道是什么原理。。。总之这里用了这句话之后，就不用再使用Math.floor()来取整了。
+  卧槽。。好像发现了一个神奇的东西。。。
 
 
   ```javascript
@@ -1412,7 +1412,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   random | 0; // 2
   random | 1; // 3
   ```
-  那么是不是就代表 | 后面接0代表向下取整， 后面接1代表向上取整  
+  那么是不是就代表 | 后面接0代表向下取整， 后面接1代表向上取整
   不对啊。。。 好像是向下取整后，再加上后面的值的来着
 
   ```javascript
@@ -1429,27 +1429,27 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ```| ```, 按位或，
 
   ** 1/27注 ** 这里靠按位或来进行取整并不靠谱，比如
-  
+
   ```javascript
   1.5 | 1; // 1
   1.566 | 1; // 1
   4565.4564 | 1 // 4565
   ```
-  所以还是老老实实的用Math对象的方法来进行取整吧。 。不过这种用来取随机数的话还是可行的。  
+  所以还是老老实实的用Math对象的方法来进行取整吧。 。不过这种用来取随机数的话还是可行的。
 
 ###2016-01-27
 =======
 1. 数字toString的时候需要使用括号括起来
-   
+
    ```javascript
    1231231231.toString(16); // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
    (1231231231).toString(16); // "496318ff"
    ```
    后面有提到， 因为数值的存储是用的浮点， 所以上面第一句里面的第一个小数点会被认为是小数点而不是点号操作符
 2. 获取样式
-     
+
    ```javascript
-  
+
   info = ('getComputedStyle' in window) && window.getComputedStyle(ele, null) || ele.currentStyle;
   ```
 
@@ -1467,12 +1467,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    虽然直接拼接字符串， 然后一次性的用innerHTML插入会比较好，但是replaceChild还是需要好好理解应用的。
 2. 查看页面中DOM元素数量
-   
+
    ```javascript
    document.getElementsByTagName('*').length
    ```
 3. matchesSelector用来匹配dom元素是否匹配某css selector。它为一些高级方法的实现提供了基础支持，比如事件代理，parent, closest等。
-   
+
    ```javascript
    var docElem = window.document.documentElement,
       selector_hasDuplicate,
@@ -1488,8 +1488,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 4. JS里不能直接判断两个数组是否相等，用全等或不全等都不行，都会返回false， 可以把数组利用toString转换为字符串再进行比较。
 
 ###2016-01-29
-1. 关于if语句  
-  
+1. 关于if语句
+
    ```javascript
    if (!10 % 2) { console.log('123') }  // 不会执行
    if (!(10 % 2)) { console.log(123) }  // 123
@@ -1497,17 +1497,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 
 3. 关于位运算符
-   * 判断奇偶  
+   * 判断奇偶
    ```javascript
    if (n & 1) { console.log('n是奇数'); } // 如果是奇数，那么值为0
 
    // 原理： 奇数的二进制码的最后一位数肯定是1，而1只有最后一个为1，因此按位&1之后，得到的结果里面肯定只有最后一个数为1了，所以对奇数按位&1之后，得到的结果就肯定是1
    ```
-   * 按位异或(^)  
+   * 按位异或(^)
    按位异或是两个数中只有一个1时返回1，其他情况返回0。
 
 4. jQuery的on方法在绑定的事件之后有个可选的[selector]参数，用于指定特定的后代元素才会触发这个事件
-   
+
    ```javascript
     // 以下代码运行时，只有.container的.left元素才会触发click事件
     $('.container').on('click', '.left', function () {
@@ -1522,7 +1522,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 5. jQuery自定义事件
    * 首先给元素绑定一个事件，设置一个函数
    * 然后触发
-   * 原生： 
+   * 原生：
 
      ```js
      var event = document.createEvent('CustomEvent');
@@ -1563,7 +1563,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 4. 来点英语吧
    * era 时代，纪元
    * dynamic 动态的
-   * 
+   *
 
 5. 注意！！！！webpack.config.js里面，loader是module之下的一个对象。。。别落下了。。
 
@@ -1576,7 +1576,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 9. 关于class的static静态方法。
 10. import { } from '', 表示局部引入
 
-11. 覆盖整个模块儿的暴露对象，需要在export后面加上default `export defalut` 
+11. 覆盖整个模块儿的暴露对象，需要在export后面加上default `export defalut`
 
 12. promise
     * 要为一个函数赋予 Promise 的能力，先要创建一个 Promise 对象，并将其作为函数值返回
@@ -1586,10 +1586,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-02-01
 =======
-1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。 
+1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。
 2. 关于backgound-clip在IE下表现不对的问题。。 可以通过border来搞定。[DEMO](https://github.com/374632897/just-some-tips/src/testBorderRadiusUnderIE9.html), padding配合background-clip和border可以做出不少有意思的东西[好吧， 其实那些只需要border就行了]
 
-3. 对于input text元素尽量使用padding来实现居中啊。。。 
+3. 对于input text元素尽量使用padding来实现居中啊。。。
 
 ###2016-02-02
 ======
@@ -1598,11 +1598,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * 当为一个值的时候， 表示四个角一样
    * 为两个值的时候， 第一个值表示左上角和对角， 第二个值表示右上角和对角
    * 为三个值的时候，第二个值表示右上和左下
-   * 使用'/'来分隔的时候， 可以定义不同方向的值。 '/'之前表示水平方向，之后表示垂直方向  
+   * 使用'/'来分隔的时候， 可以定义不同方向的值。 '/'之前表示水平方向，之后表示垂直方向
    * 当border-collapse为collapse的时候， border-radius不能作用于表格元素
 
-3. 查找一个元素在数组中的索引： 
-  
+3. 查找一个元素在数组中的索引：
+
    ```javascript
    var arr = ['test1', 'test2', 'test3', 'test4'];
    arr.indexOf('test1'); // 0
@@ -1615,7 +1615,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 6. #233看起来好像也确实不错哈。
 7. 关于bind:
-   
+
    ```js
    var name = 'Jason';
    var obj = {
@@ -1627,13 +1627,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
        console.log('hello ' + this.name);
      }
    };
-   
+
    obj.sayHello(); // hello Daisy
    obj.sayHello.bind(this)(); // hello Jason
    obj.sayName(obj.name); // Daisy
    obj.sayName.bind(this, 'Jason'); // Jason
    ```
-   以上有两个需要注意的地方， 
+   以上有两个需要注意的地方，
    * 一个是对函数使用bind的时候，需要对函数本身而不是函数的执行结果进行绑定，也就是说，绑定的时候应该是```obj.sayHello.bind(this)()```而不是```obj.sayHello().bind(this)()```. 当然了，有了ES6的箭头函数之后， 就没必要这么麻烦了。 需要注意的是，对函数使用了bind()之后只是绑定了函数执行环境的this，还要加上括号才表示执行函数。
    * 另外一个就是，传递参数的时候，可以在bind()的第二个参数之后传递, 多个参数之间直接用逗号分隔
    * 当然，也可以只给bind()传递this,然后在执行函数的括号里面传递具体参数
@@ -1646,12 +1646,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 3. 对于使用transform来进行变换的元素， 可以利用left，top(如果可以用的话)来进行微调。
 4. 通过jQuery获取元素，得到的是一个类数组对象
 5. ```::selection```永远只能用两个冒号开始， 毕竟伪元素
-6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。 
+6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。
 7. font的简写中， style | variant | weight在font-size的前面
 
 ###2016-02-16
 =======
-1. 闭包相关：  
+1. 闭包相关：
    ```js
     var hello = (function () {
       var hello;
@@ -1669,7 +1669,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     hello(); // preHello is hello
    ```
 
-2. 多个变量同时声明：   
+2. 多个变量同时声明：
    ```js
   (function () {
      var a = b = c =1; // 只声明了变量a
@@ -1683,7 +1683,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    也就是说，通过以上的方式来声明变量的话， b和c成了全局变量，但是a依然是局部变量
 
 3. 关于```unload```事件，应该加在window上，这样在每次刷新或者卸载页面的时候就会触发该事件。
-4. 关于```Generator```  
+4. 关于```Generator```
    ```js
     function* testGenerator() {
       yield 's1';
@@ -1705,7 +1705,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-02-17
 ======
-1. 关于```Promise```  
+1. 关于```Promise```
    ```js
     let promise2 = new Promise(function(resolve, reject) {
       console.log('Promise');
@@ -1740,7 +1740,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     const t = loadImageAsync('https://www.baidu.com/img/bd_logo1.png');
    ```
-   * Promise的then方法返回的是另外一个新的实例  
+   * Promise的then方法返回的是另外一个新的实例
    ```js
    var t1 = t.then((value, t1, t2) => { return 'Daisy' })
     .then((value) => {
@@ -1776,7 +1776,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
    ```
 
-2. ```Object.assign```用于一次性的向对象添加多个属性或方法  
+2. ```Object.assign```用于一次性的向对象添加多个属性或方法
    ```js
     var obj = {}
     Object.assign(obj, {
@@ -1792,7 +1792,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * ```constructor```方法： 在使用new操作符生成实例的时候，会自动调用此方法
    * 在```class```内部定义的方法默认保存到其原型对象上
    * ```class```不存在变量声明提升
-   * 类之间的继承是通过```extends```来实现的。  
+   * 类之间的继承是通过```extends```来实现的。
 
    ```js
     class Person {
@@ -1813,7 +1813,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
    ```
    * 所有在类中定义的方法都会被实例继承， 如果在方法前加上```static```, 则该方法不会被实例继承 ， 而是直接通过类来调用，也就是‘静态方法’, 父类的静态方法可以被子类继承
-   * ```new.target```用于确定调用函数时有没有使用new操作符，如果没使用，那么值为```undefined```。class内部调用```new.target```， 则指向该class,如果在继承的时候使用，将会指向子类  
+   * ```new.target```用于确定调用函数时有没有使用new操作符，如果没使用，那么值为```undefined```。class内部调用```new.target```， 则指向该class,如果在继承的时候使用，将会指向子类
    ```js
     function Person2(name) {
       if (new.target !== undefined) {
@@ -1826,17 +1826,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     // Uncaught Error: 必须使用new生成实例(…)
 
    ```
- 
+
 4. 箭头函数
-    * 下面的f表示函数名, (a,b)表示函数参数， ```=> a```，a表示函数返回值。   
+    * 下面的f表示函数名, (a,b)表示函数参数， ```=> a```，a表示函数返回值。
     ```js
     var f = (a, b) => a;
-    ``` 
-    * 如果函数有多个语句的话, 用花括号包围  
+    ```
+    * 如果函数有多个语句的话, 用花括号包围
     ```js
     var f = (a, b) => { console.log(a);console.log(b) }
     ```
-    * 如果函数的返回值为一个对象， 那么需要用圆括号将该对象包围  
+    * 如果函数的返回值为一个对象， 那么需要用圆括号将该对象包围
 
     ```js
      var f = (a, b) => ({ id: a, name: b });
@@ -1844,20 +1844,20 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     * **箭头函数不能使用new操作符， 不可以使用arguments, 不可以使用yield命令，所以不能用于Generator函数**
     * 函数中的```this```指向定义时所在对象而不是使用时的对象
 
-  
+
 
 5. ```Object.prototype.hasOwnProperty()```参数是个字符串啊字符串o(╯□╰)o [MDN-Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/)
-  
-6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。 
 
-7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。   
+6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。
+
+7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。
 
     ```js
     function A() {}
     function B() {}
 
     A.prototype.isPrototypeOf(B); // false 这里应该为一个对象， 也就是B的原型对象
-    B.prototype = new A(); // B的原型对象指向A的实例， 也就是B继承了A。 那么A的原型对象就在B的原型对象的原型链上。 
+    B.prototype = new A(); // B的原型对象指向A的实例， 也就是B继承了A。 那么A的原型对象就在B的原型对象的原型链上。
     A.prototype.isPrototypeOf(B.prototype); // true // A的原型对象在B的原型链上
 
     var a = new A();
@@ -1867,8 +1867,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     ```
     与```instanceof```不同， ```isPrototypeOf```用于两个对象之间， 而```instanceof```用于一个对象和一个构造函数之间
 
-8. ```obj.propertyIsEnumerable()``` 
-    * 返回一个布尔值， 表示指定的属性名是否是当前对象的可枚举属性  
+8. ```obj.propertyIsEnumerable()```
+    * 返回一个布尔值， 表示指定的属性名是否是当前对象的可枚举属性
 
     ```js
     class Person {
@@ -1881,9 +1881,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     person.propertyIsEnumerable('name');    // true
     person.propertyIsEnumerable('sayName'); // false
     ```
-    
+
     * 可枚举属性是可以通过```for...in..```遍历到的
-9. 代码：  
+9. 代码：
    ```js
    var obj = {
       foo: 1,
@@ -1893,19 +1893,19 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    };
    obj.bar; // 2
 
-   var to = Object(param); // 这里param是什么类型， 那么to便是什么类型  
+   var to = Object(param); // 这里param是什么类型， 那么to便是什么类型
    // 如， var to = Object({ id: 123 }); 那么to为 { id: 123 }
 
    Object.keys(obj); // 得到的是由obj的键名组成的一个数组
    ```
 
-10. ```Object.getOwnPropertyDescriptor(obj, prop)``` 
-   * 获取对象obj的prop属性的属性描述符， 如果obj不具有prop属性， 那么返回值为undefined 
-   
+10. ```Object.getOwnPropertyDescriptor(obj, prop)```
+   * 获取对象obj的prop属性的属性描述符， 如果obj不具有prop属性， 那么返回值为undefined
+
    ```js
     var obj = { id: 12 };
     Object.getOwnPropertyDescriptor(obj, 'id'); // Object { value: 12, writable: true, enumerable: true, configurable: true }
-   ``` 
+   ```
 
 ###2016-02-23
 =======
@@ -1917,8 +1917,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-02-18
 =======
-1. 关于```Object.defineProperty()```   
-   
+1. 关于```Object.defineProperty()```
+
    ```js
    var obj = { name: 'one' }, obj2 = {};
     Object.defineProperty(obj, 'name', {
@@ -1936,11 +1936,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ```F12 || ctrl + shift + I```  --- 打开开发者工具
   * ```ctrl + shift + c```         --- 检查元素
   * ```ctrl + shift + j```         --- 打开开发者工具并使控制台获取焦点
-3. ```document.documentMode```IE的特性，通过这个可以判断是否是IE。 
+3. ```document.documentMode```IE的特性，通过这个可以判断是否是IE。
   * documentMode的值表示当前IE浏览器在哪个文档模式下工作---IE11 -> 11， IE8 -> 8...
 
-4. 关于把一个对象赋给另一个对象  
-   
+4. 关于把一个对象赋给另一个对象
+
    ```js
     // 简单的对象赋值
     var obj = { name: 'Jason' }, obj2 = obj;
@@ -1949,17 +1949,17 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     obj2 // Object {name: "Jason", age: 22}
     // 也就是说，当obj2发生变化的时候，obj也发生了变化， 这与对象按引用传递的概念是相吻合的
 
-    // 原型对象  o(╯□╰)o  当时出现的问题怎么复现不了了。 。 
+    // 原型对象  o(╯□╰)o  当时出现的问题怎么复现不了了。 。
 
    ```
 
 
 5. backbone里的View实例化的时候传参， 参数需要是一个对象， 如```const view = new View({obj: obj})```,如果直接传递obj的话，那么obj的属性会直接写在对应模板的html的根元素上
 
-6. ```Object.is(arg1, arg2)```, 用于比较arg1和arg2是否相等。 与```===```不同的是， ```===```在判断```+0 === -0```的时候会返回```true```, 在判断```NaN === NaN```的时候会返回```false```, 而通过```Object.is()```来判断的时候就刚好相反。 
+6. ```Object.is(arg1, arg2)```, 用于比较arg1和arg2是否相等。 与```===```不同的是， ```===```在判断```+0 === -0```的时候会返回```true```, 在判断```NaN === NaN```的时候会返回```false```, 而通过```Object.is()```来判断的时候就刚好相反。
 
-7. 关于set  
-  
+7. 关于set
+
   ```js
   var o = Object.create({}, {
     foo: {
@@ -1973,11 +1973,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       set: function(value){console.log(value)} // 通过o.bar = val来访问
     }
   });
-  ``` 
+  ```
   也就是说，访问器属性里面， 直接通过o.bar来访问的话， 会调用get函数， 如果对o.bar赋值的话， 会调用set函数， 需要注意的是， 用```o.bar(val)```来设置的话会报错啊/(ㄒoㄒ)/~~
 
 8. 关于```Object.create()```
-  
+
   ```js
   var o = Object.create({}, {
     p: {
@@ -1987,8 +1987,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   Object.getOwnPropertyDescriptor(o, 'p');
   // Object {value: 43, writable: false, enumerable: false, configurable: false}
   ```
-  也就是说， 通过```Object.create(proto, [ propertiesObject ])```来创建对象时， 其省略的属性特性默认值为false. propertiesObject是一个对象， 属性名为新创建对象的属性名称， 值为属性特性描述符。 
-  
+  也就是说， 通过```Object.create(proto, [ propertiesObject ])```来创建对象时， 其省略的属性特性默认值为false. propertiesObject是一个对象， 属性名为新创建对象的属性名称， 值为属性特性描述符。
+
   ```js
   var o = {
     name: 'Daisy',
@@ -2002,7 +2002,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
   o2; // Object {husband: "Jason"};
   o2.__proto__; // Object {name: "Daisy", age: 22};
-  
+
   // 通过Object生成的对象， 具有一个原始值PrimitiveValue， 可以直接操作， 如a + 5之类
   var a = Object(123);
   a; // Number {[[PrimitiveValue]]: 123} Primitive: 原始的
@@ -2017,15 +2017,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 9. 关于```Object.preventExtensitions```, ```Object.freeze```, ```Object.seal```
   * ```Object.preventExtensitions```:  阻止对对象添加属性， 但是可以操作现有属性
   * ```Object.freeze```： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
-  * ```Object.seal``` ： 不能添加属性和删除属性， 但是可以修改现有属性。 
+  * ```Object.seal``` ： 不能添加属性和删除属性， 但是可以修改现有属性。
 
 ###2016-02-19
 =======
 1. ```setTimeout```和```setInterval```未指定时间的时候， 则时间为0.
 2. 清除定时器是使用```clearInterval(timerId)```或者```clearTimeout(timerId)```， 而不是直接将```timerId = null```, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
 3. 在view里只能给view里的元素绑定事件？？？？
-4. 将多维数组转化为一维数组：  
-      
+4. 将多维数组转化为一维数组：
+
 
    ```js
    const arr = [1, 2, 3, 4, [5, 6, 7, 8, 9]];
@@ -2038,19 +2038,19 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-02-24
 1. 变量声明提升和函数声明提升
-     
+
 
    ```js
    console.log(x); // function
    var x = '123';
    function x () {}
-   
+
    console.log(y); // function
 
    function y () {}
    var y = '123';
    ```
-   也就是说， 变量声明提升优先于函数声明提升。这样来看吧。 。 
+   也就是说， 变量声明提升优先于函数声明提升。这样来看吧。 。
 
 
    ```js
@@ -2061,8 +2061,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    var y = '123';
    ```
 
-2. 使用```:empty```选择器来实现```contentEditabel```元素的placeholder效果： 
-    
+2. 使用```:empty```选择器来实现```contentEditabel```元素的placeholder效果：
+
 
    ```html
     <div contenteditable = 'true'></div>
@@ -2084,15 +2084,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. 使用模板引擎的时候， 如果给标签属性插入变量， 记得加引号如```value = '{{- hello}}'```
 4. CSS也要注意目录分层
-5. 隐藏滚动条效果： 
-      
-  
- 
+5. 隐藏滚动条效果：
+
+
+
    ```html
    <div class='list'>
     <div class="wrap">
       <ul>
-        
+
       </ul>
     </div>
   </div>
@@ -2117,7 +2117,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 6. 使用CSS计数器
    * ```counter-reset: countername, startValue``` 后面跟一个计数器的名字和起始值， 如```counter-reset: list 2```表示初始化list计数器的值为2， 默认为0.
-   * ```counter-increment: countername[,step]``` 指定增加的计数器和步进， 如：   
+   * ```counter-increment: countername[,step]``` 指定增加的计数器和步进， 如：
      ```counter-increment: list 5```, 则表示计数器list将会从5开始并以5为步进计数5， 10， 15.。。
    * ```content: ' ' counter(list)``` 调用计数器
    * 计数器需要配合```:before```, ```:after```伪元素的```content```属性来使用
@@ -2127,7 +2127,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 7. * ```Math.trunc()``` 用于去除一个数的小数部分， 参数可以为字符串或者数字，或者布尔值
    * ```Math.cbrt()```  用于计算一个数的立方根
 
-8. ```Array.from()```可以把一个类数组对象转化为数组。可以接受第二个参数， 用来处理传入的数据并返回。    
+8. ```Array.from()```可以把一个类数组对象转化为数组。可以接受第二个参数， 用来处理传入的数据并返回。
 
    ```js
    Array.from(arrLike, (item, index, ary) => {
@@ -2139,15 +2139,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    // 3 2 undefined
    // Array [ 6, 7, 8 ]
    ```
-9. 箭头函数不能用作构造函数。 
-10. 如下代码： 关于Object的简写：  
+9. 箭头函数不能用作构造函数。
+10. 如下代码： 关于Object的简写：
 
    ```js
    var name = 'Jason', age = 22, obj = { name, age };
    obj; // Object { name: "Jason", age: 22 }
    ```
 
-11. 关于属性赋值器    
+11. 关于属性赋值器
 
    ```js
     var person = {
@@ -2165,18 +2165,18 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     person.name
     // "Jason"
    ```
-12. 属性名的简洁写法的情况下， 属性名始终是字符串：  
-     
+12. 属性名的简洁写法的情况下， 属性名始终是字符串：
+
 
    ```js
    var obj = {
      class () {
-      
+
      }
    };
    ```
 
-   定义属性名的时候可以用```[]```, 里面可以用变量或者表达式或者字符串  
+   定义属性名的时候可以用```[]```, 里面可以用变量或者表达式或者字符串
    ```js
    var relation = 'husban', name = 'Jason', obj = {
      [relation]: name
@@ -2187,7 +2187,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     **属性名与简洁写法不能同时用， 会报错**
 
 
-13. Proxy  
+13. Proxy
 
   ```js
   var obj = new Proxy({}, {
@@ -2215,12 +2215,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-03
 ====
-1. 好像绝对定位的元素可以不受滚动条影响？ 这个可以好好  研究下。 然而并不是。。 只是特定场景下出现的效果而已。 
+1. 好像绝对定位的元素可以不受滚动条影响？ 这个可以好好  研究下。 然而并不是。。 只是特定场景下出现的效果而已。
 
 
 ###2016-03-04
 1. 单例模式
-     
+
 
    ```js
    var Time = (function () {
@@ -2240,36 +2240,36 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    //   return time;
    // }
    ```
-   也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一 直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。 
+   也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一 直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。
 
 ###2016-03-05
 =======
 1. ``module.exports = moduleName``和```exports.moduleName = moduleName```的区别在于通过前者导出的是可以直接访问到的，而后者导出去的require得到的是一个对象， 需要再访问这个对象的对应属性才能拿到对应的模块儿
-2. 
+2.
 
 
 ###2016-03-07
 =======
 1. `concat`不是在原数组上操作不是在原数组上操作！！！
-2. JS里的数字是用浮点数来保存的。 所以。。   
+2. JS里的数字是用浮点数来保存的。 所以。。
 
   ```js
   5.52.toFixed(2); // '5.52'
   5.toFixed(2);   // Uncaught SyntaxError: Unexpected token ILLEGAL(…)
   5..toFixed(2);  // "5.00"
-  (5).toFixed(2); // "5.00" 
+  (5).toFixed(2); // "5.00"
   ```
   因为数字后面默认会有个小数点。。 所以使用``5.toFixed()``的时候， 那个点号表示的是小数点而不是操作符
-3. 关于函数  
+3. 关于函数
 
   ```js
   var test = function te () {
-    console.log(test === te); // true 表示在这里两者都可以访问到。 并且是等价的。 
+    console.log(test === te); // true 表示在这里两者都可以访问到。 并且是等价的。
   };
   test; // function te...
   te; // te未定义
   ```
-4. 关于`return`, `continue`, `break`  
+4. 关于`return`, `continue`, `break`
 
   ```js
    var obj = {
@@ -2288,7 +2288,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      console.log('end')
    }
   ```
-  `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。 
+  `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。
 
 5. `GIT`命令
   * ``ls -ah``可以用于查看隐藏文件（夹）
@@ -2296,7 +2296,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git add . ``即可一次添加所有更改文件
   * ``git commit -m 'msg' `` 把文件提交到仓库 -- 将暂存区的所有内容提交到当前分支
   * ``git status ``可以查看当前仓库的状态
-  * ``git diff``查看改变的地方 (difference)  用于在add之前查看？ 
+  * ``git diff``查看改变的地方 (difference)  用于在add之前查看？
   * ``git diff [<options>] [<commit> [<commit>]] [--] [<path>...]``, 如``git diff HEAD -- readme.md``
   * ``git diff <srcBranch> <targetBranch>``
   * ``git log``可以查看提交记录， ``git log --pretty=online``美化提交记录
@@ -2313,16 +2313,16 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git merge``用于合并指定分支到当前分支。
   * ``git branch -d branchname``删除指定分支  不能删除当前分支
   * ``git log --graph``可以查看分支合并图
-  * 通常情况下， 在合并分支的时候git会使用Fast forward模式，这种模式下删除分支后会丢失掉分支信息。 
+  * 通常情况下， 在合并分支的时候git会使用Fast forward模式，这种模式下删除分支后会丢失掉分支信息。
   * ``git merge --no-ff -m 'some msg' branchname`` 即可使用非Fast forward模式来合并分支。 因为这种合并方式会产生新的commit所以需要加上-m参数
   * ``git stash``可以将当前内容存储起来， 以后再进行恢复
-  * ``git stash apply``可以将当前stash恢复， 但是并不会删除stash里的内容， 需要调用``git stash drop``来删除。 
+  * ``git stash apply``可以将当前stash恢复， 但是并不会删除stash里的内容， 需要调用``git stash drop``来删除。
   * ``git stash pop``可以恢复当前stash, 并将该stash删除
   * ``git stash list``可以用来查看当前stash列表
   * ``git branch -D branchname``用来强行删除一个分支， 用于分支有更改但是尚未合并的情况
   * ``git remote``用于查看远程分支的信 息
   * ``git remote -v``查看更多的远程分支信息 如果没有推送权限则看不到push的信息
-  
+
     ```sh
     origin  ssh://git@github.com/374632897/git.git (fetch)
     origin  ssh://git@github.com/374632897/git.git (push)
@@ -2338,7 +2338,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * ``git push origin :refs/tags/<tagname>``可以删除一个远程标签
   * ``git config --global color.ui true``让git显示颜色
 
-6. 
+6.
 
 ###2016-03-09
 =======
@@ -2346,10 +2346,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   ```js
   var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
   ```
- 第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。   
+ 第三个参数才是真正的集合名（表名）， 至于第一个参数随便怎么命名都行的。。 o(╯□╰)o  这个问题困扰自己这么久，结果一不小心看到了答案。。原来还是自己没有认真看API。
 
 
-2. 要删除数组中的指定值得项， 其实直接使用``filter``就挺好的了→＿←  
+2. 要删除数组中的指定值得项， 其实直接使用``filter``就挺好的了→＿←
 3. 关于``Notification``
    * `Notification.permission`可以获取桌面通知显示权限， ``default``为拒绝， ``denied``表示用户不想要通知，``granted``表示用户同意接受通知。
    * ``Notification.requestPermission()``执行此方法即可向用户请求权限
@@ -2362,8 +2362,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-03-11
 =======
-1. 关于自增自减运算符，   
-   
+1. 关于自增自减运算符，
+
    ```js
    (function () {
       var i = 0;
@@ -2376,14 +2376,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       console.log(i);   // 1
    })();
 
-   ``` 
+   ```
    后置递增（递减）优先级要高于前置递增（递减）一位。
 2. void运算符表示表达式放弃返回值。
 
 ###2016-03-12
 ======
 1. 一个模块中的JS代码仅在模块第一次被使用时执行一次，并在执行过程中初始化模块的导出对象。之后，缓存起来的导出对象被重复利用。
-   
+
   ```js
   // counter.js
   'use strict'
@@ -2409,29 +2409,29 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 4. ``node /path``中的path其实是针对该磁盘目录的绝对路径.
 
 5. 关于对象的键→＿←
-  
+
   ```js
   this.model.set(attr, value); // 这里是对变量attr设置值为value , 其key为attr指向的变量
-  this.model.set({ attr: value }); // 这里设置之后其键名就为'attr'  →_→  所以还是得留意一下子啊。。 
+  this.model.set({ attr: value }); // 这里设置之后其键名就为'attr'  →_→  所以还是得留意一下子啊。。
   ```
 6. ``process.argv[0]``表示nodejs执行程序的路径
-7. 
+7.
 
 ###2016-03-14
 =======
 1. 对于含有标签的内容，想获取纯文本的哈，  如果要是觉得用正则来替换会比较麻烦的话， 可以使用jQuery的text()方法。
-  
+
    ```js
-   $(`<p>${title}</p>`).text() // 这样就能够获取该字符串内的纯文本了。 
+   $(`<p>${title}</p>`).text() // 这样就能够获取该字符串内的纯文本了。
 
    ```
 2. 直接用赋值方式将一个数组赋给另一个数组的话， 这两个数组实际上还是相互影响的， 也就是说他们是指向的同一个引用。 要想实现复制行为，可以用``([]).concat(arr)``
 
-3. `Parsing error: Duplicate data property in object literal not allowed in strict mode`指的是在一个对象下面定义了重复的键值 →＿←  
+3. `Parsing error: Duplicate data property in object literal not allowed in strict mode`指的是在一个对象下面定义了重复的键值 →＿←
 
 
-4. ``window.hha`` ``undefined``  
-   ``window.hha === undefined`` ``true``  
+4. ``window.hha`` ``undefined``
+   ``window.hha === undefined`` ``true``
    ``window.hha === 'undefined'`` ``false``
 
 5. ``li:nth-child(2)``表示选中li父元素的第二个且为li的子元素，
@@ -2444,8 +2444,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * `ENTER` 编辑DOM元素属性
   * `H`隐藏DOM元素
 
-2. 关于``web worker``: 
-   
+2. 关于``web worker``:
+
   ```js
    // worker.js
   var getData = function () {
@@ -2453,7 +2453,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     xhr.onreadystatechange = function (res) { // 注意这里的onreadystatechange是全部小写的啊
       if (xhr.readyState === 4 && xhr.status === 200) {
         try{
-          self.postMessage(xhr.responseText); // 注意： 获取响应是通过xhr.responseText来获取。 
+          self.postMessage(xhr.responseText); // 注意： 获取响应是通过xhr.responseText来获取。
         } catch (e) {}
       }
     };
@@ -2473,22 +2473,22 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   * `new Worker()`的时候传递的参数为一个指向需要执行的文件的url
 3. `timeStamp`时间戳
 
-4. 关于`Backbone.Relational`， 如果要对关联的`collection`进行`reset`需要在绑定`collection`的`relationmodel`里进行操作。如果在c`ollection`里面操作的话， 最后会在`relation`里面再度重置， 从而无法达到期望效果。 
+4. 关于`Backbone.Relational`， 如果要对关联的`collection`进行`reset`需要在绑定`collection`的`relationmodel`里进行操作。如果在c`ollection`里面操作的话， 最后会在`relation`里面再度重置， 从而无法达到期望效果。
 
 
 
 ###2016-03-16
 =======
-1. `webpack`的一个问题， 直接复制粘贴文件或者文件夹的方式来更改文件的话， 那么webpack编译后的文件依然是原来的文件。 不知道是配置的问题还是他本身的问题。 
+1. `webpack`的一个问题， 直接复制粘贴文件或者文件夹的方式来更改文件的话， 那么webpack编译后的文件依然是原来的文件。 不知道是配置的问题还是他本身的问题。
 
 2. 通过检测滚动条的距离来实现按需加载
    * 通过`getBoundingClientRect()`
    * 获取容器元素的`getBoundingClientRect()`的`bottom`的值。
    * 获取容器最后一个元素的`getBoundingClientRect()`的`bottom`的值。
-   * 前者减后者， 当所得值大于某个负值的时候发送请求加载内容。 
+   * 前者减后者， 当所得值大于某个负值的时候发送请求加载内容。
    * 这只是针对自己所需业务场景做的总结→＿←
 
-3. 
+3.
 
 ###2016-03-17
 =======
@@ -2497,11 +2497,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 3. `ctrl + r`文件内代码替换, `ctrl + shift + r`指定目录内代码批量替换
 
 
-  
-  
+
+
 4. `import {} from 'path'`` 可以将路径里的对象一次性地获取到
 5. `export default {}``可以将当前模块儿的变量以对象属性的方式导出
-6. 
+6.
 
 ###2016-03-18
 =======
@@ -2523,12 +2523,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-18
 =======
 1. 知乎上看到的如何不使用循环创建一个长度为100的数组， 并且数组项的值要等于其索引， [原文地址](https://www.zhihu.com/question/41493194/answer/91196402)
-   
+
    ```js
    '​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​'.split('').map(function (v, i) { return i; }); // 关于这里的第一个''其实并不是一个简单的引号o(╯□╰)o ， 零宽空格是个什么鬼
-   
+
    Array(100).fill('naive').map(function (v, i) { return i; }); // Array.fill是ES6的语法
-   
+
    // 通过生成器
    function* ary(i) {
      yield i;
@@ -2537,19 +2537,19 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      }
    }
    Array.from(ary(0));
-  
+
    // 使用递归
    (function f(i) {
      return i < 0 ? []: f(i - 1).concat(i);
    })(99);
 
    ```
-   直接使用``new Array(100)``生成的是稀疏数组（此时控制台打印出来的是`[undefined * 100]），通过``Array.from(Array(100))``即可将稀疏数组转换成密集数组(此时控制台打印出来的是`[undefined,undefined...])，然后就可以调用`map`并能返回期望值了。   
+   直接使用``new Array(100)``生成的是稀疏数组（此时控制台打印出来的是`[undefined * 100]），通过``Array.from(Array(100))``即可将稀疏数组转换成密集数组(此时控制台打印出来的是`[undefined,undefined...])，然后就可以调用`map`并能返回期望值了。
 
 
    创建一个空的密集数组： ``Array.from({length: 100});`` 使用`Array.apply(null, {length: 100})也是可行的。
 
-   也可以用拓展运算符。。。`[...Array(100)]`  
+   也可以用拓展运算符。。。`[...Array(100)]`
    ```js
    Object.keys(Array.apply(null, {length: 100}));
 
@@ -2567,8 +2567,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-20
 =======
 1. `document.body.onpagehide`事件相当于是在卸载的时候触发， 而不是切换标签页的时候触发。。。。
-2. 数组去重： 
-   
+2. 数组去重：
+
    ```js
    var ary = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9], ary2 = [], ary3 = [];
    for (var i = 0, len = ary.length; i < len; i++) {
@@ -2579,25 +2579,25 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-21
 =======
 1. 一般来说， JS中的数组是稀疏数组， 也就是说数组元素之间可以由空隙. 创建一个稀疏数组可以通过指定数组长度来创建。 稀疏数组的空隙项在使用`map`或者`forEach`遍历的时候并不会遍历到。
-2. 创建密集数组： 
-   
+2. 创建密集数组：
+
    ```js
    var ary = Array.apply(null, Array(3));
    // [undefined, undefined, undefined];
    ```
-   这个时候就可以使用`map`或者`forEach`遍历了。 
+   这个时候就可以使用`map`或者`forEach`遍历了。
 
 3. 好神奇， ``console.log*(123)``居然不会报错
-4. 其实表格布局在比较复杂的情况下还是很适用的。。。 
+4. 其实表格布局在比较复杂的情况下还是很适用的。。。
 5. 今天在做更改文档结构的时候， 出现了模板加载错误（实际上并没有报错， 只是期望内容没有加载进去。 ）， 找了半天， 原来是把开始标签`<tr>`写进了判断内→＿←
 
 
 ###2016-03-22
 =======
 1. 下面这段代码：
-    
+
     ```js
-    var name = (function () {                          // 这里直接使用name的话， 最后打印name得到的结果是'object Object', 换成name之外的变量名的时候就会正常反应。 
+    var name = (function () {                          // 这里直接使用name的话， 最后打印name得到的结果是'object Object', 换成name之外的变量名的时候就会正常反应。
       var _name = 'Jason';
       return {
         setName: function (value) {
@@ -2608,33 +2608,33 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
         }
       }
     })();
-    name; // 'object Object' 
+    name; // 'object Object'
     typeof name; // 'string'
     ```
-    这里的问题是为什么把name作为全局变量的话就会出问题？ 如果把name 换为Name或者其他名字的话就没有问题。 
+    这里的问题是为什么把name作为全局变量的话就会出问题？ 如果把name 换为Name或者其他名字的话就没有问题。
 
 
     ```js
     window.name = 5; // "5"
     window.name = false; // "false"
     ```
-    这表明``window.name``的值总是会被强制性地转化为字符串， 所以， 不要使用name作为全局变量。 
+    这表明``window.name``的值总是会被强制性地转化为字符串， 所以， 不要使用name作为全局变量。
 
     当然， 在一个函数里面的话则不会存在这种情况
 
-2. 用JS来做导航的时候怎样使元素鼠标进入子菜单的时候子菜单依然在显示。 
+2. 用JS来做导航的时候怎样使元素鼠标进入子菜单的时候子菜单依然在显示。
 
 
 ###2016-03-23
 =======
 1. `DELETE`请求没有请求体， 具体请求数据是加在query里面的来着。
-2. 数字加数字得到的会是数字啊→＿←  在用变量拼接字符串的时候尤其要注意， 如果变量是数字的话。。 可能一不小心就踩了个大坑。 
+2. 数字加数字得到的会是数字啊→＿←  在用变量拼接字符串的时候尤其要注意， 如果变量是数字的话。。 可能一不小心就踩了个大坑。
 
 
 ###2016-03-24
 =======
-1. ```cloneNode()```可以接收参数（布尔值）， 表示是否执行深拷贝， 如果执行深拷贝的话， 就会复制节点及其整个文档树。  
-   
+1. ```cloneNode()```可以接收参数（布尔值）， 表示是否执行深拷贝， 如果执行深拷贝的话， 就会复制节点及其整个文档树。
+
    ```js
    var someNode = document.createElement('p');
    someNode.innerHTML = 'test';
@@ -2650,7 +2650,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-25
 =======
 
-1. 使用`relationModel`的时候， 内部会先对`model`进行初始化， 然后再使用relation来进行包装？ 总之这破玩意儿坑太大了。。。 
+1. 使用`relationModel`的时候， 内部会先对`model`进行初始化， 然后再使用relation来进行包装？ 总之这破玩意儿坑太大了。。。
 
 ###2016-03-26
 =======
@@ -2659,21 +2659,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ####2016-03-27
 =======
 1. 关于基本包装类型
-    
+
     ```js
     // 返回的是一个字符串， 相当于直接定义var s = 'Jason', 对该变量定义属性是无效的
     var s = String('Jason'); // 转型函数
     typeof s; // 'string'
 
     // 返回的是一个对象， 可以对其设置属性
-    var t = new String('Jason'); // 构造函数 
+    var t = new String('Jason'); // 构造函数
     tyoeof t; // 'object'
 
     ```
 
 2. 正则表达式`w`表示匹配一个单字字符， 可以是字母， 数字和下划线， 所以如果只是匹配字母的话可以使用``str.match(/[a-zA-Z]/g)``
 
-3. JS去掉首尾空格： 
+3. JS去掉首尾空格：
    ```js
    var myTrim = function (str) {
      return str.replace(/^\s+|\s+$/g, '');   // 这里要执行全局匹配才能保证能够将所有的前置后置空格都替换掉
@@ -2684,23 +2684,23 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-03-28
 =======
 1. 调试程序的时候应该从错误入手
-2. `github客户端`切换分支的时候如果要是突然多出很多文件， 可能只是因为它一时没有反应过来而已， 只需要`discard changes`然后过一会儿再切换分支即可。 
+2. `github客户端`切换分支的时候如果要是突然多出很多文件， 可能只是因为它一时没有反应过来而已， 只需要`discard changes`然后过一会儿再切换分支即可。
 
 ###2016-03-29
 =======
-1. `Backbone.Collection` `create`的时候，第一个参数为模型的数据， 第二个参数为相应的条件。 
-   
+1. `Backbone.Collection` `create`的时候，第一个参数为模型的数据， 第二个参数为相应的条件。
+
    ```js
    this.collection.create(this.model.toJSON(), {
-      wait: true // 表示等待服务器端响应 。。。 
+      wait: true // 表示等待服务器端响应 。。。
       /* silent: true,
       success (model) {
         console.log(model);
       }*/
     });
    ```
-2. 使用`!`操作符的时候要注意优先级的问题啊。。。 
-   
+2. 使用`!`操作符的时候要注意优先级的问题啊。。。
+
    ```js
 
    if (!res instanceof Array)   return res; // 这里的!只会对res生效→＿←
@@ -2711,8 +2711,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-04-01
 =======
 1. 通过`[data-]`属性来设置值的时候是通过`ele.dataset`来设置的， 而`jQuery`的`data`方法的设置值和取值也是通过`dataset`来进行的， 所以如果通过直接修改DOM元素特性来修改`data-`属性的话， 表面上看起来变了， 但是`dataset`里面的值并没有变。
-2. `data`可以用来在元素上面携带任何属性的数据。 
-3. 关于`jQuery`的data 和attr源码应该好好看一下。 
+2. `data`可以用来在元素上面携带任何属性的数据。
+3. 关于`jQuery`的data 和attr源码应该好好看一下。
 
 ###2016-04-01
 =======
@@ -2730,34 +2730,34 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. 在提交代码的时候如果要是出现了`index.lock`已存在的信息导致新的版本不能提交的话， 那么到`.git`文件夹下手动将`index.lock`删除掉， 很多时候如果要是使用客户端不能够获取到完整的错误信息的话， 那么可以使用命令还来完成相应的操作， 毕竟命令行里面的话信息会比较全面。
 ###2016-04-02
 ======
-1. `setTimeout和setInterval`可以有多个参数， 其中第一个参数是需要异步执行的函数，第二个参数是时间， 可以为数字也可以为字符串， 如果是字符串会内部转化为数字再尝试执行， 如果不能转化为数字， 将会转化为0。 从第三个参数开始， 其余的参数可以作为参数被传入需要异步执行的函数内部。 
+1. `setTimeout和setInterval`可以有多个参数， 其中第一个参数是需要异步执行的函数，第二个参数是时间， 可以为数字也可以为字符串， 如果是字符串会内部转化为数字再尝试执行， 如果不能转化为数字， 将会转化为0。 从第三个参数开始， 其余的参数可以作为参数被传入需要异步执行的函数内部。
 
 
-2. 关于函数表达式  
+2. 关于函数表达式
    ```js
-   var name = function () { 
+   var name = function () {
      console.log('jiangxi')
-   }; 
+   };
    // undefined
-   
-   var name = function () { 
+
+   var name = function () {
      console.log('jiangxi')
-   }(); 
+   }();
    // jiangxi
    // undefined
-   
-   var name = (function () { 
+
+   var name = (function () {
      console.log('jiangxi')
    })();
    // jiangxi
    // undefined
    ```
-   也就是说这里表达式右边定义函数的时候， 函数体用不用括号包裹效果都是一样的。 因为括号只是起到了一个提升优先级的作用。 而在函数声明的时候， 
+   也就是说这里表达式右边定义函数的时候， 函数体用不用括号包裹效果都是一样的。 因为括号只是起到了一个提升优先级的作用。 而在函数声明的时候，
 
-3. `Array.apply(null, Array(100))`相当于是Array(undefined, undefined, undefined, ...);所以， 最后得到的就是密集数组。 
+3. `Array.apply(null, Array(100))`相当于是Array(undefined, undefined, undefined, ...);所以， 最后得到的就是密集数组。
 
 4. `Promise()`
-   
+
    ```js
     function test (time) {
       return new Promise((resolve, reject) => {
@@ -2789,11 +2789,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-04-04
 =======
-1. `const`和`let`在全局声明的变量不会挂载到全局对象`window`上面。 
+1. `const`和`let`在全局声明的变量不会挂载到全局对象`window`上面。
 2. `const`和`let`没有变量声明提升
 3. `for in`和`for of`每次都会绑定新的执行环境。 所以可以使用`for (const key in obj)`
-4. 关于`new`操作符。 
-   
+4. 关于`new`操作符。
+
     ```js
     var doSomeThing = function doSomeThingElse () {};
     doSomeThing.name; // doSomeThingElse;
@@ -2801,27 +2801,27 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       this.name = name;
     }
     var person = new Person('Jiangxi'); // 返回一个新的对象
-    var person2 = Person('Jiangxi'); // 无返回值， 函数里的name属性挂载到了window上面。 
+    var person2 = Person('Jiangxi'); // 无返回值， 函数里的name属性挂载到了window上面。
     ```
-    `JS`中的函数具有两个不同的方法， `[[call]]`和`[[Construct]]`, 当调用函数的时候没有使用`new`操作符， 那么`[[call]]`方法将会被执行， 当使用`new`操作符来调用的时候，`[[Consturct]]`方法将会负责创建一个新的对象，并将函数中的`this`指向当前对象。  
+    `JS`中的函数具有两个不同的方法， `[[call]]`和`[[Construct]]`, 当调用函数的时候没有使用`new`操作符， 那么`[[call]]`方法将会被执行， 当使用`new`操作符来调用的时候，`[[Consturct]]`方法将会负责创建一个新的对象，并将函数中的`this`指向当前对象。
 
-    需要注意的是， 不是所有的函数都具有`[[Construct]]`方法， 箭头函数就不能作为构造函数使用。 
+    需要注意的是， 不是所有的函数都具有`[[Construct]]`方法， 箭头函数就不能作为构造函数使用。
 5. 箭头函数：
-   * 箭头函数的`this, super, arguments, and new.target`的值， 由距离他最近的非箭头函数的函数所决定。 
-   * 不能使用箭头函数。 
-   * 没有原型。箭头函数不存在原型对象， 所以不能使用new 操作符。  
+   * 箭头函数的`this, super, arguments, and new.target`的值， 由距离他最近的非箭头函数的函数所决定。
+   * 不能使用箭头函数。
+   * 没有原型。箭头函数不存在原型对象， 所以不能使用new 操作符。
    * 不能改变`this`
    * 没有`arguments`对象。
-   * 如果要让函数体返回一个对象的话， 应该用括号来将花括号包围起来。 如： 
+   * 如果要让函数体返回一个对象的话， 应该用括号来将花括号包围起来。 如：
 
      ```js
-     // 因为花括号通常表示一个语句块儿， 所以如果没有用括号来包裹的话， 会认为需要执行里面的语句， 但是里面实际上是一个对象， 不能执行所以就会报错。 
-     // 所以， 在返回值是一个对象的时候， 需要用小括号将花括号包裹起来。 
+     // 因为花括号通常表示一个语句块儿， 所以如果没有用括号来包裹的话， 会认为需要执行里面的语句， 但是里面实际上是一个对象， 不能执行所以就会报错。
+     // 所以， 在返回值是一个对象的时候， 需要用小括号将花括号包裹起来。
      var getTempItem = id => {id, name: 'temp'} // Uncaught SyntaxError: Unexpected token :
 
-     var getTempItem = id => ({id, name: 'temp'}); // 正确。 
+     var getTempItem = id => ({id, name: 'temp'}); // 正确。
      ```
-   * 箭头函数的IIFEs写法： 
+   * 箭头函数的IIFEs写法：
 
      ```js
      let person = ((name) => {
@@ -2830,11 +2830,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
            return name;
          }
        }
-     })('Jiangxi'); 
+     })('Jiangxi');
      // 注意， 这里包裹函数的小括号必须要在参数前面而不能包含参数， 这是与常规函数不同的地方
      ```
 
-   * 箭头函数里的`this`是不能够通过`call`, `apply`或者`bind`来改变的， 但是依然可以使用这三个方法来传递参数，只是不能对`this`产生影响而已。 使用`bind`会创建一个新的函数。 
+   * 箭头函数里的`this`是不能够通过`call`, `apply`或者`bind`来改变的， 但是依然可以使用这三个方法来传递参数，只是不能对`this`产生影响而已。 使用`bind`会创建一个新的函数。
 
      ```js
       window.age = 12;
@@ -2844,34 +2844,34 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
           return this.age
         }
       };
-      obj.sayAge(); // 12 因为箭头函数的this指向的是其向上追溯的第一个非箭头函数内的this, 所以这里就是指向window而非obj对象。 
+      obj.sayAge(); // 12 因为箭头函数的this指向的是其向上追溯的第一个非箭头函数内的this, 所以这里就是指向window而非obj对象。
      ```
 
     * 箭头函数不具有`arguments`对象， 如果尝试访问`arguments`对象的话， 一般会返回其包含函数的`arguments`对象
 
-    * 要触发ES6的尾调用优化的话： 
+    * 要触发ES6的尾调用优化的话：
       * 必须要有`return`语句
-      * `return`语句里不能包含其他操作， 只能是函数的执行结果。 
-      * 如果将要返回的结果用变量存储起来， 再返回这个变量的话， 也不会触发尾调用优化。 
-      * 总的来说， 只有当函数结果能够被立即返回的时候才会触发尾调用优化。 
+      * `return`语句里不能包含其他操作， 只能是函数的执行结果。
+      * 如果将要返回的结果用变量存储起来， 再返回这个变量的话， 也不会触发尾调用优化。
+      * 总的来说， 只有当函数结果能够被立即返回的时候才会触发尾调用优化。
       * 不能是闭包
-      * 尾调用的值是以函数值的形式返回的。 
-        
+      * 尾调用的值是以函数值的形式返回的。
+
 
       ```js
-      // 以下函数不会触发尾调用优化。 因为在最后返回的时候进行了多个操作 
+      // 以下函数不会触发尾调用优化。 因为在最后返回的时候进行了多个操作
       function factorial (n) {
         if (n <= 1) return 1;
         return n * factorial(n - 1)
       }
-      // 改写后的函数就能够触发尾调用优化。 
+      // 改写后的函数就能够触发尾调用优化。
       function factorial (n, p = 1) {
         if (n <= 1) return 1 * p;
         let result = n * p;
         return factorial(n - 1, result);
       }
       ```
-6. 对象。 
+6. 对象。
    * 对象方法简写：
 
      ```js
@@ -2886,15 +2886,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 1. `Object.getOwnPropertyNames()`会返回对象的可枚举属性的键名组成的数组， 该数组始进行排序后的， 数字在前， 字母在后。
 
 2. 对象结构。。。。 翻译不过来了→＿←
-  
+
   ```js
   let node = {
     name: 'Node',
     id: 12
   };
   var {name, id} = node; // 同时声明name, id变量
-  ({name, id} = node)； // 返回值是node对象，并且同时生命了name, id变量。 
-  // 当使用这种表达式的时候，如果等号右边是`undefined`或者`null`的时候就会报错。 因为任何尝试访问`null`或者`undefined`的属性的语句都会报错。 
+  ({name, id} = node)； // 返回值是node对象，并且同时生命了name, id变量。
+  // 当使用这种表达式的时候，如果等号右边是`undefined`或者`null`的时候就会报错。 因为任何尝试访问`null`或者`undefined`的属性的语句都会报错。
 
   let node  = {
     name: 'Node',
@@ -2914,8 +2914,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   loc; // ReferenceError: loc is not defined
   start; // Object { line: 0, column: 0 }
   ```
-3. 使用ES6的REST来克隆数组。 
- 
+3. 使用ES6的REST来克隆数组。
+
   ```js
   let colors = ['blue', 'red'];
   var cloneColors = [...colors];
@@ -2930,28 +2930,28 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   }
   ```
 
-4. `Symbol`是一种基础的数据类型。 
-   
+4. `Symbol`是一种基础的数据类型。
+
    ```js
    var sym = Symbol('str');
    typeof sym; // "symbol"
    ```
-   因为`Symbol`是基本数据类型，所以如果对`Symbol`使用`new`操作符的话将会抛出异常。   
+   因为`Symbol`是基本数据类型，所以如果对`Symbol`使用`new`操作符的话将会抛出异常。
 
-   要创建`Symbol`的实例可以通过`new Object(your Symbol)`来创建。但是这并没有多大的用处→＿←。 
-  
-   `Symbol`接收一个可选的参数来对其进行描述， 但是这个描述符并没有访问属性的权利， 它只是为了方便调试而已。 
+   要创建`Symbol`的实例可以通过`new Object(your Symbol)`来创建。但是这并没有多大的用处→＿←。
+
+   `Symbol`接收一个可选的参数来对其进行描述， 但是这个描述符并没有访问属性的权利， 它只是为了方便调试而已。
 
 
-   `Symbol.for()`接收一个参数，该参数同时也会作为描述符。 在使用这个方法的时候， 会首先去查找全局注册的Symbol, 如果存在， 则返回， 如果不存在， 则新建并返回。 
+   `Symbol.for()`接收一个参数，该参数同时也会作为描述符。 在使用这个方法的时候， 会首先去查找全局注册的Symbol, 如果存在， 则返回， 如果不存在， 则新建并返回。
 
    `Set`实例化的时候传递参数需要是一个数组。 如: `new Set([1,2,3,4,5])`
 
-  
 
-   `Set`的`forEach`方法。 
-   `forEach`的回调函数的参数里面第一个参数和第二个参数是相等的， 都表示set在那个位置的值，第三个参数是set本身。 
-     
+
+   `Set`的`forEach`方法。
+   `forEach`的回调函数的参数里面第一个参数和第二个参数是相等的， 都表示set在那个位置的值，第三个参数是set本身。
+
     ```js
     var processor2 = {
       output (value) {
@@ -2960,21 +2960,21 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       process (dataSet) {
         dataSet.forEach(function (item) {
           this.output(item)
-        }, this); // 如果这里不传递this的话，this指向的是window, 如果使用箭头函数的话， 则无需传递this，this指向的是当前对象。 
+        }, this); // 如果这里不传递this的话，this指向的是window, 如果使用箭头函数的话， 则无需传递this，this指向的是当前对象。
       }
     }
-    ```  
+    ```
 
-    使用`new Set(arr)`可以将数组转化为`Set`， 使用[...Set]可以将`set`转化为数组。 
+    使用`new Set(arr)`可以将数组转化为`Set`， 使用[...Set]可以将`set`转化为数组。
 
-    数组去重： 
+    数组去重：
 
     ```js
     var arr = [1, 2, 3, 4, 5, 6, 7, 1, 23, 3, 4, 5, 6];
     arr = [...new Set(arr)];
     ```
 
-    `WeakSet`只能保存对象类型， 如果保存类型不是对象而是基础类型的话， 就会报错。   
+    `WeakSet`只能保存对象类型， 如果保存类型不是对象而是基础类型的话， 就会报错。
     ```js
     var weakSet = new WeakSet(), key = {};
     weakSet.add(key);
@@ -2989,7 +2989,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-04-07
 ======
 1. `iterator`
-   
+
    ```js
    function createIterators(items) {
      var i = 0;
@@ -3007,20 +3007,20 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 ###2016-04-08
 ======
-1. 判断一个对象是否可迭代可以使用以下方法：  
-   
+1. 判断一个对象是否可迭代可以使用以下方法：
+
    ```js
    function isIterable (obj) {
      return typeof obj[Symbol.iterable] === 'function';
    }
    ```
-   以上函数通过检测默认的迭代器是否存在来判断对象是否可迭代。 
+   以上函数通过检测默认的迭代器是否存在来判断对象是否可迭代。
 
 
 ###2016-04-08
 ======
 1. 关于`class`
-   * `class`声明不同于函数声明，他们没有声明提升。 同时`class`声明也是存在暂时性死区的。 
+   * `class`声明不同于函数声明，他们没有声明提升。 同时`class`声明也是存在暂时性死区的。
 
      ```js
      // 通常如果不使用var来声明变量而直接为变量赋值的话变量会变成全局变量
@@ -3036,11 +3036,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      }
      ```
 
-   * `class`声明的代码都是自动在严格模式下执行的， 并且没有办法使得他们脱离严格模式而执行。 
-   * 所有的方法都是不可枚举的。 
-   * 所有的方法都是不具有`[[construct]]`内部方法的。 所以不能使用`new`操作符， 如果尝试使用将会抛出错误。 
-   * 不使用`new`操作符来调用`class`的话， 将会抛出错误 
-   * 定义静态成员。 
+   * `class`声明的代码都是自动在严格模式下执行的， 并且没有办法使得他们脱离严格模式而执行。
+   * 所有的方法都是不可枚举的。
+   * 所有的方法都是不具有`[[construct]]`内部方法的。 所以不能使用`new`操作符， 如果尝试使用将会抛出错误。
+   * 不使用`new`操作符来调用`class`的话， 将会抛出错误
+   * 定义静态成员。
 
      ```js
       class PersonClass {
@@ -3054,7 +3054,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
             console.log('My name is ' + this.name);
         }
       }
-      var person = new PersonClass.create('Jason'); // 静态方法是直接通过class定义的来访问的， 不能通过实例来访问。 
+      var person = new PersonClass.create('Jason'); // 静态方法是直接通过class定义的来访问的， 不能通过实例来访问。
      ```
 
      ```js
@@ -3083,9 +3083,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
      ```js
       class Square extends Rectangle {
-        constructor(length) { // constructor里面的参数是实例化的时候传入的参数(对应这里的new Square()的时候传入的参数)。 
+        constructor(length) { // constructor里面的参数是实例化的时候传入的参数(对应这里的new Square()的时候传入的参数)。
         // same as Rectangle.call(this, length, length)
-        super(length, length); // 这里的super的参数将会传入父类e的construtor的参数里。 
+        super(length, length); // 这里的super的参数将会传入父类e的construtor的参数里。
         }
       }
 
@@ -3093,14 +3093,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-04-11
 ======
-1. `Array.from`. 
-   * 可以用于将类数组对象转换为数组对象。 
-   * 在转换的时候第二个参数可以对数组进行map操作。 
+1. `Array.from`.
+   * 可以用于将类数组对象转换为数组对象。
+   * 在转换的时候第二个参数可以对数组进行map操作。
 
      ```js
      Array.from([1,2,3,4], item => item * 2); // [2,4,6,8]
      ```
-   * 如果第二个参数是一个对象的方法的话， 可以用第三个参数来指定函数执行的上下文。 
+   * 如果第二个参数是一个对象的方法的话， 可以用第三个参数来指定函数执行的上下文。
 
      ```js
       var helper = {
@@ -3113,7 +3113,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
       Array.from([1,2,3,4,5], helper.add); // [3, 4, 5, 6, 7]
       Array.from([1,2,3,4,5], helper.add, helper); // [2, 3, 4, 5, 6]
      ```
-   * `Array.from`可用于类数组对象和具有迭代器接口的对象。 
+   * `Array.from`可用于类数组对象和具有迭代器接口的对象。
 
      ```js
       let numbers = {
@@ -3138,12 +3138,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * 创建`view`
 
      ```js
-     // 第二个参数表示offset, 第三个参数表示的是截取长度。 
+     // 第二个参数表示offset, 第三个参数表示的是截取长度。
      var view = new DataView(buffer, 5, 5); // 第二三可参数是可选的， 当提供第三个参数的时候， 那么二三个参数加起来的和不能大于`buffer`的`byteLength`, 不然就会报错。
      ```
 
-2. `Promise`的执行器（定义时的函数参数）是立即执行的。  
-   
+2. `Promise`的执行器（定义时的函数参数）是立即执行的。
+
    ```js
     var promise = new Promise((resolve, reject) => {
       console.log('Promise')
@@ -3152,14 +3152,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     console.log('hi');
     // Promise
     // hi
-   ``` 
+   ```
 
 ###2016-04-13
 =======
-1. 碰到的一个问题。 
-   
+1. 碰到的一个问题。
+
    ```js
-   // 数据结构如下， 如果res中一个数组项的messageType是'29', 那么将整个数组中的hrefC与该数组项的hrefC值相同的数组项连带其本身都删除掉， 并且打印出删除项id。如下， 数组第二项的type为29， hrefC为71750， 那么就需要将整个数组中hrefC为71750的项删除掉， 并且打印出他们的id. 
+   // 数据结构如下， 如果res中一个数组项的messageType是'29', 那么将整个数组中的hrefC与该数组项的hrefC值相同的数组项连带其本身都删除掉， 并且打印出删除项id。如下， 数组第二项的type为29， hrefC为71750， 那么就需要将整个数组中hrefC为71750的项删除掉， 并且打印出他们的id.
     const res = [{
       messageType:"4",
       hrefC: "71750",
@@ -3190,11 +3190,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-04-13
 =======
-1. 如果碰到界面不清晰的问题， 考虑是不是浏览器缩放所致。 
+1. 如果碰到界面不清晰的问题， 考虑是不是浏览器缩放所致。
 
 ###2016-04-14
 =======
-1. select不支持伪类， select里面也不能有`option`之外的其他元素 
+1. select不支持伪类， select里面也不能有`option`之外的其他元素
 
 ###2016-04-14
 =======
@@ -3207,7 +3207,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-04-27
 =======
 1. 关于`dropdown`
-   
+
   ````html
   .dropdown
     .dropdown-toggle [data-toggle='dropdown']
@@ -3222,14 +3222,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 ###2016-05-03
 =======
 1. 在通过`AJAX`post数据的时候， 需要设置请求头：
-   
+
    ```js
    xhr.setRequestHeader('Content-type', 'application/x-www-urlencoded; charset=utf-8');
    ```
-2. 关于表单数据的`ajax`提交： 
-   
-   如提交内容为以下对象： 
-   
+2. 关于表单数据的`ajax`提交：
+
+   如提交内容为以下对象：
+
    ```js
    var data = {
      username: 'Jason',
@@ -3238,7 +3238,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    那么要实现表单式提交首先需要设置请求头， 如上面所示
 
-   然后格式化数据： 
+   然后格式化数据：
 
    ```js
     function formatFormData (obj) {
@@ -3250,12 +3250,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     }
     formatFormData(data); // 'username=Jason&password=123456';
    ```
-   这样就能正确的发送表单数据了。 
+   这样就能正确的发送表单数据了。
 
-3. 数据库连接的时候如果显示`mysql_connect() is not a function`的时候， 那么可能是php.ini中的扩展(`extension: mysql.dll; extension: <mysqli class="dll"></mysqli>`)没有启用， 或者说是扩展的路径名（`extension_dir: `）错误。 
+3. 数据库连接的时候如果显示`mysql_connect() is not a function`的时候， 那么可能是php.ini中的扩展(`extension: mysql.dll; extension: <mysqli class="dll"></mysqli>`)没有启用， 或者说是扩展的路径名（`extension_dir: `）错误。
 
-4. PHP要相应JSON数据的话， 需要对数据进行`json_encode()`然后`echo`处理。 
-   
+4. PHP要相应JSON数据的话， 需要对数据进行`json_encode()`然后`echo`处理。
+
 ###2016-05-04
 =======
 1. `CYGWIN`是一个可以在windows上使用Linux命令的环境， 通过它来安装`fish`的时候需要在安装过程包选择中选择`fish`才行， 然后通过他的命令行输入`fish`进入fish
@@ -3280,13 +3280,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     }
    ```
 2. `document.documentMode`判断是IE几
-3. 如果`.chm`的文件打开后没有内容， 那么右击文件， 点解除锁定就行了。 
+3. 如果`.chm`的文件打开后没有内容， 那么右击文件， 点解除锁定就行了。
 
 
 ###2016-05-10
 =======
-1. 关于字符串的`replace`方法： 
-   
+1. 关于字符串的`replace`方法：
+
    ```js
     var str = '今天是个好天气';
     // 也就是replace方法的第二个参数可以是一个函数， 函数传入参数是前面匹配到的字符串
@@ -3297,9 +3297,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 ###2016-05-11
 =======
-1. IE10和IE11抛弃了条件注释。。 
+1. IE10和IE11抛弃了条件注释。。
 2. 在一个执行环境内， 对于使用`const`或者`let`声明的变量，在语句没执行到的时候， 不能进行任何访问行为。 包括调用`typeof`操作符
-   
+
    > When a JavaScript engine looks through an upcoming block andfinds a variable declaration, it either hoists thedeclaration to the top of the function or global scope (for var) or places the declaration in the TDZ (for let and const).Any attempt to access a variable in the TDZ results in aruntime error. That variable is only removed from the TDZ,and therefore safe to use, once execution flows to the variable declaration.
 
 ###2016-05-12
@@ -3316,14 +3316,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-05-26
 =======
-1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true 
-2. 回车的断行事件是在`keydown`结束后和`keyup`结束前触发的， 所以如果要在按回车的时候阻止默认事件， 应该在`keydown`里面进行。 
+1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true
+2. 回车的断行事件是在`keydown`结束后和`keyup`结束前触发的， 所以如果要在按回车的时候阻止默认事件， 应该在`keydown`里面进行。
 
 
 ###2016-06-23
 =======
 1. 关于`this`
-  
+
   ```js
   // with (global)
   var a = {
@@ -3343,8 +3343,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-07-01
 =======
-1. `forEach`里面不能使用`continue`, `break`语句， 虽然能够使用`return`并且不会报错， 但是实际上即使满足条件的话也不会跳出循环， 而是会继续执行下去。 
+1. `forEach`里面不能使用`continue`, `break`语句， 虽然能够使用`return`并且不会报错， 但是实际上即使满足条件的话也不会跳出循环， 而是会继续执行下去。
 
+
+###2016-07-04
+=======
+1. 通过`e.path`来确定点击元素的层次是一个不错的办法， 但是兼容性是一个问题。
 
 #Problems
 =======
@@ -3358,22 +3362,22 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 8. 有个bug,当文件夹删除之后，再创建的话不会加载数据(因为事件监听的对象没有了)
 9. 关于滚动条的这个。。要搞清楚
 10. 明天需要把代码里的重复部分给去掉。。有好些语句都是可以省略的来着
-11. 关于正则表达式匹配的贪婪模式，如： 
-   
+11. 关于正则表达式匹配的贪婪模式，如：
+
     ```javascript
     var re = /\<\w*\>.*\<\/\w*\>/g;
     var str = '写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em> 6 80 对照问题熟悉<em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>有建议的话找曹德季其他问题找戴盈盈';
     str.match(re);
     ```
     原本期待的是只返回一个被em包裹的元素，但是在这里匹配到的是这样的
-    
+
     ```html
     <em>产品</em>，写下自己的答案，如果对<em>产品</em>操作有疑问，可以找杨悦对<em>产品</em>
     ```
     所以这大概就是贪婪模式在作怪吧，那么应该怎么改呢？ 现在我只是设置了文本溢出不显示，治标不治本的。
 12. replace的时候如果使用或操作符的话，会变成单个字符匹配，所以就多次replace，这种问题应该怎么解决喃？
-    如： 
-    
+    如：
+
     ```javascript
     const b = this.$('p.top').html().replace(/\&lt;em\&gt;/g, '<i class="type-link"> ').replace(/&lt;\\?\/em(\&gt;)?/g, ' </i>').replace(/\&nbsp;/g, '');
 
@@ -3382,7 +3386,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     str.match(/<\/em>/g); // ["</em>"]
     ```
 
-    如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。 
+    如果用[]把多个replace里的内容放在一起的话，就会出现匹配的时候是一个字符一个字符的匹配的情况。。这种怎么搞。。。
 13. 关于行高的一些问题
 14. jQuery在初始化的时候slideUp()不会执行的问题
 15. 关于exec方法当时看了没有练，结果现在忘了，有空了一定要好好练习下。
@@ -3390,5 +3394,5 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 17. Backbone绑定scroll无效？
 18. 安装sass-loader出错的话。。。使用cnpm来安装
 19. --save-dev，之间是没有空格的
-20. 在公司电脑里sourcemap用了不生效。。。怎么回事。。 
+20. 在公司电脑里sourcemap用了不生效。。。怎么回事。。
 21.
