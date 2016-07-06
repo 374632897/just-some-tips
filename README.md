@@ -3352,6 +3352,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 ###2016-07-06
 =======
+
 1. 关于函数默认参数, 只有在给调用函数的时候没有在对应位置上传入参数的时候， 默认参数才会生效。也就是说， 判定默认参数是否生效的原则是是否传递该参数， 而不是该参数的值是否为`true`
 
 ```js
@@ -3397,6 +3398,30 @@ var obj = {
   sayName: function () {}.bind(this)
 };
 ```
+
+4. 关于函数参数解构
+
+```js
+// 这里的目的原本是声明函数的第一个参数为options， 并且声明变量options的指定属性为name,age， 在没有传递参数的情况下， 默认设置为一个对象以避免报错
+// 但是这样的声明最后会报错， 说options未定义
+
+function sayName ({ name, age } = options = {}) {
+  console.log(name, age, options);
+}
+```
+
+不知道有什么方法能够达到上面的目的， 暂时没想到， 说明基础还不够巩固， 该继续滚回去看书了。
+
+所以老老实实的用其他方法吧。
+
+```js
+function sayName (options = {}) {
+  const { name, age } = options;
+  console.log(name, age, options);
+}
+
+```
+
 
 #Problems
 =======
