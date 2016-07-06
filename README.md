@@ -3350,7 +3350,53 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 =======
 1. 通过`e.path`来确定点击元素的层次是一个不错的办法， 但是兼容性是一个问题。
 
+###2016-07-06
+=======
+1. 关于函数默认参数, 只有在给调用函数的时候没有在对应位置上传入参数的时候， 默认参数才会生效。也就是说， 判定默认参数是否生效的原则是是否传递该参数， 而不是该参数的值是否为`true`
 
+```js
+function say (a, b = 2, c = 3) {
+  console.log(a, b, c);
+}
+say(1); // 1 2 3
+say(1, false, '') // 1 false ''
+```
+
+2. `bind`的优先级是要高于`call`和`apply`的。
+
+```js
+window.name = 'Jason';
+var obj = {
+  name: 'Jason2',
+  sayName: function () {
+　　console.log(this.name)
+  }.bind(this)
+};
+var obj2 = {
+  name: 'Daisy',
+  sayName: function () {
+    obj.sayName.call(this);
+  }
+};
+obj2.sayName(); // Jason;
+```
+
+3. 对象方法的简写形式里不能使用`bind`， 但是非简写情况下是可以使用的。
+
+```js
+// 下面这种写法会导致错误
+var obj = {
+  name: 'Jason',
+  sayName () {
+
+  }.bind(this) // error
+};
+// 可以采用这种非简写写法
+var obj = {
+  name: 'Jason',
+  sayName: function () {}.bind(this)
+};
+```
 
 #Problems
 =======
