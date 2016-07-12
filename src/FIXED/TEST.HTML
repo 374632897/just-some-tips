@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 1600px;
+      overflow-x: auto;
+      height: 900px;
+    }
+    .container > div {
+      height: 100%;
+    }
+    .left {
+      float: left;
+      width: 1000px;
+      background: #f00;
+    }
+    .right {
+      float: right;
+      width: 500px;
+      background: #fcc;
+      position: relative;
+    }
+    .right-fixed {
+      position: fixed;
+      top: 30px;
+      width: 100%;
+      height: 200px;
+      background: #f66;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="right-fixed"></div>
+    </div>
+  </div>
+</body>
+</html>
