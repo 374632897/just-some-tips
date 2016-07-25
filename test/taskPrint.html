@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>任务打印</title>
+  <style>
+    html, body, h1, ul, li {
+      padding: 0;margin: 0;
+      /*font: 14px/24px 'Segoe UI', 'SimHei', 'Microsoft Yahei';*/
+      font: 14px/24px 'Segoe UI', 'Microsoft Yahei';
+    }
+    ul {
+      padding: 16px;
+      padding-top: 0;
+    }
+    ul li + li {
+      margin-top: 4px;
+    }
+    h1 {
+      text-align: center;
+      height: 56px;
+      line-height: 56px;
+      border-bottom: 1px solid #363636;
+    }
+    h1 span {
+      background:#0096f6;
+      box-shadow:0px 0px 1px 0px rgba(0,0,0,0.23);
+      border-radius:3px;
+      width:60px;
+      height:30px;
+      line-height: 30px;
+      float: right;
+      margin-right: 37px;
+      margin-top: 12px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: normal;
+    }
+    table {
+      width: 70%;
+      margin: auto;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 1px solid #747474;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    tr + tr {
+      border-top: 1px solid #747474;
+    }
+    td.task-info {
+      vertical-align: top;
+      width: 100px;
+      background: #dcdcdc;
+      font-weight: bold;
+      padding: 10px 0;
+      padding-left: 6px;
+      border-right: 2px solid #747474;
+    }
+    p {
+      margin: 0;
+    }
+    td.task-main {
+      padding-left: 6px;
+      padding-left: 6px;
+      vertical-align: top;
+      padding-top: 10px;
+    }
+    .print:hover {
+      cursor: pointer;
+      background: #0d84d0;
+      transition: all ease-out .2s;
+    }
+    @media print {
+      table {
+        width: 90%;
+      }
+      h1 {
+        visibility: hidden;
+      }
+      td.task-main {
+        font-weight: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>打印任务 <span class="print" onclick = 'window.print();'>打印</span></h1>
+
+  <table boder = '1' cellspacing="0">
+    <tr>
+      <td class="task-info">任务名称</td>
+      <td class="task-main">哎呀我的歌曲</td>
+    </tr>
+    <tr>
+      <td class="task-info">任务描述</td>
+      <td class="task-main">
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+        今天是个好日子
+      </td>
+    </tr>
+    <tr>
+      <td class="task-info">任务来源</td>
+      <td class="task-main">看板任务-看板卡片</td>
+    </tr>
+    <tr>
+      <td class="task-info">任务成员</td>
+      <td class="task-main">蒋熙， 蒋熙， 蒋熙， 蒋熙</td>
+    </tr>
+    <tr>
+      <td class="task-info">任务日期</td>
+      <td class="task-main">2015-06-07 - 2016-08-55</td>
+    </tr>
+    <tr>
+      <td class="task-info">任务子任务</td>
+      <td class="task-main">
+        <ul class = 'subtask'>
+          <li>子任务1</li>
+          <li>子任务2</li>
+          <li>子任务3</li>
+          <li>子任务4</li>
+          <li>子任务5</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="task-info">评论</td>
+      <td class="task-main">
+        <ul class = 'comments'>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+          <li>
+            <span class="name">蒋熙</span>:
+            <span class="detail">哎呀我的歌大去到拉萨分开绝对是离开分近段时间看大送积分款了撒娇风口浪尖水控机的时刻放假撒打开非的开始大开杀戒饭卡的发顺丰的时刻附近的开始了附近的恐龙世界分开来</span>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

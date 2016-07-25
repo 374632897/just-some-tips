@@ -3427,6 +3427,22 @@ function sayName (options = {}) {
 =======
 1. 当一个节点从`dom`中移除的时候将会触发其`blur`事件。 所以此时如果要是绑定了事件处理函数的时候， 需要慎重处理。
 
+
+
+###2016-07-25
+=======
+1. 关于`selection`
+
+```js
+const sel = window.getSelection(),
+        range = sel.getRangeAt(0), // 获取当前光标所在的范围
+        span = GET_AT_SPAN(); // 生成一个DOM节点
+
+    range.insertNode(span); // 插入
+    sel.addRange(range);    // 添加范围
+    sel.collapseToEnd();    // 光标移动到最后
+```
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
