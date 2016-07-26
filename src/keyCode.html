@@ -16,7 +16,8 @@
   <!-- <div class="test" contenteditable></div> -->
   <script>
 
-  document.onkeyup = function (e) {
+  // document.onkeyup = function (e) {
+  document.onkeypress = function (e) {
     alert('键码为' + e.keyCode);
     e.preventDefault();
   }

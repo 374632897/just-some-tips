@@ -3443,6 +3443,12 @@ const sel = window.getSelection(),
     sel.collapseToEnd();    // 光标移动到最后
 ```
 
+###2016-07-26
+=======
+1. `splice`删除元素之后返回的是一个数组
+
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
