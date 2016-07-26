@@ -1,0 +1,5335 @@
+/*.sprite {
+    background: url('./images/square.png');
+    background-repeat: no-repeat;
+    display: block;
+}*/
+[class^="sprite-"] {
+  width:24px;
+  height: 24px;
+  background: url('./images/square.png');
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  display: inline-block;
+  /*display: block;*/
+}
+.sprite-a {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -5px;
+}
+
+.sprite-a-100 {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -5px;
+}
+
+.sprite-a-1234 {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -5px;
+}
+
+.sprite-a-8ball {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -5px;
+}
+
+.sprite-ab {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -5px;
+}
+
+.sprite-abc {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -5px;
+}
+
+.sprite-abcd {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -5px;
+}
+
+.sprite-accept {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -5px;
+}
+
+.sprite-aerial_tramway {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -5px;
+}
+
+.sprite-agree {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -5px;
+}
+
+.sprite-airplane {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -5px;
+}
+
+.sprite-alarm_clock {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -5px;
+}
+
+.sprite-alien {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -5px;
+}
+
+.sprite-ambulance {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -5px;
+}
+
+.sprite-anchor {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -5px;
+}
+
+.sprite-angel {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -5px;
+}
+
+.sprite-anger {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -5px;
+}
+
+.sprite-angry {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -5px;
+}
+
+.sprite-anguished {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -5px;
+}
+
+.sprite-ant {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -5px;
+}
+
+.sprite-apple {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -5px;
+}
+
+.sprite-aquarius {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -5px;
+}
+
+.sprite-aries {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -5px;
+}
+
+.sprite-arrow_backward {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -5px;
+}
+
+.sprite-arrow_double_down {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -5px;
+}
+
+.sprite-arrow_double_up {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -5px;
+}
+
+.sprite-arrow_down {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -5px;
+}
+
+.sprite-arrow_down_small {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -5px;
+}
+
+.sprite-arrow_forward {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -5px;
+}
+
+.sprite-arrow_heading_down {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -79px;
+}
+
+.sprite-arrow_heading_up {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -79px;
+}
+
+.sprite-arrow_left {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -79px;
+}
+
+.sprite-arrow_lower_left {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -79px;
+}
+
+.sprite-arrow_lower_right {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -79px;
+}
+
+.sprite-arrow_right {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -79px;
+}
+
+.sprite-arrow_right_hook {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -79px;
+}
+
+.sprite-arrow_up {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -79px;
+}
+
+.sprite-arrow_up_down {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -79px;
+}
+
+.sprite-arrow_up_small {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -79px;
+}
+
+.sprite-arrow_upper_left {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -79px;
+}
+
+.sprite-arrow_upper_right {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -79px;
+}
+
+.sprite-arrows_clockwise {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -79px;
+}
+
+.sprite-arrows_counterclockwise {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -79px;
+}
+
+.sprite-art {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -79px;
+}
+
+.sprite-articulated_lorry {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -79px;
+}
+
+.sprite-astonished {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -79px;
+}
+
+.sprite-atm {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -79px;
+}
+
+.sprite-b {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -79px;
+}
+
+.sprite-baby {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -79px;
+}
+
+.sprite-baby_bottle {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -79px;
+}
+
+.sprite-baby_chick {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -79px;
+}
+
+.sprite-baby_symbol {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -79px;
+}
+
+.sprite-back {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -79px;
+}
+
+.sprite-baggage_claim {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -79px;
+}
+
+.sprite-balloon {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -79px;
+}
+
+.sprite-ballot_box_with_check {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -79px;
+}
+
+.sprite-bamboo {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -79px;
+}
+
+.sprite-banana {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -79px;
+}
+
+.sprite-bangbang {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -153px;
+}
+
+.sprite-bank {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -153px;
+}
+
+.sprite-bar_chart {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -153px;
+}
+
+.sprite-barber {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -153px;
+}
+
+.sprite-baseball {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -153px;
+}
+
+.sprite-basketball {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -153px;
+}
+
+.sprite-bath {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -153px;
+}
+
+.sprite-bathtub {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -153px;
+}
+
+.sprite-battery {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -153px;
+}
+
+.sprite-bear {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -153px;
+}
+
+.sprite-bee {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -153px;
+}
+
+.sprite-beer {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -153px;
+}
+
+.sprite-beers {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -153px;
+}
+
+.sprite-beetle {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -153px;
+}
+
+.sprite-beginner {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -153px;
+}
+
+.sprite-bell {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -153px;
+}
+
+.sprite-bento {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -153px;
+}
+
+.sprite-bicyclist {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -153px;
+}
+
+.sprite-bike {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -153px;
+}
+
+.sprite-bikini {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -153px;
+}
+
+.sprite-bird {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -153px;
+}
+
+.sprite-birthday {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -153px;
+}
+
+.sprite-black_circle {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -153px;
+}
+
+.sprite-black_joker {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -153px;
+}
+
+.sprite-black_medium_small_square {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -153px;
+}
+
+.sprite-black_medium_square {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -153px;
+}
+
+.sprite-black_nib {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -153px;
+}
+
+.sprite-black_small_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -153px;
+}
+
+.sprite-black_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -153px;
+}
+
+.sprite-black_square_button {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -227px;
+}
+
+.sprite-blossom {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -227px;
+}
+
+.sprite-blowfish {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -227px;
+}
+
+.sprite-blue_book {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -227px;
+}
+
+.sprite-blue_car {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -227px;
+}
+
+.sprite-blue_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -227px;
+}
+
+.sprite-blush {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -227px;
+}
+
+.sprite-boar {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -227px;
+}
+
+.sprite-boat {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -227px;
+}
+
+.sprite-bomb {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -227px;
+}
+
+.sprite-book {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -227px;
+}
+
+.sprite-bookmark {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -227px;
+}
+
+.sprite-bookmark_tabs {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -227px;
+}
+
+.sprite-books {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -227px;
+}
+
+.sprite-boom {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -227px;
+}
+
+.sprite-boot {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -227px;
+}
+
+.sprite-bouquet {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -227px;
+}
+
+.sprite-bow {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -227px;
+}
+
+.sprite-bowling {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -227px;
+}
+
+.sprite-bowtie {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -227px;
+}
+
+.sprite-boy {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -227px;
+}
+
+.sprite-bread {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -227px;
+}
+
+.sprite-bride_with_veil {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -227px;
+}
+
+.sprite-bridge_at_night {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -227px;
+}
+
+.sprite-briefcase {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -227px;
+}
+
+.sprite-broken_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -227px;
+}
+
+.sprite-bug {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -227px;
+}
+
+.sprite-bulb {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -227px;
+}
+
+.sprite-bullettrain_front {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -227px;
+}
+
+.sprite-bullettrain_side {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -301px;
+}
+
+.sprite-bus {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -301px;
+}
+
+.sprite-busstop {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -301px;
+}
+
+.sprite-bust_in_silhouette {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -301px;
+}
+
+.sprite-busts_in_silhouette {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -301px;
+}
+
+.sprite-cactus {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -301px;
+}
+
+.sprite-cake {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -301px;
+}
+
+.sprite-calendar {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -301px;
+}
+
+.sprite-calling {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -301px;
+}
+
+.sprite-camel {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -301px;
+}
+
+.sprite-camera {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -301px;
+}
+
+.sprite-cancer {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -301px;
+}
+
+.sprite-candy {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -301px;
+}
+
+.sprite-capital_abcd {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -301px;
+}
+
+.sprite-capricorn {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -301px;
+}
+
+.sprite-car {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -301px;
+}
+
+.sprite-card_index {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -301px;
+}
+
+.sprite-carousel_horse {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -301px;
+}
+
+.sprite-cat {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -301px;
+}
+
+.sprite-cat2 {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -301px;
+}
+
+.sprite-cd {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -301px;
+}
+
+.sprite-chart {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -301px;
+}
+
+.sprite-chart_with_downwards_trend {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -301px;
+}
+
+.sprite-chart_with_upwards_trend {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -301px;
+}
+
+.sprite-checkered_flag {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -301px;
+}
+
+.sprite-cherries {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -301px;
+}
+
+.sprite-cherry_blossom {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -301px;
+}
+
+.sprite-chestnut {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -301px;
+}
+
+.sprite-chicken {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -301px;
+}
+
+.sprite-children_crossing {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -375px;
+}
+
+.sprite-chocolate_bar {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -375px;
+}
+
+.sprite-christmas_tree {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -375px;
+}
+
+.sprite-church {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -375px;
+}
+
+.sprite-cinema {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -375px;
+}
+
+.sprite-circus_tent {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -375px;
+}
+
+.sprite-city_sunrise {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -375px;
+}
+
+.sprite-city_sunset {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -375px;
+}
+
+.sprite-cl {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -375px;
+}
+
+.sprite-clap {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -375px;
+}
+
+.sprite-clapper {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -375px;
+}
+
+.sprite-clipboard {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -375px;
+}
+
+.sprite-clock1 {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -375px;
+}
+
+.sprite-clock10 {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -375px;
+}
+
+.sprite-clock1030 {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -375px;
+}
+
+.sprite-clock11 {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -375px;
+}
+
+.sprite-clock1130 {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -375px;
+}
+
+.sprite-clock12 {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -375px;
+}
+
+.sprite-clock1230 {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -375px;
+}
+
+.sprite-clock130 {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -375px;
+}
+
+.sprite-clock2 {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -375px;
+}
+
+.sprite-clock230 {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -375px;
+}
+
+.sprite-clock3 {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -375px;
+}
+
+.sprite-clock330 {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -375px;
+}
+
+.sprite-clock4 {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -375px;
+}
+
+.sprite-clock430 {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -375px;
+}
+
+.sprite-clock5 {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -375px;
+}
+
+.sprite-clock530 {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -375px;
+}
+
+.sprite-clock6 {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -375px;
+}
+
+.sprite-clock630 {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -449px;
+}
+
+.sprite-clock7 {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -449px;
+}
+
+.sprite-clock730 {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -449px;
+}
+
+.sprite-clock8 {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -449px;
+}
+
+.sprite-clock830 {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -449px;
+}
+
+.sprite-clock9 {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -449px;
+}
+
+.sprite-clock930 {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -449px;
+}
+
+.sprite-closed_book {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -449px;
+}
+
+.sprite-closed_lock_with_key {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -449px;
+}
+
+.sprite-closed_umbrella {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -449px;
+}
+
+.sprite-cloud {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -449px;
+}
+
+.sprite-clubs {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -449px;
+}
+
+.sprite-cn {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -449px;
+}
+
+.sprite-cocktail {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -449px;
+}
+
+.sprite-coffee {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -449px;
+}
+
+.sprite-cold_sweat {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -449px;
+}
+
+.sprite-collision {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -449px;
+}
+
+.sprite-computer {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -449px;
+}
+
+.sprite-confetti_ball {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -449px;
+}
+
+.sprite-confounded {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -449px;
+}
+
+.sprite-confused {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -449px;
+}
+
+.sprite-congratulations {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -449px;
+}
+
+.sprite-construction {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -449px;
+}
+
+.sprite-construction_worker {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -449px;
+}
+
+.sprite-convenience_store {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -449px;
+}
+
+.sprite-cookie {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -449px;
+}
+
+.sprite-cool {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -449px;
+}
+
+.sprite-cop {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -449px;
+}
+
+.sprite-copyright {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -449px;
+}
+
+.sprite-corn {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -523px;
+}
+
+.sprite-couple {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -523px;
+}
+
+.sprite-couple_with_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -523px;
+}
+
+.sprite-couplekiss {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -523px;
+}
+
+.sprite-cow {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -523px;
+}
+
+.sprite-cow2 {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -523px;
+}
+
+.sprite-credit_card {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -523px;
+}
+
+.sprite-crescent_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -523px;
+}
+
+.sprite-crocodile {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -523px;
+}
+
+.sprite-crossed_flags {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -523px;
+}
+
+.sprite-crown {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -523px;
+}
+
+.sprite-cry {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -523px;
+}
+
+.sprite-crying_cat_face {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -523px;
+}
+
+.sprite-crystal_ball {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -523px;
+}
+
+.sprite-cupid {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -523px;
+}
+
+.sprite-curly_loop {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -523px;
+}
+
+.sprite-currency_exchange {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -523px;
+}
+
+.sprite-curry {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -523px;
+}
+
+.sprite-custard {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -523px;
+}
+
+.sprite-customs {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -523px;
+}
+
+.sprite-cyclone {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -523px;
+}
+
+.sprite-dancer {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -523px;
+}
+
+.sprite-dancers {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -523px;
+}
+
+.sprite-dango {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -523px;
+}
+
+.sprite-dart {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -523px;
+}
+
+.sprite-dash {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -523px;
+}
+
+.sprite-date {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -523px;
+}
+
+.sprite-de {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -523px;
+}
+
+.sprite-deciduous_tree {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -523px;
+}
+
+.sprite-department_store {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -597px;
+}
+
+.sprite-diamond_shape_with_a_dot_inside {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -597px;
+}
+
+.sprite-diamonds {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -597px;
+}
+
+.sprite-disappointed {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -597px;
+}
+
+.sprite-disappointed_relieved {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -597px;
+}
+
+.sprite-dizzy {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -597px;
+}
+
+.sprite-dizzy_face {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -597px;
+}
+
+.sprite-do_not_litter {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -597px;
+}
+
+.sprite-dog {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -597px;
+}
+
+.sprite-dog2 {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -597px;
+}
+
+.sprite-dollar {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -597px;
+}
+
+.sprite-dolls {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -597px;
+}
+
+.sprite-dolphin {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -597px;
+}
+
+.sprite-donut {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -597px;
+}
+
+.sprite-door {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -597px;
+}
+
+.sprite-doughnut {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -597px;
+}
+
+.sprite-dragon {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -597px;
+}
+
+.sprite-dragon_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -597px;
+}
+
+.sprite-dress {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -597px;
+}
+
+.sprite-dromedary_camel {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -597px;
+}
+
+.sprite-droplet {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -597px;
+}
+
+.sprite-dvd {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -597px;
+}
+
+.sprite-e-mail {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -597px;
+}
+
+.sprite-ear {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -597px;
+}
+
+.sprite-ear_of_rice {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -597px;
+}
+
+.sprite-earth_africa {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -597px;
+}
+
+.sprite-earth_americas {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -597px;
+}
+
+.sprite-earth_asia {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -597px;
+}
+
+.sprite-egg {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -597px;
+}
+
+.sprite-eggplant {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -671px;
+}
+
+.sprite-eight {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -671px;
+}
+
+.sprite-eight_pointed_black_star {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -671px;
+}
+
+.sprite-eight_spoked_asterisk {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -671px;
+}
+
+.sprite-electric_plug {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -671px;
+}
+
+.sprite-elephant {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -671px;
+}
+
+.sprite-email {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -671px;
+}
+
+.sprite-end {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -671px;
+}
+
+.sprite-envelope {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -671px;
+}
+
+.sprite-es {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -671px;
+}
+
+.sprite-euro {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -671px;
+}
+
+.sprite-european_castle {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -671px;
+}
+
+.sprite-european_post_office {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -671px;
+}
+
+.sprite-evergreen_tree {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -671px;
+}
+
+.sprite-exclamation {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -671px;
+}
+
+.sprite-expressionless {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -671px;
+}
+
+.sprite-eyeglasses {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -671px;
+}
+
+.sprite-eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -671px;
+}
+
+.sprite-facepunch {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -671px;
+}
+
+.sprite-factory {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -671px;
+}
+
+.sprite-fallen_leaf {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -671px;
+}
+
+.sprite-family {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -671px;
+}
+
+.sprite-fast_forward {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -671px;
+}
+
+.sprite-fax {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -671px;
+}
+
+.sprite-fearful {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -671px;
+}
+
+.sprite-feelsgood {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -671px;
+}
+
+.sprite-feet {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -671px;
+}
+
+.sprite-ferris_wheel {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -671px;
+}
+
+.sprite-file_folder {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -671px;
+}
+
+.sprite-finnadie {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -745px;
+}
+
+.sprite-fire {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -745px;
+}
+
+.sprite-fire_engine {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -745px;
+}
+
+.sprite-fireworks {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -745px;
+}
+
+.sprite-first_quarter_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -745px;
+}
+
+.sprite-first_quarter_moon_with_face {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -745px;
+}
+
+.sprite-fish {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -745px;
+}
+
+.sprite-fish_cake {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -745px;
+}
+
+.sprite-fishing_pole_and_fish {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -745px;
+}
+
+.sprite-fist {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -745px;
+}
+
+.sprite-five {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -745px;
+}
+
+.sprite-flags {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -745px;
+}
+
+.sprite-flashlight {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -745px;
+}
+
+.sprite-floppy_disk {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -745px;
+}
+
+.sprite-flower_playing_cards {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -745px;
+}
+
+.sprite-flushed {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -745px;
+}
+
+.sprite-foggy {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -745px;
+}
+
+.sprite-football {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -745px;
+}
+
+.sprite-fork_and_knife {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -745px;
+}
+
+.sprite-fountain {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -745px;
+}
+
+.sprite-four {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -745px;
+}
+
+.sprite-four_leaf_clover {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -745px;
+}
+
+.sprite-fr {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -745px;
+}
+
+.sprite-free {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -745px;
+}
+
+.sprite-fried_shrimp {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -745px;
+}
+
+.sprite-fries {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -745px;
+}
+
+.sprite-frog {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -745px;
+}
+
+.sprite-frowning {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -745px;
+}
+
+.sprite-fu {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -745px;
+}
+
+.sprite-fuelpump {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -819px;
+}
+
+.sprite-full_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -819px;
+}
+
+.sprite-full_moon_with_face {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -819px;
+}
+
+.sprite-game_die {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -819px;
+}
+
+.sprite-gb {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -819px;
+}
+
+.sprite-gem {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -819px;
+}
+
+.sprite-gemini {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -819px;
+}
+
+.sprite-ghost {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -819px;
+}
+
+.sprite-gift {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -819px;
+}
+
+.sprite-gift_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -819px;
+}
+
+.sprite-girl {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -819px;
+}
+
+.sprite-github {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -5px;
+}
+
+.sprite-globe_with_meridians {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -819px;
+}
+
+.sprite-gmail {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -45px;
+}
+
+.sprite-goat {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -819px;
+}
+
+.sprite-goberserk {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -819px;
+}
+
+.sprite-godmode {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -819px;
+}
+
+.sprite-golf {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -819px;
+}
+
+.sprite-grapes {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -819px;
+}
+
+.sprite-green_apple {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -819px;
+}
+
+.sprite-green_book {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -819px;
+}
+
+.sprite-green_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -819px;
+}
+
+.sprite-grey_exclamation {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -819px;
+}
+
+.sprite-grey_question {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -819px;
+}
+
+.sprite-grimacing {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -819px;
+}
+
+.sprite-grin {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -819px;
+}
+
+.sprite-grinning {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -819px;
+}
+
+.sprite-guardsman {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -819px;
+}
+
+.sprite-guitar {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -819px;
+}
+
+.sprite-gun {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -819px;
+}
+
+.sprite-haircut {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -819px;
+}
+
+.sprite-hamburger {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -893px;
+}
+
+.sprite-hammer {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -893px;
+}
+
+.sprite-hamster {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -893px;
+}
+
+.sprite-hand {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -893px;
+}
+
+.sprite-handbag {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -893px;
+}
+
+.sprite-hankey {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -893px;
+}
+
+.sprite-hash {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -893px;
+}
+
+.sprite-hatched_chick {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -893px;
+}
+
+.sprite-hatching_chick {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -893px;
+}
+
+.sprite-headphones {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -893px;
+}
+
+.sprite-hear_no_evil {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -893px;
+}
+
+.sprite-heart {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -893px;
+}
+
+.sprite-heart_decoration {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -893px;
+}
+
+.sprite-heart_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -893px;
+}
+
+.sprite-heart_eyes_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -893px;
+}
+
+.sprite-heartbeat {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -893px;
+}
+
+.sprite-heartpulse {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -893px;
+}
+
+.sprite-hearts {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -893px;
+}
+
+.sprite-heavy_check_mark {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -893px;
+}
+
+.sprite-heavy_division_sign {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -893px;
+}
+
+.sprite-heavy_dollar_sign {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -893px;
+}
+
+.sprite-heavy_exclamation_mark {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -893px;
+}
+
+.sprite-heavy_minus_sign {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -893px;
+}
+
+.sprite-heavy_multiplication_x {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -893px;
+}
+
+.sprite-heavy_plus_sign {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -893px;
+}
+
+.sprite-helicopter {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -893px;
+}
+
+.sprite-herb {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -893px;
+}
+
+.sprite-hibiscus {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -893px;
+}
+
+.sprite-high_brightness {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -893px;
+}
+
+.sprite-high_heel {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -967px;
+}
+
+.sprite-hocho {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -967px;
+}
+
+.sprite-honey_pot {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -967px;
+}
+
+.sprite-honeybee {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -967px;
+}
+
+.sprite-horse {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -967px;
+}
+
+.sprite-horse_racing {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -967px;
+}
+
+.sprite-hospital {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -967px;
+}
+
+.sprite-hotel {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -967px;
+}
+
+.sprite-hotsprings {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -967px;
+}
+
+.sprite-hourglass {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -967px;
+}
+
+.sprite-hourglass_flowing_sand {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -967px;
+}
+
+.sprite-house {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -967px;
+}
+
+.sprite-house_with_garden {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -967px;
+}
+
+.sprite-hurtrealbad {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -967px;
+}
+
+.sprite-hushed {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -967px;
+}
+
+.sprite-ice_cream {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -967px;
+}
+
+.sprite-icecream {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -967px;
+}
+
+.sprite-id {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -967px;
+}
+
+.sprite-ideograph_advantage {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -967px;
+}
+
+.sprite-imp {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -967px;
+}
+
+.sprite-inbox_tray {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -967px;
+}
+
+.sprite-incoming_envelope {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -967px;
+}
+
+.sprite-information_desk_person {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -967px;
+}
+
+.sprite-information_source {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -967px;
+}
+
+.sprite-innocent {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -967px;
+}
+
+.sprite-interrobang {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -967px;
+}
+
+.sprite-iphone {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -967px;
+}
+
+.sprite-it {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -967px;
+}
+
+.sprite-izakaya_lantern {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -967px;
+}
+
+.sprite-jack_o_lantern {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1041px;
+}
+
+.sprite-japan {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1041px;
+}
+
+.sprite-japanese_castle {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1041px;
+}
+
+.sprite-japanese_goblin {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1041px;
+}
+
+.sprite-japanese_ogre {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1041px;
+}
+
+.sprite-jeans {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1041px;
+}
+
+.sprite-joy {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1041px;
+}
+
+.sprite-joy_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1041px;
+}
+
+.sprite-jp {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1041px;
+}
+
+.sprite-key {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1041px;
+}
+
+.sprite-keycap_ten {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1041px;
+}
+
+.sprite-kimono {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1041px;
+}
+
+.sprite-kiss {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1041px;
+}
+
+.sprite-kissing {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1041px;
+}
+
+.sprite-kissing_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1041px;
+}
+
+.sprite-kissing_closed_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1041px;
+}
+
+.sprite-kissing_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1041px;
+}
+
+.sprite-kissing_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1041px;
+}
+
+.sprite-kissing_smiling_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1041px;
+}
+
+.sprite-koala {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1041px;
+}
+
+.sprite-koko {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1041px;
+}
+
+.sprite-kr {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1041px;
+}
+
+.sprite-large_blue_circle {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1041px;
+}
+
+.sprite-large_blue_diamond {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1041px;
+}
+
+.sprite-large_orange_diamond {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1041px;
+}
+
+.sprite-last_quarter_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1041px;
+}
+
+.sprite-last_quarter_moon_with_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1041px;
+}
+
+.sprite-laughing {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1041px;
+}
+
+.sprite-leaves {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1041px;
+}
+
+.sprite-ledger {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1115px;
+}
+
+.sprite-left_luggage {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1115px;
+}
+
+.sprite-left_right_arrow {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1115px;
+}
+
+.sprite-leftwards_arrow_with_hook {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1115px;
+}
+
+.sprite-lemon {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1115px;
+}
+
+.sprite-leo {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1115px;
+}
+
+.sprite-leopard {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1115px;
+}
+
+.sprite-libra {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1115px;
+}
+
+.sprite-light_rail {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1115px;
+}
+
+.sprite-link {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1115px;
+}
+
+.sprite-linkedin {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -85px;
+}
+
+.sprite-lips {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1115px;
+}
+
+.sprite-lipstick {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1115px;
+}
+
+.sprite-lock {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1115px;
+}
+
+.sprite-lock_with_ink_pen {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1115px;
+}
+
+.sprite-lollipop {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1115px;
+}
+
+.sprite-loop {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1115px;
+}
+
+.sprite-loudspeaker {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1115px;
+}
+
+.sprite-love_hotel {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1115px;
+}
+
+.sprite-love_letter {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1115px;
+}
+
+.sprite-low_brightness {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1115px;
+}
+
+.sprite-m {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1115px;
+}
+
+.sprite-mag {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1115px;
+}
+
+.sprite-mag_right {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1115px;
+}
+
+.sprite-mahjong {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1115px;
+}
+
+.sprite-mailbox {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1115px;
+}
+
+.sprite-mailbox_closed {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1115px;
+}
+
+.sprite-mailbox_with_mail {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1115px;
+}
+
+.sprite-mailbox_with_no_mail {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1115px;
+}
+
+.sprite-man {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1115px;
+}
+
+.sprite-man_with_gua_pi_mao {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1189px;
+}
+
+.sprite-man_with_turban {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1189px;
+}
+
+.sprite-mans_shoe {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1189px;
+}
+
+.sprite-maple_leaf {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1189px;
+}
+
+.sprite-mask {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1189px;
+}
+
+.sprite-massage {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1189px;
+}
+
+.sprite-meat_on_bone {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1189px;
+}
+
+.sprite-mega {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1189px;
+}
+
+.sprite-melon {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1189px;
+}
+
+.sprite-memo {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1189px;
+}
+
+.sprite-mens {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1189px;
+}
+
+.sprite-metal {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1189px;
+}
+
+.sprite-metro {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1189px;
+}
+
+.sprite-microphone {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1189px;
+}
+
+.sprite-microscope {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1189px;
+}
+
+.sprite-milky_way {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1189px;
+}
+
+.sprite-minibus {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1189px;
+}
+
+.sprite-minidisc {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1189px;
+}
+
+.sprite-mobile_phone_off {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1189px;
+}
+
+.sprite-money_with_wings {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1189px;
+}
+
+.sprite-moneybag {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1189px;
+}
+
+.sprite-monkey {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1189px;
+}
+
+.sprite-monkey_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1189px;
+}
+
+.sprite-monorail {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1189px;
+}
+
+.sprite-mortar_board {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1189px;
+}
+
+.sprite-mount_fuji {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1189px;
+}
+
+.sprite-mountain_bicyclist {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1189px;
+}
+
+.sprite-mountain_cableway {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1189px;
+}
+
+.sprite-mountain_railway {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1189px;
+}
+
+.sprite-mouse {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1263px;
+}
+
+.sprite-mouse2 {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1263px;
+}
+
+.sprite-movie_camera {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1263px;
+}
+
+.sprite-moyai {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1263px;
+}
+
+.sprite-muscle {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1263px;
+}
+
+.sprite-mushroom {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1263px;
+}
+
+.sprite-musical_keyboard {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1263px;
+}
+
+.sprite-musical_note {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1263px;
+}
+
+.sprite-musical_score {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1263px;
+}
+
+.sprite-mute {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1263px;
+}
+
+.sprite-nail_care {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1263px;
+}
+
+.sprite-name_badge {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1263px;
+}
+
+.sprite-neckbeard {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1263px;
+}
+
+.sprite-necktie {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1263px;
+}
+
+.sprite-negative_squared_cross_mark {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1263px;
+}
+
+.sprite-neutral_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1263px;
+}
+
+.sprite-new {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1263px;
+}
+
+.sprite-new_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1263px;
+}
+
+.sprite-new_moon_with_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1263px;
+}
+
+.sprite-newspaper {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1263px;
+}
+
+.sprite-ng {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1263px;
+}
+
+.sprite-nine {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1263px;
+}
+
+.sprite-no_bell {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1263px;
+}
+
+.sprite-no_bicycles {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1263px;
+}
+
+.sprite-no_entry {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1263px;
+}
+
+.sprite-no_entry_sign {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1263px;
+}
+
+.sprite-no_good {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1263px;
+}
+
+.sprite-no_mobile_phones {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1263px;
+}
+
+.sprite-no_mouth {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1263px;
+}
+
+.sprite-no_pedestrians {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1337px;
+}
+
+.sprite-no_smoking {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1337px;
+}
+
+.sprite-non-potable_water {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1337px;
+}
+
+.sprite-nose {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1337px;
+}
+
+.sprite-notebook {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1337px;
+}
+
+.sprite-notebook_with_decorative_cover {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1337px;
+}
+
+.sprite-notes {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1337px;
+}
+
+.sprite-nut_and_bolt {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1337px;
+}
+
+.sprite-o {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1337px;
+}
+
+.sprite-o2 {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1337px;
+}
+
+.sprite-ocean {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1337px;
+}
+
+.sprite-octocat {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1337px;
+}
+
+.sprite-octopus {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1337px;
+}
+
+.sprite-oden {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1337px;
+}
+
+.sprite-office {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1337px;
+}
+
+.sprite-ok {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1337px;
+}
+
+.sprite-ok_hand {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1337px;
+}
+
+.sprite-ok_woman {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1337px;
+}
+
+.sprite-older_man {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1337px;
+}
+
+.sprite-older_woman {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1337px;
+}
+
+.sprite-on {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1337px;
+}
+
+.sprite-oncoming_automobile {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1337px;
+}
+
+.sprite-oncoming_bus {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1337px;
+}
+
+.sprite-oncoming_police_car {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1337px;
+}
+
+.sprite-oncoming_taxi {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1337px;
+}
+
+.sprite-one {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1337px;
+}
+
+.sprite-open_file_folder {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1337px;
+}
+
+.sprite-open_hands {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1337px;
+}
+
+.sprite-open_mouth {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1337px;
+}
+
+.sprite-ophiuchus {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1411px;
+}
+
+.sprite-orange_book {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1411px;
+}
+
+.sprite-outbox_tray {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1411px;
+}
+
+.sprite-ox {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1411px;
+}
+
+.sprite-package {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1411px;
+}
+
+.sprite-page_facing_up {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1411px;
+}
+
+.sprite-page_with_curl {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1411px;
+}
+
+.sprite-pager {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1411px;
+}
+
+.sprite-palm_tree {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1411px;
+}
+
+.sprite-panda_face {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1411px;
+}
+
+.sprite-paperclip {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1411px;
+}
+
+.sprite-parking {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1411px;
+}
+
+.sprite-part_alternation_mark {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1411px;
+}
+
+.sprite-partly_sunny {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1411px;
+}
+
+.sprite-passport_control {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1411px;
+}
+
+.sprite-paw_prints {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1411px;
+}
+
+.sprite-peach {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1411px;
+}
+
+.sprite-pear {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1411px;
+}
+
+.sprite-pencil {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1411px;
+}
+
+.sprite-pencil2 {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1411px;
+}
+
+.sprite-penguin {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1411px;
+}
+
+.sprite-pensive {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1411px;
+}
+
+.sprite-performing_arts {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1411px;
+}
+
+.sprite-persevere {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1411px;
+}
+
+.sprite-person_frowning {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1411px;
+}
+
+.sprite-person_with_blond_hair {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1411px;
+}
+
+.sprite-person_with_pouting_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1411px;
+}
+
+.sprite-phone {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1411px;
+}
+
+.sprite-pig {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1411px;
+}
+
+.sprite-pig2 {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1485px;
+}
+
+.sprite-pig_nose {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1485px;
+}
+
+.sprite-pill {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1485px;
+}
+
+.sprite-pineapple {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1485px;
+}
+
+.sprite-pisces {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1485px;
+}
+
+.sprite-pizza {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1485px;
+}
+
+.sprite-plus1 {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1485px;
+}
+
+.sprite-point_down {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1485px;
+}
+
+.sprite-point_left {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1485px;
+}
+
+.sprite-point_right {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1485px;
+}
+
+.sprite-point_up {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1485px;
+}
+
+.sprite-point_up_2 {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1485px;
+}
+
+.sprite-police_car {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1485px;
+}
+
+.sprite-poodle {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1485px;
+}
+
+.sprite-poop {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1485px;
+}
+
+.sprite-post_office {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1485px;
+}
+
+.sprite-postal_horn {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1485px;
+}
+
+.sprite-postbox {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1485px;
+}
+
+.sprite-potable_water {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1485px;
+}
+
+.sprite-pouch {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1485px;
+}
+
+.sprite-poultry_leg {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1485px;
+}
+
+.sprite-pound {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1485px;
+}
+
+.sprite-pouting_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1485px;
+}
+
+.sprite-pray {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1485px;
+}
+
+.sprite-princess {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1485px;
+}
+
+.sprite-punch {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1485px;
+}
+
+.sprite-purple_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1485px;
+}
+
+.sprite-purse {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1485px;
+}
+
+.sprite-pushpin {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1485px;
+}
+
+.sprite-put_litter_in_its_place {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1559px;
+}
+
+.sprite-question {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1559px;
+}
+
+.sprite-rabbit {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1559px;
+}
+
+.sprite-rabbit2 {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1559px;
+}
+
+.sprite-racehorse {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1559px;
+}
+
+.sprite-radio {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1559px;
+}
+
+.sprite-radio_button {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1559px;
+}
+
+.sprite-rage {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1559px;
+}
+
+.sprite-rage1 {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1559px;
+}
+
+.sprite-rage2 {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1559px;
+}
+
+.sprite-rage3 {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1559px;
+}
+
+.sprite-rage4 {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1559px;
+}
+
+.sprite-railway_car {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1559px;
+}
+
+.sprite-rainbow {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1559px;
+}
+
+.sprite-raised_hand {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1559px;
+}
+
+.sprite-raised_hands {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1559px;
+}
+
+.sprite-raising_hand {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1559px;
+}
+
+.sprite-ram {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1559px;
+}
+
+.sprite-ramen {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1559px;
+}
+
+.sprite-rat {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1559px;
+}
+
+.sprite-recycle {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1559px;
+}
+
+.sprite-red_car {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1559px;
+}
+
+.sprite-red_circle {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1559px;
+}
+
+.sprite-refuse {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1559px;
+}
+
+.sprite-registered {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1559px;
+}
+
+.sprite-relaxed {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1559px;
+}
+
+.sprite-relieved {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1559px;
+}
+
+.sprite-repeat {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1559px;
+}
+
+.sprite-repeat_one {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1559px;
+}
+
+.sprite-restroom {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1633px;
+}
+
+.sprite-revolving_hearts {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1633px;
+}
+
+.sprite-rewind {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1633px;
+}
+
+.sprite-ribbon {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1633px;
+}
+
+.sprite-rice {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1633px;
+}
+
+.sprite-rice_ball {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1633px;
+}
+
+.sprite-rice_cracker {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1633px;
+}
+
+.sprite-rice_scene {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1633px;
+}
+
+.sprite-ring {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1633px;
+}
+
+.sprite-rocket {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1633px;
+}
+
+.sprite-roller_coaster {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1633px;
+}
+
+.sprite-rooster {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1633px;
+}
+
+.sprite-rose {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1633px;
+}
+
+.sprite-rotating_light {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1633px;
+}
+
+.sprite-round_pushpin {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1633px;
+}
+
+.sprite-rowboat {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1633px;
+}
+
+.sprite-ru {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1633px;
+}
+
+.sprite-rugby_football {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -1633px;
+}
+
+.sprite-runner {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -1633px;
+}
+
+.sprite-running {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -1633px;
+}
+
+.sprite-running_shirt_with_sash {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -1633px;
+}
+
+.sprite-sa {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -1633px;
+}
+
+.sprite-sagittarius {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -1633px;
+}
+
+.sprite-sailboat {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -1633px;
+}
+
+.sprite-sake {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -1633px;
+}
+
+.sprite-sandal {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -1633px;
+}
+
+.sprite-santa {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -1633px;
+}
+
+.sprite-satellite {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -1633px;
+}
+
+.sprite-satisfied {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -1633px;
+}
+
+.sprite-saxophone {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1707px;
+}
+
+.sprite-school {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1707px;
+}
+
+.sprite-school_satchel {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1707px;
+}
+
+.sprite-scissors {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1707px;
+}
+
+.sprite-scorpius {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1707px;
+}
+
+.sprite-scream {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1707px;
+}
+
+.sprite-scream_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1707px;
+}
+
+.sprite-scroll {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1707px;
+}
+
+.sprite-seat {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1707px;
+}
+
+.sprite-secret {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1707px;
+}
+
+.sprite-see_no_evil {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1707px;
+}
+
+.sprite-seedling {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1707px;
+}
+
+.sprite-seven {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1707px;
+}
+
+.sprite-shaved_ice {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1707px;
+}
+
+.sprite-sheep {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1707px;
+}
+
+.sprite-shell {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1707px;
+}
+
+.sprite-ship {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1707px;
+}
+
+.sprite-shipit {
+    width: 75px;
+    height: 75px;
+    background-position: -1263px -1707px;
+}
+
+.sprite-shirt {
+    width: 64px;
+    height: 64px;
+    background-position: -1348px -1707px;
+}
+
+.sprite-shit {
+    width: 64px;
+    height: 64px;
+    background-position: -1422px -1707px;
+}
+
+.sprite-shoe {
+    width: 64px;
+    height: 64px;
+    background-position: -1496px -1707px;
+}
+
+.sprite-shower {
+    width: 64px;
+    height: 64px;
+    background-position: -1570px -1707px;
+}
+
+.sprite-signal_strength {
+    width: 64px;
+    height: 64px;
+    background-position: -1644px -1707px;
+}
+
+.sprite-six {
+    width: 64px;
+    height: 64px;
+    background-position: -1718px -1707px;
+}
+
+.sprite-six_pointed_star {
+    width: 64px;
+    height: 64px;
+    background-position: -1792px -1707px;
+}
+
+.sprite-ski {
+    width: 64px;
+    height: 64px;
+    background-position: -1866px -1707px;
+}
+
+.sprite-skull {
+    width: 64px;
+    height: 64px;
+    background-position: -1940px -1707px;
+}
+
+.sprite-sleeping {
+    width: 64px;
+    height: 64px;
+    background-position: -2014px -1707px;
+}
+
+.sprite-sleepy {
+    width: 64px;
+    height: 64px;
+    background-position: -2088px -1707px;
+}
+
+.sprite-slot_machine {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1781px;
+}
+
+.sprite-small_blue_diamond {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1781px;
+}
+
+.sprite-small_orange_diamond {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1781px;
+}
+
+.sprite-small_red_triangle {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1781px;
+}
+
+.sprite-small_red_triangle_down {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1781px;
+}
+
+.sprite-smile {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1781px;
+}
+
+.sprite-smile_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -1781px;
+}
+
+.sprite-smiley {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -1781px;
+}
+
+.sprite-smiley_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -1781px;
+}
+
+.sprite-smiling_imp {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -1781px;
+}
+
+.sprite-smirk {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -1781px;
+}
+
+.sprite-smirk_cat {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -1781px;
+}
+
+.sprite-smoking {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -1781px;
+}
+
+.sprite-snail {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -1781px;
+}
+
+.sprite-snake {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -1781px;
+}
+
+.sprite-snowboarder {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -1781px;
+}
+
+.sprite-snowflake {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -1781px;
+}
+
+.sprite-snowman {
+    width: 64px;
+    height: 64px;
+    background-position: -1348px -1781px;
+}
+
+.sprite-sob {
+    width: 64px;
+    height: 64px;
+    background-position: -1422px -1781px;
+}
+
+.sprite-soccer {
+    width: 64px;
+    height: 64px;
+    background-position: -1496px -1781px;
+}
+
+.sprite-soon {
+    width: 64px;
+    height: 64px;
+    background-position: -1570px -1781px;
+}
+
+.sprite-sos {
+    width: 64px;
+    height: 64px;
+    background-position: -1644px -1781px;
+}
+
+.sprite-sound {
+    width: 64px;
+    height: 64px;
+    background-position: -1718px -1781px;
+}
+
+.sprite-space_invader {
+    width: 64px;
+    height: 64px;
+    background-position: -1792px -1781px;
+}
+
+.sprite-spades {
+    width: 64px;
+    height: 64px;
+    background-position: -1866px -1781px;
+}
+
+.sprite-spaghetti {
+    width: 64px;
+    height: 64px;
+    background-position: -1940px -1781px;
+}
+
+.sprite-sparkle {
+    width: 64px;
+    height: 64px;
+    background-position: -2014px -1781px;
+}
+
+.sprite-sparkler {
+    width: 64px;
+    height: 64px;
+    background-position: -2088px -1781px;
+}
+
+.sprite-sparkles {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1855px;
+}
+
+.sprite-sparkling_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1855px;
+}
+
+.sprite-speak_no_evil {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1855px;
+}
+
+.sprite-speaker {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1855px;
+}
+
+.sprite-speech_balloon {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1855px;
+}
+
+.sprite-speedboat {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1855px;
+}
+
+.sprite-squirrel {
+    width: 75px;
+    height: 75px;
+    background-position: -449px -1855px;
+}
+
+.sprite-stackoverflow {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -125px;
+}
+
+.sprite-star {
+    width: 64px;
+    height: 64px;
+    background-position: -534px -1855px;
+}
+
+.sprite-star2 {
+    width: 64px;
+    height: 64px;
+    background-position: -608px -1855px;
+}
+
+.sprite-stars {
+    width: 64px;
+    height: 64px;
+    background-position: -682px -1855px;
+}
+
+.sprite-station {
+    width: 64px;
+    height: 64px;
+    background-position: -756px -1855px;
+}
+
+.sprite-statue_of_liberty {
+    width: 64px;
+    height: 64px;
+    background-position: -830px -1855px;
+}
+
+.sprite-steam_locomotive {
+    width: 64px;
+    height: 64px;
+    background-position: -904px -1855px;
+}
+
+.sprite-stew {
+    width: 64px;
+    height: 64px;
+    background-position: -978px -1855px;
+}
+
+.sprite-straight_ruler {
+    width: 64px;
+    height: 64px;
+    background-position: -1052px -1855px;
+}
+
+.sprite-strawberry {
+    width: 64px;
+    height: 64px;
+    background-position: -1126px -1855px;
+}
+
+.sprite-stuck_out_tongue {
+    width: 64px;
+    height: 64px;
+    background-position: -1200px -1855px;
+}
+
+.sprite-stuck_out_tongue_closed_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -1274px -1855px;
+}
+
+.sprite-stuck_out_tongue_winking_eye {
+    width: 64px;
+    height: 64px;
+    background-position: -1348px -1855px;
+}
+
+.sprite-sun_with_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1422px -1855px;
+}
+
+.sprite-sunflower {
+    width: 64px;
+    height: 64px;
+    background-position: -1496px -1855px;
+}
+
+.sprite-sunglasses {
+    width: 64px;
+    height: 64px;
+    background-position: -1570px -1855px;
+}
+
+.sprite-sunny {
+    width: 64px;
+    height: 64px;
+    background-position: -1644px -1855px;
+}
+
+.sprite-sunrise {
+    width: 64px;
+    height: 64px;
+    background-position: -1718px -1855px;
+}
+
+.sprite-sunrise_over_mountains {
+    width: 64px;
+    height: 64px;
+    background-position: -1792px -1855px;
+}
+
+.sprite-surfer {
+    width: 64px;
+    height: 64px;
+    background-position: -1866px -1855px;
+}
+
+.sprite-sushi {
+    width: 64px;
+    height: 64px;
+    background-position: -1940px -1855px;
+}
+
+.sprite-suspect {
+    width: 64px;
+    height: 64px;
+    background-position: -2014px -1855px;
+}
+
+.sprite-suspension_railway {
+    width: 64px;
+    height: 64px;
+    background-position: -2088px -1855px;
+}
+
+.sprite-sweat {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -1929px;
+}
+
+.sprite-sweat_drops {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -1929px;
+}
+
+.sprite-sweat_smile {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -1929px;
+}
+
+.sprite-sweet_potato {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -1929px;
+}
+
+.sprite-swimmer {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -1929px;
+}
+
+.sprite-symbols {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -1929px;
+}
+
+.sprite-syringe {
+    width: 64px;
+    height: 64px;
+    background-position: -534px -1929px;
+}
+
+.sprite-tada {
+    width: 64px;
+    height: 64px;
+    background-position: -608px -1929px;
+}
+
+.sprite-tanabata_tree {
+    width: 64px;
+    height: 64px;
+    background-position: -682px -1929px;
+}
+
+.sprite-tangerine {
+    width: 64px;
+    height: 64px;
+    background-position: -756px -1929px;
+}
+
+.sprite-taurus {
+    width: 64px;
+    height: 64px;
+    background-position: -830px -1929px;
+}
+
+.sprite-taxi {
+    width: 64px;
+    height: 64px;
+    background-position: -904px -1929px;
+}
+
+.sprite-tea {
+    width: 64px;
+    height: 64px;
+    background-position: -978px -1929px;
+}
+
+.sprite-telephone {
+    width: 64px;
+    height: 64px;
+    background-position: -1052px -1929px;
+}
+
+.sprite-telephone_receiver {
+    width: 64px;
+    height: 64px;
+    background-position: -1126px -1929px;
+}
+
+.sprite-telescope {
+    width: 64px;
+    height: 64px;
+    background-position: -1200px -1929px;
+}
+
+.sprite-tennis {
+    width: 64px;
+    height: 64px;
+    background-position: -1274px -1929px;
+}
+
+.sprite-tent {
+    width: 64px;
+    height: 64px;
+    background-position: -1348px -1929px;
+}
+
+.sprite-thought_balloon {
+    width: 64px;
+    height: 64px;
+    background-position: -1422px -1929px;
+}
+
+.sprite-three {
+    width: 64px;
+    height: 64px;
+    background-position: -1496px -1929px;
+}
+
+.sprite-thumbsdown {
+    width: 64px;
+    height: 64px;
+    background-position: -1570px -1929px;
+}
+
+.sprite-thumbsup {
+    width: 64px;
+    height: 64px;
+    background-position: -1644px -1929px;
+}
+
+.sprite-ticket {
+    width: 64px;
+    height: 64px;
+    background-position: -1718px -1929px;
+}
+
+.sprite-tiger {
+    width: 64px;
+    height: 64px;
+    background-position: -1792px -1929px;
+}
+
+.sprite-tiger2 {
+    width: 64px;
+    height: 64px;
+    background-position: -1866px -1929px;
+}
+
+.sprite-tired_face {
+    width: 64px;
+    height: 64px;
+    background-position: -1940px -1929px;
+}
+
+.sprite-tm {
+    width: 64px;
+    height: 64px;
+    background-position: -2014px -1929px;
+}
+
+.sprite-toilet {
+    width: 64px;
+    height: 64px;
+    background-position: -2088px -1929px;
+}
+
+.sprite-tokyo_tower {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -2003px;
+}
+
+.sprite-tomato {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -2003px;
+}
+
+.sprite-tongue {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -2003px;
+}
+
+.sprite-top {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -2003px;
+}
+
+.sprite-tophat {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -2003px;
+}
+
+.sprite-tractor {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -2003px;
+}
+
+.sprite-traffic_light {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -2003px;
+}
+
+.sprite-train {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -2003px;
+}
+
+.sprite-train2 {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -2003px;
+}
+
+.sprite-tram {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -2003px;
+}
+
+.sprite-triangular_flag_on_post {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -2003px;
+}
+
+.sprite-triangular_ruler {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -2003px;
+}
+
+.sprite-trident {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -2003px;
+}
+
+.sprite-triumph {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -2003px;
+}
+
+.sprite-trolleybus {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -2003px;
+}
+
+.sprite-trollface {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -2003px;
+}
+
+.sprite-trophy {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -2003px;
+}
+
+.sprite-tropical_drink {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -2003px;
+}
+
+.sprite-tropical_fish {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -2003px;
+}
+
+.sprite-truck {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -2003px;
+}
+
+.sprite-trumpet {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -2003px;
+}
+
+.sprite-tshirt {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -2003px;
+}
+
+.sprite-tulip {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -2003px;
+}
+
+.sprite-tumblr {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -165px;
+}
+
+.sprite-turtle {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -2003px;
+}
+
+.sprite-tv {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -2003px;
+}
+
+.sprite-twisted_rightwards_arrows {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -2003px;
+}
+
+.sprite-twitter {
+    width: 30px;
+    height: 30px;
+    background-position: -2151px -205px;
+}
+
+.sprite-two {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -2003px;
+}
+
+.sprite-two_hearts {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -2003px;
+}
+
+.sprite-two_men_holding_hands {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -2003px;
+}
+
+.sprite-two_women_holding_hands {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -2077px;
+}
+
+.sprite-u5272 {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -2077px;
+}
+
+.sprite-u5408 {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -2077px;
+}
+
+.sprite-u55b6 {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -2077px;
+}
+
+.sprite-u6307 {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -2077px;
+}
+
+.sprite-u6708 {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -2077px;
+}
+
+.sprite-u6709 {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -2077px;
+}
+
+.sprite-u6e80 {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -2077px;
+}
+
+.sprite-u7121 {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -2077px;
+}
+
+.sprite-u7533 {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -2077px;
+}
+
+.sprite-u7981 {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -2077px;
+}
+
+.sprite-u7a7a {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -2077px;
+}
+
+.sprite-uk {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -2077px;
+}
+
+.sprite-umbrella {
+    width: 64px;
+    height: 64px;
+    background-position: -967px -2077px;
+}
+
+.sprite-unamused {
+    width: 64px;
+    height: 64px;
+    background-position: -1041px -2077px;
+}
+
+.sprite-underage {
+    width: 64px;
+    height: 64px;
+    background-position: -1115px -2077px;
+}
+
+.sprite-unlock {
+    width: 64px;
+    height: 64px;
+    background-position: -1189px -2077px;
+}
+
+.sprite-up {
+    width: 64px;
+    height: 64px;
+    background-position: -1263px -2077px;
+}
+
+.sprite-us {
+    width: 64px;
+    height: 64px;
+    background-position: -1337px -2077px;
+}
+
+.sprite-v {
+    width: 64px;
+    height: 64px;
+    background-position: -1411px -2077px;
+}
+
+.sprite-vertical_traffic_light {
+    width: 64px;
+    height: 64px;
+    background-position: -1485px -2077px;
+}
+
+.sprite-vhs {
+    width: 64px;
+    height: 64px;
+    background-position: -1559px -2077px;
+}
+
+.sprite-vibration_mode {
+    width: 64px;
+    height: 64px;
+    background-position: -1633px -2077px;
+}
+
+.sprite-video_camera {
+    width: 64px;
+    height: 64px;
+    background-position: -1707px -2077px;
+}
+
+.sprite-video_game {
+    width: 64px;
+    height: 64px;
+    background-position: -1781px -2077px;
+}
+
+.sprite-violin {
+    width: 64px;
+    height: 64px;
+    background-position: -1855px -2077px;
+}
+
+.sprite-virgo {
+    width: 64px;
+    height: 64px;
+    background-position: -1929px -2077px;
+}
+
+.sprite-volcano {
+    width: 64px;
+    height: 64px;
+    background-position: -2003px -2077px;
+}
+
+.sprite-vs {
+    width: 64px;
+    height: 64px;
+    background-position: -2077px -2077px;
+}
+
+.sprite-walking {
+    width: 64px;
+    height: 64px;
+    background-position: -2191px -5px;
+}
+
+.sprite-waning_crescent_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -2191px -79px;
+}
+
+.sprite-waning_gibbous_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -2191px -153px;
+}
+
+.sprite-warning {
+    width: 64px;
+    height: 64px;
+    background-position: -2191px -227px;
+}
+
+.sprite-watch {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -301px;
+}
+
+.sprite-water_buffalo {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -375px;
+}
+
+.sprite-watermelon {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -449px;
+}
+
+.sprite-wave {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -523px;
+}
+
+.sprite-wavy_dash {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -597px;
+}
+
+.sprite-waxing_crescent_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -671px;
+}
+
+.sprite-waxing_gibbous_moon {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -745px;
+}
+
+.sprite-wc {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -819px;
+}
+
+.sprite-weary {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -893px;
+}
+
+.sprite-wedding {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -967px;
+}
+
+.sprite-whale {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1041px;
+}
+
+.sprite-whale2 {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1115px;
+}
+
+.sprite-wheelchair {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1189px;
+}
+
+.sprite-white_check_mark {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1263px;
+}
+
+.sprite-white_circle {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1337px;
+}
+
+.sprite-white_flower {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1411px;
+}
+
+.sprite-white_large_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1485px;
+}
+
+.sprite-white_medium_small_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1559px;
+}
+
+.sprite-white_medium_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -1633px;
+}
+
+.sprite-white_small_square {
+    width: 64px;
+    height: 64px;
+    background-position: -2162px -1707px;
+}
+
+.sprite-white_square_button {
+    width: 64px;
+    height: 64px;
+    background-position: -2162px -1781px;
+}
+
+.sprite-wind_chime {
+    width: 64px;
+    height: 64px;
+    background-position: -2162px -1855px;
+}
+
+.sprite-wine_glass {
+    width: 64px;
+    height: 64px;
+    background-position: -2162px -1929px;
+}
+
+.sprite-wink {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -2003px;
+}
+
+.sprite-wolf {
+    width: 64px;
+    height: 64px;
+    background-position: -2151px -2077px;
+}
+
+.sprite-woman {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -2151px;
+}
+
+.sprite-womans_clothes {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -2151px;
+}
+
+.sprite-womans_hat {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -2151px;
+}
+
+.sprite-womens {
+    width: 64px;
+    height: 64px;
+    background-position: -227px -2151px;
+}
+
+.sprite-worried {
+    width: 64px;
+    height: 64px;
+    background-position: -301px -2151px;
+}
+
+.sprite-wrench {
+    width: 64px;
+    height: 64px;
+    background-position: -375px -2151px;
+}
+
+.sprite-x {
+    width: 64px;
+    height: 64px;
+    background-position: -449px -2151px;
+}
+
+.sprite-yellow_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -523px -2151px;
+}
+
+.sprite-yen {
+    width: 64px;
+    height: 64px;
+    background-position: -597px -2151px;
+}
+
+.sprite-yum {
+    width: 64px;
+    height: 64px;
+    background-position: -671px -2151px;
+}
+
+.sprite-zap {
+    width: 64px;
+    height: 64px;
+    background-position: -745px -2151px;
+}
+
+.sprite-zero {
+    width: 64px;
+    height: 64px;
+    background-position: -819px -2151px;
+}
+
+.sprite-zzz {
+    width: 64px;
+    height: 64px;
+    background-position: -893px -2151px;
+}
