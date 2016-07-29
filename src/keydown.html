@@ -16,50 +16,50 @@
   <script>
     var container = document.querySelector('.container');
 
-    document.addEventListener('selectionchange', function (e) {
-      console.info('selectionChange');
-      // console.info('keypress');
-      console.log(e);
-      // if (e.keyCode === 50 && e.shiftKey) {
-      //   console.info('@ is pressed');
-      // }
-      // if (e.keyCode === 16) {
-      //   console.info('shift');
-      // }
-      // if (e.keyCode === 64) {
-        // e.preventDefault();
-      // }
-    });
-    container.addEventListener('keypress', function (e) {
-      console.info('keypress');
-      // console.info('keypress');
-      console.log(e.keyCode);
-      // if (e.keyCode === 50 && e.shiftKey) {
-      //   console.info('@ is pressed');
-      // }
-      // if (e.keyCode === 16) {
-      //   console.info('shift');
-      // }
-      // if (e.keyCode === 64) {
-        // e.preventDefault();
-      // }
-    });
+    // document.addEventListener('selectionchange', function (e) {
+    //   console.info('selectionChange');
+    //   // console.info('keypress');
+    //   console.log(e);
+    //   // if (e.keyCode === 50 && e.shiftKey) {
+    //   //   console.info('@ is pressed');
+    //   // }
+    //   // if (e.keyCode === 16) {
+    //   //   console.info('shift');
+    //   // }
+    //   // if (e.keyCode === 64) {
+    //     // e.preventDefault();
+    //   // }
+    // });
+    // container.addEventListener('keypress', function (e) {
+    //   console.info('keypress');
+    //   // console.info('keypress');
+    //   console.log(e.keyCode);
+    //   // if (e.keyCode === 50 && e.shiftKey) {
+    //   //   console.info('@ is pressed');
+    //   // }
+    //   // if (e.keyCode === 16) {
+    //   //   console.info('shift');
+    //   // }
+    //   // if (e.keyCode === 64) {
+    //     // e.preventDefault();
+    //   // }
+    // });
     container.addEventListener('keydown', function (e) {
       console.info('keydown');
-      console.log(e.keyCode);
+      alert(e.keyCode);
     });
-    container.addEventListener('input', function (e) {
-      // console.info('input');
-      // console.log(e);
-    });
-    container.addEventListener('textInput', function (e) {
-      // console.info('textinput');
-      // console.log(e);
-      if (e.data === '@') {
-        // e.preventDefault();
-        // return false;
-      }
-    });
+    // container.addEventListener('input', function (e) {
+    //   // console.info('input');
+    //   // console.log(e);
+    // });
+    // container.addEventListener('textInput', function (e) {
+    //   // console.info('textinput');
+    //   // console.log(e);
+    //   if (e.data === '@') {
+    //     // e.preventDefault();
+    //     // return false;
+    //   }
+    // });
     // container.addEventListener('keydown', function (e) {
     //   console.log(e.keyCode);
     //   if (e.keyCode === 50 && e.shiftKey) {
