@@ -3451,6 +3451,11 @@ const sel = window.getSelection(),
 =======
 1. 使用`inline-block`进行布局的时候， 如果在某些情况下错位了， 可能是其默认间距造成的问题， 设置`font-size`<div></div>
 
+###2016-08-03
+=======
+1. webkit系浏览器下检测页面滚动使用`document.body.scrollTop`, 其他浏览器下应该使用`document.documentElement.scrollTop`;
+
+
 #Problems
 =======
 1. 关于基本类型中的Object类型和引用类型中的Object类型的区别
