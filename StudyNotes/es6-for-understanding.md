@@ -165,7 +165,7 @@ var get = id => ({ name: 'Jason', age: 22 });
 ```js
 var obj = {
   sayName () {
-    return "Jason';
+    return "Jason";
   }
 }
 ```
