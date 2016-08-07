@@ -1,5 +1,5 @@
 # 关于`const`和`let`
-# 没有变量声明提升， 存在TDZ，因此下列情况下会报错（使用`typeof`大多不会报错， 但是`const`和`let`是个例外）
+* 没有变量声明提升， 存在TDZ，因此下列情况下会报错（使用`typeof`大多不会报错， 但是`const`和`let`是个例外）
 ```js
 function say () {
   console.log(typeof name);// Uncaught ReferenceError: name is not defined
