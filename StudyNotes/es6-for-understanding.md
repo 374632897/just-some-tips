@@ -54,6 +54,12 @@ re.exec(str);// null
 ```
 * 正则表达式新增特性
   * 当使用正则表达式字面量来作为`new RegExp`的第一个参数的时候， 在`ES5`下， 第二个参数不能够为标识符， 但是在`ES6`下， 是可以的。但是要注意的是， 这样得到的正则表达式， 其标识符将完全由指定的第二个参数决定， 与原来的字面量无关。
+
+  ```js
+  var re = /hello/y;
+  var _re = new RegExp(re, 'ig');
+  console.log(_re); // /hello/gi // 注意这里排序了的， 另外， 其原有的y标识没了
+  ```
   * 新增正则表达式的`flags`属性， 用于返回正则表达式的标识符
 
 * 模板字符串
@@ -62,32 +68,32 @@ re.exec(str);// null
     - 使用一个函数来定义标签
     - 使用的时候直接使用函数名``模板字符串即可
 
-  ```js
-  var test = (...args) => console.log(args);
-  test`hello world`; // [Array[1]]
-  ```
-  * 该标签函数的第一个参数为字符串数组， 其每一项为模板字符串所用变量切割后组成的字符串， 其他参数则依次为由变量所解析出来的结果。
-  * 书上面说的使用模板字符串可以实现转义效果，但是自己试了并不行， 不知道为什么。
-  ```js
-  String.raw`Multiline\nstring`; // 书上的结果是"Multiline\\nstring", 但是自己得到的结果还是"Multiline\nstring"
-  ```
+    ```js
+    var test = (...args) => console.log(args);
+    test`hello world`; // [Array[1]]
+    ```
+    - 该标签函数的第一个参数为字符串数组， 其每一项为模板字符串所用变量切割后组成的字符串， 其他参数则依次为由变量所解析出来的结果。
+    - 书上面说的使用模板字符串可以实现转义效果，但是自己试了并不行， 不知道为什么。
+    ```js
+    String.raw`Multiline\nstring`; // 书上的结果是"Multiline\\nstring", 但是自己得到的结果还是"Multiline\nstring"
+    ```
 
 # 函数
-* 函数默认参数， 只有在调用函数的时候没有给定参数的情况下才会使用默认参数， 这个判断过程可以认为是通过`typeof`来判断的。也就是说， 只有在参数值为`undefined`的时候才会调用（特别指定为`undefined`或者说没有传递该参数的时候）
+* 函数默认参数。 只有在调用函数的时候没有在指定位置传递参数的情况下才会使用默认参数， 这个判断过程可以认为是通过`typeof`来判断的。也就是说， 只有在参数值为`undefined`的时候才会使用（特别指定为`undefined`或者说没有传递该参数的时候）默认参数。
 ```js
 function test (a = 1, b = 2, c = 3) {
   console.log(a, b, c);
 }
 test(undefined, null, 0); // 1 null 0
 ```
-* ES6下对函数参数的重赋值不会反映到函数的`arguments`对象上(自己试了下， 好像也只有添加了在严格模式下才不会)
-* 函数的默认参数也存在TDZ， 也就是说， 在他们被初始化之前， 是不能够被访问的， 因此在函数参数里面， 一个参数只具有对其前面的参数的访问权限， 如果尝试访问后面的参数的时候， 就会报错。
+* ES6下对函数参数的重赋值不会反映到函数的`arguments`对象上(自己试了下， 只有在严格模式下才不会)
+* 函数的默认参数也存在TDZ， 也就是说， 在他们被初始化之前， 是不能够被访问的， 因此在函数参数里面， 一个参数只具有对其前面位置的参数的访问权限， 如果尝试访问后面的参数的时候， 就会报错。
 ```js
 function add(first = second, second) {
   return first + second;
 }
 console.log(add(1, 1)); // 2
-console.log(add(1)); // 书上的这里写了throws error ， 但是实际上这里不应该会报错的， 因为制定了第一个参数， 那么就不会调用first = second. 所以也就不会访问第二个参数， 因此第二个参数是undefined， 所以最后的结果应该是NaN， 实际上检测出来的也是这种情况。
+console.log(add(1)); // 书上的这里写了throws error ， 但是实际上这里不应该会报错的， 因为指定了第一个参数， 那么就不会调用first = second. 所以也就不会访问第二个参数， 因此第二个参数是undefined， 所以最后的结果应该是NaN， 实际上检测出来的也是这种情况。
 console.log(add(undefined, 1)); // 要想触发报错的话， 可以手动指定第一个参数为undefined， 所以， 感觉上这种情况应该会比较少
 ```
 * `rest`参数
@@ -96,33 +102,33 @@ console.log(add(undefined, 1)); // 要想触发报错的话， 可以手动指�
   ```js
   // 错误的方式
   var obj = {
-      set (...rest) {
-        console.log(rest); // 这里set只是其一个方法， 并没有涉及到setter
-      }
+    set (...rest) {
+      console.log(rest); // 这里set只是其一个方法， 并没有涉及到setter
+    }
   }
   // 正确的报错打开方式
   class A {
-      set name (...rest) { // 此时才算是调用了setter
+    set name (...rest) { // 此时才算是调用了setter
+      // Setter function argument must not be a rest parameter
       this.name = rest;
-      }
+    }
   }
-  // Uncaught SyntaxError: Setter function argument must not be a rest parameter
   ```
   * `spread`可以用于将数组内容展开。
   ```js
-      var arr = [1, 2, 3, 4, 5, 6];
-      Math.max(...arr); // 相当于是把数组两遍的方括号去掉
+  var arr = [1, 2, 3, 4, 5, 6];
+  Math.max(...arr); // 相当于是把数组两遍的方括号去掉
   ```
 * 函数的`name`属性
-  * 如果函数有name ， 则其name属性为其name， 若有函数名， 则为函数名
-  * 匿名函数的name在没有指定name的情况下为`anonymouse function`
-  * 使用`bind`绑定了上下文的函数其name属性会被添加`bound`前缀
+  * 如果函数有name(`function`关键字后面的词)， 则其name属性为其name， 若有函数名， 则为函数名
+  * 匿名函数的name在没有指定name的情况下为`anonymous function`
+  * 使用`bind`绑定了上下文的函数其name属性会被添加`bound `前缀
   * name属性只是起到一个标识的作用以便于调试， 并不能够通过name来获取到一个函数的引用。
 * 函数调用的两种方法
   * 在调用函数的时候如果使用了`new`操作符， 那么就会调用函数的[[construct]]方法
   * 如果没有使用`new`操作符， 那么将会调用函数的[[call]]方法。
   * 箭头函数不能用作构造函数， 也就是说不能够使用`new`操作符
-  * `new.target`: 在使用了new操作符的时候，`new.target`的将会指向这个函数， 如果没有使用`new`操作符的话， 那么`new.target`的值将会是`udnefined`.
+  * `new.target`: 在使用了new操作符的时候，`new.target`的将会指向这个函数， 否则将会是`udnefined`.
   * 在函数体外面使用`new.target`将会抛出语法错误
 * 块级函数
 ```js
@@ -134,28 +140,28 @@ if (true) {
 console.log(typeof s1ayName); // 在严格模式下， 这里是undefined, 非严格模式下这里是function
 ```
 * 箭头函数
-  * 没有`this`, `super`, `arguments`, `new.target`绑定。 箭头函数内的这些值都有距离该函数最近且包含该函数的非箭头函数所决定。
+  * 没有`this`, `super`, `arguments`, `new.target`绑定。 箭头函数内的这些值都由距离该函数最近且包含该函数的非箭头函数所决定。
   * 不能对箭头函数使用`new`操作符（箭头函数不具有`[[construct]]`方法）
   * 没有原型对象（prototype）。
   * 不能改变this（普通函数作为构造函数的时候其this是指向新构建的对象的）
   * 没有arguments对象作为函数参数列表
-  * 不能复制命名参数（No duplicate named arguments）， 这个不大懂
+  * 没有重复命名参数（No duplicate named arguments）， 这个不大懂
   * 箭头函数语法上需要注意的一些地方
-  * 箭头函数里的花括号主要用于标识函数体， 当你希望返回一个对象的时候， 需要将该对象用圆括号包裹。
+    - 箭头函数里的花括号主要用于标识函数体， 当你希望返回一个对象的时候， 需要将该对象用圆括号包裹。
 
-  ```js
-  var get = id => ({ name: 'Jason', age: 22 });
-  ```
-  * 对箭头函数使用自调用立即执行函数表达式（IIFE -- imediately invoked function expressions）的时候， 需要使用圆括号将函数体包裹起来。
+    ```js
+    var get = id => ({ name: 'Jason', age: 22 });
+    ```
+    - 对箭头函数使用自调用立即执行函数表达式（IIFE -- imediately invoked function expressions）的时候， 需要使用圆括号将函数体包裹起来。
 * 尾调用优化（Tail call Optimization）
   * 尾调用的函数不会访问当前调用栈中的变量， 也就是说当前的函数不是一个闭包
   * 在尾调用执行后没有其他操作
   * 尾调用的值会作为函数值返回（需要有return）
   * 例如， 以下情况下不会有尾调用优化：
-  * 函数尾调用另一个函数的时候没有返回该函数执行结果的值
-  * `return`语句里有除了函数调用之外的其他操作
-  * 另外， 在把一个函数的执行结果保存为变量，然后再返回这个变量的话， 也不会有尾调用优化（尾调用函数的结果需要立即返回）
-  * 闭包
+    - 函数尾调用另一个函数的时候没有返回该函数执行结果的值
+    - `return`语句里有除了函数调用之外的其他操作
+    - 另外， 在把一个函数的执行结果保存为变量，然后再返回这个变量的话， 也不会有尾调用优化（尾调用函数的结果需要立即返回）
+    - 闭包
 * 怎样管理尾调用优化
   * 尾调用优化常用于函数递归
 
@@ -171,18 +177,35 @@ var obj = {
 ```
 * 改变对象原型
   * 通常情况下， 对象的原型会在对象创建的时候通过构造器或者Object.create()方法来指定
-  * `Object.setPrototypeOf(object, prototype)` 方法允许你通过给定的对象来改变原型(将Prototype设为object的原型对象）
+  * `Object.setPrototypeOf(object, prototype)` 方法允许你通过给定的对象来改变原型(将prototype设为object的原型对象）
   * 对象的原型对象保存在内部属性[[prototype]]中
 
 * 使用超类（super）引用进行更简单的原型对象访问
   * 最简单的使用便是通过super来访问当前对象的原型对象
 
   ```js
-  var friend = {
+  var base = {
     say () {
-      return super.say(); // 类似于Object.getPrototypeOf(this).say.call(this)；
+      console.log('base');
     }
-  }；
+  };
+  var c = {
+    say () {
+      super.say();
+      console.log('c')
+    }
+  };
+  Object.setPrototypeOf(c, base);
+  c.say();
+  // 'base'
+  // 'c'
+
+
+  // var friend = {
+  //  say () {
+  //    return super.say(); // 类似于Object.getPrototypeOf(this).say.call(this)；
+  //  }
+  //}；
   ```
   * 对象的方法仅仅是使用函数来代替数据作为对象属性值。 ES6定义了一个内部属性[[HomeObject]]来指明对象方法的归属。
   * 当函数并非一个对象的方法的时候， 不能够使用super
