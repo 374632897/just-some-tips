@@ -7,3 +7,6 @@
 git add .
 git commit -m ':smirk:'
 git push
+echo '---------------------------------';
+echo '            done';
+echo '---------------------------------';
