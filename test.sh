@@ -5,4 +5,6 @@ if [ -n $1 ]; then
 fi;
 git add .;
 git commit -m "$default_commit_msg";
+
 git push;
+# test
