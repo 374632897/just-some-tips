@@ -15,6 +15,16 @@ prompt = function () {
 然后`mongo shell`看起来大概就这样： `[JiangGuoxi:12345@test]$:`
 你可以通过在打开客户端的之后指定参数 `--norc`来阻止调用`.mongorc.js`
 
+### 设置外部编辑器
+在开始运行`mongo shell`之前， 你可以通过设置EDITOR环境变量来指定编辑器
+
+```
+export EDITOR='vim';
+mongo
+```
+但是感觉这玩意儿好像不好使， 也许是方法不对。
+
+
 ### 一些指令
 * db
 `db`是对当前数据库的引用， 输入db即可显示当前数据库的名称
