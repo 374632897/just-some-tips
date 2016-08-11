@@ -1,9 +1,10 @@
 # MongoDB
 
-## mongdo shell
+## mongo shell
+### mongorc.js
 MongoDB客户端在每次打开的时候都会去检查在用于目录下有没有`.mongorc.js`文件， 如果有， 就会执行。 所以， 如果要定制shell的话， 可以从这里入手。例如
 
-`~/mongorc.js`
+`~/.mongorc.js`
 ```js
 host=db.serverStatus().host;
 prompt = function () {
@@ -12,6 +13,56 @@ prompt = function () {
 
 ```
 然后`mongo shell`看起来大概就这样： `[JiangGuoxi:12345@test]$:`
+你可以通过在打开客户端的之后指定参数 `--norc`来阻止调用`.mongorc.js`
+
+### 一些指令
+* db
+`db`是对当前数据库的引用， 输入db即可显示当前数据库的名称
+* use <database>
+使用此命令可以指定要使用的数据库， 你可以切换到一个不存在的数据库， 但是只有在你向这个数据库中插入数据的时候， MongoDB才会真正创建数据库
+* show dbs
+列出所有可用数据库
+* db.col
+访问一个集合。如果集合的命名不符合`Mongo shell`规范(比如有连字符，空格， 或者以数字开头)，那么可以使用以下两种方法来访问
+
+```
+db['3test'].find()
+db.getCollection('3test')
+```
+
+### 格式化输出结果
+* `db.col.find().pretty()`输出美化
+* 下面三种没有找到用法
+* `print()`
+* `print(tojson(<obj>))`
+* `printjson()`
+
+### 多行模式
+如果你以'('或者'{'或者'['作为一行的结尾， 那么他后面的项将会以'...'开头， 直到你输入其他的对应符号来关闭他们。你可以通过输入两行空格来退出多行模式
+
+### 退出shell
+输入`exit`或者`quit()`或者按下`ctrl + c`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
