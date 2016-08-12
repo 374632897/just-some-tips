@@ -2,7 +2,7 @@
 
 ## mongo shell
 ### mongorc.js
-MongoDB客户端在每次打开的时候都会去检查在用于目录下有没有`.mongorc.js`文件， 如果有， 就会执行。 所以， 如果要定制shell的话， 可以从这里入手。例如
+MongoDB客户端在每次打开的时候都会去检查在用户家目录下有没有`.mongorc.js`文件， 如果有， 就会执行。 所以， 如果要定制shell的话， 可以从这里入手。例如
 
 `~/.mongorc.js`
 ```js
