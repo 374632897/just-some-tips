@@ -2,7 +2,7 @@
 
 ## mongo shell
 ### mongorc.js
-MongoDB客户端在每次打开的时候都会去检查在用于目录下有没有`.mongorc.js`文件， 如果有， 就会执行。 所以， 如果要定制shell的话， 可以从这里入手。例如
+MongoDB客户端在每次打开的时候都会去检查在用户家目录下有没有`.mongorc.js`文件， 如果有， 就会执行。 所以， 如果要定制shell的话， 可以从这里入手。例如
 
 `~/.mongorc.js`
 ```js
@@ -13,7 +13,7 @@ prompt = function () {
 
 ```
 然后`mongo shell`看起来大概就这样： `[JiangGuoxi:12345@test]$:`
-你可以通过在打开客户端的之后指定参数 `--norc`来阻止调用`.mongorc.js`
+你可以通过在打开客户端的时候指定参数 `--norc`来阻止调用`.mongorc.js`
 
 ### 设置外部编辑器
 在开始运行`mongo shell`之前， 你可以通过设置EDITOR环境变量来指定编辑器
