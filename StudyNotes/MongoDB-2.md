@@ -24,6 +24,33 @@ mongo
 ```
 但是感觉这玩意儿好像不好使， 也许是方法不对。
 
+### 设置默认查询数量
+`mongodb`默认查询数量为20条， 如果要设置默认查询数量， 可以通过以下方法
+
+```
+DBQuery.shellBatchSize = 10;
+```
+
+### 数据类型
+* Date
+* ObjectID
+* NumberLong（长整型？）
+默认情况下， MongoDB使用浮点值（非长整型）， 如果使用$inc来自增的值是一个浮点值的话， 那么长整型的值将会被转化为浮点值。
+
+```mongodb
+db.collection.insert({_id: 1, calc: NumberLong(1)});
+db.collection.update({_id: 1}, {$inc: {calc: 5}});
+db.collection.find(); -- { "_id" : 1, "calc" : 6 }
+
+
+```
+* NumberInt
+
+### Mongo Shell 类型检查
+查看字段类型， 可以使用`typeof`和`instanceof`
+* instanceof 返回一个布尔值
+* typeof 返回字段类型
+
 
 ### 一些指令
 * db
@@ -54,6 +81,45 @@ db.getCollection('3test')
 输入`exit`或者`quit()`或者按下`ctrl + c`
 
 
+### CRUD
+
+#### QUERY
+
+* 支持`.`号访问， 但是要加引号
+
+```
+db.users.find({'favorites.artist': 'Miro'})
+```
+
+##### Query Method
+`db.col.find(<query filter>, <projection>)`
+* query filter 指定要返回的文档
+* projection指定要从匹配文档中返回哪些字段
+* 指定and条件：
+
+```
+db.users.find({status: 'A', age: { $lt: 18 });
+```
+* 指定or条件：
+使用$or操作符， 值为一个数组， 那么， 满足数组中任一条件的都将被返回。
+
+```
+db.num.find({$or: [{num: 1}, {num: 2}, {num: 3}]})
+```
+
+#### UPDATE
+
+* 原子性： 所有针对单文档的操作都是[原子级](https://docs.mongodb.com/manual/core/write-operations-atomicity/)的。
+* _id字段： 此字段一旦设置， 将不能被再次更新。
+* 字段顺序：
+  * `_id`始终是第一位
+  * Updates that include renaming of field names may result in the reordering of fields in the document.
+* update操作方式
+  * db.col.update()
+    * 要针对查找到的多个值进行修改， 传递第三个参数为： {multi: true}
+  * db.col.updateOne()
+  * db.col.updateMany()
+  * db.col.replaceOne()
 
 
 
