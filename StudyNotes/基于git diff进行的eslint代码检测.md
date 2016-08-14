@@ -3,7 +3,7 @@
 随着代码的不断增加， eslint进行代码检测的时间也越来越久。每次检测的时候， 需要检测的文件和实际检测的文件极度不对称，所以便基于`git diff`写了这样一个小工具。
 
 ## 源代码
-* 启动脚本(`../lint.sh`)
+* 启动脚本(`lint.sh`)
 
 ```bash
 #!/bin/bash
@@ -28,7 +28,7 @@ read;
 
 ```
 
-* 检测工具(`../lint-by-diff.js`)
+* 检测工具(`lint-by-diff.js`)
 
 ```js
 'use strict';
