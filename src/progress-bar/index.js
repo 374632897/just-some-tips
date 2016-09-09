@@ -2,7 +2,7 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-09-09 18:07:34
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-09-09 18:45:50
+* @Last Modified time: 2016-09-09 18:49:58
 */
 const template = `
   <div class = 'bar'>
@@ -37,18 +37,21 @@ class Progress {
   getEle () {
     this.$fg = this.find('.fg');
     this.$ball = this.find('.ball');
+    this.$bar = this.find('.bar');
   }
   setWidth (_width = 0) {
-    console.info(_width);
-    const width = _width / WIDTH * 100;
-    if (width > 100 || width < 0) return;
-    // if (_width > 100 || _width < 0) return;
+    const width = this.getWidthPercent(_width);
+    // console.info(_width);
+    // const width = _width / WIDTH * 100;
+    // if (width > 100 || width < 0) return;
     this.$fg.style.width = width + '%';
 
-    // console.log(`calc(${_width}% - 5px)`);
     this.$ball.style.left = width + '%';
-    // this.$ball.style.left = `calc('${_width}% - 5px')`;
-    // if (typeof _width !== 'number') throw new Error('Thr')
+  }
+  getWidthPercent (_width = 0) {
+    const width = _width / WIDTH * 100;
+    if (width > 100 || width < 0) return false;
+    return width;
   }
   handleEvent () {
     this.drag();
@@ -60,6 +63,10 @@ class Progress {
     this.on(this.$ball, 'mousedown', this.mousedown.bind(this));
     this.on(document, 'mousemove', this.mousemove.bind(this));
     this.on(document, 'mouseup', this.mouseup.bind(this));
+    this.on(this.$bar, 'click', this.click.bind(this));
+  }
+  click (e) {
+    this.setWidth(e.clientX)
   }
   mousemove (e) {
     if (this.isDragging) {
