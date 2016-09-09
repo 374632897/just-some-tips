@@ -24,6 +24,7 @@
   </style>
 </head>
 <body>
+<div contenteditable=""></div>
   <select name="" id="">
     <option value="123">123</option>
     <option value="123">124</option>
@@ -34,5 +35,13 @@
     <option value="123">129</option>
     <!-- <span></span> -->
   </select>
+  <script>
+    {
+      document.getElementsByTagName('div')[0].onmousedown = function (e) {
+        console.log('fasd ');
+        return false;
+      }
+    }
+  </script>
 </body>
 </html>

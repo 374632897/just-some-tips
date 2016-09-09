@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .progress-bar {
+     width: 100%;
+     /*overflow: hidden;*/
+     width: 800px;
+  }
+  .bar {
+    width: calc(100% - 56px);
+    background: #efefef;
+    position: relative;
+    height: 6px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+  .bar .fg {
+    position: absolute;
+    /*width: 40%;*/
+    left: 0;
+    top: 0;
+    border-radius: 3px;
+    height: 100%;
+    background: #6dc5ff;
+    width: 0%;
+  }
+  .ball {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    background: #f66;
+    border-radius: 50%;
+  }
+
+
+  </style>
+</head>
+<body>
+  <input type="text" class = 'set-width' placeholder="设置宽度">
+  <button class = 'confirm'>确认</button>
+  <script src = './index.js'></script>
+</body>
+</html>
