@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style >
+    .border {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .absolute-center:before,
+    .absolute-center:after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .border:before {
+      background: #f66;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .border:after {
+      content: attr(data-content);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: 10;
+      background: #fff;
+      text-align: center;
+      line-height: 37px;
+    }
+  </style>
+</head>
+<body>
+  <div class="border absolute-center" data-content = '7'>
+  </div>
+</body>
+</html>
