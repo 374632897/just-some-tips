@@ -1,2 +1,4 @@
 test haha
 test haha
+: 50px;
+$width: 50px;
