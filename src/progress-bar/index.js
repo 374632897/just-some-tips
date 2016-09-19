@@ -2,7 +2,7 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-09-09 18:07:34
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-09-09 18:49:58
+* @Last Modified time: 2016-09-09 21:42:28
 */
 const template = `
   <div class = 'bar'>
@@ -18,11 +18,17 @@ class Progress {
   }
   init () {
     // this.el = this.initEle();
+    this.initStatus();
     this.initEle();
     this.getEle();
     this.setWidth(30);
-    this.handleEvent();
+    this.initDrag();
+    // this.isDragging = false;
+  }
+  initStatus ()  {
     this.isDragging = false;
+    this.preWidth = 0;
+    this.mouseDown = false;
   }
   initEle () {
     const el = this.el = document.createElement('div');
@@ -40,12 +46,17 @@ class Progress {
     this.$bar = this.find('.bar');
   }
   setWidth (_width = 0) {
-    const width = this.getWidthPercent(_width);
-    // console.info(_width);
-    // const width = _width / WIDTH * 100;
-    // if (width > 100 || width < 0) return;
+    let width;
+    if (!this.ballLeft) {
+      this.ballLeft = this.getLeftOfBall();
+    }
+    if (this.isClick) {
+      width = _width + 5;;
+    } else {
+      width = this.ballLeft + _width;
+    }
+    width = this.getWidthPercent(width);
     this.$fg.style.width = width + '%';
-
     this.$ball.style.left = width + '%';
   }
   getWidthPercent (_width = 0) {
@@ -59,24 +70,33 @@ class Progress {
   on (ele, type, fn) {
     ele.addEventListener(type, fn, false);
   }
-  drag () {
+  initDrag () {
     this.on(this.$ball, 'mousedown', this.mousedown.bind(this));
     this.on(document, 'mousemove', this.mousemove.bind(this));
     this.on(document, 'mouseup', this.mouseup.bind(this));
     this.on(this.$bar, 'click', this.click.bind(this));
   }
   click (e) {
-    this.setWidth(e.clientX)
+    this.isClick = true;
+    this.setWidth(e.clientX);
+    this.isClick = false;
   }
   mousemove (e) {
     if (this.isDragging) {
-      console.info(e.clientX);
       this.setWidth(e.clientX - this.clientX);
+      this.mouseDown = false;
     }
   }
   mousedown (e) {
-    this.clientX = e.clientX;
+    this.mouseDown = true;
     this.isDragging = true;
+    this.clientX = e.clientX;
+    this.ballLeft = this.getLeftOfBall();
+  }
+  getLeftOfBall () {
+    return this.$fg.offsetWidth + this.$ball.offsetWidth / 2;
+    // const parent = this.$ball.parentElement;
+    // return (this.$ball.offsetLeft - parent.offsetLeft) + this.$ball.offsetWidth / 2;
   }
   mouseup (e) {
     this.isDragging = false;
