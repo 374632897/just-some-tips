@@ -5,6 +5,18 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div class="content">
+    <span class="btn">点击</span>
+    <script>
+      !function () {
+        var $btn = document.querySelector('.btn');
+        $btn.onclick = e => {
+          console.info(e);
+        };
+        $btn.click();
+      }();
+
+    </script>
+  </div>
 </body>
 </html>
