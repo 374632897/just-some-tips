@@ -1,4 +1,5 @@
 #!/bin/bash
+# add a comment
 default_commit_msg=':smirk:';
 if [ -n $1 ]; then
   default_commit_msg=$1;
