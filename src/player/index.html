@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/mediaelementplayer.css">
+  <link rel="stylesheet" href="./css/mejs-skins.css">
+</head>
+<body>
+<audio src="Taylor Swift - Love Story.mp3" class = 'p'></audio>
+  <script src = './jquery.js'></script>
+  <script src = './mediaelement-and-player.min.js'></script>
+  <script>
+  var player = new MediaElementPlayer('.p'/* Options */);
+  // ... more code ...
+  player.pause();
+  player.setSrc('Taylor Swift - Love Story.mp3');
+  player.play();
+  </script>
+</body>
+</html>
