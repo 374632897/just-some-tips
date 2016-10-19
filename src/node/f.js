@@ -2,7 +2,7 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-10-11 15:25:09
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-10-11 17:25:52
+* @Last Modified time: 2016-10-12 14:56:29
 */
 
 var http = require('http');
@@ -11,20 +11,29 @@ var url2 = 'http://202.106.33.158/wxts/gzwxts.htm?spid=%E5%86%8D%E5%8A%AB%E6%8C%
 
 // console.log(url2.length);
 // var url2 = 'http://202.106.33.158/wxts/gzwxts.htm?spid=%3Cli%20style=%22background-color:%20rgb(226,%20147,%2091);%20background-image:%20url(&quot;data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/4QOPaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MzE5MGU3NTktODM1Ni00NTczLWIyNWYtZWQ2M2JlZmUwZjkyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjYzQTAzREJDNDFEMTExRTY5NzY4OUE1N0MwM0U0QjMzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjYzQTAzREJCNDFEMTExRTY5NzY4OUE1N0MwM0U0QjMzIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODVkZjYxYmQtODZiMi00Njc4LWJhZjYtYzI5MGYxMWZkZjI4IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzhjOTM1NWMtN2E2My0xMTc5LWEyYWQtY2Q3OGZkN2Y2NDgyIi8+IDwv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&quot;);%22%3E%20%3Cdiv%20class=%22skin%22%3E%3C/div%3E%20%3Cdiv%20class=%22select%22%3E%20%3Ci%20class=%22icon-check%22%3E%3C/i%3E%20%3C/div%3E%20%3C/li%3E';
-var count = 0, timer = null, timer2 = null;
+var count = 0, timer = null, timer2 = null, M = 2, rest = M * 60 * 1000;
+var LIMIT = 17500;
 
 function connect () {
   for (var i = 0; i < 100; i++) {
+    if (count >= LIMIT) return;
     console.info('第%s次访问', ++count);
     http.get(url2, function (res) {
-      // console.info('get');
       res.on('error', function () {
         console.log('error');
       })
     }).on('error', function (err) {
-      if (timer2) {
-        clearTimeout(timer2);
+      clearTimeout(timer2);
+      if (count >= LIMIT) {
+        process.exit(0);
+        // console.log('当前失败次数大于17500， 2分钟后再次访问');
+        // clearInterval(timer);
+        // timer2 = setTimeout(restart, rest);
+        return;
       }
+      // if (timer2) {
+      //   clearTimeout(timer2);
+      // }
       timer2 = setTimeout(restart, 3000);
     });
   }
@@ -36,6 +45,7 @@ function run () {
 
 function restart () {
   clearInterval(timer);
+  count = 0;
   run();
 }
 
