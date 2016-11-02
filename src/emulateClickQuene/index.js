@@ -2,7 +2,7 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-10-19 10:49:36
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-10-19 11:04:39
+* @Last Modified time: 2016-10-19 15:48:49
 */
 
 const $ = ele => document.querySelector(ele);
@@ -32,19 +32,26 @@ const $list = $('ul'), $sure = $('.sure'), $cancel = $('.cancel'), $box = $('.co
   const $$ = ele => document.querySelectorAll(ele);
 
   const $li = $$('li');
-
-  function *gLi (doSth) {
-    let i = 0, len = $li.length;
-    while (i < len) {
-      yield $li[i++];
-    }
-  }
-  const getLi = gLi();
-  while (true) {
-    const { done, value } = getLi.next();
-    if (done === true) break;
-    value.click();
+  $li.forEach(item => {
+    item.click();
     $sure.click();
-  }
+  });
+  // for (let a of $li) {
+  //   a.click();
+  //   $sure.click();
+  // }
+  // function *gLi (doSth) {
+  //   let i = 0, len = $li.length;
+  //   while (i < len) {
+  //     yield $li[i++];
+  //   }
+  // }
+  // const getLi = gLi();
+  // while (true) {
+  //   const { done, value } = getLi.next();
+  //   if (done === true) break;
+  //   value.click();
+  //   $sure.click();
+  // }
 
 }
