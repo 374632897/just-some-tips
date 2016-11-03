@@ -79,27 +79,7 @@ new S(); // S {name: "Jason"}
 ```
 在这里有一个需要注意的地方是， 在上面的构造函数里面返回一个对象的时候， 那么这个返回的对象的构造器并不是A, 而是Object。
 
-
-2. 对象可以使用new操作符后跟要创建的对象类型的名称来创建，如果不给构造函数传递参数，那么可以省略后面的圆
-    括号，虽然有效，但是并不推荐。    此外，new Date和new Date()是有区别的，~~后者可以使用相关方法，而前者不行。这里上面已经提到过了。
-   要搞懂基本类型里的Object类型和引用类型里的Object类型的区别~~
-3.
-
-   `````javascript
-   var obj = {
-     name: 'Jason',
-     getName: function (){
-       console.log(this.name);
-     }
-   };
-   obj.getName();//'Jason'
-   var getName2 = obj.getName;
-   getName2();//所得值为window.name
-   obj.getName = function () {console.log (this)};
-   obj.getName();//obj
-   getName2();//window.name
-   `````
-
+2.
   ```js
   const obj = {
     name : 'JGX',
@@ -115,55 +95,29 @@ new S(); // S {name: "Jason"}
   const detail = obj.detail;
   detail.age = 22;
   obj.detail.age; // 22  // 也就是说在这里通过对象的引用对其属性的修改反应在了原对象的内部
-  let func = obj.detail.saySth; // 直接访问该对象内部的方法
-  func = () => {
+  let func = obj.detail.saySth; // 此时func指向的是obj.detail.saySth在内存中的地址
+  func = () => { // 重新给func赋值， 也就是说此时的func指向的是后面的函数在内存中的地址， 而与上面的obj.detail.saySth失去了关联
     console.log('outer')
   };
   func(); // outer
   obj.detail.saySth(); // inner // 上面重写了func之后并没有反应在源对象上。
   ```
 
-
-     **2016/3/13注**
-   ~~由上面代码的运行结果可以看出，当把一个函数赋给另一个函数的时候，他们之间是按值传递的，也就是说，当之前的函数发生改变的时候，并不会影响另外一个函数。关于这里，还是比较模糊的，总之要记清楚，当把一个对象的方法赋给另一个函数时，他们是按值传递的即可。~~ 关键在于访问方式。
-
-###2015-12-17
-=======
-1. 给元素append一个View的内容的时候，需要改View的模板的内容为(new View).el;实际上， 实例化后的view，其el即为html内饿哦让
-2. 在View里插入模板而不是在路由里。
-3. {{ }}用来执行JS，{{-}}用来插入普通变量，{{=}}用来插入需要解析成Html的变量~~**注意：等号或者减号后面没有空格**~~ 并不是这样  是等号或者减号前面不能有空格
-4. 今日总结：
-   * 每次提交代码前要npm run dev:lint
-   * 逗号后面要跟空格
-   * 不引入未使用的变量
-   * 函数参数前后不要有空格
-   * super后面不跟空格 也就是super();
-   * 在一个作用域内，如果变量不会改变，那么就使用const来代替let或者var
-   * class 块后面不接分号。
-   * 在一个块级内部的头部和尾部要接1个空格，如{ name: 'helloworld' }
-   * if 语句中，if后面要留一个空格
-   * import的内容，如果并不会在后面的代码中使用，那么就直接import而不需要命名。这点在导入CSS的时候尤其需
-     要注意
-   * 加载模板需要在constructor里面。
-5. 如果陷入死循环，那么注意函数执行的时候是不是一直在自调用。
-
-6. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
-7. 关于函数bind方法的实现：
-
-   ```````javascript
+### 2015-12-17
+1.  ` Maximum call stack size exceeded`错误发生一般都是因为递归的时候没有设定终止条件， 使得函数一直在自调用从而造成了调用栈溢出。
+2.  通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+3.  关于函数bind方法的实现：
+   ``·javascript
    Function.prototype._bind = function(context) {
      var self = this;
      return function () {
        return self.apply(context,arguments);
      }
    };
-  ```````
-
-
-###2015-12-18
-==========
-1. View要实例化以后才行。
-2. 关于闭包，先看下面一段代码
+  ```
+### 2015-12-18
+1.  View要实例化以后才行。
+2.  关于闭包，先看下面一段代码
 
    ````javascript
    var func = function () {
@@ -179,15 +133,15 @@ new S(); // S {name: "Jason"}
 
    在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。
 
-###2015-12-19
-=======
+### 2015-12-19
 1. Array.prototype.push === [].push //true
    后面跟有方法的时候就为true，没有跟方法，则为false。
    因为这里在访问`[]`的`push`方法的时候， 实际上是走Array的原型里查找的， 所以这个时候`[].push`就等于`Array.prototype.push`了。
+
 2. 突然就扯到关于原型上的东西了，还是做点笔记吧
    * object.constructor: 表示object的构造器
 
-     ````javascript
+     ```javascript
      var ary = [];
      ary.constructor === Array;// true;
      ````
@@ -214,7 +168,7 @@ new S(); // S {name: "Jason"}
    * function 的prototype属性指向prototype对象，而prototype对象的constructor属性，又指向function 本身。
      **所以上面提到的那个问题就有解了。Array.prototype指向的是它的原型对象，原型对象里面封装了一系列的方法，而ary则是Array的一个实例，那么，这个实例就从原型链上继承了对应的方法，所以说，Array.prototype.slice === [].slice**
 
-   * 那么再重新理一理 关于````Array.prototype.slice === [].slice````
+   * 那么再重新理一理 关于`Array.prototype.slice === [].slice`
      * Array.prototype.slice是原型对象里封装的一个slice方法
      * []相当于是new 了一个Array，也就是生成了一个Array的实例。
      * 那么当使用到[].slice方法的时候，由于它本身并没有这个方法，所以就会走原型链上查找，于是在其构造器的原型对象中找到了这个方法，所以说，他们是相等的喃。
@@ -240,8 +194,7 @@ new S(); // S {name: "Jason"}
      };
      `````
 
-###2015-12-20
-======
+### 2015-12-20
 1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。__proto__(**注意是__而不是_也就是说，是两条下划线而不是一条**)是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
 2. Backbone ,View里面给template传值，是在把模板插入el中的时候，在模板的参数里面传的。如：this.$el.html(template(variables))
 3. 在Model的校验中，需要给Model绑定校验失败的时候，应该用this.bind('invalid',fn)而不是this.bind('error',fn);同时，设置Model的属性的时候，也要传入第二个参数{validate: true}来强制验证。如：Person.set( {name: 'Jiang Guoxi'},{validate: true} ); Validation默认只在save的时候触发
