@@ -104,10 +104,14 @@ new S(); // S {name: "Jason"}
   ```
 
 ### 2015-12-17
+
 1.  ` Maximum call stack size exceeded`错误发生一般都是因为递归的时候没有设定终止条件， 使得函数一直在自调用从而造成了调用栈溢出。
+
 2.  通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+
 3.  关于函数bind方法的实现：
-   ``·javascript
+
+   ```javascript
    Function.prototype._bind = function(context) {
      var self = this;
      return function () {
