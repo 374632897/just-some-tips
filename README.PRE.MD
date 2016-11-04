@@ -1,19 +1,30 @@
 # just-some-tips
-## 前端学习中积攒的一些小经验
-###  2016-11-03 更新说明
-这个项目已经很久没有更新了， 偶尔更新也是为了测试所用， 就README而言， 并没有怎么更。 想起这个工程是当初刚刚学了前端， 然后入职之后开来作为记录使用的， 最开始的时候更新很积极， 因为那个时候确实遇到了很多的问题， 而且有些非常基本的问题自己也会记录在这里。 然而当时记录的东西， 现在再来看的话 ， 会发现很多错误。 自己一直比较忙（瞎说的）， 也就没有腾出太多的时间用来重新审视， 最近觉得非常有必要， 所以就来看一看， 准备利用今天（周四）、周五、周末的时间， 把这里的东西重新整理一遍， 温故而知新， 相信重新整理后， 我应该能收获不少吧。 我将原来的那个重命名为[README.PRE.MD](./README.PRE.MD), 权当留作纪念吧。
+##前端学习中积攒的一些小经验
+###2015-12-10
+==========
+1. 在一个页面的制作中，如果是定宽的就统一定宽，或者使用百分比，假设文档中有5行，其中三行是用的百分比来规定宽度，另外两行是直接定了宽度的    话 ，那么在页面缩放的时候，那三行的宽度会变成可视区的宽度，但是另外两行的宽度不会变化，这样，另外两行就会把页面给撑开，从而导致页面底    部出现滚动条，当把滚动条向右边拖动的时候，就会看到设置百分比宽度的那几行右边会有留白。解决办法：统一宽度的设置方式，全部都定宽，或者全    部都设为百分比。
+2. 关于多列布局的一个方法：a. 获取列宽度的百分值，然后用1-百分值*列数就会得到剩余的空间，再把这个空间除以列数-1，这样就能得到每
+   一列之间的间隙，在设置的时候，使用相邻选择器，设置margin-left为得到的间隙值即可。
 
-### 2015-12-10
-1. 在进行布局的时候，大多数情况下， 按照百分比来规定元件的宽高是比较好的。 至少在以后再做响应式的时候， 可以不用那么麻烦。
 
-### 2015-12-11
+----------
+
+###2015-12-11
+======
 1. 如果在浏览器不同标签页里发现同一页面的呈现情况不一致。。。比如说屏幕本身宽度为1600px，但是审查元素的时
-   候，显示元素宽度和设定的宽度不一致，那么考虑是不是浏览器缩放所致 -- 笑cry
+   候，显示元素宽度和设定的宽度不一致，那么考虑是不是缩放所致 -- 笑cry
 
-2. 如果 npm install 的时候报错，则可以尝试以管理员身份运行， 或者使用cnpm安装， 或者o(╯□╰)o  有时候使用cnpm安装包以后， 项目跑不起来， 总是会说有几个包安装错误的话o(╯□╰)o ， 那么再重新用npm装一遍吧。
+2. 如果 npm install 的时候报错，则可以尝试以管理员身份运行
+3. 话说之前安装node-sass的时候提示没有python执行环境，后来不知怎么的又好了，今天安装webpack的时候也这样，
+   我稀里糊涂的安装了一些东西，后来    也成功了，真是不知道怎么回事。
+4. 如果链接在行尾因为宽度不够而导致内容换行显示，那么对链接设置display:inline-block即可。
+5.
 
-### 2015-12-15
-1. new Date.getFullYear() 和 new Date().getFullYear()的问题
+###2015-12-15
+=====
+1. new Date和new Date()的执行结果相同，但是new Date不具有Date对象的相关方法，而new Date()则可以。直接使用Date()得到的会是一个日期的字符串表示。 ~~这里其实
+   可以直接理解为，带括号之后，指向的是该函数的返回值，而不带的时候，指向的是对这个函数的引用而已.~~
+    **2016/3/13注： 这里其实涉及到的是运算符优先级的问题**
 
   ```js
   new Date.getFullYear(); // Uncaught TypeError: Date.getFullYear is not a constructor(…)
@@ -23,20 +34,17 @@
   ```
   也就是说，其实这里因为``new Date``的时候没有带参数， 所以``new`` 的优先级要低于`.``的优先级， 因此会先尝试访问``Date.getFullYear``, 但是这样得到的结果是`undefined`，然后再执行new，由于``undefined``不是构造函数， 所以就会报错了。 因此当给``new Date``加上括号之后， 提升了语句的优先级， 就不会报错了。 圆括号的优先级是最大的。而至于这里带不带括号的问题， 其实无关紧要， 在需要传递参数的时候自然需要带括号， 如果不传递参数， 可以不带。
   附： [运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
-
 2. 静态类型语言指的是在编译的时候就已经能够确定变量的值的类型的语言，动态类型语言是指在执行的时候才能确定
    类型的语言，也就是在变量被赋值之后才能确定其类型。
-
 3. 多态的思想实质上是把做什么和谁去做分离开来。
-
 4. 自调用函数的写法的区别：
    ````javascript
    (function () {console.log('hello'})();
    (function () {console.log('hello'}());
-   !function () {}();
-   +function () {}();
    ````
    这里代表函数执行的括号写在内部和写在外部的区别是什么？
+   貌似没有什么区别，这里第二种写法是JSlint推荐的写法，这样能能够提升代码整体性
+   **括号加在里面，直接获取返回值，里面计算一次;**
 
 5. JS 数据封装
   ````javascript
@@ -44,10 +52,10 @@
     var _name = 'hello';
     return {
       getName: function (){
-          return _name;
+        return _name;
       },
       setName: function (value){
-         _name = value;
+        return (_name = value);
       }
     };
    }());
@@ -56,30 +64,29 @@
   原理：定义一个变量为一个函数的返回值，在这个函数内部，定义了私有变量，在函数的返回值里，对外提供两个方
         法来获取值和设置该私有变量,这样，就形成了私有接口和公共接口。
 
-### 2015-12-16
-1. 使用new操作符调用函数时，返回的是一个对象，构造器里的this就指向这个对象, 如果构造器里会返回一个对象， 那么最终生成的对象会是返回的对象， 如果返回的不是对象， 而是基本 类型， 那么生成的对象将不会收到返回值影响。
+###2015-12-16
+=======
+1. 使用new操作符调用函数时，返回的是一个对象，构造器里的this就指向这个对象-。
+2. 对象可以使用new操作符后跟要创建的对象类型的名称来创建，如果不给构造函数传递参数，那么可以省略后面的圆
+    括号，虽然有效，但是并不推荐。    此外，new Date和new Date()是有区别的，~~后者可以使用相关方法，而前者不行。这里上面已经提到过了。
+   要搞懂基本类型里的Object类型和引用类型里的Object类型的区别~~
+3.
 
-```js
-var A = function () {
-  this.name = 'Jason';
-  this.age = 22;
-  return {
-    name: 'Daisy',
-    age: 21
-  };
-}
-var a = new A();
-a // Object {name: "Daisy", age: 21}
+   `````javascript
+   var obj = {
+     name: 'Jason',
+     getName: function (){
+       console.log(this.name);
+     }
+   };
+   obj.getName();//'Jason'
+   var getName2 = obj.getName;
+   getName2();//所得值为window.name
+   obj.getName = function () {console.log (this)};
+   obj.getName();//obj
+   getName2();//window.name
+   `````
 
-var S = function () {
-  this.name = 'Jason';
-  return 'Daisy';
-}
-new S(); // S {name: "Jason"}
-```
-在这里有一个需要注意的地方是， 在上面的构造函数里面返回一个对象的时候， 那么这个返回的对象的构造器并不是A, 而是Object， 也就是说当在一个函数里返回了一个引用类型的值之后， 那么对这个函数使用new操作符的话获取到的将会是返回的这个对象， 并且且构造器是该对象的包装类型。
-
-2.
   ```js
   const obj = {
     name : 'JGX',
@@ -95,36 +102,55 @@ new S(); // S {name: "Jason"}
   const detail = obj.detail;
   detail.age = 22;
   obj.detail.age; // 22  // 也就是说在这里通过对象的引用对其属性的修改反应在了原对象的内部
-  let func = obj.detail.saySth; // 此时func指向的是obj.detail.saySth在内存中的地址
-  func = () => { // 重新给func赋值， 也就是说此时的func指向的是后面的函数在内存中的地址， 而与上面的obj.detail.saySth失去了关联
+  let func = obj.detail.saySth; // 直接访问该对象内部的方法
+  func = () => {
     console.log('outer')
   };
   func(); // outer
   obj.detail.saySth(); // inner // 上面重写了func之后并没有反应在源对象上。
   ```
 
-### 2015-12-17
 
-1.  ` Maximum call stack size exceeded`错误发生一般都是因为递归的时候没有设定终止条件， 使得函数一直在自调用从而造成了调用栈溢出。
+     **2016/3/13注**
+   ~~由上面代码的运行结果可以看出，当把一个函数赋给另一个函数的时候，他们之间是按值传递的，也就是说，当之前的函数发生改变的时候，并不会影响另外一个函数。关于这里，还是比较模糊的，总之要记清楚，当把一个对象的方法赋给另一个函数时，他们是按值传递的即可。~~ 关键在于访问方式。
 
-2.  通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+###2015-12-17
+=======
+1. 给元素append一个View的内容的时候，需要改View的模板的内容为(new View).el;实际上， 实例化后的view，其el即为html内饿哦让
+2. 在View里插入模板而不是在路由里。
+3. {{ }}用来执行JS，{{-}}用来插入普通变量，{{=}}用来插入需要解析成Html的变量~~**注意：等号或者减号后面没有空格**~~ 并不是这样  是等号或者减号前面不能有空格
+4. 今日总结：
+   * 每次提交代码前要npm run dev:lint
+   * 逗号后面要跟空格
+   * 不引入未使用的变量
+   * 函数参数前后不要有空格
+   * super后面不跟空格 也就是super();
+   * 在一个作用域内，如果变量不会改变，那么就使用const来代替let或者var
+   * class 块后面不接分号。
+   * 在一个块级内部的头部和尾部要接1个空格，如{ name: 'helloworld' }
+   * if 语句中，if后面要留一个空格
+   * import的内容，如果并不会在后面的代码中使用，那么就直接import而不需要命名。这点在导入CSS的时候尤其需
+     要注意
+   * 加载模板需要在constructor里面。
+5. 如果陷入死循环，那么注意函数执行的时候是不是一直在自调用。
 
-3.  关于函数bind方法的实现：
+6. 通过获取label的引用，再调用它的control属性，即可获取到与之关联的元素
+7. 关于函数bind方法的实现：
 
-   ```javascript
+   ```````javascript
    Function.prototype._bind = function(context) {
      var self = this;
      return function () {
        return self.apply(context,arguments);
      }
    };
-  ```
+  ```````
 
-### 2015-12-18
 
-1.  View要实例化以后才行。
-
-2.  关于闭包，先看下面一段代码
+###2015-12-18
+==========
+1. View要实例化以后才行。
+2. 关于闭包，先看下面一段代码
 
    ````javascript
    var func = function () {
@@ -140,15 +166,15 @@ new S(); // S {name: "Jason"}
 
    在这里把f指向func的运行结果，而func的运行结果也就是返回一个函数，从而使得f变成了匿名函数的引用，因此，当调用f()时，就会执行该匿名函数，因为该匿名函数是在func内部的，而匿名函数内部又会返回外层函数的a值，从而使得我们可以在func函数的外部获取到func函数内部的值。
 
-### 2015-12-19
+###2015-12-19
+=======
 1. Array.prototype.push === [].push //true
    后面跟有方法的时候就为true，没有跟方法，则为false。
    因为这里在访问`[]`的`push`方法的时候， 实际上是走Array的原型里查找的， 所以这个时候`[].push`就等于`Array.prototype.push`了。
-
 2. 突然就扯到关于原型上的东西了，还是做点笔记吧
    * object.constructor: 表示object的构造器
 
-     ```javascript
+     ````javascript
      var ary = [];
      ary.constructor === Array;// true;
      ````
@@ -175,7 +201,7 @@ new S(); // S {name: "Jason"}
    * function 的prototype属性指向prototype对象，而prototype对象的constructor属性，又指向function 本身。
      **所以上面提到的那个问题就有解了。Array.prototype指向的是它的原型对象，原型对象里面封装了一系列的方法，而ary则是Array的一个实例，那么，这个实例就从原型链上继承了对应的方法，所以说，Array.prototype.slice === [].slice**
 
-   * 那么再重新理一理 关于`Array.prototype.slice === [].slice`
+   * 那么再重新理一理 关于````Array.prototype.slice === [].slice````
      * Array.prototype.slice是原型对象里封装的一个slice方法
      * []相当于是new 了一个Array，也就是生成了一个Array的实例。
      * 那么当使用到[].slice方法的时候，由于它本身并没有这个方法，所以就会走原型链上查找，于是在其构造器的原型对象中找到了这个方法，所以说，他们是相等的喃。
@@ -201,8 +227,9 @@ new S(); // S {name: "Jason"}
      };
      `````
 
-### 2015-12-20
-1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。__proto__(**注意是__而不是_, 也就是说，是两条下划线而不是一条**)是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
+###2015-12-20
+======
+1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。__proto__(**注意是__而不是_也就是说，是两条下划线而不是一条**)是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
 2. Backbone ,View里面给template传值，是在把模板插入el中的时候，在模板的参数里面传的。如：this.$el.html(template(variables))
 3. 在Model的校验中，需要给Model绑定校验失败的时候，应该用this.bind('invalid',fn)而不是this.bind('error',fn);同时，设置Model的属性的时候，也要传入第二个参数{validate: true}来强制验证。如：Person.set( {name: 'Jiang Guoxi'},{validate: true} ); Validation默认只在save的时候触发
    model（模型）验证现在只默认执行在save中 —不再执行在set中，除非传递了{validate:true}选项。model（模型）验证现在会触发一个 "invalid"事件，而不是"error"事件。
