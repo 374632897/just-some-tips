@@ -653,6 +653,9 @@ for (var i = 0; i < aLi.length; i++) {
     * forEach 对数组中的每一项运行对应函数，无返回值
     * map    返回每次函数调用的结果组成的数组  需要显式地调用return 来返回
     * some   如果该函数对任一项返回true，则返回true
+    * 需要注意的是Array.prototype.forEach和jQuery的each存在几点不同
+      * forEach的第一个参数是item, 第二个参数是index, each刚好相反
+      * each方法会对传入的参数进行判断， 如果函数的返回值是false则会跳出循环，而forEach则不会。
   * 归并方法
     * 接受两个参数： 一个在每一项上调用的函数和作为归并基础的初始值
     * 调用的函数接受4个参数：前一个值，当前值，项的索引和数组对象
@@ -702,8 +705,7 @@ for (var i = 0; i < aLi.length; i++) {
   * Date.now()返回调用这个方法时的日期和时间的毫秒数（IE9以上支持，在不支持的浏览器中可以使用+new Date()来代替）ES5提出来的。
 
 
-6. 关于函数对象
-7. 字符串方法
+6. 字符串方法
   * charAt;charCodeAt
   *  ** 都不会修改字符串本身，而是返回一个修改后的副本 **
   * concat  拼接字符串，然而一般都用+号拼接
@@ -730,39 +732,8 @@ for (var i = 0; i < aLi.length; i++) {
   * split  基于指定的分隔符，将字符串分割成多个子字符串并存进一个数组。可以指定第二个参数来表示数组长度
   * localeCompare  比较两个字符串（貌似没多大用啊）
 
-###2016-01-04
-=======
-1. 关于将mainView和itemView关联起来的方法是，在mainView初始化的时候，为其添加一个属性this.childView（数组）来存放itemView，每次创建了itemView的时候就将其Push到childView里面。
-
-2. 在清空View的时候，应该采用close的方法（移除事件监听，然后removeView）,如果直接用empty清空的话，view里的事件监听什么的依然在，会浪费内存？
-
-3. this.$(selector)只会在当前元素下面查找元素，如果查找的元素不在当前元素下，那么就不要加this，直接用选择器。
-
-4. ~~在用$.ajax请求的时候，在里面的回调函数里this的指向不会是期望值，解决办法是在$.ajax里面定义一个属性，指向this,如~~
-   ```javascript
-   $.ajax({
-      type: 'GET',
-      url: '/task/search/searchSolr',
-      _this: this, // 在这里定义_this为this,然后在回调函数里就可以通过this._this来访问了。
-      data: {
-        type: 1,
-        start: 0,
-        keyword: val
-      },
-      success: function (res) {
-        const searchBox = this._this.searchBox;
-        console.log(res);
-        searchBox.getTypeNum(res);
-      },
-      error: function () {
-        console.log('请求失败');
-      }
-    });
-   ```
-   【3/13注：】: 直接在函数外把this赋给另一个变量不得了→＿←
-5. 关于搜索框的初始样式
-
-6. 正则相关
+### 2016-01-04
+1. 正则相关
    * 匹配双字节字符（包括汉字、全角）
 
      ```javascript
@@ -774,52 +745,10 @@ for (var i = 0; i < aLi.length; i++) {
      ```javascript
      /[\u4e00-\u9fa5]/  //这里没有 ^  这个不会匹配汉字标点符号（其实那个应该算在双字节内）
      ```
-7.  ~~关于使用文字溢出text-overflow: ellipsis后的文字对齐问题~~ **以下描述错误**
 
-   ```html
-   <p class="test">
-     <span class="left">我是一段段小小小文字</span>
-     <span class="right">恩。。啊。。 哈哈。。 </span>
-   </p>
-   ```
-
-   ```css
-   p{
-     width: 300px;
-     margin: 0 auto;
-   }
-   span{
-     display: inline-block;
-   }
-   .left{
-     width: 40%;
-     white-space: nowrap;
-     text-overflow: ellipsis;
-     overflow: hidden;
-   }
-   ```
-   然后走浏览器里面查看的话，就会发现左边的文字和右边的文字并不是对齐的。。
-
-   这是为嘛呢。。。其实是因为给.left元素加了overflow:hidden，然后触发了元素的BFC。
-
-   知道了原因，解决问题就好办了，可以给.right加上一个右浮动，也可以对它加一个overflow:hidden.
-
-   然后文字就对齐咯。。。
-
-   不过看到MDN上面介绍说行内块元素也会触发BFC哒，这样的话这两个span不是都应该触发了么。。。为什么还会出现这种情况呢？或者说是我理解错了？ 真心求解。
-
-    **stackoverflow上的回答： ** 直接对span 元素设置```vertical-align: top```然后就可以对齐了。
-
-   所以这里又牵扯到```vertical-align```了，
-   * ```vertical-align```指定了行内元素(```inline```)或表格单元格(```table-cell```)的垂直对齐方式.
-   * 其参考元素为父元素
-   * 对于```inline```元素来说，其高度为可见的文字高度，但是对其设置了inline-block之后，其默认高度就会变为文字的行高。
-   * [inline-block元素垂直居中问题](http://stackoverflow.com/questions/12950479/why-does-inline-block-element-having-content-not-vertically-aligned);
-
-
-8. 关于onunload , 和onbeforeunload事件
+2. 关于onunload , 和onbeforeunload事件
    * onunload 书上说主要是用来在卸载页面之前清除引用的，然后我在里面加了事件好像也没什么用，比如alert();这个事件是在文档被完全卸载之后才会触发的。
-   * 【3/13注：】其实是有用的， 只不过每次卸载页面要么是关闭窗口， 要么是跳转页面， 控制台就会更新，如果使用断点的话就会看到事件处理函数里面的语句是执行了的。
+   * 【3/13注：】其实是有用的， 只不过每次卸载页面要么是关闭窗口， 要么是跳转页面， 控制台就会更新，如果打断点的话就会看到事件处理函数里面的语句是执行了的。
    * onbeforeunload
    需要传入事件对象，然后事件对象有个returnValue属性，属性指定的字符串在卸载页面之前会出现在弹窗里。如下
 
@@ -834,9 +763,7 @@ for (var i = 0; i < aLi.length; i++) {
 
 9. 博客园里markdown插入代码的话，必须要顶格才能正常显示。 【3/13注：】好久没去博客园了。
 
-
-###2016-01-05
-=======
+### 2016-01-05
 1. 关于随机数的生成。
 
    ```javascript
@@ -850,15 +777,11 @@ for (var i = 0; i < aLi.length; i++) {
 2. jQuery的text()方法，只会获取html里的文本内容。
 
 
-###2015-01-06
-=======
+### 2016-01-06
 1. 使用GitBash时，修改进入之后的默认路径可以右击其图标，然后在起始位置里面输入期望位置。如果重启后操作无效，则看是不是目标位置的最后，有
-   ```cd to home```字段，如果有的话，就去掉。然后就可以了。
+   `cd to home`字段，如果有的话，就去掉。然后就可以了。
 
-
-2. 不要直接操作主分支！！！！平时提交代码提交到自建分支上，需要更新的时候pull request就行
-
-3. 如果一个字符串为'2014年法律硕士考试提醒', 然后需要匹配2014年之后的内容的话，可以用下面这种方法：
+2. 如果一个字符串为'2014年法律硕士考试提醒', 然后需要匹配2014年之后的内容的话，可以用下面这种方法：
 
    ```javascript
     var str = '2014年法律硕士考试提醒';
@@ -867,12 +790,8 @@ for (var i = 0; i < aLi.length; i++) {
    ```
    也就是获取捕获组
 
-4. 注意分清轻重缓急！！！！路要一步一步走，饭要一口一口吃！！！！！！现阶段主要任务是把JS学好，读完jQuery源码！！！做好笔记！！！灵活运用！！！！webpack,grunt之类的，可以之后再学！！！nodejs,webpack,react,php,mysql需要在读完jQuery和Backbone的源码之后再去学。。。
-
-
-###2015-01-07
-=======
-1. 正则表达式的元字符： ( { [ \ ^ $ | ? * + . ] } )，在需要表达他们本身时，需要转义
+### 2015-01-07
+0.9. 正则表达式的元字符： ( { [ \ ^ $ | ? * + . ] } )，在需要表达他们本身时，需要转义
 2. 直接使用//来定义正则的方式叫做字面量，而使用```new RegExp()```的方式来定义的话，第一个参数为需要匹配的字符串模式，另一个是标志字符串。字符串中的元字符需要进行双重转义。（1 => 2, 2 => 4）
 
 ###2015-01-08
