@@ -1350,7 +1350,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    也就是说，通过以上的方式来声明变量的话， b和c成了全局变量，但是a依然是局部变量
 
 3. 关于```unload```事件，应该加在window上，这样在每次刷新或者卸载页面的时候就会触发该事件。
-4. 关于```Generator```
+4. 关于`Generator`
    ```js
     function* testGenerator() {
       yield 's1';
@@ -1365,14 +1365,12 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * value 为 当前值， done表示遍历未完成
    * ES6没有规定*号需要写在哪个位置。。。
    * yield语句如果用在表达式中， 则需要加括号，在用作函数参数或者赋值表达式右边时则不用
-   * yield语句默认是没有返回值的， 如果需要有返回值，那么需要在调用next方法的时候传递参数```true```， 得到的返回值为上一个yield值
+   * yield语句默认是没有返回值的， 如果需要有返回值，那么需要在调用next方法的时候传递参数`true`， 得到的返回值为上一个yield值
 
+5. 当需要获取当前毫秒的时候，可以使用`new Date().getTime()`, 但是直接使用`+ new Date()`却更为简便
 
-5. 当需要获取当前毫秒的时候，可以使用```new Date().getTime()```, 但是直接使用```+ new Date()```却更为简便
-
-###2016-02-17
-======
-1. 关于```Promise```
+### 2016-02-17
+1. 关于`Promise`
    ```js
     let promise2 = new Promise(function(resolve, reject) {
       console.log('Promise');
@@ -1443,7 +1441,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
    ```
 
-2. ```Object.assign```用于一次性的向对象添加多个属性或方法
+2. `Object.assign`用于一次性的向对象添加多个属性或方法
    ```js
     var obj = {}
     Object.assign(obj, {
@@ -1455,11 +1453,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     console.log(obj); // Object {name: "Jason"}
    ```
 
-3. ```class```
-   * ```constructor```方法： 在使用new操作符生成实例的时候，会自动调用此方法
-   * 在```class```内部定义的方法默认保存到其原型对象上
-   * ```class```不存在变量声明提升
-   * 类之间的继承是通过```extends```来实现的。
+3. `class`
+   * `constructor`方法： 在使用new操作符生成实例的时候，会自动调用此方法
+   * 在`class`内部定义的方法默认保存到其原型对象上
+   * `class`不存在变量声明提升
+   * 类之间的继承是通过`extends`来实现的。
 
    ```js
     class Person {
@@ -1480,7 +1478,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
    ```
    * 所有在类中定义的方法都会被实例继承， 如果在方法前加上```static```, 则该方法不会被实例继承 ， 而是直接通过类来调用，也就是‘静态方法’, 父类的静态方法可以被子类继承
-   * ```new.target```用于确定调用函数时有没有使用new操作符，如果没使用，那么值为```undefined```。class内部调用```new.target```， 则指向该class,如果在继承的时候使用，将会指向子类
+   * ```new.target```用于确定调用函数时有没有使用new操作符，如果没使用，那么值为```undefined```。class内部调用```new.target```， 则指向该class,如果在继承的时候使用，将会指向子类。 class 构造器必须要使用new操作符
    ```js
     function Person2(name) {
       if (new.target !== undefined) {
@@ -1511,11 +1509,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     * **箭头函数不能使用new操作符， 不可以使用arguments, 不可以使用yield命令，所以不能用于Generator函数**
     * 函数中的```this```指向定义时所在对象而不是使用时的对象
 
+5. `Object.prototype.hasOwnProperty()`参数是个字符串啊字符串o(╯□╰)o [MDN-Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/)
 
-
-5. ```Object.prototype.hasOwnProperty()```参数是个字符串啊字符串o(╯□╰)o [MDN-Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/)
-
-6. 关于```Object.prototype```的简写为```({})```, 如```({}).hasOwnProperty()```， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。
+6. 关于`Object.prototype`的简写为`({})`, 如`({}).hasOwnProperty()`， 如果不用圆括号包裹花括号的话， 就会报错。。。 因为花括号默认为块级代码。
 
 7. ```prototype.isPrototypeOf(object)```检测一个对象是否在另一个对象的原型链上。
 
@@ -1529,8 +1525,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     var a = new A();
     a instanceof A; // instanceof 的左边是一个对象，右边是一个（构造）函数。
-
-
     ```
     与```instanceof```不同， ```isPrototypeOf```用于两个对象之间， 而```instanceof```用于一个对象和一个构造函数之间
 
@@ -1574,16 +1568,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     Object.getOwnPropertyDescriptor(obj, 'id'); // Object { value: 12, writable: true, enumerable: true, configurable: true }
    ```
 
-###2016-02-23
-=======
+### 2016-02-23
 1. 关于拖拽
    * mousedown事件加在拖拽元素上
    * mouseover, mouseup事件在mousedown事件内部绑定
    * mouseover, mouseup事件需要绑定在document对象上
    * 真的。。 肺腑之言
 
-###2016-02-18
-=======
+### 2016-02-18
 1. 关于```Object.defineProperty()```
 
    ```js
@@ -1600,7 +1592,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    也就是说通过``Object.defineProperty```来定义一个尚未存在于对象中的属性的时候， 该属性的未定义特性将会为false, 如果该属性已存在与对象之中， 那么其未定义特性将为true;
 
 2. chrome快捷键
-  * ```F12 || ctrl + shift + I```  --- 打开开发者工具
+  * ```F12 || ctrl + shift + I```或者`command + option + i`  --- 打开开发者工具
   * ```ctrl + shift + c```         --- 检查元素
   * ```ctrl + shift + j```         --- 打开开发者工具并使控制台获取焦点
 3. ```document.documentMode```IE的特性，通过这个可以判断是否是IE。
@@ -1615,15 +1607,9 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     obj // Object {name: "Jason", age: 22}
     obj2 // Object {name: "Jason", age: 22}
     // 也就是说，当obj2发生变化的时候，obj也发生了变化， 这与对象按引用传递的概念是相吻合的
-
-    // 原型对象  o(╯□╰)o  当时出现的问题怎么复现不了了。 。
-
    ```
 
-
-5. backbone里的View实例化的时候传参， 参数需要是一个对象， 如```const view = new View({obj: obj})```,如果直接传递obj的话，那么obj的属性会直接写在对应模板的html的根元素上
-
-6. ```Object.is(arg1, arg2)```, 用于比较arg1和arg2是否相等。 与```===```不同的是， ```===```在判断```+0 === -0```的时候会返回```true```, 在判断```NaN === NaN```的时候会返回```false```, 而通过```Object.is()```来判断的时候就刚好相反。
+5. `Object.is(arg1, arg2)`, 用于比较arg1和arg2是否相等。 与`===`不同的是， `===`在判断`+0 === -0`的时候会返回`true`, 在判断`NaN === NaN`的时候会返回`false`, 而通过`Object.is()`来判断的时候就刚好相反。
 
 7. 关于set
 
@@ -1680,7 +1666,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   也就是说， 通过```Object.create(proto)```创建得到的新对象的```__proto__```属性即为proto对象
 
   [Polyfill待看](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill)
-
+>>>>>更新到这里
 9. 关于```Object.preventExtensitions```, ```Object.freeze```, ```Object.seal```
   * ```Object.preventExtensitions```:  阻止对对象添加属性， 但是可以操作现有属性
   * ```Object.freeze```： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
