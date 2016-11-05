@@ -1917,7 +1917,7 @@ s
    }
   ```
   `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。
-\>\>\>\> 上次修改到这里
+\>\>\>\>\>上次到这里
 5. `GIT`命令
   * ``ls -ah``可以用于查看隐藏文件（夹）（其实这个并不是git命令而是Unix命令）
   * ``git add filename`` 把文件添加到仓库  -- 暂存区
@@ -1944,6 +1944,8 @@ s
   * ``git log --graph``可以查看分支合并图
   * 通常情况下， 在合并分支的时候git会使用Fast forward模式，这种模式下删除分支后会丢失掉分支信息。
   * ``git merge --no-ff -m 'some msg' branchname`` 即可使用非Fast forward模式来合并分支。 因为这种合并方式会产生新的commit所以需要加上-m参数
+  * \*************************************************************************
+  * git stash 命令需要看一下
   * ``git stash``可以将当前内容存储起来， 以后再进行恢复
   * ``git stash apply``可以将当前stash恢复， 但是并不会删除stash里的内容， 需要调用``git stash drop``来删除。
   * ``git stash pop``可以恢复当前stash, 并将该stash删除
@@ -1955,7 +1957,6 @@ s
     ```sh
     origin  ssh://git@github.com/374632897/git.git (fetch)
     origin  ssh://git@github.com/374632897/git.git (push)
-
     ```
   * ``git pull``可以把远程的更新抓取下来
   * ``git tag <name> ``用于新建一个标签
@@ -1967,10 +1968,7 @@ s
   * ``git push origin :refs/tags/<tagname>``可以删除一个远程标签
   * ``git config --global color.ui true``让git显示颜色
 
-6.
-
-###2016-03-09
-=======
+### 2016-03-09
 1. `mongoose`model
   ```js
   var PersonModel = mongoose.model('modelname', PersonSchema, 'CollectionName');
