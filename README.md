@@ -819,58 +819,25 @@ for (var i = 0; i < aLi.length; i++) {
    var arrC = [].concat(arr1, arr2, arr3);
    ```
 
-###2016-01-12
+### 2016-01-12
 1. 微信的内核是webkit，所以用到CSS3的属性的时候需要加-webkit-前缀。→＿←微信自带浏览器必须要加前缀
-2. ``input[type=hidden]``，隐藏文本域的一个作用是， 可以将通过php获取到的数据暂时存放在它的value里面，方便在JS里取用。
-3. 下面的php语句
-
-   ```php
-   <?php
-    session_start();
-    $reg = empty($_SESSION['reg'])?"":$_SESSION['reg'];
-    $uid = empty($_SESSION['uid'])?"":$_SESSION['uid'];
-    $inviteCode = empty($_SESSION['inviteCode'])?"":$_SESSION['inviteCode'];
-    $urlSearch = '';
-    header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0"); // HTTP/1.1
-    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-    header("Pragma: no-cache"); // Date in the past
-    if(!empty($reg) && !empty($uid)  && !empty($inviteCode)){
-        $urlSearch = '?reg='.$reg."&uid=".$uid."&inviteCode=".$inviteCode;
-        exit;
-    }else if(!empty($reg) && !empty($uid)){
-        $urlSearch = '?reg='.$reg."&uid=".$uid;
-        exit;
-    }else if(!empty($inviteCode)){
-        $urlSearch = '?inviteCode='.$inviteCode;
-        exit; //当添加了这句话的时候，语句执行到这里就停止了，然后页面不会再继续渲染，所以看起来就是空的
-        // 那么这是为什么呢？？
-    }
-   ?>
-   ```
+2. `input[type=hidden]`，隐藏文本域的一个作用是， 可以配合服务端来保存数据。
 4. $_GET[KEY],用于获取URL里面的对应的值
 5. $_SESSION[KEY]使用之前，需要先sesstion_start() // 在定义该SESSTION的时候可以不用，但是在其他页面调用的时候必须先start
 6. 使用require引入文件 <?php require 'file' ?>
-7. 关于在html中插入php变量
 
-   ```html
-   <a href="<?=empty($urlSearch)? 'login.php': 'login.php'.$urlSearch?>">立即登录</a>
-   ```
-8. 跨源资源共享(Cross-Origin Resource Share)
-
-###2016-01-13
-======
-
+### 2016-01-13
 1. 如果要是在chrome下调试的时候，发现控制台在source等频道下调不出来，只有在console下才能显示的时候，可能是按了esc将console给隐藏了。解决办法是点控制台右上角的三个点，然后选择show console.即可。Of course, you can also press the shortcut ``esc`` to show it again.
 
 2. 绝对定位的时候bottom参照的元素是浏览器的第一屏，当其参照元素在滚动的时候，也会跟着滚动。
-3. textarea禁止缩放：在css里为其添加rule,resize: none | horizontal | vertical;
+3. textarea禁止拉伸：在css里为其添加rule,resize: none | horizontal | vertical;
 4. 下面的代码：
 
    ```javascript
    var root = (typeof self == 'object' && self.self == self && self) ||
               (typeof global == 'object' && global.global == global && global);
    ```
-   在默认情况下（没有重写self的引用时），self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局
+   在默认情况下（没有重写self的引用时），self指向window;self.self指向window,self.self.self指向window,→＿← global是nodejs中的全局对象
 
 5. 定义一个构造器
 
@@ -878,30 +845,14 @@ for (var i = 0; i < aLi.length; i++) {
   var Person = function (config) {
     this.name = config.name;
     this.job = config.job;
-
   };
   Person.prototype.work = function () {
     return this.name + " is working";
   };
   ```
-6. 英文的比较好看圆滑的一个字体是'Open Sans';
-7. 来学学英文吧。。。 **point out** 指出
+6. 英文的比较好看圆滑的一个字体是'Open Sans'
 
-8. 一段代码：
-
-  ```javascript
-   var Model = function (obj) {
-    // var this.attributes = {};
-    // 注意的是，这里应该用this而不是使用var ，因为最后这个实例的时候是要变为对象的一个属性的。
-    this.attributes = {}; // 如果这里不声明这一句的话，在遍历添加的时候，就会报错,也就是说对象的属性需要先声明再使用
-    if (obj.defaults) {
-      for ( var key in obj.defaults) {
-        this.attributes[key] = obj.defaults[key];
-      }
-    }
-  };
-  ```
-9. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如：
+7. 访问一个对象的属性时，如果一个该属性不存在，将会返回undefined,如果在这个时候再访问该属性的另外一个属性时，则会直接报错。如：
 
   ```javascript
   var obj = {
@@ -924,13 +875,11 @@ for (var i = 0; i < aLi.length; i++) {
   ```
   也就是说，如果要访问一个对象的属性的属性的时候，需要先判断该属性是否存在，如果存在，再进行访问，这样才不会报错
 
-###2016-01-14
-=======
+### 2016-01-14
 1.  ~~@keyframe~~ **@keyframes,是复数！！！** 加前缀是@-webkit-keyframes 而不是-webkit-@keyframes o(╯□╰)o
-
 2. background-clip: content-box,padding-box,border-box;规定背景的绘制区域，默认为padding-box
 3. rotate(1turn)表示转一个圈
-4. text-transform: 控制文字的大小写capitalize，uppercase，lowercase
+4. text-transform属性: 控制文字的大小写capitalize，uppercase，lowercase
 5. 　```Uncaught SyntaxError: Unexpected end of input``` 通常是因为缺少括号或大括号来结束语句了o(╯□╰)o，怎么就给忘了，不知道错误的原因就注释掉语句看是哪里出了问题，再不行就在其他浏览器下查看报错
 6. 用CSS绘制三角形：
 
@@ -944,15 +893,7 @@ for (var i = 0; i < aLi.length; i++) {
       border-bottom: 100px solid #f66; /* 设置三角形底边的的长度和三角形的颜色 */
    }
    ```
-7. 关于条件判断语句：
-   ```javascript
-   // 如果里面有需要执行的代码，且不止一条，那么应该调用自调用函数
-   true ? (function(){console.log('hello');console.log(' nihao')}()) : console.log('haha');
-   // 如果满足或不满足条件时不需要执行操作，那么应该将对应的条件设为null(迷糊了)，总之不能省略
-   false ? console.log('hello') : null;
-
-   ```
-8. Chrome Cl APIs
+7. Chrome Cl APIs
   * **$** 返回匹配CSS选择器的第一个元素 querySelector
   * **$$** 用数组形式返回匹配CSS选择器的元素 querySelectorAll
   * **$x(path)**  $x('//p')返回所有的p元素
@@ -963,13 +904,11 @@ for (var i = 0; i < aLi.length; i++) {
   * **keys(object)** 返回一个由对象的属性名字组成的数组，对应的有还有 **values(object)**
   * **monitor(function)** 当指定的函数调用的时候，将会显示出传入函数的参数
 
-
 9. P标签内部只能包含inline标签，如果包含了block标签的话，该block标签将会被提到p的同一个层级。注意，这里指的是默认的block标签，而不是具有display: block的标签 .IE下innerHTML会对错误嵌套报非法错误（未测试）[原文地址](http://www.thinksaas.cn/group/topic/268153/);
 10. html元素错位，除了考虑嵌套之外，还需要考虑是不是没有补全标签（也该算是嵌套吧）
 
-###2016-01-15
-=======
-1.  ```display: none```会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
+### 2016-01-15
+1.  `display: none`会让屏幕阅读机和键盘 Tab 忽略它。因此可以用绝对定位，设置left为一个极大或者极小值，使得元素能够保持在文档流中
 2. 伪元素添加内容的时候一定要添加content属性啊！！！！！ 没有content就没有内容就不会显示啊
 3. 当一个元素hover的时候，要改变该元素的伪元素的状态的话，那么:hover 和伪元素之间不能有空格，否则不会生效，如
 
@@ -999,13 +938,10 @@ for (var i = 0; i < aLi.length; i++) {
     }
    ```
 5. elem.offsetParent获取的是其父元素？
-6. 注意文件名大小写，虽然在本地测试的时候，大小写不正确也能正常显示，但是放到服务器上之后，大小写不对的话，也不能正常访问到。
-7. GitHub里不要在序号后面直接写代码。。不然会显示异常的
+6. 注意文件名大小写，Linux上是区分大小写的。
 8. php没有undefined。。。。
 
-
-###2016-01-17
-=======
+### 2016-01-17
 1. JS不能选中before,after伪元素怎么办？？？？废话。。用其他标签来代替伪元素不得了么。。。。
 2. JS高级程序设计——最佳实践
    * 将事件处理程序和应用逻辑解耦，也就是说涉及到事件的部分，只处理事件，然后将处理的结果传递给应用逻辑
@@ -1016,29 +952,20 @@ for (var i = 0; i < aLi.length; i++) {
      * 任意可能会更改的值
    * 性能
      * 避免全局查找 将一个语句中多次用到的全局变量存为局部变量
-     * 避免with语句
+       比如， 在一个函数内， 如果有多个地方会用到document的话， 那么可以对document进行缓存， 那么下次再访问document的话话直接在函数的作用域内就能够找到。 从而减小了在作用域链上的寻找时间。
+
+     * 避免使用with语句
 
 3. \x20表示空格 \f换页符 \t制表符  \r回车符  \n换行符
-   去除空格的正则表达式 : ```whitespace = "[\\x20\\t\\r\\n\\f]"```
+   去除空格的正则表达式 : `whitespace = "[\\x20\\t\\r\\n\\f]"`
 
-4. ```obj.ownerDocument```返回节点所属的根元素
+4. `obj.ownerDocument`返回节点所属的根元素
 
-
-###2016-01-18
-=======
+### 2016-01-18
 1. Math.cos() Math.sin()等等涉及到三角函数的方法接受的参数是弧度而不是角度啊啊啊啊啊啊啊！！！！！
 2. const定义一个对象的时候， 可以在之后改变对象的属性，但是不能改变该常量为其他对象。也就是说，可以用const 定义一个对象，然后可以继续修改这个对象的属性方法等. It's also available for Arrays.
 3. 不要为函数参数重新分配值
-4. 涉及到执行语句的话用{{}}, 需要解析为html的，则用{{= }}, 如下
-
-   ```javascript
-   <ul class="content month">
-     {{ for (var i = 0, len = 31; i < len; i++) { }}
-       <li class={{= "month_" + i}}>{{= i}}</li> // 这里是用的等号
-     {{ } }}
-   </ul>
-   ```
-5. return可以直接返回一个对象：
+4. return可以直接返回一个对象：
 
   ```javascript
   function getName() {
@@ -1050,14 +977,12 @@ for (var i = 0; i < aLi.length; i++) {
   var person = getName();
   person // Object {name: "Jiangxi", age: "22"}
   ```
-6. 三元运算符里可以进行函数运算。但是不能直接return 【eslint检测过不了 :笑cry】—— 额。。 不对。。 是根本就不能`return` , 会报语法错误， ``Uncaught SyntaxError: Unexpected token return``
+5. 三元运算符里可以进行函数运算。但是不能直接return 【eslint检测过不了 :笑cry】—— 额。。 不对。。 是根本就不能`return` , 会报语法错误， ``Uncaught SyntaxError: Unexpected token return``
 
-###2016-01-19
-=======
-1. `$.extend({}, s1, s2, s3..)`就是将s1,s2,s3..等合并到第一个参数（一个空对象里），然后再返回这个对象, ES6里的``Object.assign()``和这个差不多。 然而可恶的IE10!!!!
-2. 在View实例化的时候传入的参数可以在view的构造器里的initialize的函数里作为参数传进去。
-3. 微软雅黑加粗之后看起来简直不像雅黑了！！！！所以如果设置了字体但是感觉不是自己想要的的时候，看看是不是多加了个font-weight吧。
-4. 利用好三元操作符的话可以节省很多代码，真的。如：
+### 2016-01-19
+1. `$.extend({}, s1, s2, s3..)`就是将s1,s2,s3..等合并到第一个参数（一个空对象里），然后再返回这个对象, ES6里的``Object.assign()``和这个差不多。 然而可恶的IE10对此表示不支持!!!!
+2. 微软雅黑加粗之后看起来简直不像雅黑了！！！！所以如果设置了字体但是感觉不是自己想要的的时候，看看是不是多加了个font-weight吧。
+3. 利用好三元操作符的话可以节省很多代码，真的。如：
 
    ```javascript
     let msg = obj.toString().replace(/,/g,' ').trim().replace(/(\d+)\s*/g, '$1 ').trim().split(' ').join('、');
@@ -1076,22 +1001,18 @@ for (var i = 0; i < aLi.length; i++) {
      msg = '';
    }
    ```
-   类似这样的操作就可以直接用三元操作符来代替，从而达到节省代码量的目的。(然而如果在三元运算符里执行语句的话，eslint的检测过不了，o(╯□╰)o)
+   类似这样的操作就可以直接用三元操作符来代替，从而达到节省代码量的目的。
 
-5. Backbone里View初始化的时候设置其需要计算的style的时候，会出错，因为此时元素尚未渲染到页面中。
-6. 如果在一个View初始化的时候需要访问上层元素，那么可以在上一层View初始化的时候进行访问，而不是在这个View里通过全局访问，这样真的访问不到。
-
-###2016-01-20
-=======
-1. WebPack 在添加loader的时候，对应的loader需要加引号才行，不然会报错。
+### 2016-01-20
+1. webpack 在添加loader的时候，对应的loader需要加引号才行，不然会报错。
 2. 在安装依赖的时候用npm install module --save的方式比较快捷吧 。。 当然， 可以同时安装多个包。
-   ``sh
+   ```sh
    npm install express mongoose jade --save
-   ``
+   ```
 3. JSON里的键值应该使用双引号而不是单引号。
-4. webPack的插件是在其配置文件中的plugin中指定， BannerPlugin给输出的文件头添加注释信息
-5. 在插入插件比如 new webpack.BannerPlugin()的时候，需要现在配置文件头部```var webpack = require('webpack')```;
-6. ```webpack --display-error-details```可以打印详细错误信息
+4. webpack的插件是在其配置文件中的plugin中指定， BannerPlugin给输出的文件头添加注释信息
+5. 在插入插件比如 new webpack.BannerPlugin()的时候，需要现在配置文件头部`var webpack = require('webpack')`;
+6. `webpack --display-error-details`可以打印详细错误信息
 7. 当引入通过 npm 安装的 node.js 模块时，可能出现找不到依赖的错误。Node.js 模块的依赖解析算法很简单，是通过查看模块的每一层父目录中的 node_modules 文件夹来查询依赖的。当出现 Node.js 模块依赖查找失败的时候，可以尝试设置 resolve.fallback 和 resolveLoader.fallback 来解决问题。
 8. dropdown的dropdown-toggle和dropdown-menu应该在同一层目录下。
 9. JS获取当前月的天数：
@@ -1107,14 +1028,11 @@ for (var i = 0; i < aLi.length; i++) {
     ```
     注意important的位置和书写方式。
 12. dropdown的水平对齐方式有两种，left和right，因为是相对父元素定位的，所以如果想要实现居中对齐的话，可以通过给父元素添加padding来实现
-
 13. 获取选中的单选框的索引
 
     ```javascript
     var index;
-    [].slice.call(document.forms[0]['h']).map(function (a, b) {
-      a.checked === true ? index = b : null;
-    });
+    [].slice.call(document.forms[0]['h']).map((item, index) => item.checked ? index : null);
     ```
 
 14. 获取年份的时候要使用`new Date().getFullYear()`才能得到当前的年份，如果使用的是`new Date().getYear()`的话，将会返回1900到今年的年份数 【3/19注：】居然忘了还有这个API。
@@ -1123,9 +1041,7 @@ for (var i = 0; i < aLi.length; i++) {
 17. 用了inline-block之后，元素的宽度 * 数量 != 总宽度， 然后给元素加个背景色看看是不是那个间隙搞的鬼！！！只要是涉及到inline-block，然后宽度什么的不对的问题，你懂的。。。
 18. 利用好background-clip的话，可以实现不同的需求。
 
-
-###2016-01-21
-======
+### 2016-01-21
 1. 关于取反：
 
    ```javascript
@@ -1136,32 +1052,27 @@ for (var i = 0; i < aLi.length; i++) {
    ```javascript
    isMulti = !(this.select.start === this.select.end);
    ```
+   然而何必搞这么麻烦， 这里只是判断start是否等于end
+   ```js
+   isMulti = this.select.start !== this.select.end;
+   ```
    这样才能得到自己想要的结果
 2. jQuery里的nextAll(), prevAll(), nextUtil(), prevUntil()方法
 3. 关于css的hover不一定需要父元素在空间上包裹子元素，只要结构上包裹，就会触发。
 
-###2016-01-22
-=======
+### 2016-01-22
 1. 关于内容撑开滚动条的显示隐藏问题。。。可以给可能会撑开的元素设置overflow-y:auto，让元素的滚动条一直显示，然后利用元素的margin或者padding 把元素的滚动条撑到父元素外面去，再给父元素设置overflow: hidden，然后就能利用障眼法来去掉滚动条了。
 
 2. 使用setTimeout的异步执行方式可以巧妙地在某些语句之后执行相应语句，尤其是在清类名的时候
 
-
-###2016-01-23
-=======
-1. webpack里不要require('babel-core')
-2. sass-loader默认是把样式放到网页内的？？
-
-###2016-01-24
-======
+### 2016-01-24
 1. 富文本编辑的两种方式 [据说这是一个大坑， 等以后有能力了真想好好踩踩]
   * iframe
   * contentEditable
 2. document.defaultView.getComputedStyle()，标准推荐的获取样式的方法
 3. 原生JS可以直接通过DOM元素的text属性来访问其文本，不过更好的方法还是通过innerText
 
-###2016-01-26
-======
+### 2016-01-26
 1. 获取日期，new Date(year, month, date)的时候，如果date为零，那么获取到的将会是上一个月的最后一天，可以通过这个方法来获取一个月的天数。也就是说可以通过
 
 ```javascript
@@ -1170,6 +1081,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 // new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 ```
 来获取到当月的天数
+
 2. 如下代码：
 
   ```javascript
@@ -1177,7 +1089,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   ```
   不知道是什么原理。。。总之这里用了这句话之后，就不用再使用Math.floor()来取整了。
   卧槽。。好像发现了一个神奇的东西。。。
-
 
   ```javascript
   var random = Math.random() * 16; // 2.7166785709559917
@@ -1209,8 +1120,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   ```
   所以还是老老实实的用Math对象的方法来进行取整吧。 。不过这种用来取随机数的话还是可行的。
 
-###2016-01-27
-=======
+### 2016-01-27
 1. 数字toString的时候需要使用括号括起来
 
    ```javascript
@@ -1220,14 +1130,14 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    后面有提到， 因为数值的存储是用的浮点， 所以上面第一句里面的第一个小数点会被认为是小数点而不是点号操作符
 2. 获取样式
 
-   ```javascript
+   ```js
 
   info = ('getComputedStyle' in window) && window.getComputedStyle(ele, null) || ele.currentStyle;
   ```
 
-###2016-01-28
+### 2016-01-28
 1. nodeName.cloneNode(boolean)用于拷贝节点
-   ```javascript
+   ```js
    var oUl = document.getElementsByTagName('ul')[0], cloneUl = oUl.cloneNode(true),
         list = ['10', '11', '12'], temp, i = 0, len = list.length;
     for (; i< len; i++) {
@@ -1240,26 +1150,18 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    虽然直接拼接字符串， 然后一次性的用innerHTML插入会比较好，但是replaceChild还是需要好好理解应用的。
 2. 查看页面中DOM元素数量
 
-   ```javascript
+   ```js
    document.getElementsByTagName('*').length
    ```
-3. matchesSelector用来匹配dom元素是否匹配某css selector。它为一些高级方法的实现提供了基础支持，比如事件代理，parent, closest等。
-
-   ```javascript
-   var docElem = window.document.documentElement,
-      selector_hasDuplicate,
-      matches = docElem.webkitMatchesSelector || docElem.mozMatchesSelector || docElem.oMatchesSelector ||docElem.msMatchesSelector,
-      selector_sortOrder = function ( a, b ) {
-          // Flag for duplicate removal
-          if ( a === b ) {
-               selector_hasDuplicate = true ;
-               return 0;
-          }
-      }
+3. matchesSelector用来检测dom元素是否匹配某css selector。它为一些高级方法的实现提供了基础支持，比如事件代理，parent, closest等。
+   ```js
+   domEle.matches(Selector);
+   document.body.matches('body'); // true
    ```
+
 4. JS里不能直接判断两个数组是否相等，用全等或不全等都不行，都会返回false， 可以把数组利用toString转换为字符串再进行比较。
 
-###2016-01-29
+### 2016-01-29
 1. 关于if语句
 
    ```javascript
@@ -1270,7 +1172,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 3. 关于位运算符
    * 判断奇偶
-   ```javascript
+   ```js
    if (n & 1) { console.log('n是奇数'); } // 如果是奇数，那么值为0
 
    // 原理： 奇数的二进制码的最后一位数肯定是1，而1只有最后一个为1，因此按位&1之后，得到的结果里面肯定只有最后一个数为1了，所以对奇数按位&1之后，得到的结果就肯定是1
@@ -1280,7 +1182,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
 4. jQuery的on方法在绑定的事件之后有个可选的[selector]参数，用于指定特定的后代元素才会触发这个事件
 
-   ```javascript
+   ```js
     // 以下代码运行时，只有.container的.left元素才会触发click事件
     $('.container').on('click', '.left', function () {
        console.log('click');
@@ -1304,8 +1206,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
      ```
 6. npm uninstall module --save-dev的时候，如果dependencies里面也有这个包的话，那么卸载的时候也会把里面的都给卸载掉
 
-
-###2016-01-30
+### 2016-01-30
 1. 关于webpack加载babel-loader的一些注意事项
    * 需要安装的依赖包： babel && babel-core && babel-preset-es2015 && babel-loader && babel-plugin-add-module-exports
    * 需要注意的是，需要在当前项目根目录下建立一个.babelrc文件，然后里面内容如下：
@@ -1335,7 +1236,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 4. 来点英语吧
    * era 时代，纪元
    * dynamic 动态的
-   *
 
 5. 注意！！！！webpack.config.js里面，loader是module之下的一个对象。。。别落下了。。
 
@@ -1355,16 +1255,13 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     * 要求创建一个函数并且带有resolve和reject参数
     * 如果函数内部需要用到this，那么就需要使用this的别名，或者使用箭头函数
 
-
-###2016-02-01
-=======
-1. 设置```font-size: 0```来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。
+### 2016-02-01
+1. 设置`font-size: 0`来消除inline-block元素中间的间隙在Safari下不可行。。。所以还是使用浮动吧 。。
 2. 关于backgound-clip在IE下表现不对的问题。。 可以通过border来搞定。[DEMO](https://github.com/374632897/just-some-tips/src/testBorderRadiusUnderIE9.html), padding配合background-clip和border可以做出不少有意思的东西[好吧， 其实那些只需要border就行了]
 
 3. 对于input text元素尽量使用padding来实现居中啊。。。
 
-###2016-02-02
-======
+### 2016-02-02
 1. ellipse----椭圆    individual ---- 个人的  denote --- 指示, 指出
 2. 关于border-radius
    * 当为一个值的时候， 表示四个角一样
@@ -1381,11 +1278,11 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    要注意的是， 是arr.indexOf()....
 
-4. ```position: relative```对表格元素无效。
+4. `position: relative`对表格元素无效。
 
 5. 清除IE下INPUT元素的叉叉， ```::-ms-clear{display:none}``` 清除密码查看： ```-ms-reveal{display:none}```.
 
-6. #233看起来好像也确实不错哈。
+6. \#233看起来好像也确实不错哈。
 7. 关于bind:
 
    ```js
@@ -1411,18 +1308,16 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    * 当然，也可以只给bind()传递this,然后在执行函数的括号里面传递具体参数
 
 
-###2016-02-03
-=======
+### 2016-02-03
 1. 元素的位置通过指定与其最近的position属性非static的元素来确定。
-2. 对```position: fixed```的元素的宽度使用百分比的话， 其宽度是相对窗口来的而不是相对其父元素来
-3. 对于使用transform来进行变换的元素， 可以利用left，top(如果可以用的话)来进行微调。
+2. 对`position: fixed`的元素的宽度使用百分比的话， 其宽度是相对窗口来的而不是相对其父元素来
+3. 对于使用transform来进行变换的元素， 可以利用left，top， margin-left, margin-top(如果可以用的话)来进行微调。
 4. 通过jQuery获取元素，得到的是一个类数组对象
-5. ```::selection```永远只能用两个冒号开始， 毕竟伪元素
+5. `::selection`永远只能用两个冒号开始， 毕竟伪元素
 6. 使用变量来代替对象属性的话可以避免对象引用发生变化时可能出现的错误。
 7. font的简写中， style | variant | weight在font-size的前面
 
-###2016-02-16
-=======
+### 2016-02-16
 1. 闭包相关：
    ```js
     var hello = (function () {
