@@ -355,33 +355,21 @@ new S(); // S {name: "Jason"}
    [原文地址](http://jingpin.jikexueyuan.com/article/34632.html)
 
 ### 2015-12-27
-1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。另外，关于使用normalize()来代替children的方法行不通，因为normalize()只是把相邻的空文本节点给合并了。
+1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。。
 2. replaceChild()，两个参数，第一个是要插入的节点，第二个是要替换的节点
 3. HTMLCollection的几种访问方法，假设aLi为对应的HTMLCollection
-   * 使用方括号语法或者item()直接访问 ````aLi[3]````,````aLi.item(3)````
-   * HTMLCollection的方法：````namedItem()````,可以通过元素的name来获取
-   * 直接使用方括号加名字: ````aLi['hello']````
+   * 使用方括号语法或者item()直接访问 `aLi[3]`,`aLi.item(3)`
+   * HTMLCollection的方法：`namedItem()`,可以通过元素的name来获取
+   * 直接使用方括号加名字: `aLi['hello']`
 4. childElementCount: 返回子元素(不包括文本节点和注释)的个数
    firstElementChild:
    lastElementChild:
    nextElementSibling:
    previousElementSibling:
-   以上属性都不会返回空白文本节点// IE9以上才支持→＿←
-5. afterpaste是粘贴时触发的事件
-6. 正则里面的或还是需要用好， 比如，~~/[\D | 0]/g,就是匹配 所有非数字和0~~ 【3/9注】： 然而并不是→＿←. 少了`|`也是或的关系， 而在中括号里面加上`|`之后就会匹配`|`这个字符了。
+   以上属性都不会返回空白文本节点 // IE9以上才支持→＿←
 
-  ```js
-  '|'.match(/[ts|]/); // ["|"];
-  ```
 
-###2015-12-28
-=======
-1. 把一个collection里面的model添加到另一个collection的话，那么这两个collection共用一个model，在一个collection里面修改model，另一个collection里的对应model也会受到影响
-2. 清空一个collection，使用collection.reset()方法，貌似each,forEach遍历来删除单个的话都不行，因为每次遍历的时候长度都会变化，~~刷新频率跟不上~~（**01/08注： 不是刷新频率跟不上，而是因为期望删除元素和当前删除元素不同步，在后面有提到这个问题**），从而会出错 。
-3. 如果两个View共用一套collection，然后针对相同的动作有不同的行为的话，那么需要在将Model传入View的时候，传为一个对象，而不只是一个Model，实际上，在将Model传入View的时候一般都要传作对象，不然的话，html里面会多出很多混乱的数据。
-
-###2015-12-29
-=======
+### 2015-12-29
 1. npm安装依赖包出错
    `````
     If you are behind a proxy, please make sure that the 'proxy' config is set properly.
@@ -409,18 +397,12 @@ new S(); // S {name: "Jason"}
    * vertical-align对块级元素不生效？
 4. 使用“*”通配符的话会大大增加css的渲染，效率低
 5. 监听多个不同的事件时，使用空格分隔
-6. collection也可以使用toJSON()， ````collection.toJSON()````,返回的是collection里面每个model的属性的数组。每个model为一个对象
+6. collection也可以使用toJSON()， `collection.toJSON()`,返回的是collection里面每个model的属性的数组。每个model为一个对象
 7. 关于水平居中，使用绝对定位的话有三种方法
    * 定义left: 50%, 然后margin-left为自身宽度的一半的负值
    * 定义left: 50%, 然后使用transform: translateX(-50%);
-   * 定义left和right，使之相等，这样就能把元素撑开了
-8. 在一个上下文里获取元素
-   ~~````$(selector,this.el)```` 获取到的是DOM对象~~， 然而并不是这样。浏览器内置了$对象来通过querySelector来获取元素，所以当时使用的时候，调用的其实并不是jQuery而是浏览器内置的。这里有个问题，就是在JS里的指定位置console.log的话，就能获取到jQuery对象，但是通过断点来查看的话，并不能够获取。这里要 mark 一下 。
-   ````this.$(selector)````    获取到的是jQuery对象
-   * chrome 默认使用$来引用querySelector
-   * Firefox 只有在控制台中才能使用$，也是通过querySelector
-   * Safari 只有在控制台中通过$来根据id获取元素
-   * IE11的调试器和FF差不多，不过同样也只能在控制台中使用
+   * 定义left和right，使之相等，这样就能把元素撑开并保证左右距离一致了。
+8. chrome控制台里通过$来选取一个元素， 行为和document.querySelector()一致， 可以通过$$来选取一组元素， 行为和document.querySelectorAll一致， 如果在Element里选中了一个元素的话， 通过在控制台里输入$0可以访问选中的这个元素。
 
 9. 在表单操作当中，取得表单的引用之后，可以直接通过该引用来获取其子元素有id或者name属性的元素
    ````html
@@ -433,9 +415,9 @@ new S(); // S {name: "Jason"}
    var form = document.getElementById('testForm');
 
    ````
-   然后通过````form.testInput````或者````form.hh````都可以取到input元素
+   然后通过`form.testInput`或者`form.hh`都可以取到input元素
 
-###2015-12-30
+### 2015-12-30
 1. 使用MarkDownPreview插件，可以在本地预览.md文件，安装后，在md文件中按````ctrl+shift+p````调出命令行，输入mdp,选择````Preview in browser```` 即可
 2. 关于按需加载
    * 可以将需要按需加载的内容放在script标签里，然后在需要的时候，将需要展示的盒子的html()设为该标签里的内容，这样子在页面刚刚加载，没有达到触发条件的时候，并不会触发请求
@@ -445,7 +427,7 @@ new S(); // S {name: "Jason"}
       * 对滚动条进行事件绑定,假设绑定的函数为function lazyload(){};
       * 在函数lazyload中，按照下面思路实现：计算图片的Y坐标，并计算可视区域的高度height，当Y小于等于(height+ scrollTop)时，图片的src的值用data-src的来替换，从而来实现图片的按需加载
 
-###2015-12-31
+### 2015-12-31
 1. DOM元素的classList属性，表示的是当前元素的类名清单。。。
 2. console.log()，里面的内容如果以逗号形式分隔，那么在输出的时候，就会用空格来分隔开来
 3. console.warn()，里面的消息就会以警告的形式出现在控制台里面（感叹号 + 浅黄色背景 ）。
@@ -590,7 +572,7 @@ for (var i = 0; i < aLi.length; i++) {
    ```javascript
    var colors = ['red','blue','yellow'];
 
-   colors.toString();
+   colors.toString(); // 和colors.join()的效果一样
    colors.join(',');// 给join传递参数的话，那么就会以传递的参数来分隔字符串，没有传参的话，默认为','
    // 把多维数组转化为一维数组
    colors.toString().split(','); // 注意： split 是通过指定标识符把**字符串**切割为数组 // 但是这样子的话，数组项会变为字符串
@@ -621,7 +603,7 @@ for (var i = 0; i < aLi.length; i++) {
 
     ```js
     var arr = [1, 2, 3, 4, 5, [6, 7, 8, 9, [10, 11, 12]]];
-    Array.prototype.apply([], arr); // 然而这个的弊端在于只能转换二维数组， 如果是更高维的话得不到期望值
+    Array.prototype.concat.apply([], arr); // 然而这个的弊端在于只能转换二维数组， 如果是更高维的话得不到期望值
     // 所以可以用下面这个方法：
     arr.toString().split(',').map((item) => { // 然而如果要是数组里面含有对象的话， 就挂了→＿←
       return item - 0;
@@ -637,7 +619,6 @@ for (var i = 0; i < aLi.length; i++) {
     const ary = new Array(31).concat(32); // 得到一个长度为32的数组， 并且数组的最后一项是32
     ```
     需要注意的是， 上面不能使用``push``方法, 因为`push`返回的是`push`进去之后的数组长度。当然， 如果是在已有数组上操作的话就另当别论了。
-
 
   * slice
     基于当前数组中的一个或多个项创建一个新数组。如果有两个参数，则返回的是起始位置到结束位置（但不包括结束位置）的数组。不会在原数组上操作。如果slice的参数中有负数，则用数组长度加上负数来确定相应的位置。
