@@ -1808,7 +1808,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
 12. 属性名的简洁写法的情况下， 属性名始终是字符串：
 
-
    ```js
    var obj = {
      class () {
@@ -1827,7 +1826,6 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
     **属性名与简洁写法不能同时用， 会报错**
 
-
 13. Proxy
 
   ```js
@@ -1845,23 +1843,16 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   // "Jason"
   ```
 
-###2016-03-01
-=======
+### 2016-03-01
 1. 注意`inline-block`元素默认对齐方式为基线对齐
 2. `return`后面不能直接跟`throw new Error()`
-
 3. `forEach`和`map`在遍历一个数组时， 将会自动忽略数组的undefined项, 并且不执行该次遍历
-
-
-
-###2016-03-03
-====
+s
+### 2016-03-03
 1. 好像绝对定位的元素可以不受滚动条影响？ 这个可以好好  研究下。 然而并不是。。 只是特定场景下出现的效果而已。
 
-
-###2016-03-04
+### 2016-03-04
 1. 单例模式
-
 
    ```js
    var Time = (function () {
@@ -1883,14 +1874,10 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    也就是说下次执行Time()的时候执行的只是最开始赋值时得到的那个函数， 由于闭包， time一 直常驻于内存中， 所以通过闭包的返回值来访问该值的话一直能够访问到， 从而获取到的是最开始得到的值。 。
 
-###2016-03-05
-=======
+### 2016-03-05
 1. ``module.exports = moduleName``和```exports.moduleName = moduleName```的区别在于通过前者导出的是可以直接访问到的，而后者导出去的require得到的是一个对象， 需要再访问这个对象的对应属性才能拿到对应的模块儿
-2.
 
-
-###2016-03-07
-=======
+### 2016-03-07
 1. `concat`不是在原数组上操作不是在原数组上操作！！！
 2. JS里的数字是用浮点数来保存的。 所以。。
 
@@ -1930,7 +1917,7 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    }
   ```
   `return` 用于函数中返回一个值。 在非函数的环境中使用的话会报错。
-
+\>\>\>\> 上次修改到这里
 5. `GIT`命令
   * ``ls -ah``可以用于查看隐藏文件（夹）
   * ``git add filename`` 把文件添加到仓库  -- 暂存区
