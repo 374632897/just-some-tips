@@ -1666,19 +1666,15 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
   也就是说， 通过```Object.create(proto)```创建得到的新对象的```__proto__```属性即为proto对象
 
   [Polyfill待看](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill)
->>>>>更新到这里
-9. 关于```Object.preventExtensitions```, ```Object.freeze```, ```Object.seal```
-  * ```Object.preventExtensitions```:  阻止对对象添加属性， 但是可以操作现有属性
-  * ```Object.freeze```： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
-  * ```Object.seal``` ： 不能添加属性和删除属性， 但是可以修改现有属性。
+9. 关于`Object.preventExtensitions`, `Object.freeze`, `Object.seal`
+  * `Object.preventExtensitions`:  阻止对对象添加属性， 但是可以操作现有属性
+  * `Object.freeze`： 阻止添加新的属性和操作已有属性， 也就是说该对象将会处于不可变状态
+  * `Object.seal` ： 不能添加属性和删除属性， 但是可以修改现有属性。
 
-###2016-02-19
-=======
-1. ```setTimeout```和```setInterval```未指定时间的时候， 则时间为0.
-2. 清除定时器是使用```clearInterval(timerId)```或者```clearTimeout(timerId)```， 而不是直接将```timerId = null```, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
-3. 在view里只能给view里的元素绑定事件？？？？
+### 2016-02-19
+1. `setTimeout`和`setInterval`未指定时间的时候， 默认的时间会受浏览器的影响。chrome默认为0
+2. 清除定时器是使用`clearInterval(timerId)`或者`clearTimeout(timerId)`， 而不是直接将`timerId = null`, 真的是笑cry. [demo](http://374632897.github.io/just-some-tips/src/testTimeout.html)
 4. 将多维数组转化为一维数组：
-
 
    ```js
    const arr = [1, 2, 3, 4, [5, 6, 7, 8, 9]];
@@ -1688,23 +1684,18 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    // 也可以像下面这样
    [].concat.apply([], arr); // 这里不能使用call
    ```
-
-###2016-02-24
+### 2016-02-24
 1. 变量声明提升和函数声明提升
-
 
    ```js
    console.log(x); // function
    var x = '123';
    function x () {}
-
    console.log(y); // function
-
    function y () {}
    var y = '123';
    ```
    也就是说， 变量声明提升优先于函数声明提升。这样来看吧。 。
-
 
    ```js
    // 首先进行变量声明提升，此时 var y = undefined, 声明了y但是没有赋值
@@ -1735,11 +1726,8 @@ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
    ```
    [实现contentEditable元素的placeholder效果DEMO](http://374632897.github.io/just-some-tips/DEMO/placeholderForContent.html)
 
-3. 使用模板引擎的时候， 如果给标签属性插入变量， 记得加引号如```value = '{{- hello}}'```
 4. CSS也要注意目录分层
 5. 隐藏滚动条效果：
-
-
 
    ```html
    <div class='list'>
