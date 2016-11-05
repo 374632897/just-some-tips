@@ -1,4 +1,4 @@
-# just-some-tips
+
 ## 前端学习中积攒的一些小经验
 ###  2016-11-03 更新说明
 这个项目已经很久没有更新了， 偶尔更新也是为了测试所用， 就README而言， 并没有怎么更。 想起这个工程是当初刚刚学了前端， 然后入职之后开来作为记录使用的， 最开始的时候更新很积极， 因为那个时候确实遇到了很多的问题， 而且有些非常基本的问题自己也会记录在这里。 然而当时记录的东西， 现在再来看的话 ， 会发现很多错误。 自己一直比较忙（瞎说的）， 也就没有腾出太多的时间用来重新审视， 最近觉得非常有必要， 所以就来看一看， 准备利用今天（周四）、周五、周末的时间， 把这里的东西重新整理一遍， 温故而知新， 相信重新整理后， 我应该能收获不少吧。 我将原来的那个重命名为[README.PRE.MD](./README.PRE.MD), 权当留作纪念吧。
@@ -202,92 +202,33 @@ new S(); // S {name: "Jason"}
      `````
 
 ### 2015-12-20
+
 1. 构造函数的实例具有[[Prototype]]内部属性，可以把该属性理解为指向其构造函数的原型对象的指针。谷歌、FF、Safari提供了_proto_。需要注意的是，在所有实现中都无法访问到[[Prototype]],但是可以通过Person.prototype.isPrototypeOf(person)来确定对象之间是否存在这种关系。__proto__(**注意是__而不是_, 也就是说，是两条下划线而不是一条**)是存在于实例和构造函数的原型对象之间而不是实例和构造函数之间 。
-2. Backbone ,View里面给template传值，是在把模板插入el中的时候，在模板的参数里面传的。如：this.$el.html(template(variables))
-3. 在Model的校验中，需要给Model绑定校验失败的时候，应该用this.bind('invalid',fn)而不是this.bind('error',fn);同时，设置Model的属性的时候，也要传入第二个参数{validate: true}来强制验证。如：Person.set( {name: 'Jiang Guoxi'},{validate: true} ); Validation默认只在save的时候触发
-   model（模型）验证现在只默认执行在save中 —不再执行在set中，除非传递了{validate:true}选项。model（模型）验证现在会触发一个 "invalid"事件，而不是"error"事件。
-4. 函数柯里化
+
+2. 函数柯里化
    * 基本方法：使用一个闭包返回一个函数，当函数被调用时，返回的函数还需要设置一些传入的参数
 
-###2015-12-21
-======
-1. 在向View传递Model的时候，需要将Model实例化，并且只有实例化的Model才能使用toJSON()方法。
-2. 在Model中，以前的定义默认参数的defaults:{}，不用写了，直接写在super({})里面就行。
+### 2015-12-21
 
-   `````javascript
-   class Model extends Backbone.RelationalModel {
-     constructor () {
-       super({
-         //这里写默认属性值
-       });
-     }
-   }
-  `````
-
-3. 关于Models和Collection的关联。
-   * 建立一个整体的Model，在这个Model里面引入Collection
-   * 在这个Model的super()里面，定义一个对引入的Collection的引用
-   * 在该Collection里面，引入基础Model,在super里面定义Collection的model为引入的Model，最后导出Collection的实例。
-4. 在model中调用collection里的方法的时候，所用的collection一定要是collection的实例才行。
-5. 将model与collection关联起来，需要将model的实例添加到collection的实例里面。如todos.add(todo),而关于数据的传递，则是在Model实例化的时候将数据传入的。
-6. 将Model 与View关联起来，是通过在给View的模板传参的时候，将实例化的Model转化为JSON数据传入，然后再在View的initialize中添加对model的监听事件，从而将Model和View关联起来
-7. 在render() 中要记住````return this````以便支持链式调用
-9. 在通过View添加model的时候，先实例化一个ItemView并且传入Model，然后将ItemView的el插入View的html里面。在addOne()里面要传入Model,这个Model应该是和监听事件的Collection所绑定的Model一样？？如：
-
-   ``````javascript
-   this.listenTo(Todos,'add',addOne);
-   ...
-   addOne: function (todo) {
-     var view = new TodoView({model: todo});
-     this.$(el).append(view.render().el);
-   }
-   ``````
-
-   如上面所示，addOne参数里的model应该是和上面监听的Collection里面所绑定的model是同一个？
-10. 关于使用inline-block进行居中
-   * 对父元素设置``text-align:center``;
-   * 对子元素设置``display:inline-block``;
+1.  关于使用inline-block进行居中
+   * 对父元素设置`text-align:center`;
+   * 对子元素设置`display:inline-block`;
    * 这样子的话，即使子元素里面有块级元素，那么该块级元素也不会充满整行 o(╯□╰)o  怎么说呢，感觉就像是里面的块级元素也被设置了inline-block一样，但是事实上他们的display依然是block;
    * 这个方案的缺点就是text-align默认是个继承属性，所以如果其子孙元素的text-align值不符合的话，还要单独写。
+   * 另外一个需要注意的地方是，`inline-block`元素会存在一个1像素或者多个像素的间距， 所以如果对子元素设置了100 / 子元素数量 的百分比宽度后， 最后会被挤下去。 解决办法是给父元素设置`font-size: 0;`, 然后再对子元素设置font-size属性。
+   * 此外， `inline-block`默认对齐方式为基线对齐， 通常需要手动改为top， 也就是`vertical-align: top;`
 
-
-
-###2015-12-22
-=======
+### 2015-12-22
 1. 在添加监听事件时，回调函数不能加括号，如：
 
-   `````this.listenTo(this.model, 'change', this.render)`````
+   `this.listenTo(this.model, 'change', this.render)`
 
-   加括号是不行的。
+   加括号是不行的， 因为加了括号后， 那么第三个参数将会是该函数的执行结果， 而不一定是一个函数。
 
-2. if语句结尾不用加分号
-
-3. 在View里面的events里面，如果触发元素是view的el，那么在事件后面不用加对应的元素，比如一个view的tagName定义为li ,那么在events里面只需要加入``'click   ': 'events'``即可。也就是说，如果触发事件的元素是根元素，那么就只需添加事件类型。
-
-4. 通过View给ViewItem传model的时候，可以在constructor里面引入model，需要注意的是，因为iniatialize会先于constructor里面的内容执行，所以说，在constructor里面定义的属性什么的，不会首先被initialize使用到，解决办法是，把iniatialize里面的语句放到constructor里面去。另外，在constructor里面访问传入的model的时候，需要用model.model才能访问到，这是为什么？**01/08注：这里是因为实例化一个view的时候传入的是一个对象，而model只是这个对象里的一个属性，所以在后面访问的时候，要获取所需model就需要通过对象来获取**
-
-5.
-
-
-###2015-12-23
-=======
-1. ...
-2. 关于collection和Model的关联，使用Relational的话：
-   * 在定义model的时候使用RelationModel来定义。
-   * 在一个管理各个部分的model的总的Model中，定义relations属性，其值应该是一个数组，数组里面存入的是对象
-   * relations内对象有四个属性：
-     * type: 不知道是什么。。。。值为Backbone.HasMany **3/16: collection => HasMany, Model =>  hasOne**
-     * key:  在外部环境中通过这个key来获取对应的对象
-     * relatedModel: 所关联的Model
-     * collectionType: 所关联的Collection。通过key来获取的就是这个
-   * 比如我在外部环境中引入了这个总的Model为model，Model中的relations的key值为Item，那么通过model.get('Item')即可访问到关联的Collection
-3. 逻辑是否正确是找出问题的关键。出错的时候，需要考虑是不是自己的逻辑设计不合理
-   * 我在collection里面设置的获取order值的时候，之前设置的是如果length=1,则返回1，否则返回最后一个的order加1，但是后来改成Relational之后，默认没有添加model了，所以长度为0,然后获取order的方法没有变，而最后一个Model根本不存在，所以就报错了。
-
-4. 只给input设置高度而**不设置行高**，如果设置了行高的话，Safari下光标会显示异常。**其实是safari版本问题**
-5. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。`e.stopPropagation()`。
-6. 实现单击按钮上传文件的话，添加一个label和一个inputFile,将label和file关联起来，然后将file的宽度高度设为0，再设置display:none;
-7. 函数节流的实现
+### 2015-12-23
+1. 逻辑是否正确是找出问题的关键。出错的时候，需要考虑是不是自己的逻辑设计不合理
+2. 如果点击一个元素出现了不期望的行为，则考虑是不是事件冒泡引起的。`e.stopPropagation()`。
+3.  >>> 待整理 函数节流的实现
 
    ````javascript
    var throttle = function (fn,interval) {
@@ -395,56 +336,25 @@ new S(); // S {name: "Jason"}
   ````
   由上面的分析可知，在代码执行到这里的时候，window.onresize就等于这个函数的运行结果，观察上面的代码，可以知道，这个函数的运行结果就是返回另外一个函数，所以window.onreize就与该函数返回的另外一个函数绑定了。这里就是利用到了闭包。
 
-###2015-12-24
-=======
-1. 使用Backbone.Relational的时候，关联的collectionType需要是collection的原型而不是他的实例，Model 也是，所以在导出collection的时候不要加new操作符。但是在导出RelationalModel的时候，需要导出其实例，也就是加上new操作符
-2. **出现滚动条的时候由于滚动条占位，元素被挤开了，怎么解决？**
-3. 写font的缩写的时候，font-size和family是必须的
-4. where方法返回的是一个数组，所以通过where来获取自己需要的某一个元素的时候，需要在最后加个[0];
-5.
+### 2015-12-24
+1. 写font的缩写的时候，font-size和family是必须的
+2. collection.where方法返回的是一个数组，所以通过where来获取自己需要的某一个元素的时候，需要在最后加个[0];
 
-
-###2015-12-25
-=======
+### 2015-12-25
 1. 关于calc
    * 使用这个属性的时候，里面的表达式符号要注意分隔，例如````calc(100vw - 100%)````,运算符号的前后如果不加空格的话，就是一个无效的属性
    * 关于vw，这个值是viewport/100，也就是视口的宽度的百分之一，100vw就是整个窗口的宽度，包含了滚动条，而100%，是当前元素的可用宽度(不含滚动条)，所以，在根元素下，calc(100vw - 100%)也就是滚动条的宽度
 
-2. underscore的模板
-  {{- }}只是用来插入变量的，如果是想要在js中读取变量，直接使用就行了。。。比如在模板中有个判断语句，{{if(oprationType ===1 ){ }},就直接这样写而不要写成{{-}}的形式
-3. 关于在mainView中将过滤后的collection里面需求的model重新渲染的问题
-   * 获取需求的model
-   * 将model传入对应的viewItem
-   * 将viewItem的el插入需求元素
-   * 需要考虑的有几个问题
-     * 一是性能问题，这是不是最优化的解决方案？
-     * 直接清空dom的话，那些view的监听事件是不是没有被移除，是不是会造成资源浪费？其实这个问题还是和性能有关了
-     *
-   * mainView其实也只是一个View而已，只不过它管理着viewItem,但是viewItem本身是不在mainView里面的。。。也就是说，mainView里childView并不是viewItem
-
-4. 这周还是把php大概的过一遍吧。。。加油
-
-###2015-12-26
-=======
+### 2015-12-26
 1. 关于Windows下GitHub同步分支失败的解决办法
-   * 解决的办法一是可以选择更新libcurl，或者把默认git的默认连接方式由https改为ssh，只需在Shell执行以下命令即可：
+   * 解决的办法一是可以选择更新libcurl，或者把默认git的默认连接方式由https改为ssh，只需在终端执行以下命令即可：
 
-     `````
+     ```
      git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-     `````
-
-   * 第二种方式
-
-     ````
-     git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-     ````
+     ```
    [原文地址](http://jingpin.jikexueyuan.com/article/34632.html)
 
-2. Safari下input 的 line-height 和height不一致的话会出现光标错位情况。
-   * **01/08注： 只需要给文本框设置高度即可，无需设置行高，因为设置行高后Safari下的placeholder和line-height会出现异常。**
-
-###2015-12-27
-=======
+### 2015-12-27
 1. 操作节点的时候如果需要把一个节点移动到父节点末尾，那么可以直接使用appendChild()，这个方法如果传入一个节点，那么就会把该节点直接放到父节点尾部。另外，关于使用normalize()来代替children的方法行不通，因为normalize()只是把相邻的空文本节点给合并了。
 2. replaceChild()，两个参数，第一个是要插入的节点，第二个是要替换的节点
 3. HTMLCollection的几种访问方法，假设aLi为对应的HTMLCollection
