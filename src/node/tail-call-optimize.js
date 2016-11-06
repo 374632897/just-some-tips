@@ -2,7 +2,7 @@
 * @Author: Jiang Guoxi
 * @Date:   2016-11-06 11:54:28
 * @Last Modified by:   Jiang Guoxi
-* @Last Modified time: 2016-11-06 11:57:47
+* @Last Modified time: 2016-11-06 16:59:51
 */
 function factorial1 (n) {
   if (n <= 1) return 1;
@@ -20,3 +20,7 @@ console.timeEnd('没有尾调用优化');
 console.time('有尾调用优化');
 factorial2(50);
 console.timeEnd('有尾调用优化');
+console.log(123123);
+var a = function () {
+  this.name = 'Jason';
+}
