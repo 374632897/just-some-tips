@@ -2349,12 +2349,8 @@ s
     });
    ```
 
-
-
-
-###2016-04-04
-=======
-1. `const`和`let`在全局声明的变量不会挂载到全局对象`window`上面。
+### 2016-04-04
+1. `const`和`let`在全局声明的变量不会挂载到全局对象`window`上面, **这个非常重要！！！**
 2. `const`和`let`没有变量声明提升
 3. `for in`和`for of`每次都会绑定新的执行环境。 所以可以使用`for (const key in obj)`
 4. 关于`new`操作符。
@@ -2373,10 +2369,10 @@ s
     需要注意的是， 不是所有的函数都具有`[[Construct]]`方法， 箭头函数就不能作为构造函数使用。
 5. 箭头函数：
    * 箭头函数的`this, super, arguments, and new.target`的值， 由距离他最近的非箭头函数的函数所决定。
-   * 不能使用箭头函数。
-   * 没有原型。箭头函数不存在原型对象， 所以不能使用new 操作符。
-   * 不能改变`this`
-   * 没有`arguments`对象。
+   * 不能使用箭头函数的情况。
+      * 没有原型。箭头函数不存在原型对象， 所以不能使用new 操作符。
+      * 不能改变`this`
+      * 没有`arguments`对象。
    * 如果要让函数体返回一个对象的话， 应该用括号来将花括号包围起来。 如：
 
      ```js
@@ -2386,7 +2382,7 @@ s
 
      var getTempItem = id => ({id, name: 'temp'}); // 正确。
      ```
-   * 箭头函数的IIFEs写法：
+   * 箭头函数的IIFE写法：
 
      ```js
      let person = ((name) => {
@@ -2411,7 +2407,6 @@ s
       };
       obj.sayAge(); // 12 因为箭头函数的this指向的是其向上追溯的第一个非箭头函数内的this, 所以这里就是指向window而非obj对象。
      ```
-
     * 箭头函数不具有`arguments`对象， 如果尝试访问`arguments`对象的话， 一般会返回其包含函数的`arguments`对象
 
     * 要触发ES6的尾调用优化的话：
@@ -2421,7 +2416,6 @@ s
       * 总的来说， 只有当函数结果能够被立即返回的时候才会触发尾调用优化。
       * 不能是闭包
       * 尾调用的值是以函数值的形式返回的。
-
 
       ```js
       // 以下函数不会触发尾调用优化。 因为在最后返回的时候进行了多个操作
@@ -2446,8 +2440,7 @@ s
      };
      ```
 
-###2016-04-05
-=======
+### 2016-04-05
 1. `Object.getOwnPropertyNames()`会返回对象的可枚举属性的键名组成的数组， 该数组始进行排序后的， 数字在前， 字母在后。
 
 2. 对象结构。。。。 翻译不过来了→＿←
@@ -2507,12 +2500,9 @@ s
 
    `Symbol`接收一个可选的参数来对其进行描述， 但是这个描述符并没有访问属性的权利， 它只是为了方便调试而已。
 
-
    `Symbol.for()`接收一个参数，该参数同时也会作为描述符。 在使用这个方法的时候， 会首先去查找全局注册的Symbol, 如果存在， 则返回， 如果不存在， 则新建并返回。
 
    `Set`实例化的时候传递参数需要是一个数组。 如: `new Set([1,2,3,4,5])`
-
-
 
    `Set`的`forEach`方法。
    `forEach`的回调函数的参数里面第一个参数和第二个参数是相等的， 都表示set在那个位置的值，第三个参数是set本身。
@@ -2550,9 +2540,7 @@ s
 
     只有在考虑到要使用对象作为键值的时候才使用weakMap或者map. 而使用weakMap则是更好的选择。
 
-
-###2016-04-07
-======
+### 2016-04-07
 1. `iterator`
 
    ```js
@@ -2570,8 +2558,7 @@ s
      }
    }
    ```
-###2016-04-08
-======
+### 2016-04-08
 1. 判断一个对象是否可迭代可以使用以下方法：
 
    ```js
@@ -2581,9 +2568,7 @@ s
    ```
    以上函数通过检测默认的迭代器是否存在来判断对象是否可迭代。
 
-
-###2016-04-08
-======
+### 2016-04-08
 1. 关于`class`
    * `class`声明不同于函数声明，他们没有声明提升。 同时`class`声明也是存在暂时性死区的。
 
@@ -2656,8 +2641,7 @@ s
 
      ```
 
-###2016-04-11
-======
+### 2016-04-11
 1. `Array.from`.
    * 可以用于将类数组对象转换为数组对象。
    * 在转换的时候第二个参数可以对数组进行map操作。
@@ -2692,8 +2676,7 @@ s
 
      ```
 
-###2016-04-12
-======
+### 2016-04-12
 1. 关于`ArrayBuffer`
    * 创建`ArrayBuffer`
 
@@ -2719,8 +2702,7 @@ s
     // hi
    ```
 
-###2016-04-13
-=======
+### 2016-04-13
 1. 碰到的一个问题。
 
    ```js
@@ -2753,24 +2735,17 @@ s
    ```
    [demo](http://374632897.github.io/just-some-tips/src/arrDelete.html)
 
-###2016-04-13
-=======
-1. 如果碰到界面不清晰的问题， 考虑是不是浏览器缩放所致。
 
-###2016-04-14
-=======
+### 2016-04-14
 1. select不支持伪类， select里面也不能有`option`之外的其他元素
 
-###2016-04-14
-=======
+### 2016-04-14
 1. 如果要是https下的网页内容里面包含了混合内容(mixed-content:displayed), 那么网站前面的https将不会是绿色的， 这个可以通过chrome的security工具来查看（Mixed Content）。
 
-###2016-04-14
-=======
-1. `ctrl`是`e.ctrlkey`, `command`是`<e class="metakey"></e>`
+### 2016-04-14
+1. `ctrl`是`e.ctrlkey`, `command`是`e.metaKey`
 
-###2016-04-27
-=======
+### 2016-04-27
 1. 关于`dropdown`
 
   ````html
@@ -2780,19 +2755,16 @@ s
       .dropdown-item
       .dropdown-item
   ````
-###2016-04-29
-=======
+### 2016-04-29
 1. 创建100个'x'组成的字符串。 `new Array(100).join('x')`
-
-###2016-05-03
-=======
+2. 'x'.repeat(100);
+### 2016-05-03
 1. 在通过`AJAX`post数据的时候， 需要设置请求头：
 
    ```js
    xhr.setRequestHeader('Content-type', 'application/x-www-urlencoded; charset=utf-8');
    ```
 2. 关于表单数据的`ajax`提交：
-
    如提交内容为以下对象：
 
    ```js
@@ -2821,20 +2793,15 @@ s
 
 4. PHP要相应JSON数据的话， 需要对数据进行`json_encode()`然后`echo`处理。
 
-###2016-05-04
-=======
+### 2016-05-04
 1. `CYGWIN`是一个可以在windows上使用Linux命令的环境， 通过它来安装`fish`的时候需要在安装过程包选择中选择`fish`才行， 然后通过他的命令行输入`fish`进入fish
 
-
-###2016-05-05
-=======
+### 2016-05-05
 1. `cygwin` 默认是挂载了磁盘的， 通过访问`/cyqdrive/your device`就可访问到对应的磁盘分区
 2. `df`用来查看挂载点
 
-###2016-05-09
-=======
+### 2016-05-09
 1. 在访问nginx服务器上的.php出现no input file specified的时候， 在location里面添加root, 并且将scriptfile后面的设为$document_root
-
    ```nginx
     location ~ \.php$ {
       root           D:\\nginx-1.6.0\html;
@@ -2847,9 +2814,7 @@ s
 2. `document.documentMode`判断是IE几
 3. 如果`.chm`的文件打开后没有内容， 那么右击文件， 点解除锁定就行了。
 
-
-###2016-05-10
-=======
+### 2016-05-10
 1. 关于字符串的`replace`方法：
 
    ```js
@@ -2860,33 +2825,26 @@ s
     });
     // "今今今今今天天天天天是个好天天天天天气"
    ```
-###2016-05-11
-=======
+### 2016-05-11
 1. IE10和IE11抛弃了条件注释。。
 2. 在一个执行环境内， 对于使用`const`或者`let`声明的变量，在语句没执行到的时候， 不能进行任何访问行为。 包括调用`typeof`操作符
 
    > When a JavaScript engine looks through an upcoming block andfinds a variable declaration, it either hoists thedeclaration to the top of the function or global scope (for var) or places the declaration in the TDZ (for let and const).Any attempt to access a variable in the TDZ results in aruntime error. That variable is only removed from the TDZ,and therefore safe to use, once execution flows to the variable declaration.
 
-###2016-05-12
-=======
+### 2016-05-12
 1. 通过给`a`标签添加`download`属性，即可实现在点击的时候直接下载`href`属性指向的资源。
 
-###2016-05-13
-=======
+### 2016-05-13
 1. `removeEventListener`和`addEventListener`的三个参数必须相同，才能保证能够正确的移除对应事件。
 
-###2016-05-25
-=======
+### 2016-05-25
 1. `obj.selectionStart`只针对`input`, `textarea`等元素， 不适用于`contenteditable`元素
 
-###2016-05-26
-=======
+### 2016-05-26
 1. `false && true || true`得到的结果是`true`， 首先`false && true`为`false`, 然后, `false || true`为true
 2. 回车的断行事件是在`keydown`结束后和`keyup`结束前触发的， 所以如果要在按回车的时候阻止默认事件， 应该在`keydown`里面进行。
 
-
-###2016-06-23
-=======
+### 2016-06-23
 1. 关于`this`
 
   ```js
@@ -2902,22 +2860,26 @@ s
   }
   ```
 
-###2016-06-30
-=======
+### 2016-06-30
 1. `/\w/.test(123)`得到的结果是`true`， 因为`\w`匹配的是字母数字和下划线之中的任意一个
 
-###2016-07-01
-=======
-1. `forEach`里面不能使用`continue`, `break`语句， 虽然能够使用`return`并且不会报错， 但是实际上即使满足条件的话也不会跳出循环， 而是会继续执行下去。
+### 2016-07-01
+1. `forEach`里面不能使用`continue`, `break`语句， 虽然能够使用`return`并且不会报错， 但是实际上即使满足条件的话也不会跳出循环， 而是会继续执行下去。这里主要原因是forEach接受的参数只是一个回调罢了。 可以尝试自己写一个函数来实现forEach， 然后就会简单明了。
 
+   ```js
+   Array.prototype.myForEach = function (fn) {
+      const len = this.length;
+      for (let i = 0; i < len; i++) {
+         fn(this[i], i, this); // 而这里就是forEach里面的函数所执行的东西， 简而言之， 它只是一个函数， 而非循环， 所以不能使用continue, break
+         // 另外， 在里面使用return也仅仅是跳出当前执行的函数而已， 外部并不会停止执行
+      }
+   }
+   ```
 
-###2016-07-04
-=======
+### 2016-07-04
 1. 通过`e.path`来确定点击元素的层次是一个不错的办法， 但是兼容性是一个问题。
 
-###2016-07-06
-=======
-
+### 2016-07-06
 1. 关于函数默认参数, 只有在给调用函数的时候没有在对应位置上传入参数的时候， 默认参数才会生效。也就是说， 判定默认参数是否生效的原则是是否传递该参数， 而不是该参数的值是否为`true`
 
 ```js
