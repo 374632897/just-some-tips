@@ -1,0 +1,1272 @@
+
+
+
+
+
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html lang="zh" xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    
+<script src="/js/jquery/jquery-1.12.0.min.js"></script>
+<script src="/js/base.js"></script>
+
+<script src="/js/layer/layer.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+
+
+<link rel="stylesheet" type="text/css" href="/css/public/fixed-side-options.css">
+<link rel="shortcut icon" href="/resource/img/web_icon.png">
+
+
+
+
+
+<script src='/js/qiniu/bower_components/plupload/js/plupload.full.min.js'></script>
+<script src='/js/qiniu/bower_components/qiniu/src/qiniu.js'></script>
+
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-82109879-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+
+
+    <title></title>        
+    <script src="/link/header/0.js"></script>
+    <link rel="stylesheet" type="text/css" href="/link/header/0.css">
+
+</head>
+<body>
+
+<div id="header-wrapper">
+
+    <div id="logo-search">
+
+        <table id="table-header">
+            <tr>
+                <td style="width: 120px;vertical-align: top;">
+                    <div style="float: left">
+                        <a href="/"><img src="/link/header/logo.png" id="logo" style="float: left;height: 45px"></a>
+                    </div>
+                </td>
+                <td style="vertical-align: top;">
+                    <div id="search-bar">
+                        <input value="" id="search-keywords" placeholder="请搜索..."
+                               type="text"
+                               style="min-width: 200px;width:100%;height: 38px;padding: 5px;padding-right: 50px">
+                        <div id="search-type-selection">
+
+                            <input class="product_buyer_radio" type="radio" name="search_type" checked value="product"
+                                   id="search-product"
+                                   style="vertical-align: middle"><label for="search-product"
+                                                                         style="font-size:15px;margin-left: 5px;vertical-align: middle">商品</label>
+                            <input class="product_buyer_radio" type="radio" name="search_type" value="buyer"
+                                   id="search-buyer"
+                                   style="vertical-align: middle;margin-left: 10px"><label for="search-buyer" style="font-size:15px;margin-left: 5px;vertical-align: middle">买手</label>
+
+
+                        </div>
+
+                        <img src="/link/header/icon3.png" id="search-btn"
+                             style="width:28px;position: absolute;right: 5px;top: 5px;cursor: pointer"
+                             onclick="search()">
+
+                    </div>
+                </td>
+                <td style="width: 270px;vertical-align: top;">
+                    <div style="float: right;width: 220px;text-align: right">
+
+
+                        
+
+                            <img id="login-image" src="/link/header/icon1.png"
+                                 style="height: 30px;vertical-align: middle">
+                            <button onclick="location.href = '/user/page-sign-in';" class="white_text none_bg"
+                                    style="font-size: 18px">登录
+                            </button>
+
+                            <img id="register-image" src="/link/header/icon2.png"
+                                 style="height: 30px;vertical-align: middle">
+                            <button onclick="location.href = '/user/page-sign-up';" class="white_text none_bg"
+                                    style="font-size: 18px">注册
+                            </button>
+
+
+                                                </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <div id="category-menu" style="margin-top: 15px;">
+
+        <div style="float: left;height: 35px;position: relative;margin-left: 8px" id="all-category-section">
+            <img src="/link/header/burger_menu.png" style="vertical-align: middle">
+            <button class="white_text none_bg" style="font-size: 15px;vertical-align: middle">所有商品分类</button>
+
+
+            <div id="category-area">
+                <div id="category-list"
+                     style=" width: 200px;height: 400px;position: absolute;background-color: #39548d;z-index: 2000;top: 30px;left:-25px;display: none">
+
+                    <div id="level1_1_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">营养保健</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">基础营养</button>
+                            <button class="category_root_sub_label">营养保健</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+                    <div id="level1_2_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">母婴育儿</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">母婴奶粉</button>
+                            <button class="category_root_sub_label">营养辅食</button>
+                            <button class="category_root_sub_label">孕妇保健</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+                    <div id="level1_3_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">美容个护</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">美容护肤</button>
+                            <button class="category_root_sub_label">时尚彩妆</button>
+                            <button class="category_root_sub_label">身体护理</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+                    <div id="level1_4_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">服饰箱包</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">女装女鞋</button>
+                            <button class="category_root_sub_label">男装男鞋</button>
+                            <button class="category_root_sub_label">箱包</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+                    <div id="level1_5_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">美食饮品</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">生鲜果蔬</button>
+                            <button class="category_root_sub_label">休闲食品</button>
+                            <button class="category_root_sub_label">酒水饮品</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+                    <div id="level1_6_list" class="category_root_cell">
+                        <p>
+                            <button class="category_root_main_label">户外健身</button>
+                        </p>
+                        <p>
+                            <button class="category_root_sub_label">运动鞋服</button>
+                            <button class="category_root_sub_label">运动装备</button>
+                            <button class="category_root_sub_label">健身器材</button>
+
+                        </p>
+
+                        <div class="arrow_in_cell">
+                            >
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="level2_1_list" class="level2-category-list" style="width: 220px">
+
+                    <div style="width: 100%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">基础营养</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">维生素</a>
+                                <a class="level2_link_sub_title">钙镁铁锌</a>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">保养护理</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">鱼油/磷脂</a>
+                                <a class="level2_link_sub_title">磷虾油</a>
+                                <a class="level2_link_sub_title">蜂胶</a>
+                                <a class="level2_link_sub_title">蜂王浆</a>
+                                <a class="level2_link_sub_title">月见草</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">蔓越莓</a>
+                                <a class="level2_link_sub_title">胶原蛋白</a>
+                                <a class="level2_link_sub_title">葡萄糖浆</a>
+                                <a class="level2_link_sub_title">蛋白粉</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">膳食纤维</a>
+                                <a class="level2_link_sub_title">叶绿素</a>
+                                <a class="level2_link_sub_title">葡萄籽</a>
+                                <a class="level2_link_sub_title">胶原藻类</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">调节免疫</a>
+                                <a class="level2_link_sub_title">缓解疲劳</a>
+                                <a class="level2_link_sub_title">肠胃养护</a>
+                                <a class="level2_link_sub_title">骨骼养护</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">明目</a>
+                                <a class="level2_link_sub_title">健脑</a>
+                                <a class="level2_link_sub_title">肝肾养护</a>
+                                <a class="level2_link_sub_title">清咽润喉</a>
+                                <a class="level2_link_sub_title">改善睡眠</a>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div id="level2_2_list" class="level2-category-list">
+                    <div style="width: 50%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">奶粉</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">1段</a>
+                                <a class="level2_link_sub_title">2段</a>
+                                <a class="level2_link_sub_title">3段</a>
+                                <a class="level2_link_sub_title">4段</a>
+                                <a class="level2_link_sub_title">5段</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">孕产奶粉</a>
+                                <a class="level2_link_sub_title">特殊配方奶粉</a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">营养辅食</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">益生菌/初乳</a>
+                                <a class="level2_link_sub_title">米粉/菜粉</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">果泥/果汁</a>
+                                <a class="level2_link_sub_title">DHA</a>
+                                <a class="level2_link_sub_title">宝宝零食</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">钙铁锌/维生素</a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">妇孕保健</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">维生素</a>
+                                <a class="level2_link_sub_title">DHA</a>
+                                <a class="level2_link_sub_title">益生菌</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">牛初乳</a>
+                                <a class="level2_link_sub_title">黄金素</a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div style="width: 50%;float: left;height: 100%">
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">喂养洗护</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">宝宝护肤</a>
+                                <a class="level2_link_sub_title">洗发沐浴</a>
+                                <a class="level2_link_sub_title">驱蚊防晒</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">理发器</a>
+                                <a class="level2_link_sub_title">洗漱用具</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">日常护理</a>
+                                <a class="level2_link_sub_title">奶瓶奶嘴</a>
+                                <a class="level2_link_sub_title">吸奶器</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">暖奶消毒</a>
+                                <a class="level2_link_sub_title">儿童餐具</a>
+                                <a class="level2_link_sub_title">牙胶安抚</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">围兜</a>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">儿童玩具</a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">童车童床</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">婴儿车</a>
+                                <a class="level2_link_sub_title">婴儿座椅</a>
+                                <a class="level2_link_sub_title">婴儿床</a>
+
+
+                            </div>
+                        </div>
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">童装服饰</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">儿童上衣</a>
+                                <a class="level2_link_sub_title">儿童裤子</a>
+                                <a class="level2_link_sub_title">儿童裙子</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">儿童内衣</a>
+                                <a class="level2_link_sub_title">儿童外衣</a>
+                                <a class="level2_link_sub_title">儿童运动服</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">童鞋</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div id="level2_3_list" class="level2-category-list">
+
+                    <div style="width: 50%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">美容护肤</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">洁面</a>
+                                <a class="level2_link_sub_title">乳液面霜</a>
+                                <a class="level2_link_sub_title">眼霜</a>
+                                <a class="level2_link_sub_title">面霜</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">精华</a>
+                                <a class="level2_link_sub_title">卸妆</a>
+                                <a class="level2_link_sub_title">防晒隔离</a>
+                                <a class="level2_link_sub_title">T区护理</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">爽肤水</a>
+                                <a class="level2_link_sub_title">护肤工具</a>
+                                <a class="level2_link_sub_title">剃须套装</a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">时尚彩妆</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">底妆</a>
+                                <a class="level2_link_sub_title">眼霜</a>
+                                <a class="level2_link_sub_title">唇装</a>
+                                <a class="level2_link_sub_title">美甲</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">彩妆套餐</a>
+                                <a class="level2_link_sub_title">彩妆工具</a>
+                                <a class="level2_link_sub_title">美甲工具</a>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">美发护发</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">洗发</a>
+                                <a class="level2_link_sub_title">护发</a>
+                                <a class="level2_link_sub_title">染发</a>
+                                <a class="level2_link_sub_title">造型</a>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">日常护理</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">纸品</a>
+                                <a class="level2_link_sub_title">驱虫</a>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="width: 50%;float: left;height: 100%">
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">身体护理</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">沐浴</a>
+                                <a class="level2_link_sub_title">润肤</a>
+                                <a class="level2_link_sub_title">颈部</a>
+                                <a class="level2_link_sub_title">手足</a>
+                                <a class="level2_link_sub_title">纤体塑形</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">美胸</a>
+                                <a class="level2_link_sub_title">套装</a>
+                                <a class="level2_link_sub_title">手工/香皂</a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">眼口护理</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">眼药水</a>
+                                <a class="level2_link_sub_title">牙膏</a>
+                                <a class="level2_link_sub_title">牙刷</a>
+                                <a class="level2_link_sub_title">牙线</a>
+                                <a class="level2_link_sub_title">漱口水</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">套装</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">女性护理</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">卫生巾</a>
+                                <a class="level2_link_sub_title">卫生护垫</a>
+                                <a class="level2_link_sub_title">私密护理</a>
+
+
+                            </div>
+                        </div>
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">香水精油</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">女士香水</a>
+                                <a class="level2_link_sub_title">男士香水</a>
+                                <a class="level2_link_sub_title">香体走珠</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">精油</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div id="level2_4_list" class="level2-category-list" style="width: 220px">
+
+                    <div style="width: 100%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">女装女鞋</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">女装</a>
+                                <a class="level2_link_sub_title">内衣</a>
+                                <a class="level2_link_sub_title">配饰</a>
+                                <a class="level2_link_sub_title">鞋</a>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">男装男鞋</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">男装</a>
+                                <a class="level2_link_sub_title">内衣</a>
+                                <a class="level2_link_sub_title">配饰</a>
+                                <a class="level2_link_sub_title">鞋</a>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">箱包</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">钱包</a>
+                                <a class="level2_link_sub_title">手包</a>
+                                <a class="level2_link_sub_title">单肩包</a>
+                                <a class="level2_link_sub_title">公务包</a>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">功能箱包</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">拉杆箱</a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div id="level2_5_list" class="level2-category-list">
+
+                    <div style="width: 50%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">生鲜果蔬</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">牛肉</a>
+                                <a class="level2_link_sub_title">羊肉</a>
+                                <a class="level2_link_sub_title">猪肉</a>
+                                <a class="level2_link_sub_title">鱼类</a>
+                                <a class="level2_link_sub_title">虾类</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">蟹类</a>
+                                <a class="level2_link_sub_title">贝类</a>
+                                <a class="level2_link_sub_title">海参</a>
+                                <a class="level2_link_sub_title">海产干货</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">其他水产</a>
+                                <a class="level2_link_sub_title">鸡肉</a>
+                                <a class="level2_link_sub_title">鸭肉</a>
+                                <a class="level2_link_sub_title">蛋类</a>
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">其他禽类</a>
+                                <a class="level2_link_sub_title">蔬菜</a>
+                                <a class="level2_link_sub_title">水果</a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">熟食</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">香肠火腿</a>
+                                <a class="level2_link_sub_title">糕点</a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">粮油调味</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">米面杂粮</a>
+                                <a class="level2_link_sub_title">食用油</a>
+                                <a class="level2_link_sub_title">调味品</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">方便食品</a>
+                            </div>
+
+
+                        </div>
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">休闲食品</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">饼干糕点</a>
+                                <a class="level2_link_sub_title">巧克力</a>
+                                <a class="level2_link_sub_title">糖果</a>
+
+
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">零食干货</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="width: 50%;float: left;height: 100%">
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">冲调饮料</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">茶</a>
+                                <a class="level2_link_sub_title">咖啡</a>
+                                <a class="level2_link_sub_title">蜂蜜</a>
+                                <a class="level2_link_sub_title">成人奶粉</a>
+                                <a class="level2_link_sub_title">麦片</a>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">酒水饮料</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">红酒</a>
+                                <a class="level2_link_sub_title">白酒</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="level2_6_list" class="level2-category-list" style="width: 220px">
+
+                    <div style="width: 100%;float: left;height: 100%">
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">运动鞋服</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">运动鞋</a>
+                                <a class="level2_link_sub_title">运动服</a>
+                                <a class="level2_link_sub_title">运动裤</a>
+                                <a class="level2_link_sub_title">运动配饰</a>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">运动装备</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">背包</a>
+                                <a class="level2_link_sub_title">帐篷睡袋</a>
+                                <a class="level2_link_sub_title">旅行装备</a>
+                                <a class="level2_link_sub_title">野炊装备</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">登山攀岩</a>
+                                <a class="level2_link_sub_title">救援装备</a>
+                                <a class="level2_link_sub_title">滑雪装备</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">游泳装备</a>
+                                <a class="level2_link_sub_title">冲浪潜水</a>
+                                <a class="level2_link_sub_title">极限运动</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">健身器材</a>
+                            </div>
+
+                        </div>
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">体育用品</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">羽毛球</a>
+                                <a class="level2_link_sub_title">网球</a>
+                                <a class="level2_link_sub_title">篮球</a>
+                                <a class="level2_link_sub_title">足球</a>
+                                <a class="level2_link_sub_title">高尔夫</a>
+                            </div>
+
+                            <div>
+                                <a class="level2_link_sub_title">台球</a>
+                                <a class="level2_link_sub_title">棋牌</a>
+
+                            </div>
+                        </div>
+
+                        <div class="level2_link_cell">
+                            <div>
+                                <a class="level2_link_title">垂钓用品</a>
+                            </div>
+                            <div>
+                                <a class="level2_link_sub_title">鱼竿鱼线</a>
+                                <a class="level2_link_sub_title">鱼漂鱼饵</a>
+                                <a class="level2_link_sub_title">钓鱼配件</a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <div style="float: right;">
+            <button class="white_text none_bg" onclick="location.href = '/customer-center/page-order-center?tab=all';"
+                    style="font-size: 15px;vertical-align: middle;float: left">我的订单
+            </button>
+            <div style="border: 1px solid white;float: left;height: 15px;margin-top: 1px;margin-top: 4px"></div>
+            <button class="white_text none_bg" onclick="location.href = '/customer-center/page-customer-center';"
+                    style="font-size: 15px;vertical-align: middle;float: left">个人中心
+            </button>
+            <div style="border: 1px solid white;float: left;height: 15px;margin-top: 1px;margin-top: 4px"></div>
+            <button class="white_text none_bg" onclick="location.href = '/buyer-center/page-buyer-center';"
+                    style="font-size: 15px;vertical-align: middle;float: left">买手中心
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $('#all-category-section').mouseenter(function () {
+
+
+        $('#category-list').show();
+
+    });
+
+    $('#all-category-section').mouseleave(function () {
+
+
+        $('#category-list').hide();
+
+    });
+
+
+    $('#category-area').mouseenter(function () {
+
+
+
+    });
+
+    $('#category-area').mouseleave(function () {
+
+
+        $('.level2-category-list').hide();
+
+    });
+
+
+    
+    $('#level1_1_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_1_list').show()
+
+    });
+
+    
+    $('#level1_2_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_2_list').show()
+
+    });
+
+    
+    $('#level1_3_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_3_list').show()
+
+    });
+
+    
+    $('#level1_4_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_4_list').show()
+
+    });
+
+    
+    $('#level1_5_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_5_list').show()
+
+    });
+
+    
+    $('#level1_6_list').mouseenter(function () {
+
+        $('.level2-category-list').hide();
+        $('#level2_6_list').show()
+
+    });
+
+    
+
+
+
+
+
+    $('#search-bar').mouseenter(function () {
+
+
+        $('#search-type-selection').show();
+
+    });
+
+    $('#search-bar').mouseleave(function () {
+
+
+        $('#search-type-selection').hide();
+
+    });
+
+
+    //搜索
+    function search() {
+
+        var keywords = $('#search-keywords').val();
+        var search_type = $('input[name = search_type]:checked').val();
+        if (search_type == "product") {
+            location.href = '/search/page-product-search?keywords=' + keywords;
+        } else if (search_type == "buyer") {
+            location.href = '/search/page-buyer-search?keywords=' + keywords;
+        }
+
+    }
+
+    $('#search-keywords').keydown(function (e) {
+        if (e.keyCode == 13) {
+
+            search();
+
+            return false;
+        }
+    });
+
+
+    var searchInput = $('#search-keywords');
+    var strLength = searchInput.val().length * 2;
+
+    searchInput.focus();
+    searchInput[0].setSelectionRange(strLength, strLength);
+
+
+
+
+
+    $('.level2_link_sub_title').click(function(){
+
+        var category_name = $(this).html();
+
+        location.href = '/search/page-product-search?keywords=&in_default_category_name='+category_name;
+
+
+    });
+
+    $('.category_root_main_label').click(function(){
+
+        var category_name = $(this).html();
+
+        location.href = '/search/page-product-search?keywords=&in_default_category_name='+category_name;
+
+
+    });
+
+    $('.category_root_sub_label').click(function(){
+
+        var category_name = $(this).html();
+
+        location.href = '/search/page-product-search?keywords=&in_default_category_name='+category_name;
+
+
+    });
+
+    $('.level2_link_title').click(function(){
+
+        var category_name = $(this).html();
+
+        location.href = '/search/page-product-search?keywords=&in_default_category_name='+category_name;
+
+
+    });
+
+
+
+
+</script>
+<div id="content"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Zend Framework Default Application</title>
+</head>
+<body>
+  <h1>An error occurred</h1>
+  <h2>Page not found</h2>
+
+    
+  <h3>Exception information:</h3>
+  <p>
+      <b>Message:</b> Action "apiListCardItems" does not exist and was not trapped in __call()  </p>
+
+  <h3>Stack trace:</h3>
+  <pre>#0 /var/www/global_buyer/vendor/zendframework/zendframework1/library/Zend/Controller/Action.php(518): Zend_Controller_Action->__call('apiListCardItem...', Array)
+#1 /var/www/global_buyer/vendor/zendframework/zendframework1/library/Zend/Controller/Dispatcher/Standard.php(308): Zend_Controller_Action->dispatch('apiListCardItem...')
+#2 /var/www/global_buyer/vendor/zendframework/zendframework1/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/global_buyer/vendor/zendframework/zendframework1/library/Zend/Application/Bootstrap/Bootstrap.php(105): Zend_Controller_Front->dispatch()
+#4 /var/www/global_buyer/vendor/zendframework/zendframework1/library/Zend/Application.php(384): Zend_Application_Bootstrap_Bootstrap->run()
+#5 /var/www/global_buyer/public/index.php(61): Zend_Application->run()
+#6 {main}  </pre>
+
+  <h3>Request Parameters:</h3>
+  <pre>array (
+  'controller' =&gt; 'cart',
+  'action' =&gt; 'api-list-card-items',
+  'module' =&gt; 'default',
+  'Bearer' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoia29veWVhciIsImV4cCI6MTQ3OTQ3MjAzNX0.dPJBwcxzzPxv3hcbz3x-_XbfdDkq3-k9qpytz5pKIR0',
+)  </pre>
+
+  
+</body>
+</html>
+</div>
+
+<link href="/link/footer/0.css" rel="stylesheet" type="text/css"/>
+
+<style>
+
+    .footer_part1_td{
+        padding-left: 150px;
+        width: 50%;
+    }
+
+</style>
+
+
+<div class="footer" style="display: block;min-width: 1200px;width: 100%">
+
+    <div id="footer_part1">
+        <div style="position:relative;color:#fff; font-size:23px;">
+            <div style="text-align:center;float:left;width:25%;line-height:100px;height: 100px;cursor: pointer"
+                 onclick="window.open('/documentation/page-footer-icon-doc?#footer_1', '_blank');">
+                <img src="/link/footer/footer_icon01.png" style="vertical-align: middle;margin-right: 15px">正品货源
+            </div>
+            <div style="text-align:center;float:left;width:25%;line-height:100px;height: 100px;cursor: pointer"
+                 onclick="window.open('/documentation/page-footer-icon-doc?#footer_2', '_blank');">
+                <img src="/link/footer/footer_icon02.png" style="vertical-align: middle;margin-right: 15px">海外直邮
+            </div>
+            <div style="text-align:center;float:left;width:25%;line-height:100px;height: 100px;cursor: pointer"
+                 onclick="window.open('/documentation/page-footer-icon-doc?#footer_3', '_blank');">
+                <img src="/link/footer/footer_icon03.png" style="vertical-align: middle;margin-right: 15px">本土客户
+            </div>
+            <div style="text-align:center;float:left;width:25%;line-height:100px;height: 100px;cursor: pointer"
+                 onclick="window.open('/documentation/page-footer-icon-doc?#footer_4', '_blank');">
+                <img src="/link/footer/footer_icon04.png" style="vertical-align: middle;margin-right: 15px">全球同价
+            </div>
+        </div>
+    </div>
+
+    <div id="footer_part2" style="margin-bottom: 0px">
+        <table>
+            <tr valign="top">
+                <td>
+                    <ul>
+                        <div class="title">购物指南</div>
+                        <li class="documentation-link" q="sign_in_and_sign_up">注册与登录</li>
+                        <li class="documentation-link" q="finance_info_and_maintain">账务信息与维护</li>
+                        <li class="documentation-link" q="shopping_process">购物流程</li>
+                        <li class="documentation-link" q="membership_system">会员体系</li>
+                        <li class="documentation-link" q="comment_questions">常见问题</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <div class="title">订单服务</div>
+                        <li class="documentation-link" q="order_status_statement">订单状态说明</li>
+                        <li class="documentation-link" q="cancel_order_automatically">自动取消订单</li>
+                        <li class="documentation-link" q="upload_id">上传身份证</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <div class="title">支付与配送</div>
+                        <li class="documentation-link" q="payment_methods">支付方式</li>
+                        <li class="documentation-link" q="coupon_and_gift_card">优惠券与红包</li>
+                        <li class="documentation-link" q="promotion_coin">推广币</li>
+                        <li class="documentation-link" q="shipping_method">配送方式</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <div class="title">售后服务</div>
+                        <li class="documentation-link" q="customer_protection">消费维权</li>
+                        <li class="documentation-link" q="conflict_process_role">纠纷处理规则</li>
+                        <li class="documentation-link" q="refund_rule">退货规则</li>
+                    </ul>
+                </td>
+                <td style="text-align:center">
+                    <ul>
+                        <div class="title">官方微信</div>
+                        <li><img src="/link/footer/qr_code.jpg" alt="QR Code" style="width: 160px"></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+<script src='/ys/ys-glbuyer-validate.js'></script>
+
+
+<script>
+
+    $('.documentation-link').click(function(){
+
+        window.open('/documentation/page-general-doc?q=' + $(this).attr('q') , "_blank");
+
+    });
+
+</script>
+
+
+
+    <script>
+        function showChattingBox(e) {
+
+            layer.open({
+                type: 2,
+                title: false,
+                maxmin: false,
+                shadeClose: true, //点击遮罩关闭层
+                area: ['470px', '345px'],
+                maxWidth: 1000,
+                content: '/public/view-sign-in'
+            });
+
+
+        }
+    </script>
+    
+<div id="fixed-side-bar-section">
+
+    <div class="toolbar">
+
+    
+
+    <a href="###" id="cart" class="toolbar-item toolbar-item-feedback"></a>
+    <i id="end"></i>
+    <a href="###" id="top" class="toolbar-item toolbar-item-top"></a>
+</div>
+
+<script>
+    var speed = 300;//自定义滚动速度
+    //回到顶部
+    $("#top").click(function () {
+        $("html,body").animate({"scrollTop": 0}, speed);
+    });
+
+    $("#cart").click(function () {
+        window.location.replace('/cart/page-cart');
+
+    });
+
+</script>
+</div>
+
+
+</body>
+</html>

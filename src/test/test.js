@@ -1,4 +1,4 @@
-
+const fs = require('fs');
 var time1 = 0, time2 = 0, time3= 0, start, start2, start3;
 function test(fn1, fn2, arg) {
   console.time('函数1执行时间');
@@ -41,3 +41,4 @@ var fn2 = function (str) {
 
 // test(fn1, fn2, STR);
 circle(1000);
+
