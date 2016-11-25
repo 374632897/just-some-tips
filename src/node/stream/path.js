@@ -7,3 +7,5 @@ console.log(path.basename(file));
 // console.log(path.extname(file));
 const s = fs.createReadStream(file);
 console.log(s.relative)
+console.log(path.win32 === path)
+console.log(path.win32)
