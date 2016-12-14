@@ -11,8 +11,8 @@ function createKanban(N = 10, timeout = 500) {
   }
 }
 function createCard (N = 10) {
-  // $0.backboneView.model.collection.each(item => {
-    // for (let i = 0; i < N; i++) {
+  $0.backboneView.model.collection.each(item => {
+    for (let i = 0; i < N; i++) {
       item.get('kanbanCardList').create({
         displayOrder: 65535,
         isCard:true,
@@ -22,8 +22,8 @@ function createCard (N = 10) {
         kanbanItemList:[],
         name:"test-" + i
       });
-    // }
-  // })
+    }
+  })
 }
 function createItem (N = 10, index = 'test', item) {
   for (var i = 0; i < N; i++) {
@@ -38,4 +38,13 @@ function createItemInCard (N = 10) {
   $0.backboneView.model.get('kanbanCardList').each((item, index) => {
     createItem(N, index, item);
   });
+}
+function updateItem (text) {
+  $0.backboneView.model.get('kanbanCardList').each(item => {
+    item.get('kanbanItemList').each(_item => {
+      _item.save({
+        note: Math.random() + text
+      });
+    });
+  })
 }
