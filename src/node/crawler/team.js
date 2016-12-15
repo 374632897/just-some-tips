@@ -1,17 +1,17 @@
 const https = require('https');
 const http = require('http');
 const Events = require('events');
-// const u = 'https://worktile.com/';
+const u = 'https://worktile.com/';
 // 软件产品网
 // const u = 'http://www.soft78.com/';
-const u = 'http://www.jingoal.com/lp/oa/jmb.htm?origin=' + 'fjsadkjdklsfjklasdjfklasdjfklas;fklfasdj'.repeat(100);
+// const u = 'http://www.jingoal.com/lp/oa/jmb.htm?origin=' + 'fjsadkjdklsfjklasdjfklasdjfklas;fklfasdj'.repeat(100);
 // 中粮期货 Apache/2.4.6 (CentOS) PHP/5.4.16
 // const u = 'http://tuiguang.zlqh.com/zlsctd/';
 // 重庆晨报
 // const u = 'http://www.cqcb.com/reading/2016-12-14/228646_pc.html';
 const request = u.startsWith('https') ? https : http;
 
-const Max = 8000;
+const Max = 1;
 const EndOne = 'finishOne';
 class Connect extends Events {
   constructor (url, times) {
@@ -43,7 +43,7 @@ class Connect extends Events {
   getTask () {
     console.info('getTask')
     this.currentTasks--;
-    this.startTask();
+    // this.startTask();
   }
   pushTask (task) {
 
@@ -51,6 +51,7 @@ class Connect extends Events {
   request () {
     console.log(`当前任务数 => ${this.currentTasks}`);
     request.get(this.url, (socket) => {
+      console.log(socket.rawHeaders)
       socket.on('error', (err) => {
         console.error(err);
         this.emit(EndOne);
