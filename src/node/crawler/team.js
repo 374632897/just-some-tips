@@ -1,7 +1,8 @@
 const https = require('https');
 const http = require('http');
 const Events = require('events');
-const u = 'https://worktile.com/';
+const u = 'http://202.106.33.158/wxts/wxts.htm?';
+// const u = 'https://worktile.com/';
 // 软件产品网
 // const u = 'http://www.soft78.com/';
 // const u = 'http://www.jingoal.com/lp/oa/jmb.htm?origin=' + 'fjsadkjdklsfjklasdjfklasdjfklas;fklfasdj'.repeat(100);
@@ -11,7 +12,7 @@ const u = 'https://worktile.com/';
 // const u = 'http://www.cqcb.com/reading/2016-12-14/228646_pc.html';
 const request = u.startsWith('https') ? https : http;
 
-const Max = 1;
+const Max = 10000;
 const EndOne = 'finishOne';
 class Connect extends Events {
   constructor (url, times) {
@@ -51,7 +52,7 @@ class Connect extends Events {
   request () {
     console.log(`当前任务数 => ${this.currentTasks}`);
     request.get(this.url, (socket) => {
-      console.log(socket.rawHeaders)
+      // console.log(socket.rawHeaders)
       socket.on('error', (err) => {
         console.error(err);
         this.emit(EndOne);

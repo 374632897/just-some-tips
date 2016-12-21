@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>checkbox</title>
+  <style type="text/css">
+    input[type='checkbox'] {
+      display: none;
+    }
+    input[type='checkbox'] + label::before{
+      content: '\a';
+      display: inline-block; vertical-align: middle;
+      width: .8em; height: .8em; margin-right: .2em; border-radius: .2em; background: silver; text-indent: .15em; line-height: .65;
+    }
+    input[type="checkbox"]:checked + label::before {
+      content: '\2713';
+      background: yellowgreen;
+    }
+    ul {
+      overflow: auto;
+      width: 10em;
+      height: 8em;
+      padding: .3em .5em; border: 1px solid silver;
+      background: linear-gradient(white, white), radial-gradient(at top, rgba(0,0,0,.2),
+      transparent 70%); background-repeat: no-repeat;
+      background-size: 100% 15px; background-attachment: local, scroll;    }
+  </style>
+</head>
+<body>
+<p>
+  <input type="checkbox" name="" / id='test'>
+  <label for = 'test'>GitHub</label>
+</p>
+<dialog>This is a dialog </dialog>
+
+<ul>
+  <li>Ada Catlace</li>
+  <li>Alan Purring</li>
+  <li>Schrödingcat</li>
+  <li>Tim Purrners-Lee</li> <li>WebKitty</li> <li>Json</li> <li>Void</li> <li>Neko</li> <li>NaN</li> <li>Cat5</li> <li>Vector</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>underline</title>
+  <style type="text/css">
+    p {
+      width: 80%;
+      margin: 0 auto;
+      background: linear-gradient(gray, gray) repeat-y;
+      background-size: 100% 1px;
+      background-position: 0 1.15em;
+    }
+    button:active,
+    span:active {
+      color: #f66;
+    }
+    button:focus {
+      color: #f66;
+    }
+    div > p:nth-of-type(2n + 1) {
+      text-align: left;
+    }
+    div > p:nth-of-type(2n) {
+      text-align: right;
+    }
+    div:first-of-type {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<button>测试</button>
+<span>测试</span>
+<h1>Black Eyes</h1>
+<p>最佳的解决方案往往出自最意想不到的地方。在这个例子中，最佳方案 来自于 background-image 及其相关属性。你可能会觉得这完全不可思议， 但请容我慢慢道来。背景可以完美地跟随换行的文本，而且借助 CSS 背景 与边框(第三版)中与背景相关的新属性，我们已经拥有了细粒度控制背景 的能力。我们甚至不需要用到额外的 HTTP 请求来加载背景图片，因为可以 通过 CSS 渐变来凭空生成所需的图像:</p>
+<div>
+    <p>First paragraph (left aligned)</p>
+    <p>Second paragraph (right aligned)</p>
+    <p>Third paragraph (left aligned)</p>
+</div>
+</body>
+</html>
