@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/374632897/just-some-tips#readme",
   "devDependencies": {
+    "NeteaseCloudMusicApi": "^1.5.1",
     "cheerio": "^0.22.0",
     "colors": "^1.1.2"
   },
