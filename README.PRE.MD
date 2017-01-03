@@ -1257,14 +1257,7 @@ for (var i = 0; i < aLi.length; i++) {
 1. Math.cos() Math.sin()等等涉及到三角函数的方法接受的参数是弧度而不是角度啊啊啊啊啊啊啊！！！！！
 2. const定义一个对象的时候， 可以在之后改变对象的属性，但是不能改变该常量为其他对象。也就是说，可以用const 定义一个对象，然后可以继续修改这个对象的属性方法等. It's also available for Arrays.
 3. 不要为函数参数重新分配值
-4. 涉及到执行语句的话用{{}}, 需要解析为html的，则用{{= }}, 如下
-
-   ```javascript
-   <ul class="content month">
-     {{ for (var i = 0, len = 31; i < len; i++) { }}
-       <li class={{= "month_" + i}}>{{= i}}</li> // 这里是用的等号
-     {{ } }}
-   </ul>
+4. 涉及到执行语句的话用{{}}, 需要解析为html的，则用{{= }}
    ```
 5. return可以直接返回一个对象：
 
