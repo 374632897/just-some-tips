@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "video": "node src/video/app"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,11 @@
   "homepage": "https://github.com/374632897/just-some-tips#readme",
   "devDependencies": {
     "NeteaseCloudMusicApi": "^1.5.1",
+    "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
