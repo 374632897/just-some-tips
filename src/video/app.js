@@ -6,7 +6,7 @@ const { getVideo, getList } = require('./template');
 app.use(bodyParser.json());
 // app.use('/dist', express.static('dist'));
 
-app.use('/dist', express.static(path.join(__dirname, 'dist'))); // 需要用这个才行。
+app.use('/dist', express.static(path.join(__dirname, 'dist'))); // 需要用这个才行。 因为调用这个文件时并不是在本文件所在目录
 
 app.get('/', (req, res) => {
   console.log(req.headers);
