@@ -1,10 +1,5 @@
-const { tip } = require('../../utils/func');
-const MAX = 10000;
-function doLoop (fn = function () {}, max = MAX) {
-  for (let i = 0; i < max; i++) {
-    fn();
-  }
-}
+const { tip, doLoop } = require('../../utils/func');
+
 function useIf () {
   doLoop(() => {
     if (10 > 100) {
@@ -14,8 +9,10 @@ function useIf () {
     }
   });
 }
+
 function useOperator () {
   doLoop(() => 10 > 100 ? true : false);
 }
-tip(useIf);
-tip(useOperator);
+
+tip(useIf); // 2.880ms
+tip(useOperator); // 0.744ms
