@@ -29,6 +29,11 @@ describe("# Array", () => {
       const ary = range(0, 10, 0);
       assert.equal(true, ary.every(item => item === 0));
     });
+    it.skip('should return an array when step less than 0', () => {
+      const ary = range(10, 100, -10);
+      assert.equal(9, ary.length);
+      assert.equal(10, ary[0]);
+    });
   });
   describe('# random', () => {
     it('Should between 0 - 10', () => {
