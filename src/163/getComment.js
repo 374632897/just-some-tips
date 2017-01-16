@@ -1,11 +1,15 @@
 class GetComments {
-  constructor (text = '', cb = function (text) {console.info(text)}, delay = 5000) {
+  constructor (text = '', cb = function (text) {// text -> username
+    console.info(text);
+    this.comments.push(text);
+  }, delay = 5000) {
     this.COMMENT_BOX_SEL = '.cmmts';
     this.NEXT_PAGE_BTN_SEL = '.zbtn.znxt';
 
     this.textValidate = this.getReg(text);
     this.cb = cb.bind(this);
     this.delay = delay;
+    this.comments = [];
   }
 
   getReg (text) {
