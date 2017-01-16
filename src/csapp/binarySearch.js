@@ -45,8 +45,10 @@ function search1 (a, b) {
 function search2 (a, b) {
   console.time('search2')
   const notSelect = [];
+  console.time('sort')
   a.sort();
   b.sort();
+  console.timeEnd('sort')
   a.forEach(item => {
     if (binarySearch(item, b) === -1) {
       notSelect.push(item);
