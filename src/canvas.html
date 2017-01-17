@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>canvas</title>
+</head>
+<body>
+<canvas class = 'canvas' width="220" height="220"></canvas>
+<script type="text/javascript">
+  var c = document.querySelector('.canvas');
+  var cxt = c.getContext('2d');
+  var PI = Math.PI;
+  cxt.beginPath();
+  cxt.lineWidth = 2;
+  cxt.arc(110, 110, 105, -PI / 2, PI + PI / 2);
+  cxt.stroke();
+
+  function test () {
+    for (let i = 0; i < 100; i++) {
+      $.get(`http://192.168.3.111/task/userManage/addUser?username=zhouqiang${i}@rishiqing.com&password=123456`);
+    }
+  }
+</script>
+</body>
+</html>
