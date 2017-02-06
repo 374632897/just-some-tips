@@ -1,8 +1,12 @@
 exports.range = range;
 exports.random = random;
+exports.getDenseArray = getDenseArray;
 
 function getDenseArray (length = 10) {
   return [...new Array(length)];
+}
+function getSparseArray (length = 10) {
+  return new Array(length);
 }
 
 function range (start = 0, end = 10, step = 1) {

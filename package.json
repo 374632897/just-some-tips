@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "mocha tests",
-    "video": "node src/video/app"
+    "video": "node src/video/app",
+    "clearConsole": "bash bin/clearConsole.sh",
+    "lint": "bash bin/lint.sh"
   },
   "repository": {
     "type": "git",

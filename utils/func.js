@@ -2,6 +2,7 @@ exports.tip = tip;
 exports.doLoop = doLoop;
 exports.doLoopWithCondition = doLoopWithCondition;
 exports.isObjectEqual = isObjectEqual;
+exports.logError = logError;
 
 function tip (fn = function () {}, tips = fn.name) {
   console.time(tips);
@@ -20,11 +21,20 @@ function doLoopWithCondition (fn = function () {}, max = MAX) {
     if (fn() === false) break;
   }
 }
+function isEqual (source = {}, dist = {}) {
+  return source === dist；
+}
 function isObjectEqual (source = {}, dist = {}) {
-  if (source === dist) return true;
+  if (isEqual(source, dist)) return true;
   try {
     return JSON.stringify(source) === JSON.stringify(dist);
   } catch (e) {
     return false;
   }
 }
+function logError (err) {
+  console.error('########## errorStart ##########');
+  console.error('Error => ', err);
+  console.error('########## errorEnd ##########');
+}
+
