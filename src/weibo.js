@@ -10,7 +10,6 @@ function getWeiboWrapper () {
 function getHeader () {
   return new Headers({
     'Content-Type', 'application/x-www-form-urlencoded',
-    'Cookie', '',
     'X-Requested-With', 'XMLHttpRequest'
   });
   // const headers = new Headers();
@@ -23,6 +22,7 @@ function getHeader () {
 var headers = getHeader();
 
 function innerFetch (url, body) {
+  // credentials 请求的时候包含Cookie
   fetch(url, { method: 'POST', body, headers, mode: 'no-cors', credentials: 'include' });
 }
 
