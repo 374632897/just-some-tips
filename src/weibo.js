@@ -13,11 +13,11 @@ function getHeader () {
     'Cookie', '',
     'X-Requested-With', 'XMLHttpRequest'
   });
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/x-www-form-urlencoded')
-  headers.append('Cookie', '')
-  headers.append('X-Requested-With', 'XMLHttpRequest')
-  return headers;
+  // const headers = new Headers();
+  // headers.append('Content-Type', 'application/x-www-form-urlencoded')
+  // headers.append('Cookie', '')
+  // headers.append('X-Requested-With', 'XMLHttpRequest')
+  // return headers;
 }
 
 var headers = getHeader();
