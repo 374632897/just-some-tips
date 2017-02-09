@@ -13,6 +13,15 @@ var LazyMan = class LazyMan {
     }
     return this;
   }
+  sleep2 () {
+    const tmp = this.sleepWrapper();
+    return tmp;
+  }
+  *sleepWrapper (sec) {
+    setTimout(() => {
+      yield this;
+    }, sec * 1000);
+  }
   async sleep1 (delay = 1) {
     const a = await new Promise ((res, rej) => {
       setTimeout(() => {

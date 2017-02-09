@@ -24,6 +24,8 @@ function LazyMan (name) {
   if (!(this instanceof LazyMan)) {
     return new LazyMan(name);
   }
+  this.constructor = LazyMan;
+  // Subscribe.apply(this);
   setTimeout(() => {
     this.next();
   }, 0);
