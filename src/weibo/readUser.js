@@ -1,6 +1,5 @@
 const fs = require('fs');
 const data = JSON.parse(fs.readFileSync('./follower.log'));
-// process.exit(0)
 const followers = [];
 data.forEach(item => {
   item.forEach(_item => {
@@ -11,4 +10,6 @@ data.forEach(item => {
     });
   });
 });
-console.log(followers.length)
+const ids = [...new Set(followers.map(item => item.id))];
+console.log(ids);
+console.log(ids.length)
