@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+  const body = document.body;
+  let count = 0, tmp;
+  setInterval(() => {
+    body.innerHTML = ++count;
+    for (let i = 0; i < 100000; i++) {
+      tmp = [...new Array(10)].reduce((pre, next) => pre + next, 0);
+    }
+  }, 1000)
+</script>
+</body>
+</html>

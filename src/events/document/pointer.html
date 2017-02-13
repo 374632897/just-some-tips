@@ -1,0 +1,15 @@
+<html>
+<script>
+function cancelHandler(ev) {
+ // Process the pointercancel event
+}
+function init() {
+ var el=document.getElementById("target1");
+ el.onpointercancel = cancelHandler;
+}
+</script>
+<body onload="init();">
+<div id="target1"> Touch me ... </div>
+<div id="target2" onpointercancel="cancelHandler(event)"> Touch me ... </div>
+</body>
+</html>
