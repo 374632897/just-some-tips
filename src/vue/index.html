@@ -40,7 +40,16 @@
     <todo-item v-for = 'item in list' :todo = 'item'></todo-item>
   </ul>
 </div>
-
+<div id="app3">
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+  <label for="mike">Mike</label>
+  <br>
+  <span>Checked names: {{ checkedNames }}</span>
+</div>
 <script type="text/javascript">
   var app1 = new Vue({
     el: '#app',
@@ -104,6 +113,12 @@
       },]
     }
   });
+  var app3 = new Vue({
+    el: '#app3',
+    data: {
+      checkedNames: []
+    }
+  })
 </script>
 </body>
 </html>
