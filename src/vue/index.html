@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+<script src = './js/vue.min.js'></script>
+<script src = './js/vuex.min.js'></script>
+
+</head>
+<body>
+
+<div id="app">
+  <div class="wrapper">
+      <input v-model = 'message' :title = 'message' />
+      <p>UpperCase: => {{ message | capitalize }}</p>
+      <p>ReversedString: => {{ reversedString }}</p>
+      <p>date: {{ now }}</p>
+      <input type="button" value = 'click me' @click='reverseString' :disabled = 'true' />
+      <div v-html = 'html'></div>
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+      </template>
+      <button @click='toggleLogin'>toggle login type</button>
+      <template v-if = 'show'>
+        <p>点下面的按钮</p>
+        <p>让我消失吧</p>
+        <p>不是咬啊 发生看了看</p>
+        <span>发牢骚；借款分类</span>
+      </template>
+      <button @click='toggleShow'>切换显示</button>
+
+  </div>
+</div>
+<div id="app2">
+  <ul>
+    <todo-item v-for = 'item in list' :todo = 'item'></todo-item>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  var app1 = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello world',
+      html: '<script type="text/javascript">alert("Hello")<\/script>123123',
+      now: '',
+      loginType: 'username',
+      show: true
+    },
+    mounted () {
+      console.info('onMounted')
+    },
+    methods: {
+      reverseString: function () {
+        this.message = this.message.split('').reverse().join('');
+      },
+      getNow () {
+        var date = new Date();
+        return date.toLocaleString();
+      },
+      toggleLogin () {
+        this.loginType = (this.loginType === 'username') ? 'email' : 'username';
+      },
+      toggleShow () {
+        this.show = !this.show;
+      }
+    },
+    computed: {
+      reversedString () {
+        return this.message.split('').reverse().join('');
+      }
+    },
+    filters : {
+      capitalize (val) {
+        return val ? val.toUpperCase() : '';
+      }
+    }
+  });
+  setInterval(() => {
+    app1.now = app1.getNow();
+  }, 1000)
+
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      list: [{
+        text: 'Jason'
+      },{
+        text: 'Jason2'
+      },{
+        text: 'Jason3'
+      },{
+        text: 'Jason4'
+      },{
+        text: 'Jason5'
+      },]
+    }
+  });
+</script>
+</body>
+</html>
