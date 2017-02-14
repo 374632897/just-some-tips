@@ -9,11 +9,39 @@
 <body>
 
 <div id="app">
+  <input v-model = 'newTodo' @keyup.enter='addOne'  autofocus="" placeholder="add one todo" />
+  <todo-item
+    v-for = '(todo, index) in todos'
+    v-bind:todo='todo'
+    v-bind:index='index'
+    v-on:remove='todos.splice(index, 1)'
+  >
 
+  </todo-item>
 </div>
 
 <script type="text/javascript">
+const data = ['吃饭', '睡觉', '看书'];
 
+const Item = Vue.component('todo-item', {
+  props: ['todo', 'index'],
+  template: '<li>{{ todo }} <button @click="$emit(\'remove\')">❌</button></li>'
+});
+const app = new Vue({
+  el: '#app',
+  data: {
+    todos: data,
+    newTodo: ''
+  },
+  methods: {
+    addOne () {
+      const val = this.newTodo.trim();
+      if (!val) return;
+      this.todos.unshift(val);
+      this.newTodo = '';
+    }
+  }
+});
 </script>
 </body>
 </html>
