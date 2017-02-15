@@ -50,6 +50,11 @@
   <br>
   <span>Checked names: {{ checkedNames }}</span>
 </div>
+<div id="app4">
+  <button-counter v-on:inc='inc'>
+
+  </button-counter>
+</div>
 <script type="text/javascript">
   var app1 = new Vue({
     el: '#app',
@@ -117,6 +122,29 @@
     el: '#app3',
     data: {
       checkedNames: []
+    }
+  });
+  Vue.component('button-counter', {
+    // template 需要有一个根元素， 也就是说最外层需要嵌套一个元素才行。
+    template: '<div><button @click="inc">点1</button><span>{{ count }}</span></div>',
+    data () {
+      return {
+        count: 1
+      }
+    },
+    methods: {
+      inc () {
+        this.count++;
+        this.$emit('inc', this.count);
+      }
+    }
+  });
+  var app4 = new Vue({
+    el: '#app4',
+    methods: {
+      inc (count)  {
+        console.info('parent inc emitted => ', count);
+      }
     }
   })
 </script>
