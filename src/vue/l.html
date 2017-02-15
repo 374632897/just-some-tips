@@ -2,18 +2,29 @@
 <html>
 <head>
   <title></title>
+  <meta name = 'viewport' content = 'width = device-width, user-scalable=no, initial-scale = 1.0' />
+  <style type="text/css">
+    #gd {
+      transform: scale(0.6);
+      margin-left: -132px;
+    }
+  </style>
 </head>
 <body>
 <canvas width="670" height="625" id = 'gd'></canvas>
+<!-- <canvas width="335" height="312.5" id = 'gd'></canvas> -->
 <script src = './js/garden.js'></script>
 <script type="text/javascript">
+var gardenCanvas = document.querySelector('#gd');
+var gardenCtx = gardenCanvas.getContext("2d");
 function getHeartPoint(angle) {
   var t = angle / Math.PI;
   var x = 19.5 * (16 * Math.pow(Math.sin(t), 3));
   var y = - 20 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
   return new Array(offsetX + x, offsetY + y);
 }
-var offsetX = 670 / 2, offsetY = 625 / 2 - 55;
+var offsetX = gardenCanvas.width / 2, offsetY = gardenCanvas.height / 2 - 55;
+// var offsetX = 670 / 2, offsetY = 625 / 2 - 55;
 function startHeartAnimation() {
   var interval = 50;
   var angle = 10;
@@ -41,10 +52,9 @@ function startHeartAnimation() {
   }, interval);
 }
 
-gardenCanvas = document.querySelector('#gd');
-gardenCtx = gardenCanvas.getContext("2d");
+
 gardenCtx.globalCompositeOperation = "lighter";
-garden = new Garden(gardenCtx, gardenCanvas);
+var garden = new Garden(gardenCtx, gardenCanvas);
 setInterval(function () {
     garden.render();
 }, Garden.options.growSpeed);
