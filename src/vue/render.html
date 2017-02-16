@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+<script src = './js/vue.min.js'></script>
+<script src = './js/vuex.min.js'></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div id="app1">
+  <a-h :level = '1'>
+    <slot>
+      没有内容显示我
+    </slot>
+  </a-h>
+</div>
+<script type="text/javascript">
+Vue.component('a-h', {
+  render (createElement) {
+    return createElement('h' + this.level, this.$slots.default)
+  },
+  props: {
+    level: {
+      required: true,
+      type: Number
+    }
+  }
+});
+new Vue({
+  el: '#app1'
+});
+</script>
+</body>
+</html>
