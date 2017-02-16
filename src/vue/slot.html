@@ -4,7 +4,15 @@
   <title>test</title>
 <script src = './js/vue.min.js'></script>
 <script src = './js/vuex.min.js'></script>
+<style type="text/css">
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
 
+</style>
 </head>
 <body>
   <div id="app">
@@ -24,6 +32,22 @@
       <p slot="footer">这里有一些联系信息</p>
     </app-layout>
   </div>
+  <div id="app3">
+    <div class="parent">
+      <child>
+        <template scope="props">
+          <span :data-id = 'props.id'>hello from parent</span>
+          <span :data-id = 'props.id'>{{ props.text }}</span>
+        </template>
+      </child>
+    </div>
+  </div>
+  <div id="app5">
+    <button @click='show = !show'>toggle me!</button>
+    <transition name = 'fade'>
+      <p v-show='show'>Hello</p>
+    </transition>
+  </div>
 <script type="text/javascript">
 Vue.component('m-com', {
   template: `<div>
@@ -36,6 +60,7 @@ Vue.component('m-com', {
 new Vue({
   el: '#app',
 });
+
 Vue.component('app-layout', {
   template: `<div class="container">
   <header>
@@ -50,9 +75,25 @@ Vue.component('app-layout', {
   </footer>
 </div>`
 });
+
 new Vue({
   el: '#app2'
 });
+Vue.component('child', {
+  template: `<div class="child">
+  <slot text="hello from child" id = '123'></slot>
+</div>
+`
+});
+new Vue({
+  el: '#app3'
+})
+new Vue({
+  el: '#app5',
+  data: {
+    show: true
+  }
+})
 </script>
 </body>
 </html>
