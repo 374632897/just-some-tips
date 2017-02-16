@@ -11,6 +11,9 @@
   .fade-enter, .fade-leave-active {
     opacity: 0
   }
+  .flip-list-move {
+    transition: transform 1s;
+  }
 
 </style>
 </head>
@@ -42,11 +45,24 @@
       </child>
     </div>
   </div>
-  <div id="app5">
+  <div id="app4">
     <button @click='show = !show'>toggle me!</button>
     <transition name = 'fade'>
       <p v-show='show'>Hello</p>
     </transition>
+  </div>
+  <div id="app5">
+    <input type="radio" @click='view="v-a"' name = 'view' id = 'A' checked />
+    <label for = 'A'>A</label>
+    <input type="radio" @click='view="v-b"' name = 'view' id = 'B' />
+    <label for = 'B'>B</label>
+    <component :is='view'></component>
+  </div>
+  <div id="app6">
+    <button @click='shuffle'>shuffle</button>
+    <transition-group name = 'flip-list' tag = 'ul' >
+      <li v-for = 'item in items' :key='item'> {{ item }}</li>
+    </transition-group>
   </div>
 <script type="text/javascript">
 Vue.component('m-com', {
@@ -89,10 +105,38 @@ new Vue({
   el: '#app3'
 })
 new Vue({
-  el: '#app5',
+  el: '#app4',
   data: {
     show: true
   }
+})
+new Vue({
+  el: '#app5',
+  data: {
+    view: 'v-a'
+  },
+  components: {
+    'v-a': {
+      template: '<p>Component A</p>'
+    },
+    'v-b': {
+      template: '<p>Component B</p>'
+    },
+  },
+
+});
+new Vue({
+  el: '#app6',
+  data: {
+    items: [1,2,3,4,5,6,7,8,9]
+  },
+  methods: {
+    shuffle () {
+      return this.items.sort(() => Math.random() - Math.random());
+      // return Math.random() - Math.random();
+    }
+  }
+
 })
 </script>
 </body>
