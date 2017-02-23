@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+<script src = './js/vue.min.js'></script>
+<script src = './js/vuex.min.js'></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div id="app1">
+  <from-mixin />
+</div>
+<script type="text/javascript">
+var mixin = {
+  created: function () {
+    this.hello();
+  },
+  methods :{
+    hello () {
+      console.info('created with mixin');
+    }
+  }
+};
+Vue.component('from-mixin', {
+  mixins: [mixin]
+});
+new Vue({
+  el: '#app1',
+  created () {
+    this.say();
+  },
+  methods: {
+    say () {
+      console.info('saysa syfsfk')
+    }
+  }
+});
+</script>
+</body>
+</html>

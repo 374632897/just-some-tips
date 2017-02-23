@@ -4,6 +4,7 @@ const request = require('request');
 const { getFocusUrlByPage } = require('./util');
 const headers = require('./header');
 const MatchReg = /action-data=\\"(uid=.*?)">/g;
+// const MatchReg = /action-data=\\"([\s\S]*)\\">/g;
 const fs = require('fs');
 let page = 2;
 let Users = [];
