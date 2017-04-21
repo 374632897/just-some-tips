@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>事件移除DEMO</title>
+</head>
+<body>
+<button class="binder">The button bind an Event, click me</button>
+<button class = 'remove'>click to remove ele</button>
+<button class = 'removeEvent'>click to remove listener</button>
+
+<script type="text/javascript">
+  const $ = ele => document.querySelector(ele);
+  const $binder = $('.binder'), $remove = $('.remove'), $rEvent = $('.removeEvent');
+  function say () { alert('Hello') }
+  $binder.addEventListener('click', say, false);
+
+  $remove.addEventListener('click', () => {
+    $binder.remove();
+  });
+  $rEvent.addEventListener('click', () => {
+    $binder.removeEventListener('click', say, false);
+  });
+</script>
+</body>
+</html>

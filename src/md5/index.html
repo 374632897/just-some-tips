@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>md5</title>
+  <script src = './md5.js'></script>
+</head>
+<body>
+<input type="file" name="" class = 'file'>
+<script type="text/javascript">
+var $file = document.querySelector('.file');
+var expected = '86ea6a8b7d18f98968beddae4b3d1547'
+$file.onchange = function (e) {
+  var file = $file.files[0];
+  var reader = new FileReader();
+  reader.onloadend = function (a) {
+    var result = a.target.result;
+    var hash = MD5(result);
+    // var hash = md5(result);
+    console.info(hash)
+    console.info('isEqual => ', hash === expected)
+    // console.info(a);
+  }
+  // reader.readAsDataURL(file);
+  // reader.readAsBinaryString(file);
+  reader.readAsArrayBuffer(file);
+  // reader.readAsText(file);
+}
+
+function MD5 (str) {
+  return ALY.util.crypto.md5(str, 'hex')
+  // return CryptoJS.MD5(str).toString(CryptoJS.enc.Base64)
+}
+</script>
+</body>
+</html>

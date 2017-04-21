@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<button>测试</button>
+<script type="text/javascript">
+const button = document.querySelector('button')
+function say () { alert('hello') }
+button.addEventListener('click', say, false);
+button.removeEventListener('click', void 0, false);
+// button.removeEventListener('click');
+</script>
+</body>
+</html>
