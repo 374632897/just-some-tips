@@ -1,4 +1,4 @@
-const assert = require('assert');
+// test cases './test.js'
 
 function expandArray (ary) {
   if (!Array.isArray(ary)) return ary;
@@ -7,5 +7,4 @@ function expandArray (ary) {
   }, []);
 }
 
-console.info(expandArray([1,2,3,[1,2,3, [1,2,3]], [4,5,[6,7,[8,9]]]]));
-console.info(expandArray([[1,2], [3,4], [5,6]]))
+module.exports = expandArray;
