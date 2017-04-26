@@ -3,8 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style type="text/css">
+    .test > div {
+      width: 50%;
+      text-align: center;
+      /*width: 400px;*/
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+      /*margin-left: 20px;*/
+    }
+  </style>
 </head>
 <body>
-  <script src = 'worker.js'></script>
+  <div class = 'test'>
+    <div class="left">
+      <h2>worker</h2>
+      <div class="counter"></div>
+    </div>
+    <div class="right">
+      <h2>非worker</h2>
+      <div class="counter"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const $ = sel => document.querySelector(sel);
+    const $left = $('.left .counter'), $right = $('.right .counter');
+    const w = new Worker('./my-w.js');
+    const person = {
+      name: 'Daisy'
+    };
+    let counter = 0;
+
+    const getStr = (str) => {
+      return new Date().getSeconds() + '  ' + (str) + '<br>';
+    }
+
+    w.addEventListener('message', (e) => {
+      $left.innerHTML = $left.innerHTML +  getStr(e.data);
+    });
+    setInterval(() => {
+      $right.innerHTML = $right.innerHTML + getStr(++counter);
+    }, 1000);
+    w.postMessage(person);
+
+  </script>
 </body>
 </html>
