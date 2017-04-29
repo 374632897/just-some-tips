@@ -3,6 +3,7 @@ const assert = require('assert')
 const isSameIds = (ids1, ids2) => {
   if (ids2 === ids1) return true;
   if (!ids1 || !ids2) return false;
+  if (ids1.length !== ids2.length) return false;
 
   const [sortIds1, sortIds2] = [ids1, ids2].map(item => {
     return item.split(',').map(Number).sort((a, b) => {

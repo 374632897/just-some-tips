@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试测试</title>
+</head>
+<body>
+<input type="text" name="" class = 'haha'>
+<span>点我</span>
+<script type="text/javascript">
+  !(function () {
+    var $ = sel => document.querySelector(sel);
+    var $input = $('.haha'), $span = $('span');
+
+    $span.onmousedown = e => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+  })()
+  'Hello'
+</script>
+</body>
+</html>
