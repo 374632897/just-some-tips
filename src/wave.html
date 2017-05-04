@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>wave</title>
+  <style type="text/css">
+  @keyframes fillUpSvg {
+      0% {
+        transform: translateY(calc(100px/2)) scaleY(0);
+      }
+      50% {
+        transform: translateY(0) scaleY(1);
+      }
+      100% {
+        transform: translateY(calc(100px/2)) scaleY(0);
+      }
+    }
+
+
+    @keyframes waveSvgAnim {
+      0% {
+        transform: translateX(calc(-100px * 2));
+      }
+      100% {
+        transform: translateX(100px * 2);
+      }
+    }
+
+    body > .wrapper {
+        margin: 50px auto;
+        vertical-align: top;
+        text-align: center;
+    }
+    h3 {
+        margin-bottom: 50px;
+    }
+    body > .wrapper > div {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+    }
+    .wave-svg-shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 100%;
+        overflow: hidden;
+        transform: translateX(-100px);
+        animation: fillUpSvg 10s ease-in-out infinite;
+    }
+    .wave-svg-shape .wave-svg {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        float: left;
+        fill: #FF7373;
+        margin: 0;
+        animation: waveSvgAnim 1s linear infinite;
+    }
+    @keyframes fillUpSvg {
+      0% {
+        transform: translateY(calc(100px/2)) scaleY(0);
+      }
+      50% {
+        transform: translateY(0) scaleY(1);
+      }
+      100% {
+        transform: translateY(calc(100px/2)) scaleY(0);
+      }
+    }
+    @keyframes waveSvgAnim {
+      0% {
+        transform: translateX(calc(-100px * 2));
+      }
+      100% {
+        transform: translateX(100px * 2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h3>animated svg</h3>
+    <div>
+      <div class="wave-svg-shape">
+        <svg class="wave-svg" xmlns="http://www.w3.org/2000/svg" id="738255fe-a9fa-4a5e-963a-8e97f59370ad" data-name="3-waves" viewBox="0 0 600 215.43"><title>wave shape</title><path class="871c1787-a7ef-4a54-ad03-3cd50e05767a" d="M639,986.07c-17-1-27.33-.33-40.5,2.67s-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06S456,987.07,439,986.07s-27.33-.33-40.5,2.67-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06S256,987.07,239,986.07s-27.33-.33-40.5,2.67-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06v205.06h600V996S656,987.07,639,986.07Z" transform="translate(-76 -985)"></path></svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
