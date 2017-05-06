@@ -20,3 +20,13 @@ app.get(/.+\.mp4$/, (req, res) => {
   res.send(getVideo('http://www.w3school.com.cn/i/movie.mp4'));
 })
 app.listen(3000);
+
+function Name () {
+  function age () {
+    function say () {
+      function get () {
+
+      }
+    }
+  }
+}

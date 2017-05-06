@@ -15,4 +15,3 @@ testCases.set([1, 'a', 'b', [2,3,'d', 'e', '4', [5]], '7', '8'], [1, 'a', 'b', 2
 testCases.forEach((expectedValue, targetValue) => {
   assert.ok(deepEqual(expandArray(targetValue), expectedValue));
 });
-
