@@ -1,8 +1,8 @@
 #!/bin/bash
 INFO='\033[36m';
 NOR='\033[0m';
-ERR='\033[31m';
 br='dev';
+
 echo -e "${INFO}run lint now ... just wait a moment ...${NOR}";
 
 [ $1 ] && br=$1;
