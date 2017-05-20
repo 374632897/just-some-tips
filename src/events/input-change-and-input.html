@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<input type="" name="">
+<script type="text/javascript">
+  const $input = document.querySelector('input')
+  $input.addEventListener('input', () => {
+    console.info(new Date().getMilliseconds())
+    console.info('input event occured')
+  })
+  $input.addEventListener('change', () => {
+    console.info(new Date().getMilliseconds())
+    console.info('change event occured')
+  })
+</script>
+</body>
+</html>
