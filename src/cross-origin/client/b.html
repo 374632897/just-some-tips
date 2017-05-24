@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试测试测试</title>
+</head>
+<body>
+<script type="text/javascript">
+ // alert('refresh')
+ window.name = JSON.stringify({
+    name: 'Jason',
+    age: 23
+  });
+ window.onmessage = function (e) {
+  console.log('b.html received some message')
+  console.log(e)
+ }
+ window.onhashchange = function (e) {
+  console.log(e)
+  if (location.hash === '#getInfo') {
+    console.log('send personal info')
+  }
+ }
+</script>
+</body>
+</html>

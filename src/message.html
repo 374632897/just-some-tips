@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试Message</title>
+</head>
+<body>
+  <script type="text/javascript">
+    (function () {
+      window.onmessage = function (e) {
+        console.log('[Message Received] ', e.data)
+        console.log(e);
+      }
+    })();
+  </script>
+</body>
+</html>

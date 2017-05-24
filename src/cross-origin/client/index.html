@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试测试</title>
+</head>
+<body>
+<button class = 'btn'>click</button>
+<button class = 'change-hash'>改变子hash</button>
+<a href="https://www.baidu.com/">去去去</a>
+<iframe src id = 'i'></iframe>
+<script type="text/javascript">
+  var $ = sel => document.querySelector(sel)
+  var iframe = document.getElementById('i');
+
+  var btn = $('.btn');
+  var $hashBtn = $('.change-hash')
+  iframe.onload = function () {
+    console.log(JSON.parse(iframe.contentWindow.name))
+  };
+  iframe.src = './b.html';
+  btn.onclick = function () {
+    iframe.contentWindow.postMessage({name: 'Jason', gender: 'male'}, location);
+  }
+  $hashBtn.onclick = function () {
+    iframe.src = './b.html#' + 'abcdefghijklmnopqrstuvwxyz'[~~(Math.random() * 26)]
+    // iframe.contentWindnow.location.hash = 'getInfo';
+  }
+  // window.onunload = function () {
+  window.onbeforeunload = function () {
+    sessionStorage.setItem('state', new Date().getMinutes())
+  }
+</script>
+</body>
+</html>
