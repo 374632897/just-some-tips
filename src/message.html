@@ -9,7 +9,7 @@
       window.onmessage = function (e) {
         console.log('[Message Received] ', e.data)
         console.log(e);
-        e.source.postMessage('I have received your message, this is my reply, haha', e.source.location)
+        e.source.postMessage('I have received your message, this is my reply, haha', '*')
       }
     })();
   </script>
