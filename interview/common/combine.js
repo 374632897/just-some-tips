@@ -13,6 +13,12 @@ function combine (a, b) {
       aIndex++
     }
   }
+  while (aIndex < aLen) {
+    ary.push(a[aIndex++]);
+  }
+  while (bIndex < bLen) {
+    ary.push(b[bIndex++]);
+  }
   return ary;
 }
 
